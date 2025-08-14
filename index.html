@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolite — Branding & Packaging</title>
+  <!-- performance: preconnect + fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+  <div class="site-frame">
+    <!-- header / navbar -->
+    <header class="navbar" role="banner">
+      <div class="container nav-inner">
+        <a class="logo" href="#home" aria-label="Home">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" fill="currentColor" opacity="0.08"/></svg>
+          <span class="brand">Portfolite</span>
+        </a>
+        <nav class="nav" role="navigation">
+          <ul class="nav-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="nav-actions">
+          <a class="btn-free" href="#contact">Book a Call</a>
+          <button id="mobile-toggle" class="mobile-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+        </div>
+      </div>
+      <!-- mobile drawer -->
+      <div id="mobile-drawer" class="mobile-drawer" aria-hidden="true">
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- main content -->
+    <main id="home">
+      <section class="hero section" id="hero">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="container hero-inner">
+          <span class="branding-tag">Crafting Unique Brand Identities</span>
+          <h1 class="hero-title reveal">Branding that moves people</h1>
+          <p class="hero-subtitle reveal">I build bold brand identities & packaging that tell your story and convert customers.</p>
+          <div class="hero-ctas reveal">
+            <a class="cta primary" href="#contact">Book a Free Call</a>
+            <a class="cta secondary" href="#projects">See Projects</a>
+          </div>
+          <div class="partners reveal" aria-hidden="true">
+            <span class="partner">Oasis</span>
+            <span class="partner">Dune</span>
+            <span class="partner">Asterisk</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section about">
+        <div class="container">
+          <h2 class="reveal">About Me</h2>
+          <p class="reveal">I specialize in crafting memorable visual identities and packaging. I combine strategy and craft to help brands stand out.</p>
+        </div>
+      </section>
+
+      <section id="services" class="section services">
+        <div class="container">
+          <h2 class="reveal">Services</h2>
+          <div class="services-grid">
+            <article class="service reveal">
+              <h3>Brand Identity</h3>
+              <p>Full identity systems, logos, and brand guidelines.</p>
+            </article>
+            <article class="service reveal">
+              <h3>Package Design</h3>
+              <p>Packaging that performs on shelf and online.</p>
+            </article>
+            <article class="service reveal">
+              <h3>UX & Web</h3>
+              <p>Product and web experiences aligned with brand strategy.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="section projects">
+        <div class="container">
+          <h2 class="reveal">Projects</h2>
+          <div class="projects-grid">
+            <article class="project-card reveal">
+              <img src="https://via.placeholder.com/600x360" alt="Project 1" loading="lazy" width="600" height="360">
+              <h3>Project One</h3>
+              <p>A concise case study blurb that highlights impact.</p>
+              <a class="btn" href="#">View Case Study</a>
+            </article>
+            <article class="project-card reveal">
+              <img src="https://via.placeholder.com/600x360" alt="Project 2" loading="lazy" width="600" height="360">
+              <h3>Project Two</h3>
+              <p>Packaging and identity for an FMCG brand.</p>
+              <a class="btn" href="#">View Case Study</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="testimonials" class="section testimonials">
+        <div class="container">
+          <h2 class="reveal">Client Reviews</h2>
+          <div class="testimonials-grid">
+            <blockquote class="testimonial reveal">"Designs exceeded expectations and drove engagement." <cite>— Richards Johnson</cite></blockquote>
+            <blockquote class="testimonial reveal">"Strategic approach brought our brand vision to life." <cite>— June Lee</cite></blockquote>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section contact">
+        <div class="container">
+          <h2 class="reveal">Contact</h2>
+          <form class="contact-form reveal">
+            <input name="name" placeholder="Your name" required>
+            <input name="email" type="email" placeholder="Email" required>
+            <textarea name="message" placeholder="Message" required></textarea>
+            <button class="btn" type="submit">Send Message</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- footer -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <small>&copy; <span id="year"></span> Portfolite</small>
+        <div class="footer-links">
+          <a class="social" href="#" aria-label="Twitter">T</a>
+          <a class="social" href="#" aria-label="Dribbble">D</a>
+          <a class="social" href="#" aria-label="LinkedIn">in</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
