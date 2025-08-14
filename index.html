@@ -5,88 +5,151 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio Website</title>
     <link rel="stylesheet" href="styles/main.css">
+    <!-- font preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="site-frame">
     <!-- Navbar -->
     <nav class="navbar">
         <div class="container">
-            <div class="logo">Your Name</div>
+            <div class="logo">
+                <!-- small window-like logo (inline SVG) -->
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <rect x="2" y="2" width="20" height="20" rx="5" fill="white" opacity="0.08"/>
+                    <path d="M6 6h4v4H6V6zM14 6h4v4h-4V6zM6 14h4v4H6v-4zM14 14h4v4h-4v-4z" fill="white" opacity="0.9"/>
+                </svg>
+                <span class="brand">Portfolite</span>
+            </div>
             <ul class="nav-links">
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
+                <li><a href="#services">Services</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <button id="dark-mode-toggle" aria-label="Toggle dark mode">🌙</button>
-        </div>
-    </nav>
+            <div class="nav-actions">
+                <a href="#" class="btn-free">Get for Free</a>
+                <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+            </div>
+            <!-- mobile menu (hidden on desktop) -->
+            <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+                <ul>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+         </div>
+     </nav>
 
     <!-- Hero Section -->
     <section id="hero" class="section hero">
+        <!-- background art -->
+        <div class="hero-bg" aria-hidden="true"></div>
+
         <div class="container">
-            <h1 class="fade-in">Your Name</h1>
-            <h2 class="fade-in">Web Developer</h2>
-            <a href="#contact" class="cta-btn fade-in">Contact Me</a>
+            <div class="branding-tag reveal">Crafting Unique Brand Identities</div>
+            <h1 class="hero-title reveal">Branding that you need Indeed</h1>
+            <p class="hero-subtitle reveal">Elevate your brand with custom identity and package design. Showcase your story through bold visuals and strategic design solutions.</p>
+            <div class="hero-buttons reveal">
+                <a href="#contact" class="cta-btn">Book a Free Call</a>
+                <a href="#projects" class="cta-btn secondary">See Projects</a>
+            </div>
+            <div class="scroll-down reveal">Scroll down to see projects</div>
+            <div class="partners reveal">
+                <div class="partner-logo" aria-hidden="true">
+                    <!-- Opal placeholder -->
+                    <svg width="80" height="24" viewBox="0 0 80 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="8" fill="rgba(255,255,255,0.12)"/><path d="M28 6h28v12H28z" fill="rgba(255,255,255,0.06)"/><text x="56" y="16" font-size="12" fill="rgba(255,255,255,0.5)" font-family="sans-serif">Oasis</text></svg>
+                </div>
+                <div class="partner-logo" aria-hidden="true">
+                    <!-- Dune placeholder -->
+                    <svg width="80" height="24" viewBox="0 0 80 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="16" height="16" rx="4" fill="rgba(255,255,255,0.12)"/><text x="28" y="16" font-size="12" fill="rgba(255,255,255,0.5)" font-family="sans-serif">Dune</text></svg>
+                </div>
+                <div class="partner-logo" aria-hidden="true">
+                    <!-- Oasis placeholder -->
+                    <svg width="80" height="24" viewBox="0 0 80 24" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="14" cy="12" rx="10" ry="8" fill="rgba(255,255,255,0.08)"/><text x="32" y="16" font-size="12" fill="rgba(255,255,255,0.5)" font-family="sans-serif">Oasis</text></svg>
+                </div>
+                <div class="partner-logo" aria-hidden="true">
+                    <!-- Asterisk placeholder -->
+                    <svg width="80" height="24" viewBox="0 0 80 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 12l8-6v12L8 12z" fill="rgba(255,255,255,0.12)"/><text x="28" y="16" font-size="12" fill="rgba(255,255,255,0.5)" font-family="sans-serif">Asterisk</text></svg>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="section about">
-        <div class="container fade-in">
+        <div class="container">
             <h2>About Me</h2>
-            <p>I'm a passionate web developer with experience in building modern, responsive websites and web applications. I love clean code, beautiful design, and solving real-world problems.</p>
+            <p>I specialize in crafting bold visual identities and packaging that captivate and inspire. With a blend of creativity and strategy, I elevate brands to new heights.</p>
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="section skills">
-        <div class="container fade-in">
-            <h2>Skills</h2>
-            <div class="skills-icons">
-                <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"><span>HTML5</span></div>
-                <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"><span>CSS3</span></div>
-                <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"><span>JavaScript</span></div>
-                <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"><span>React</span></div>
-                <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js"><span>Node.js</span></div>
+    <!-- Services Section -->
+    <section id="services" class="section services">
+        <div class="container">
+            <h2>Services</h2>
+            <div class="services-grid">
+                <div class="service">
+                    <h3>Brand Identity</h3>
+                    <p>Crafting unique, memorable brand identities that resonate with your audience.</p>
+                </div>
+                <div class="service">
+                    <h3>Package Design</h3>
+                    <p>Designing impactful packaging that connects with customers and boosts loyalty.</p>
+                </div>
+                <div class="service">
+                    <h3>UX Design</h3>
+                    <p>Creating user-friendly designs that enhance user experience and engagement.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
     <section id="projects" class="section projects">
-        <div class="container fade-in">
+        <div class="container">
             <h2>Projects</h2>
             <div class="projects-grid">
                 <div class="project-card">
-                    <img src="https://via.placeholder.com/300x180" alt="Project 1">
+                    <img src="https://via.placeholder.com/300x180" alt="Project 1" loading="lazy" width="300" height="180">
                     <h3>Project One</h3>
                     <p>A brief description of Project One.</p>
-                    <a href="#" class="btn">GitHub</a>
-                    <a href="#" class="btn">Demo</a>
+                    <a href="#" class="btn">View Case Study</a>
                 </div>
                 <div class="project-card">
-                    <img src="https://via.placeholder.com/300x180" alt="Project 2">
+                    <img src="https://via.placeholder.com/300x180" alt="Project 2" loading="lazy" width="300" height="180">
                     <h3>Project Two</h3>
                     <p>A brief description of Project Two.</p>
-                    <a href="#" class="btn">GitHub</a>
-                    <a href="#" class="btn">Demo</a>
+                    <a href="#" class="btn">View Case Study</a>
                 </div>
-                <div class="project-card">
-                    <img src="https://via.placeholder.com/300x180" alt="Project 3">
-                    <h3>Project Three</h3>
-                    <p>A brief description of Project Three.</p>
-                    <a href="#" class="btn">GitHub</a>
-                    <a href="#" class="btn">Demo</a>
-                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section testimonials">
+        <div class="container">
+            <h2>Client Reviews</h2>
+            <div class="testimonial">
+                <p>"Working with [Your Name] was a seamless experience. The designs were stunning and drove meaningful engagement."</p>
+                <h3>Richards Johnson</h3>
+                <span>Creative Director</span>
+            </div>
+            <div class="testimonial">
+                <p>"[Your Name]'s strategic approach brought our brand vision to life. The packaging elevated our aesthetic perfectly."</p>
+                <h3>June Lee</h3>
+                <span>CEO of GreenRoots</span>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="section contact">
-        <div class="container fade-in">
+        <div class="container">
             <h2>Contact Me</h2>
             <form class="contact-form">
                 <input type="text" name="name" placeholder="Your Name" required>
@@ -96,7 +159,27 @@
             </form>
         </div>
     </section>
-
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-left">
+                <small>&copy; <span id="year"></span> Portfolite — All rights reserved.</small>
+            </div>
+            <div class="footer-right">
+                <a href="#" aria-label="Twitter" class="social-link">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 5.92c-.6.27-1.24.45-1.92.53.69-.42 1.22-1.08 1.47-1.87-.64.38-1.36.66-2.12.81A3.3 3.3 0 0015.5 4c-1.83 0-3.32 1.48-3.32 3.31 0 .26.03.51.08.75-2.76-.14-5.2-1.46-6.83-3.47-.29.5-.46 1.08-.46 1.69 0 1.17.6 2.2 1.52 2.8-.56-.02-1.09-.17-1.55-.43v.04c0 1.6 1.14 2.93 2.66 3.23-.28.08-.56.12-.86.12-.21 0-.42-.02-.62-.06.42 1.32 1.63 2.28 3.07 2.31A6.64 6.64 0 013 19.54 9.37 9.37 0 009.23 21c5.55 0 8.59-4.6 8.59-8.58v-.39c.6-.44 1.12-.99 1.53-1.62-.55.25-1.13.42-1.74.5z" fill="currentColor"/></svg>
+                </a>
+                <a href="#" aria-label="Dribbble" class="social-link">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM4.9 9.5c1.02-.4 2.64-.76 4.67-.9.3.54.6 1.06.9 1.55-1.58.26-3.1.7-4.33 1.29C5.75 10.7 5.34 10.1 4.9 9.5zM12 20c-1.57 0-3.03-.45-4.27-1.22 1.11-.62 2.61-1.05 4.34-1.2.46.92.93 1.75 1.42 2.42-.35.15-.72.22-1.49.22z" fill="currentColor"/></svg>
+                </a>
+                <a href="#" aria-label="LinkedIn" class="social-link">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.98 3.5C3.88 3.5 3 4.38 3 5.48c0 1.1.88 1.98 1.98 1.98 1.1 0 1.98-.88 1.98-1.98C6.96 4.38 6.08 3.5 4.98 3.5zM3.5 8.98h3v10.52h-3V8.98zM10.5 8.98h2.88v1.45h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.6v5.03h-3V14.5c0-1.38-.02-3.16-1.92-3.16-1.93 0-2.22 1.5-2.22 3.04v5.12h-3V8.98z" fill="currentColor"/></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+    </div>
     <script src="js/main.js"></script>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
