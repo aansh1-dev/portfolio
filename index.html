@@ -50,6 +50,14 @@
             opacity: 1;
             transform: translateY(0);
         }
+        /* Header animation */
+        #header.reveal {
+            transform: translateY(-100%);
+        }
+        #header.reveal.visible {
+            transform: translateY(0);
+        }
+
         .hero-text-line {
             display: block;
             opacity: 0;
@@ -78,7 +86,7 @@
         /* Project card hover effect */
         .project-card {
             transform-style: preserve-3d;
-            transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.8s ease-out, transform 0.8s ease-out;
         }
         .project-card .project-info {
             opacity: 0;
@@ -159,7 +167,7 @@
     <div class="cursor-outline"></div>
 
     <!-- Header & Navigation -->
-    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 reveal">
         <div class="container mx-auto px-6 py-5 flex justify-between items-center">
             <a href="#" class="text-xl font-bold tracking-wider">JANELLE BROWN</a>
             <nav class="hidden md:flex items-center space-x-8">
@@ -191,10 +199,10 @@
                 <div class="max-w-5xl mx-auto">
                     <h1 class="hero-title">
                         <span class="hero-text-line">SENIOR</span>
-                        <span class="hero-text-line" style="transition-delay: 0.1s;">EXPERIENCE</span>
-                        <span class="hero-text-line" style="transition-delay: 0.2s;">DESIGNER©</span>
+                        <span class="hero-text-line">EXPERIENCE</span>
+                        <span class="hero-text-line">DESIGNER©</span>
                     </h1>
-                    <div class="flex justify-between items-center mt-8 text-lg text-gray-600 reveal" style="transition-delay: 0.4s;">
+                    <div class="flex justify-between items-center mt-8 text-lg text-gray-600 reveal">
                         <p>CURRENTLY CRAFTING EXPERIENCES AT CROSBY</p>
                         <p>(2021 - PRESENT)</p>
                     </div>
@@ -226,7 +234,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="reveal">
+                    <div class="reveal skills-container">
                         <h3 class="text-3xl font-semibold mb-6">Core Skills</h3>
                         <div>
                             <div class="mb-4">
@@ -282,45 +290,33 @@
                         <div class="project-info absolute inset-0 bg-white/90 p-6 flex flex-col justify-center items-center text-center">
                             <h3 class="text-3xl font-bold mb-2 project-title">E-commerce Redesign</h3>
                             <p class="text-gray-600 mb-4 project-description">A modern, responsive e-commerce site built with React.</p>
-                            <button class="generate-desc-btn bg-black text-white px-3 py-1 rounded-full text-xs font-medium hover:bg-gray-800 transition-colors mb-4 flex items-center gap-1">
-                                ✨ Generate Description <span class="loader hidden"></span>
-                            </button>
                             <a href="#" class="text-black font-semibold hover:underline">View Case Study</a>
                         </div>
                     </div>
                     <!-- Project Card 2 -->
-                    <div class="project-card reveal group relative overflow-hidden rounded-lg" style="transition-delay: 0.2s;">
+                    <div class="project-card reveal group relative overflow-hidden rounded-lg">
                         <img src="https://placehold.co/800x600/1a1a1a/ffffff?text=Project+Two" alt="Project Two" class="w-full h-full object-cover">
                          <div class="project-info absolute inset-0 bg-white/90 p-6 flex flex-col justify-center items-center text-center">
                             <h3 class="text-3xl font-bold mb-2 project-title">Data Visualization App</h3>
                             <p class="text-gray-600 mb-4 project-description">Data visualization tool using D3.js.</p>
-                            <button class="generate-desc-btn bg-black text-white px-3 py-1 rounded-full text-xs font-medium hover:bg-gray-800 transition-colors mb-4 flex items-center gap-1">
-                                ✨ Generate Description <span class="loader hidden"></span>
-                            </button>
                             <a href="#" class="text-black font-semibold hover:underline">View Case Study</a>
                         </div>
                     </div>
                     <!-- Project Card 3 -->
-                    <div class="project-card reveal group relative overflow-hidden rounded-lg" style="transition-delay: 0.4s;">
+                    <div class="project-card reveal group relative overflow-hidden rounded-lg">
                         <img src="https://placehold.co/800x600/1a1a1a/ffffff?text=Project+Three" alt="Project Three" class="w-full h-full object-cover">
                         <div class="project-info absolute inset-0 bg-white/90 p-6 flex flex-col justify-center items-center text-center">
                             <h3 class="text-3xl font-bold mb-2 project-title">SaaS Platform UI</h3>
                             <p class="text-gray-600 mb-4 project-description">User interface design for a new software-as-a-service product.</p>
-                            <button class="generate-desc-btn bg-black text-white px-3 py-1 rounded-full text-xs font-medium hover:bg-gray-800 transition-colors mb-4 flex items-center gap-1">
-                                ✨ Generate Description <span class="loader hidden"></span>
-                            </button>
                             <a href="#" class="text-black font-semibold hover:underline">View Case Study</a>
                         </div>
                     </div>
                     <!-- Project Card 4 -->
-                    <div class="project-card reveal group relative overflow-hidden rounded-lg" style="transition-delay: 0.6s;">
+                    <div class="project-card reveal group relative overflow-hidden rounded-lg">
                         <img src="https://placehold.co/800x600/1a1a1a/ffffff?text=Project+Four" alt="Project Four" class="w-full h-full object-cover">
                          <div class="project-info absolute inset-0 bg-white/90 p-6 flex flex-col justify-center items-center text-center">
                             <h3 class="text-3xl font-bold mb-2 project-title">Mobile Banking App</h3>
                             <p class="text-gray-600 mb-4 project-description">A sleek and secure mobile app for a new challenger bank.</p>
-                            <button class="generate-desc-btn bg-black text-white px-3 py-1 rounded-full text-xs font-medium hover:bg-gray-800 transition-colors mb-4 flex items-center gap-1">
-                                ✨ Generate Description <span class="loader hidden"></span>
-                            </button>
                             <a href="#" class="text-black font-semibold hover:underline">View Case Study</a>
                         </div>
                     </div>
@@ -376,36 +372,58 @@
             });
 
             // --- Intersection Observer for Scroll Animations ---
-            const observer = new IntersectionObserver((entries) => {
+            const observer = new IntersectionObserver((entries, observerInstance) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
+                        // Apply staggered delay for project cards
+                        if (entry.target.classList.contains('project-card')) {
+                            const delay = entry.target.getAttribute('data-delay');
+                            entry.target.style.transitionDelay = delay;
+                        }
                         entry.target.classList.add('visible');
+                        
                         // Animate progress bars when they become visible
-                        if (entry.target.querySelector('.progress-bar')) {
+                        if (entry.target.classList.contains('skills-container')) {
                             const progressBars = entry.target.querySelectorAll('.progress-bar');
-                            progressBars.forEach(bar => {
-                                const width = bar.getAttribute('data-width');
-                                bar.style.width = width;
+                            progressBars.forEach((bar, index) => {
+                                setTimeout(() => {
+                                    const width = bar.getAttribute('data-width');
+                                    bar.style.width = width;
+                                }, index * 150);
                             });
                         }
+                        observerInstance.unobserve(entry.target); // Unobserve after animation to prevent re-triggering
                     }
                 });
             }, {
                 threshold: 0.2
             });
 
-            const revealElements = document.querySelectorAll('.reveal');
-            revealElements.forEach(el => {
+            document.querySelectorAll('.reveal').forEach(el => {
                 observer.observe(el);
             });
-
-            // --- Hero Text Stagger Animation ---
-            const heroTextLines = document.querySelectorAll('.hero-text-line');
-            heroTextLines.forEach((line, index) => {
-                setTimeout(() => {
-                    line.classList.add('visible');
-                }, 300 + index * 100); // Stagger delay
+            
+            // --- Staggered Animation for Project Cards ---
+            const projectCards = document.querySelectorAll('.project-card.reveal');
+            projectCards.forEach((card, index) => {
+                card.style.transitionDelay = `${index * 200}ms`;
             });
+
+
+            // --- Animate Header and Hero Text on Load ---
+            setTimeout(() => {
+                document.getElementById('header').classList.add('visible');
+                document.querySelectorAll('.hero-text-line').forEach((line, index) => {
+                    setTimeout(() => {
+                        line.classList.add('visible');
+                    }, index * 150);
+                });
+                 // Animate the sub-header text after the main title
+                setTimeout(() => {
+                    document.querySelector('#hero .reveal').classList.add('visible');
+                }, 600);
+            }, 300);
+
 
             // --- Custom Cursor ---
             const cursorDot = document.querySelector('.cursor-dot');
@@ -440,12 +458,15 @@
             const aboutImage = document.getElementById('about-image');
             window.addEventListener('scroll', () => {
                 const scrollY = window.scrollY;
-                // Apply a subtle vertical movement. Adjust the divisor to change speed.
-                aboutImage.style.transform = `translateY(${scrollY * 0.1}px)`;
+                const speed = 0.1;
+                const offset = scrollY * speed;
+                // Only apply parallax if the image is in view for performance
+                if (aboutImage.getBoundingClientRect().top < window.innerHeight && aboutImage.getBoundingClientRect().bottom > 0) {
+                    aboutImage.style.transform = `translateY(${offset}px)`;
+                }
             });
 
             // --- 3D Tilt Effect for Project Cards ---
-            const projectCards = document.querySelectorAll('.project-card');
             projectCards.forEach(card => {
                 card.addEventListener('mousemove', (e) => {
                     const rect = card.getBoundingClientRect();
@@ -498,32 +519,6 @@
                 }
             }
 
-            // --- Project Description Generator ---
-            const generateDescBtns = document.querySelectorAll('.generate-desc-btn');
-            generateDescBtns.forEach(btn => {
-                btn.addEventListener('click', async () => {
-                    const card = btn.closest('.project-info');
-                    const title = card.querySelector('.project-title').textContent;
-                    const descriptionP = card.querySelector('.project-description');
-                    const loader = btn.querySelector('.loader');
-
-                    loader.classList.remove('hidden');
-                    btn.disabled = true;
-
-                    const prompt = `Write a short, professional project description (1 sentence) for a portfolio piece titled "${title}".`;
-                    const newDescription = await callGeminiAPI(prompt);
-
-                    if (newDescription) {
-                        descriptionP.textContent = newDescription.trim();
-                    } else {
-                        descriptionP.textContent = "Could not generate description. Please try again.";
-                    }
-
-                    loader.classList.add('hidden');
-                    btn.disabled = false;
-                });
-            });
-
             // --- Bio Rewriter ---
             const rewriteBioBtn = document.getElementById('rewrite-bio-btn');
             const bioContent = document.getElementById('bio-content');
@@ -553,3 +548,4 @@
     </script>
 </body>
 </html>
+
