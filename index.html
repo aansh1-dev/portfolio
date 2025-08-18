@@ -50,6 +50,17 @@
             opacity: 1;
             transform: translateY(0);
         }
+        .hero-text-line {
+            display: block;
+            opacity: 0;
+            transform: translateY(100%);
+            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .hero-text-line.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
@@ -65,6 +76,10 @@
             background: #a0a0a0;
         }
         /* Project card hover effect */
+        .project-card {
+            transform-style: preserve-3d;
+            transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
         .project-card .project-info {
             opacity: 0;
             transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -104,6 +119,7 @@
             line-height: 1;
             font-weight: 800;
             letter-spacing: -0.05em;
+            overflow: hidden; /* Hide text before animation */
         }
         /* Progress Bar */
         .progress-bar-container {
@@ -173,10 +189,12 @@
         <section id="hero" class="min-h-screen pt-40 pb-20 flex flex-col justify-center text-center">
             <div class="container mx-auto px-6">
                 <div class="max-w-5xl mx-auto">
-                    <h1 class="hero-title hero-text">
-                        SENIOR EXPERIENCE DESIGNER©
+                    <h1 class="hero-title">
+                        <span class="hero-text-line">SENIOR</span>
+                        <span class="hero-text-line" style="transition-delay: 0.1s;">EXPERIENCE</span>
+                        <span class="hero-text-line" style="transition-delay: 0.2s;">DESIGNER©</span>
                     </h1>
-                    <div class="flex justify-between items-center mt-8 text-lg text-gray-600 hero-text" style="transition-delay: 0.2s;">
+                    <div class="flex justify-between items-center mt-8 text-lg text-gray-600 reveal" style="transition-delay: 0.4s;">
                         <p>CURRENTLY CRAFTING EXPERIENCES AT CROSBY</p>
                         <p>(2021 - PRESENT)</p>
                     </div>
@@ -188,7 +206,7 @@
         <section id="about" class="pb-20 md:pb-32">
             <div class="container mx-auto px-6">
                 <div class="reveal">
-                     <img src="https://placehold.co/1200x800/e0e0e0/0a0a0a?text=Janelle+Brown" alt="Janelle Brown" class="rounded-2xl w-full h-auto mb-16">
+                     <img id="about-image" src="https://placehold.co/1200x800/e0e0e0/0a0a0a?text=Janelle+Brown" alt="Janelle Brown" class="rounded-2xl w-full h-auto mb-16">
                 </div>
                 <div class="grid md:grid-cols-2 gap-12">
                     <div class="reveal">
@@ -283,7 +301,7 @@
                         </div>
                     </div>
                     <!-- Project Card 3 -->
-                    <div class="project-card reveal group relative overflow-hidden rounded-lg">
+                    <div class="project-card reveal group relative overflow-hidden rounded-lg" style="transition-delay: 0.4s;">
                         <img src="https://placehold.co/800x600/1a1a1a/ffffff?text=Project+Three" alt="Project Three" class="w-full h-full object-cover">
                         <div class="project-info absolute inset-0 bg-white/90 p-6 flex flex-col justify-center items-center text-center">
                             <h3 class="text-3xl font-bold mb-2 project-title">SaaS Platform UI</h3>
@@ -295,7 +313,7 @@
                         </div>
                     </div>
                     <!-- Project Card 4 -->
-                    <div class="project-card reveal group relative overflow-hidden rounded-lg" style="transition-delay: 0.2s;">
+                    <div class="project-card reveal group relative overflow-hidden rounded-lg" style="transition-delay: 0.6s;">
                         <img src="https://placehold.co/800x600/1a1a1a/ffffff?text=Project+Four" alt="Project Four" class="w-full h-full object-cover">
                          <div class="project-info absolute inset-0 bg-white/90 p-6 flex flex-col justify-center items-center text-center">
                             <h3 class="text-3xl font-bold mb-2 project-title">Mobile Banking App</h3>
@@ -382,11 +400,11 @@
             });
 
             // --- Hero Text Stagger Animation ---
-            const heroTexts = document.querySelectorAll('.hero-text');
-            heroTexts.forEach((text, index) => {
+            const heroTextLines = document.querySelectorAll('.hero-text-line');
+            heroTextLines.forEach((line, index) => {
                 setTimeout(() => {
-                    text.classList.add('reveal', 'visible');
-                }, index * 200 + 300); // Stagger delay
+                    line.classList.add('visible');
+                }, 300 + index * 100); // Stagger delay
             });
 
             // --- Custom Cursor ---
@@ -417,6 +435,34 @@
                     cursorOutline.style.borderWidth = '2px';
                 });
             });
+
+            // --- Parallax Scroll for About Image ---
+            const aboutImage = document.getElementById('about-image');
+            window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY;
+                // Apply a subtle vertical movement. Adjust the divisor to change speed.
+                aboutImage.style.transform = `translateY(${scrollY * 0.1}px)`;
+            });
+
+            // --- 3D Tilt Effect for Project Cards ---
+            const projectCards = document.querySelectorAll('.project-card');
+            projectCards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const { width, height } = rect;
+                    const rotateX = (y / height - 0.5) * -20; // Max rotation 10deg
+                    const rotateY = (x / width - 0.5) * 20;  // Max rotation 10deg
+                    
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+                });
+            });
+
 
             // --- Gemini API Integration ---
             const apiKey = ""; // This will be handled by the environment
