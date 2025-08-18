@@ -1,151 +1,509 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Portfolite — Branding & Packaging</title>
-  <!-- performance: preconnect + fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles/main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Janelle Brown - Senior Experience Designer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f0f0;
+            color: #0a0a0a;
+            cursor: none; /* Hide default cursor */
+        }
+        /* Header style on scroll */
+        .header-scrolled {
+            background-color: rgba(240, 240, 240, 0.75); /* Slightly more transparent */
+            backdrop-filter: blur(24px); /* Apple-level blur */
+            -webkit-backdrop-filter: blur(24px); /* For Safari */
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        /* Menu bar hover animation */
+        header nav a {
+            position: relative;
+        }
+        header nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1.5px;
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #0a0a0a;
+            transition: width 0.3s ease-out;
+        }
+        header nav a:hover::after {
+            width: 100%;
+        }
+        /* Animation classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f0f0f0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c0c0c0;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a0a0a0;
+        }
+        /* Project card hover effect */
+        .project-card .project-info {
+            opacity: 0;
+            transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .project-card:hover .project-info {
+           opacity: 1;
+        }
+        .project-card img {
+            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .project-card:hover img {
+            transform: scale(1.05);
+        }
+        /* Custom cursor */
+        .cursor-dot, .cursor-outline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #0a0a0a;
+        }
+        .cursor-outline {
+            width: 30px;
+            height: 30px;
+            border: 2px solid #0a0a0a;
+            transition: all 0.1s ease-out;
+        }
+        .hero-title {
+            font-size: clamp(3rem, 12vw, 8rem);
+            line-height: 1;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+        }
+        /* Progress Bar */
+        .progress-bar-container {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 9999px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+        .progress-bar {
+            height: 8px;
+            background-color: #0a0a0a;
+            width: 0;
+            border-radius: 9999px;
+            transition: width 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        /* Loading Spinner */
+        .loader {
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #3498db;
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
-<body>
-  <div class="site-frame">
-    <!-- header / navbar -->
-    <header class="navbar" role="banner">
-      <div class="container nav-inner">
-        <a class="logo" href="#home" aria-label="Home">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" fill="currentColor" opacity="0.08"/></svg>
-          <span class="brand">Portfolite</span>
-        </a>
-        <nav class="nav" role="navigation">
-          <ul class="nav-links">
-            <li><a href="#services">Services</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#testimonials">Testimonials</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
-        <div class="nav-actions">
-          <a class="btn-free" href="#contact">Book a Call</a>
-          <button id="mobile-toggle" class="mobile-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+<body class="overflow-x-hidden">
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Header & Navigation -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold tracking-wider">JANELLE BROWN</a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="text-gray-700 hover:text-black transition duration-300">About</a>
+                <a href="#work" class="text-gray-700 hover:text-black transition duration-300">Work</a>
+                <a href="#contact" class="text-gray-700 hover:text-black transition duration-300">Contact</a>
+            </nav>
+            <a href="mailto:info@janelle-brown.com" class="hidden md:block border border-gray-300 text-black font-medium px-4 py-2 rounded-full hover:bg-black hover:text-white transition duration-300">
+                info@janelle-brown.com
+            </a>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-black focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
         </div>
-      </div>
-      <!-- mobile drawer -->
-      <div id="mobile-drawer" class="mobile-drawer" aria-hidden="true">
-        <ul>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#testimonials">Testimonials</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white/90 backdrop-blur-lg">
+            <a href="#about" class="block py-3 px-6 text-gray-700 hover:bg-gray-100">About</a>
+            <a href="#work" class="block py-3 px-6 text-gray-700 hover:bg-gray-100">Work</a>
+            <a href="#contact" class="block py-3 px-6 text-gray-700 hover:bg-gray-100">Contact</a>
+            <a href="mailto:info@janelle-brown.com" class="block py-3 px-6 text-gray-700 hover:bg-gray-100">Email Me</a>
+        </div>
     </header>
 
-    <!-- main content -->
-    <main id="home">
-      <section class="hero section" id="hero">
-        <div class="hero-bg" aria-hidden="true"></div>
-        <div class="container hero-inner">
-          <span class="branding-tag">Crafting Unique Brand Identities</span>
-          <h1 class="hero-title reveal">Branding that moves people</h1>
-          <p class="hero-subtitle reveal">I build bold brand identities & packaging that tell your story and convert customers.</p>
-          <div class="hero-ctas reveal">
-            <a class="cta primary" href="#contact">Book a Free Call</a>
-            <a class="cta secondary" href="#projects">See Projects</a>
-          </div>
-          <div class="partners reveal" aria-hidden="true">
-            <span class="partner">Oasis</span>
-            <span class="partner">Dune</span>
-            <span class="partner">Asterisk</span>
-          </div>
-        </div>
-      </section>
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-screen pt-40 pb-20 flex flex-col justify-center text-center">
+            <div class="container mx-auto px-6">
+                <div class="max-w-5xl mx-auto">
+                    <h1 class="hero-title hero-text">
+                        SENIOR EXPERIENCE DESIGNER©
+                    </h1>
+                    <div class="flex justify-between items-center mt-8 text-lg text-gray-600 hero-text" style="transition-delay: 0.2s;">
+                        <p>CURRENTLY CRAFTING EXPERIENCES AT CROSBY</p>
+                        <p>(2021 - PRESENT)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-      <section id="about" class="section about">
-        <div class="container">
-          <h2 class="reveal">About Me</h2>
-          <p class="reveal">I specialize in crafting memorable visual identities and packaging. I combine strategy and craft to help brands stand out.</p>
-        </div>
-      </section>
+        <!-- About Section (Image below hero) -->
+        <section id="about" class="pb-20 md:pb-32">
+            <div class="container mx-auto px-6">
+                <div class="reveal">
+                     <img src="https://placehold.co/1200x800/e0e0e0/0a0a0a?text=Janelle+Brown" alt="Janelle Brown" class="rounded-2xl w-full h-auto mb-16">
+                </div>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="reveal">
+                        <div class="flex justify-between items-center mb-6">
+                           <h2 class="text-4xl md:text-5xl font-bold">About Me</h2>
+                           <button id="rewrite-bio-btn" class="bg-black text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-800 transition-colors flex items-center gap-2">
+                                ✨ Rewrite Bio with AI
+                                <span id="bio-loader" class="hidden loader"></span>
+                           </button>
+                        </div>
+                        <div id="bio-content">
+                            <p class="text-gray-700 mb-4 leading-relaxed text-lg">
+                                I'm a passionate designer with a knack for creating engaging digital experiences. With over 8 years in the industry, I've honed my skills in UI/UX design, interaction design, and user research.
+                            </p>
+                            <p class="text-gray-700 leading-relaxed text-lg">
+                                My goal is to merge aesthetics with functionality to deliver products that are not only visually stunning but also intuitive and accessible to everyone.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="reveal">
+                        <h3 class="text-3xl font-semibold mb-6">Core Skills</h3>
+                        <div>
+                            <div class="mb-4">
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">UX/UI Design</span>
+                                    <span class="font-medium">95%</span>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar" data-width="95%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Interaction Design</span>
+                                    <span class="font-medium">90%</span>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar" data-width="90%"></div>
+                                </div>
+                            </div>
+                             <div class="mb-4">
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Prototyping</span>
+                                    <span class="font-medium">85%</span>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar" data-width="85%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Figma & Sketch</span>
+                                    <span class="font-medium">98%</span>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar" data-width="98%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-      <section id="services" class="section services">
-        <div class="container">
-          <h2 class="reveal">Services</h2>
-          <div class="services-grid">
-            <article class="service reveal">
-              <h3>Brand Identity</h3>
-              <p>Full identity systems, logos, and brand guidelines.</p>
-            </article>
-            <article class="service reveal">
-              <h3>Package Design</h3>
-              <p>Packaging that performs on shelf and online.</p>
-            </article>
-            <article class="service reveal">
-              <h3>UX & Web</h3>
-              <p>Product and web experiences aligned with brand strategy.</p>
-            </article>
-          </div>
-        </div>
-      </section>
+        <!-- Projects Section -->
+        <section id="work" class="py-20 md:py-32 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center reveal">Featured Work</h2>
+                <div class="grid md:grid-cols-2 gap-10">
+                    <!-- Project Card 1 -->
+                    <div class="project-card reveal group relative overflow-hidden rounded-lg">
+                        <img src="https://placehold.co/800x600/1a1a1a/ffffff?text=Project+One" alt="Project One" class="w-full h-full object-cover">
+                        <div class="project-info absolute inset-0 bg-white/90 p-6 flex flex-col justify-center items-center text-center">
+                            <h3 class="text-3xl font-bold mb-2 project-title">E-commerce Redesign</h3>
+                            <p class="text-gray-600 mb-4 project-description">A modern, responsive e-commerce site built with React.</p>
+                            <button class="generate-desc-btn bg-black text-white px-3 py-1 rounded-full text-xs font-medium hover:bg-gray-800 transition-colors mb-4 flex items-center gap-1">
+                                ✨ Generate Description <span class="loader hidden"></span>
+                            </button>
+                            <a href="#" class="text-black font-semibold hover:underline">View Case Study</a>
+                        </div>
+                    </div>
+                    <!-- Project Card 2 -->
+                    <div class="project-card reveal group relative overflow-hidden rounded-lg" style="transition-delay: 0.2s;">
+                        <img src="https://placehold.co/800x600/1a1a1a/ffffff?text=Project+Two" alt="Project Two" class="w-full h-full object-cover">
+                         <div class="project-info absolute inset-0 bg-white/90 p-6 flex flex-col justify-center items-center text-center">
+                            <h3 class="text-3xl font-bold mb-2 project-title">Data Visualization App</h3>
+                            <p class="text-gray-600 mb-4 project-description">Data visualization tool using D3.js.</p>
+                            <button class="generate-desc-btn bg-black text-white px-3 py-1 rounded-full text-xs font-medium hover:bg-gray-800 transition-colors mb-4 flex items-center gap-1">
+                                ✨ Generate Description <span class="loader hidden"></span>
+                            </button>
+                            <a href="#" class="text-black font-semibold hover:underline">View Case Study</a>
+                        </div>
+                    </div>
+                    <!-- Project Card 3 -->
+                    <div class="project-card reveal group relative overflow-hidden rounded-lg">
+                        <img src="https://placehold.co/800x600/1a1a1a/ffffff?text=Project+Three" alt="Project Three" class="w-full h-full object-cover">
+                        <div class="project-info absolute inset-0 bg-white/90 p-6 flex flex-col justify-center items-center text-center">
+                            <h3 class="text-3xl font-bold mb-2 project-title">SaaS Platform UI</h3>
+                            <p class="text-gray-600 mb-4 project-description">User interface design for a new software-as-a-service product.</p>
+                            <button class="generate-desc-btn bg-black text-white px-3 py-1 rounded-full text-xs font-medium hover:bg-gray-800 transition-colors mb-4 flex items-center gap-1">
+                                ✨ Generate Description <span class="loader hidden"></span>
+                            </button>
+                            <a href="#" class="text-black font-semibold hover:underline">View Case Study</a>
+                        </div>
+                    </div>
+                    <!-- Project Card 4 -->
+                    <div class="project-card reveal group relative overflow-hidden rounded-lg" style="transition-delay: 0.2s;">
+                        <img src="https://placehold.co/800x600/1a1a1a/ffffff?text=Project+Four" alt="Project Four" class="w-full h-full object-cover">
+                         <div class="project-info absolute inset-0 bg-white/90 p-6 flex flex-col justify-center items-center text-center">
+                            <h3 class="text-3xl font-bold mb-2 project-title">Mobile Banking App</h3>
+                            <p class="text-gray-600 mb-4 project-description">A sleek and secure mobile app for a new challenger bank.</p>
+                            <button class="generate-desc-btn bg-black text-white px-3 py-1 rounded-full text-xs font-medium hover:bg-gray-800 transition-colors mb-4 flex items-center gap-1">
+                                ✨ Generate Description <span class="loader hidden"></span>
+                            </button>
+                            <a href="#" class="text-black font-semibold hover:underline">View Case Study</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-      <section id="projects" class="section projects">
-        <div class="container">
-          <h2 class="reveal">Projects</h2>
-          <div class="projects-grid">
-            <article class="project-card reveal">
-              <img src="https://via.placeholder.com/600x360" alt="Project 1" loading="lazy" width="600" height="360">
-              <h3>Project One</h3>
-              <p>A concise case study blurb that highlights impact.</p>
-              <a class="btn" href="#">View Case Study</a>
-            </article>
-            <article class="project-card reveal">
-              <img src="https://via.placeholder.com/600x360" alt="Project 2" loading="lazy" width="600" height="360">
-              <h3>Project Two</h3>
-              <p>Packaging and identity for an FMCG brand.</p>
-              <a class="btn" href="#">View Case Study</a>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="testimonials" class="section testimonials">
-        <div class="container">
-          <h2 class="reveal">Client Reviews</h2>
-          <div class="testimonials-grid">
-            <blockquote class="testimonial reveal">"Designs exceeded expectations and drove engagement." <cite>— Richards Johnson</cite></blockquote>
-            <blockquote class="testimonial reveal">"Strategic approach brought our brand vision to life." <cite>— June Lee</cite></blockquote>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" class="section contact">
-        <div class="container">
-          <h2 class="reveal">Contact</h2>
-          <form class="contact-form reveal">
-            <input name="name" placeholder="Your name" required>
-            <input name="email" type="email" placeholder="Email" required>
-            <textarea name="message" placeholder="Message" required></textarea>
-            <button class="btn" type="submit">Send Message</button>
-          </form>
-        </div>
-      </section>
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 md:py-32">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 reveal">Let's Connect</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto mb-10 reveal text-lg">
+                    Have a project in mind or just want to say hi? Feel free to reach out.
+                </p>
+                <div class="reveal">
+                    <a href="mailto:info@janelle-brown.com" class="inline-block bg-black text-white font-semibold text-lg px-12 py-4 rounded-full hover:bg-gray-800 transition duration-300">
+                        Get In Touch
+                    </a>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <!-- footer -->
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <small>&copy; <span id="year"></span> Portfolite</small>
-        <div class="footer-links">
-          <a class="social" href="#" aria-label="Twitter">T</a>
-          <a class="social" href="#" aria-label="Dribbble">D</a>
-          <a class="social" href="#" aria-label="LinkedIn">in</a>
+    <!-- Footer -->
+    <footer class="border-t border-black/10 py-8">
+        <div class="container mx-auto px-6 text-center text-gray-500">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="#" class="hover:text-black transition duration-300">Twitter</a>
+                <a href="#" class="hover:text-black transition duration-300">LinkedIn</a>
+                <a href="#" class="hover:text-black transition duration-300">Dribbble</a>
+            </div>
+            <p>&copy; 2024 Janelle Brown. All Rights Reserved.</p>
         </div>
-      </div>
     </footer>
-  </div>
 
-  <script src="js/main.js"></script>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- Mobile Menu Toggle ---
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // --- Header Style on Scroll ---
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('header-scrolled');
+                } else {
+                    header.classList.remove('header-scrolled');
+                }
+            });
+
+            // --- Intersection Observer for Scroll Animations ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        // Animate progress bars when they become visible
+                        if (entry.target.querySelector('.progress-bar')) {
+                            const progressBars = entry.target.querySelectorAll('.progress-bar');
+                            progressBars.forEach(bar => {
+                                const width = bar.getAttribute('data-width');
+                                bar.style.width = width;
+                            });
+                        }
+                    }
+                });
+            }, {
+                threshold: 0.2
+            });
+
+            const revealElements = document.querySelectorAll('.reveal');
+            revealElements.forEach(el => {
+                observer.observe(el);
+            });
+
+            // --- Hero Text Stagger Animation ---
+            const heroTexts = document.querySelectorAll('.hero-text');
+            heroTexts.forEach((text, index) => {
+                setTimeout(() => {
+                    text.classList.add('reveal', 'visible');
+                }, index * 200 + 300); // Stagger delay
+            });
+
+            // --- Custom Cursor ---
+            const cursorDot = document.querySelector('.cursor-dot');
+            const cursorOutline = document.querySelector('.cursor-outline');
+            window.addEventListener('mousemove', (e) => {
+                const posX = e.clientX;
+                const posY = e.clientY;
+
+                cursorDot.style.left = `${posX}px`;
+                cursorDot.style.top = `${posY}px`;
+
+                cursorOutline.animate({
+                    left: `${posX}px`,
+                    top: `${posY}px`
+                }, { duration: 500, fill: 'forwards' });
+            });
+            
+            // Cursor hover effects
+            const interactiveElements = document.querySelectorAll('a, button, .project-card');
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursorOutline.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                    cursorOutline.style.borderWidth = '1px';
+                });
+                el.addEventListener('mouseleave', () => {
+                    cursorOutline.style.transform = 'translate(-50%, -50%) scale(1)';
+                    cursorOutline.style.borderWidth = '2px';
+                });
+            });
+
+            // --- Gemini API Integration ---
+            const apiKey = ""; // This will be handled by the environment
+
+            async function callGeminiAPI(prompt, retries = 3, delay = 1000) {
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+                
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+                    });
+
+                    if (!response.ok) {
+                        if (response.status === 429 && retries > 0) {
+                            console.warn(`Rate limited. Retrying in ${delay / 1000}s...`);
+                            await new Promise(res => setTimeout(res, delay));
+                            return callGeminiAPI(prompt, retries - 1, delay * 2);
+                        }
+                        throw new Error(`API request failed with status ${response.status}`);
+                    }
+
+                    const result = await response.json();
+                    if (result.candidates && result.candidates.length > 0 && result.candidates[0].content.parts.length > 0) {
+                        return result.candidates[0].content.parts[0].text;
+                    } else {
+                        throw new Error("Invalid response structure from API");
+                    }
+                } catch (error) {
+                    console.error("Error calling Gemini API:", error);
+                    return null;
+                }
+            }
+
+            // --- Project Description Generator ---
+            const generateDescBtns = document.querySelectorAll('.generate-desc-btn');
+            generateDescBtns.forEach(btn => {
+                btn.addEventListener('click', async () => {
+                    const card = btn.closest('.project-info');
+                    const title = card.querySelector('.project-title').textContent;
+                    const descriptionP = card.querySelector('.project-description');
+                    const loader = btn.querySelector('.loader');
+
+                    loader.classList.remove('hidden');
+                    btn.disabled = true;
+
+                    const prompt = `Write a short, professional project description (1 sentence) for a portfolio piece titled "${title}".`;
+                    const newDescription = await callGeminiAPI(prompt);
+
+                    if (newDescription) {
+                        descriptionP.textContent = newDescription.trim();
+                    } else {
+                        descriptionP.textContent = "Could not generate description. Please try again.";
+                    }
+
+                    loader.classList.add('hidden');
+                    btn.disabled = false;
+                });
+            });
+
+            // --- Bio Rewriter ---
+            const rewriteBioBtn = document.getElementById('rewrite-bio-btn');
+            const bioContent = document.getElementById('bio-content');
+            const bioLoader = document.getElementById('bio-loader');
+
+            rewriteBioBtn.addEventListener('click', async () => {
+                const currentBio = bioContent.textContent.trim();
+                
+                bioLoader.classList.remove('hidden');
+                rewriteBioBtn.disabled = true;
+
+                const prompt = `Rewrite the following portfolio "About Me" section to be more engaging and professional. Keep it to two paragraphs:\n\n"${currentBio}"`;
+                const newBio = await callGeminiAPI(prompt);
+
+                if (newBio) {
+                    // Simple sanitization by splitting into paragraphs
+                    const paragraphs = newBio.trim().split('\n').filter(p => p.trim() !== '');
+                    bioContent.innerHTML = paragraphs.map(p => `<p class="text-gray-700 mb-4 leading-relaxed text-lg">${p}</p>`).join('');
+                } else {
+                    bioContent.innerHTML += `<p class="text-red-500 mt-4">Could not rewrite bio. Please try again.</p>`;
+                }
+
+                bioLoader.classList.add('hidden');
+                rewriteBioBtn.disabled = false;
+            });
+        });
+    </script>
 </body>
 </html>
