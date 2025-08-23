@@ -144,19 +144,65 @@
             border-radius: 9999px;
             transition: width 1.5s cubic-bezier(0.25, 1, 0.5, 1);
         }
-        /* Loading Spinner */
-        .loader {
-            border: 2px solid #f3f3f3;
-            border-top: 2px solid #3498db;
-            border-radius: 50%;
-            width: 16px;
-            height: 16px;
-            animation: spin 1s linear infinite;
-            display: inline-block;
+        /* Image Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
         }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .modal-overlay.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .modal-content {
+            max-width: 90vw;
+            max-height: 90vh;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        .modal-overlay.visible .modal-content {
+            transform: scale(1);
+        }
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+        }
+        /* Figma project text effect */
+        .figma-text-container {
+            position: relative;
+            display: grid;
+            place-items: center;
+            user-select: none;
+        }
+        .figma-text {
+            grid-area: 1 / 1; /* Both spans occupy the same cell */
+            font-size: 6rem;
+            font-weight: 900;
+        }
+        .figma-text-blur {
+            color: rgba(255, 255, 255, 0.1);
+            filter: blur(8px);
+            transition: filter 0.3s ease;
+        }
+        .figma-text-sharp {
+             color: rgba(255, 255, 255, 0.8);
+        }
+        .project-card:hover .figma-text-blur {
+            filter: blur(4px);
         }
     </style>
 </head>
@@ -210,67 +256,48 @@
             </div>
         </section>
 
-        <!-- About Section (Image below hero) -->
-        <section id="about" class="pb-20 md:pb-32">
+        <!-- About Section -->
+        <section id="about" class="py-20 md:py-32">
             <div class="container mx-auto px-6">
-                <div class="reveal">
-                     <img id="about-image" src="https://placehold.co/1200x800/e0e0e0/0a0a0a?text=Aansh+Gupta" alt="Aansh Gupta" class="rounded-2xl w-full h-auto mb-16">
-                </div>
                 <div class="grid md:grid-cols-2 gap-12">
                     <div class="reveal">
-                        <div class="flex justify-between items-center mb-6">
-                           <h2 class="text-4xl md:text-5xl font-bold">About Me</h2>
-                           <button id="rewrite-bio-btn" class="bg-black text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-800 transition-colors flex items-center gap-2">
-                                ✨ Rewrite Bio with AI
-                                <span id="bio-loader" class="hidden loader"></span>
-                           </button>
-                        </div>
-                        <div id="bio-content">
-                            <p class="text-gray-700 mb-4 leading-relaxed text-lg">
-                                I'm a 17-year-old student with a deep passion for Artificial Intelligence and its potential to solve real-world problems. From my first experiments with machine learning models, I've been captivated by the power of data and algorithms to create intelligent systems.
-                            </p>
-                            <p class="text-gray-700 leading-relaxed text-lg">
-                                My goal is to continue learning and growing in the field of AI, with a focus on developing projects that are not only technically challenging but also impactful. I'm always looking for new opportunities to learn and collaborate with others who share my curiosity.
-                            </p>
-                        </div>
+                        <h2 class="text-4xl md:text-5xl font-bold mb-6">About Me</h2>
+                        <p class="text-gray-700 mb-8 leading-relaxed text-lg">
+                            I'm a 17-year-old student with a deep passion for Artificial Intelligence and its potential to solve real-world problems. From my first experiments with machine learning models, I've been captivated by the power of data and algorithms to create intelligent systems.
+                        </p>
+                        <h2 class="text-4xl md:text-5xl font-bold mb-6">Goal</h2>
+                        <p class="text-gray-700 leading-relaxed text-lg">
+                            My goal is to continue learning and growing in the field of AI, with a focus on developing projects that are not only technically challenging but also impactful. I'm always looking for new opportunities to learn and collaborate with others who share my curiosity.
+                        </p>
                     </div>
                     <div class="reveal skills-container">
                         <h3 class="text-3xl font-semibold mb-6">Core Skills</h3>
                         <div>
                             <div class="mb-4">
                                 <div class="flex justify-between mb-1">
-                                    <span class="font-medium">UX/UI Design</span>
-                                    <span class="font-medium">95%</span>
+                                    <span class="font-medium">Vibe Coding</span>
+                                    <span class="font-medium">65%</span>
                                 </div>
                                 <div class="progress-bar-container">
-                                    <div class="progress-bar" data-width="95%"></div>
+                                    <div class="progress-bar" data-width="65%"></div>
                                 </div>
                             </div>
                             <div class="mb-4">
                                 <div class="flex justify-between mb-1">
-                                    <span class="font-medium">Interaction Design</span>
-                                    <span class="font-medium">90%</span>
+                                    <span class="font-medium">Figma Design Prototyping</span>
+                                    <span class="font-medium">80%</span>
                                 </div>
                                 <div class="progress-bar-container">
-                                    <div class="progress-bar" data-width="90%"></div>
+                                    <div class="progress-bar" data-width="80%"></div>
                                 </div>
                             </div>
                              <div class="mb-4">
                                 <div class="flex justify-between mb-1">
-                                    <span class="font-medium">Prototyping</span>
-                                    <span class="font-medium">85%</span>
+                                    <span class="font-medium">Prompt Engineering</span>
+                                    <span class="font-medium">75%</span>
                                 </div>
                                 <div class="progress-bar-container">
-                                    <div class="progress-bar" data-width="85%"></div>
-                                </div>
-                            </div>
-                            <div class="mb-4">
-                                <div class="flex justify-between mb-1">
-                                    <span class="font-medium">Figma & Sketch</span>
-                                    <span class="font-medium">98%</span>
-                                </div>
-                                <div class="progress-bar-container">
-                                    <div class="progress-bar" data-width="98%"></div>
+                                    <div class="progress-bar" data-width="75%"></div>
                                 </div>
                             </div>
                         </div>
@@ -288,26 +315,29 @@
                     <div class="project-card reveal group relative overflow-hidden rounded-lg">
                         <img src="https://placehold.co/800x600/1a1a1a/ffffff?text=Project+One" alt="Project One" class="w-full h-full object-cover">
                         <div class="project-info absolute inset-0 bg-white/90 p-6 flex flex-col justify-center items-center text-center">
-                            <h3 class="text-3xl font-bold mb-2 project-title">E-commerce Redesign</h3>
-                            <p class="text-gray-600 mb-4 project-description">A modern, responsive e-commerce site built with React.</p>
+                            <h3 class="text-3xl font-bold mb-2 project-title">AI Sentiment Analysis</h3>
+                            <p class="text-gray-600 mb-4 project-description">A web app that analyzes text to determine its emotional tone using an NLP model.</p>
                             <a href="#" class="text-black font-semibold hover:underline">View Case Study</a>
                         </div>
                     </div>
                     <!-- Project Card 2 -->
-                    <div class="project-card reveal group relative overflow-hidden rounded-lg">
-                        <img src="https://placehold.co/800x600/1a1a1a/ffffff?text=Project+Two" alt="Project Two" class="w-full h-full object-cover">
-                         <div class="project-info absolute inset-0 bg-white/90 p-6 flex flex-col justify-center items-center text-center">
-                            <h3 class="text-3xl font-bold mb-2 project-title">Data Visualization App</h3>
-                            <p class="text-gray-600 mb-4 project-description">Data visualization tool using D3.js.</p>
-                            <a href="#" class="text-black font-semibold hover:underline">View Case Study</a>
+                    <div class="project-card reveal group relative overflow-hidden rounded-lg bg-black flex items-center justify-center" data-image-src="https://i.postimg.cc/TPb53Qgw/figma-prototype.png">
+                        <div class="figma-text-container">
+                            <span class="figma-text figma-text-blur">Figma</span>
+                            <span class="figma-text figma-text-sharp">Figma</span>
+                        </div>
+                         <div class="project-info absolute inset-0 bg-black/90 text-white p-6 flex flex-col justify-center items-center text-center">
+                            <h3 class="text-3xl font-bold mb-2 project-title">Figma Prototype</h3>
+                            <p class="text-gray-300 mb-4 project-description">A high-fidelity prototype for a fintech app, designed entirely in Figma.</p>
+                            <button class="view-image-btn text-white font-semibold hover:underline">Click to Reveal</button>
                         </div>
                     </div>
                     <!-- Project Card 3 -->
                     <div class="project-card reveal group relative overflow-hidden rounded-lg">
                         <img src="https://placehold.co/800x600/1a1a1a/ffffff?text=Project+Three" alt="Project Three" class="w-full h-full object-cover">
                         <div class="project-info absolute inset-0 bg-white/90 p-6 flex flex-col justify-center items-center text-center">
-                            <h3 class="text-3xl font-bold mb-2 project-title">SaaS Platform UI</h3>
-                            <p class="text-gray-600 mb-4 project-description">User interface design for a new software-as-a-service product.</p>
+                            <h3 class="text-3xl font-bold mb-2 project-title">Predictive Stock Modeler</h3>
+                            <p class="text-gray-600 mb-4 project-description">An application that uses machine learning to forecast stock price trends.</p>
                             <a href="#" class="text-black font-semibold hover:underline">View Case Study</a>
                         </div>
                     </div>
@@ -315,8 +345,8 @@
                     <div class="project-card reveal group relative overflow-hidden rounded-lg">
                         <img src="https://placehold.co/800x600/1a1a1a/ffffff?text=Project+Four" alt="Project Four" class="w-full h-full object-cover">
                          <div class="project-info absolute inset-0 bg-white/90 p-6 flex flex-col justify-center items-center text-center">
-                            <h3 class="text-3xl font-bold mb-2 project-title">Mobile Banking App</h3>
-                            <p class="text-gray-600 mb-4 project-description">A sleek and secure mobile app for a new challenger bank.</p>
+                            <h3 class="text-3xl font-bold mb-2 project-title">Personalized Chatbot</h3>
+                            <p class="text-gray-600 mb-4 project-description">A conversational AI built to answer questions and perform tasks.</p>
                             <a href="#" class="text-black font-semibold hover:underline">View Case Study</a>
                         </div>
                     </div>
@@ -346,11 +376,17 @@
             <div class="flex justify-center space-x-6 mb-4">
                 <a href="#" class="hover:text-black transition duration-300">Twitter</a>
                 <a href="#" class="hover:text-black transition duration-300">LinkedIn</a>
-                <a href="#" class="hover:text-black transition duration-300">Dribbble</a>
+                <a href="#" class="hover:text-black transition duration-300">GitHub</a>
             </div>
             <p>&copy; 2025 Aansh Gupta. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <!-- Image Modal -->
+    <div id="image-modal" class="modal-overlay">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modal-image">
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -461,7 +497,7 @@
                 const speed = 0.1;
                 const offset = scrollY * speed;
                 // Only apply parallax if the image is in view for performance
-                if (aboutImage.getBoundingClientRect().top < window.innerHeight && aboutImage.getBoundingClientRect().bottom > 0) {
+                if (aboutImage && aboutImage.getBoundingClientRect().top < window.innerHeight && aboutImage.getBoundingClientRect().bottom > 0) {
                     aboutImage.style.transform = `translateY(${offset}px)`;
                 }
             });
@@ -483,66 +519,33 @@
                     card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
                 });
             });
+            
+            // --- Image Modal Logic ---
+            const modal = document.getElementById('image-modal');
+            const modalImg = document.getElementById('modal-image');
+            const viewImageBtns = document.querySelectorAll('.view-image-btn');
+            const closeModal = document.querySelector('.modal-close');
 
-
-            // --- Gemini API Integration ---
-            const apiKey = ""; // This will be handled by the environment
-
-            async function callGeminiAPI(prompt, retries = 3, delay = 1000) {
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-                
-                try {
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
-                    });
-
-                    if (!response.ok) {
-                        if (response.status === 429 && retries > 0) {
-                            console.warn(`Rate limited. Retrying in ${delay / 1000}s...`);
-                            await new Promise(res => setTimeout(res, delay));
-                            return callGeminiAPI(prompt, retries - 1, delay * 2);
-                        }
-                        throw new Error(`API request failed with status ${response.status}`);
+            viewImageBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const card = btn.closest('.project-card');
+                    const imageSrc = card.dataset.imageSrc || (card.querySelector('img') ? card.querySelector('img').src : null);
+                    if(imageSrc) {
+                        modalImg.src = imageSrc;
+                        modal.classList.add('visible');
                     }
+                });
+            });
 
-                    const result = await response.json();
-                    if (result.candidates && result.candidates.length > 0 && result.candidates[0].content.parts.length > 0) {
-                        return result.candidates[0].content.parts[0].text;
-                    } else {
-                        throw new Error("Invalid response structure from API");
-                    }
-                } catch (error) {
-                    console.error("Error calling Gemini API:", error);
-                    return null;
-                }
+            const closeTheModal = () => {
+                modal.classList.remove('visible');
             }
 
-            // --- Bio Rewriter ---
-            const rewriteBioBtn = document.getElementById('rewrite-bio-btn');
-            const bioContent = document.getElementById('bio-content');
-            const bioLoader = document.getElementById('bio-loader');
-
-            rewriteBioBtn.addEventListener('click', async () => {
-                const currentBio = bioContent.textContent.trim();
-                
-                bioLoader.classList.remove('hidden');
-                rewriteBioBtn.disabled = true;
-
-                const prompt = `Rewrite the following portfolio "About Me" section to be more engaging and professional. Keep it to two paragraphs:\n\n"${currentBio}"`;
-                const newBio = await callGeminiAPI(prompt);
-
-                if (newBio) {
-                    // Simple sanitization by splitting into paragraphs
-                    const paragraphs = newBio.trim().split('\n').filter(p => p.trim() !== '');
-                    bioContent.innerHTML = paragraphs.map(p => `<p class="text-gray-700 mb-4 leading-relaxed text-lg">${p}</p>`).join('');
-                } else {
-                    bioContent.innerHTML += `<p class="text-red-500 mt-4">Could not rewrite bio. Please try again.</p>`;
+            closeModal.addEventListener('click', closeTheModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeTheModal();
                 }
-
-                bioLoader.classList.add('hidden');
-                rewriteBioBtn.disabled = false;
             });
         });
     </script>
