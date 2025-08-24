@@ -109,7 +109,7 @@
             transform: translate(-50%, -50%);
             border-radius: 50%;
             pointer-events: none;
-            z-index: 9999;
+            z-index: 10001; /* Ensure cursor is on top of the modal */
         }
         .cursor-dot {
             width: 8px;
@@ -144,14 +144,14 @@
             border-radius: 9999px;
             transition: width 1.5s cubic-bezier(0.25, 1, 0.5, 1);
         }
-        /* Image Modal */
+        /* Modal Styles */
         .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.85);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -165,8 +165,12 @@
             pointer-events: auto;
         }
         .modal-content {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 1rem;
             max-width: 90vw;
             max-height: 90vh;
+            overflow-y: auto;
             transform: scale(0.9);
             transition: transform 0.3s ease;
         }
@@ -182,26 +186,26 @@
             cursor: pointer;
         }
         /* Figma project text effect */
-        .figma-text-container {
+        .figma-text-container, .n8n-text-container {
             position: relative;
             display: grid;
             place-items: center;
             user-select: none;
         }
-        .figma-text {
+        .figma-text, .n8n-text {
             grid-area: 1 / 1; /* Both spans occupy the same cell */
             font-size: 6rem;
             font-weight: 900;
         }
-        .figma-text-blur {
+        .figma-text-blur, .n8n-text-blur {
             color: rgba(255, 255, 255, 0.1);
             filter: blur(8px);
             transition: filter 0.3s ease;
         }
-        .figma-text-sharp {
+        .figma-text-sharp, .n8n-text-sharp {
              color: rgba(255, 255, 255, 0.8);
         }
-        .project-card:hover .figma-text-blur {
+        .project-card:hover .figma-text-blur, .project-card:hover .n8n-text-blur {
             filter: blur(4px);
         }
     </style>
@@ -300,6 +304,15 @@
                                     <div class="progress-bar" data-width="75%"></div>
                                 </div>
                             </div>
+                             <div class="mb-4">
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Automation</span>
+                                    <span class="font-medium">55%</span>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar" data-width="55%"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -333,12 +346,15 @@
                         </div>
                     </div>
                     <!-- Project Card 3 -->
-                    <div class="project-card reveal group relative overflow-hidden rounded-lg">
-                        <img src="https://placehold.co/800x600/1a1a1a/ffffff?text=Project+Three" alt="Project Three" class="w-full h-full object-cover">
-                        <div class="project-info absolute inset-0 bg-white/90 p-6 flex flex-col justify-center items-center text-center">
-                            <h3 class="text-2xl md:text-3xl font-bold mb-2 project-title">Predictive Stock Modeler</h3>
-                            <p class="text-gray-600 mb-4 project-description">An application that uses machine learning to forecast stock price trends.</p>
-                            <a href="#" class="text-black font-semibold hover:underline">View Case Study</a>
+                    <div id="n8n-card" class="project-card reveal group relative overflow-hidden rounded-lg bg-black flex items-center justify-center">
+                         <div class="n8n-text-container">
+                            <span class="n8n-text n8n-text-blur">n8n</span>
+                            <span class="n8n-text n8n-text-sharp">n8n</span>
+                        </div>
+                        <div class="project-info absolute inset-0 bg-black/90 text-white p-6 flex flex-col justify-center items-center text-center">
+                            <h3 class="text-2xl md:text-3xl font-bold mb-2 project-title">n8n Automation</h3>
+                            <p class="text-gray-300 mb-4 project-description">An automated workflow to manage client data using an AI Agent.</p>
+                            <button class="view-case-study-btn text-white font-semibold hover:underline">View Case Study</button>
                         </div>
                     </div>
                     <!-- Project Card 4 -->
@@ -385,8 +401,30 @@
     <!-- Image Modal -->
     <div id="image-modal" class="modal-overlay">
         <span class="modal-close">&times;</span>
-        <img class="modal-content" id="modal-image">
+        <img class="modal-content" id="modal-image" src="">
     </div>
+    
+    <!-- n8n Case Study Modal -->
+    <div id="n8n-modal" class="modal-overlay">
+        <span class="modal-close">&times;</span>
+        <div class="modal-content max-w-3xl">
+            <h2 class="text-3xl font-bold mb-4">n8n Automation Workflow</h2>
+            <p class="text-gray-600 mb-6">This workflow automates client data management. When a chat message is received, an AI Agent powered by the Google Gemini Model processes the request. It then updates or retrieves client information from a Google Sheet, streamlining the entire process.</p>
+            
+            <h3 class="text-2xl font-semibold mb-3">The Workflow</h3>
+            <img src="https://i.postimg.cc/Twn4vptj/n8n-automation-pic.png" alt="n8n Automation Workflow" class="rounded-lg mb-6 w-full" loading="lazy">
+            
+            <h3 class="text-2xl font-semibold mb-3">Datasheets</h3>
+            <img src="https://i.postimg.cc/hvg3DcYk/n8n-google-sheet.png" alt="Google Sheet Result" class="rounded-lg mb-8 w-full" loading="lazy">
+            
+            <div class="text-center">
+                <a href="https://aansh-n8n.lovable.app/" target="_blank" class="inline-block bg-black text-white font-semibold px-8 py-3 rounded-full hover:bg-gray-800 transition duration-300">
+                    View Live Dashboard
+                </a>
+            </div>
+        </div>
+    </div>
+
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -529,33 +567,48 @@
                 });
             });
             
-            // --- Image Modal Logic ---
-            const modal = document.getElementById('image-modal');
+            // --- Modal Logic ---
+            const imageModal = document.getElementById('image-modal');
+            const n8nModal = document.getElementById('n8n-modal');
             const modalImg = document.getElementById('modal-image');
+            
             const viewImageBtns = document.querySelectorAll('.view-image-btn');
-            const closeModal = document.querySelector('.modal-close');
+            const n8nCard = document.getElementById('n8n-card');
+            
+            const allCloseButtons = document.querySelectorAll('.modal-close');
 
+            // Open Figma Image Modal
             viewImageBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
                     const card = btn.closest('.project-card');
-                    const imageSrc = card.dataset.imageSrc || (card.querySelector('img') ? card.querySelector('img').src : null);
+                    const imageSrc = card.dataset.imageSrc;
                     if(imageSrc) {
                         modalImg.src = imageSrc;
-                        modal.classList.add('visible');
+                        imageModal.classList.add('visible');
                     }
                 });
             });
 
-            const closeTheModal = () => {
-                modal.classList.remove('visible');
+            // Open n8n Case Study Modal
+            n8nCard.addEventListener('click', () => {
+                n8nModal.classList.add('visible');
+            });
+
+            // Close any open modal
+            const closeAllModals = () => {
+                imageModal.classList.remove('visible');
+                n8nModal.classList.remove('visible');
             }
 
-            closeModal.addEventListener('click', closeTheModal);
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    closeTheModal();
-                }
+            allCloseButtons.forEach(btn => btn.addEventListener('click', closeAllModals));
+            
+            imageModal.addEventListener('click', (e) => {
+                if (e.target === imageModal) closeAllModals();
             });
+             n8nModal.addEventListener('click', (e) => {
+                if (e.target === n8nModal) closeAllModals();
+            });
+
         });
     </script>
 </body>
