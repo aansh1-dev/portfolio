@@ -123,7 +123,7 @@
             transition: all 0.1s ease-out;
         }
         .hero-title {
-            font-size: clamp(3rem, 12vw, 8rem);
+            font-size: clamp(2.5rem, 12vw, 8rem);
             line-height: 1;
             font-weight: 800;
             letter-spacing: -0.05em;
@@ -214,14 +214,14 @@
 
     <!-- Header & Navigation -->
     <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 reveal">
-        <div class="container mx-auto px-6 py-5 flex justify-between items-center">
+        <div class="container mx-auto px-4 sm:px-6 py-5 flex justify-between items-center">
             <a href="#" class="text-xl font-bold tracking-wider">AANSH GUPTA</a>
             <nav class="hidden md:flex items-center space-x-8">
                 <a href="#about" class="text-gray-700 hover:text-black transition duration-300">About</a>
                 <a href="#work" class="text-gray-700 hover:text-black transition duration-300">Work</a>
                 <a href="#contact" class="text-gray-700 hover:text-black transition duration-300">Contact</a>
             </nav>
-            <a href="mailto:aanshg2007@gmail.com" class="hidden md:block border border-gray-300 text-black font-medium px-4 py-2 rounded-full hover:bg-black hover:text-white transition duration-300">
+            <a href="mailto:aanshg2007@gmail.com" class="hidden md:block bg-black text-white font-medium px-4 py-2 rounded-full hover:bg-gray-800 transition-colors duration-300">
                 aanshg2007@gmail.com
             </a>
             <!-- Mobile Menu Button -->
@@ -241,14 +241,14 @@
     <main>
         <!-- Hero Section -->
         <section id="hero" class="min-h-screen pt-40 pb-20 flex flex-col justify-center text-center">
-            <div class="container mx-auto px-6">
+            <div class="container mx-auto px-4 sm:px-6">
                 <div class="max-w-5xl mx-auto">
                     <h1 class="hero-title">
                         <span class="hero-text-line">TEEN ON</span>
                         <span class="hero-text-line">PROJECT</span>
                         <span class="hero-text-line">HUNTING</span>
                     </h1>
-                    <div class="flex justify-between items-center mt-8 text-lg text-gray-600 reveal">
+                    <div class="flex flex-col sm:flex-row sm:justify-between items-center mt-8 text-base sm:text-lg text-gray-600 reveal space-y-2 sm:space-y-0">
                         <p>EXPLORING AI & BUILDING PROJECTS</p>
                         <p>2025</p>
                     </div>
@@ -258,20 +258,20 @@
 
         <!-- About Section -->
         <section id="about" class="py-20 md:py-32">
-            <div class="container mx-auto px-6">
+            <div class="container mx-auto px-4 sm:px-6">
                 <div class="grid md:grid-cols-2 gap-12">
                     <div class="reveal">
-                        <h2 class="text-4xl md:text-5xl font-bold mb-6">About Me</h2>
+                        <h2 class="text-3xl md:text-5xl font-bold mb-6">About Me</h2>
                         <p class="text-gray-700 mb-8 leading-relaxed text-lg">
                             I'm a 17-year-old student with a deep passion for Artificial Intelligence and its potential to solve real-world problems. From my first experiments with machine learning models, I've been captivated by the power of data and algorithms to create intelligent systems.
                         </p>
-                        <h2 class="text-4xl md:text-5xl font-bold mb-6">Goal</h2>
+                        <h2 class="text-3xl md:text-5xl font-bold mb-6">Goal</h2>
                         <p class="text-gray-700 leading-relaxed text-lg">
                             My goal is to continue learning and growing in the field of AI, with a focus on developing projects that are not only technically challenging but also impactful. I'm always looking for new opportunities to learn and collaborate with others who share my curiosity.
                         </p>
                     </div>
                     <div class="reveal skills-container">
-                        <h3 class="text-3xl font-semibold mb-6">Core Skills</h3>
+                        <h3 class="text-3xl md:text-4xl font-semibold mb-6">Core Skills</h3>
                         <div>
                             <div class="mb-4">
                                 <div class="flex justify-between mb-1">
@@ -308,14 +308,14 @@
 
         <!-- Projects Section -->
         <section id="work" class="py-20 md:py-32 bg-white">
-            <div class="container mx-auto px-6">
-                <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center reveal">Featured Work</h2>
+            <div class="container mx-auto px-4 sm:px-6">
+                <h2 class="text-3xl md:text-5xl font-bold mb-12 text-center reveal">Featured Work</h2>
                 <div class="grid md:grid-cols-2 gap-10">
                     <!-- Project Card 1 -->
                     <div class="project-card reveal group relative overflow-hidden rounded-lg">
                         <img src="https://placehold.co/800x600/1a1a1a/ffffff?text=Project+One" alt="Project One" class="w-full h-full object-cover">
                         <div class="project-info absolute inset-0 bg-white/90 p-6 flex flex-col justify-center items-center text-center">
-                            <h3 class="text-3xl font-bold mb-2 project-title">AI Sentiment Analysis</h3>
+                            <h3 class="text-2xl md:text-3xl font-bold mb-2 project-title">AI Sentiment Analysis</h3>
                             <p class="text-gray-600 mb-4 project-description">A web app that analyzes text to determine its emotional tone using an NLP model.</p>
                             <a href="#" class="text-black font-semibold hover:underline">View Case Study</a>
                         </div>
@@ -327,7 +327,7 @@
                             <span class="figma-text figma-text-sharp">Figma</span>
                         </div>
                          <div class="project-info absolute inset-0 bg-black/90 text-white p-6 flex flex-col justify-center items-center text-center">
-                            <h3 class="text-3xl font-bold mb-2 project-title">Figma Prototype</h3>
+                            <h3 class="text-2xl md:text-3xl font-bold mb-2 project-title">Figma Prototype</h3>
                             <p class="text-gray-300 mb-4 project-description">A high-fidelity prototype for a fintech app, designed entirely in Figma.</p>
                             <button class="view-image-btn text-white font-semibold hover:underline">Click to Reveal</button>
                         </div>
@@ -336,7 +336,7 @@
                     <div class="project-card reveal group relative overflow-hidden rounded-lg">
                         <img src="https://placehold.co/800x600/1a1a1a/ffffff?text=Project+Three" alt="Project Three" class="w-full h-full object-cover">
                         <div class="project-info absolute inset-0 bg-white/90 p-6 flex flex-col justify-center items-center text-center">
-                            <h3 class="text-3xl font-bold mb-2 project-title">Predictive Stock Modeler</h3>
+                            <h3 class="text-2xl md:text-3xl font-bold mb-2 project-title">Predictive Stock Modeler</h3>
                             <p class="text-gray-600 mb-4 project-description">An application that uses machine learning to forecast stock price trends.</p>
                             <a href="#" class="text-black font-semibold hover:underline">View Case Study</a>
                         </div>
@@ -345,7 +345,7 @@
                     <div class="project-card reveal group relative overflow-hidden rounded-lg">
                         <img src="https://placehold.co/800x600/1a1a1a/ffffff?text=Project+Four" alt="Project Four" class="w-full h-full object-cover">
                          <div class="project-info absolute inset-0 bg-white/90 p-6 flex flex-col justify-center items-center text-center">
-                            <h3 class="text-3xl font-bold mb-2 project-title">Personalized Chatbot</h3>
+                            <h3 class="text-2xl md:text-3xl font-bold mb-2 project-title">Personalized Chatbot</h3>
                             <p class="text-gray-600 mb-4 project-description">A conversational AI built to answer questions and perform tasks.</p>
                             <a href="#" class="text-black font-semibold hover:underline">View Case Study</a>
                         </div>
@@ -356,8 +356,8 @@
 
         <!-- Contact Section -->
         <section id="contact" class="py-20 md:py-32">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4 reveal">Let's Connect</h2>
+            <div class="container mx-auto px-4 sm:px-6 text-center">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4 reveal">Let's Connect</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto mb-10 reveal text-lg">
                     Have a project in mind or just want to say hi? Feel free to reach out.
                 </p>
@@ -372,7 +372,7 @@
 
     <!-- Footer -->
     <footer class="border-t border-black/10 py-8">
-        <div class="container mx-auto px-6 text-center text-gray-500">
+        <div class="container mx-auto px-4 sm:px-6 text-center text-gray-500">
             <div class="flex justify-center space-x-6 mb-4">
                 <a href="#" class="hover:text-black transition duration-300">Twitter</a>
                 <a href="#" class="hover:text-black transition duration-300">LinkedIn</a>
@@ -464,31 +464,40 @@
             // --- Custom Cursor ---
             const cursorDot = document.querySelector('.cursor-dot');
             const cursorOutline = document.querySelector('.cursor-outline');
-            window.addEventListener('mousemove', (e) => {
-                const posX = e.clientX;
-                const posY = e.clientY;
+            const isTouchDevice = () => 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-                cursorDot.style.left = `${posX}px`;
-                cursorDot.style.top = `${posY}px`;
+            if (!isTouchDevice()) {
+                document.body.style.cursor = 'none';
+                window.addEventListener('mousemove', (e) => {
+                    const posX = e.clientX;
+                    const posY = e.clientY;
 
-                cursorOutline.animate({
-                    left: `${posX}px`,
-                    top: `${posY}px`
-                }, { duration: 500, fill: 'forwards' });
-            });
-            
-            // Cursor hover effects
-            const interactiveElements = document.querySelectorAll('a, button, .project-card');
-            interactiveElements.forEach(el => {
-                el.addEventListener('mouseenter', () => {
-                    cursorOutline.style.transform = 'translate(-50%, -50%) scale(1.5)';
-                    cursorOutline.style.borderWidth = '1px';
+                    cursorDot.style.left = `${posX}px`;
+                    cursorDot.style.top = `${posY}px`;
+
+                    cursorOutline.animate({
+                        left: `${posX}px`,
+                        top: `${posY}px`
+                    }, { duration: 500, fill: 'forwards' });
                 });
-                el.addEventListener('mouseleave', () => {
-                    cursorOutline.style.transform = 'translate(-50%, -50%) scale(1)';
-                    cursorOutline.style.borderWidth = '2px';
+                
+                // Cursor hover effects
+                const interactiveElements = document.querySelectorAll('a, button, .project-card');
+                interactiveElements.forEach(el => {
+                    el.addEventListener('mouseenter', () => {
+                        cursorOutline.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                        cursorOutline.style.borderWidth = '1px';
+                    });
+                    el.addEventListener('mouseleave', () => {
+                        cursorOutline.style.transform = 'translate(-50%, -50%) scale(1)';
+                        cursorOutline.style.borderWidth = '2px';
+                    });
                 });
-            });
+            } else {
+                cursorDot.style.display = 'none';
+                cursorOutline.style.display = 'none';
+            }
+
 
             // --- Parallax Scroll for About Image ---
             const aboutImage = document.getElementById('about-image');
