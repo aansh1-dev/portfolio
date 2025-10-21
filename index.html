@@ -12,8 +12,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script>
-        // Set theme on initial load
-        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        // Set theme on initial load - now defaults to light mode
+        if (localStorage.getItem('theme') === 'dark') {
             document.documentElement.classList.add('dark');
         } else {
             document.documentElement.classList.remove('dark');
@@ -65,6 +65,10 @@
             backdrop-filter: blur(32px);
             -webkit-backdrop-filter: blur(32px);
             border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .dark .spotlight-card {
+            background-color: rgba(26, 26, 26, 0.5);
+            border-color: rgba(255, 255, 255, 0.1);
         }
         
         /* Header style on scroll */
@@ -234,6 +238,22 @@
             transform: translateY(-2px) scale(1.02);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
+
+        /* Spotlight Card */
+        .spotlight-card {
+            background-color: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
+        }
+        .spotlight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
     </style>
 </head>
 <body class="overflow-x-hidden">
@@ -283,7 +303,7 @@
                         <span class="hero-text-line">HUNTING</span>
                     </h1>
                     <p class="mt-6 text-lg md:text-xl text-gray-600 reveal">
-                        AI Enthusiast | Automation Developer
+                        AI Enthusiast | Automation Developer | Vibe Coder
                     </p>
                 </div>
             </div>
@@ -423,6 +443,52 @@
                 </div>
             </div>
         </section>
+        
+        <!-- Project Details Section -->
+        <section id="project-details" class="py-16 sm:py-20 md:py-32">
+            <div class="container mx-auto px-4 sm:px-6">
+                <h2 class="text-3xl md:text-5xl font-bold mb-12 text-center reveal">Project Spotlight</h2>
+                <div class="space-y-16">
+                    <!-- Detail 1: Vibe Coding -->
+                    <div class="spotlight-card reveal">
+                        <div class="grid md:grid-cols-3 gap-8 items-center">
+                            <h3 class="text-2xl md:text-3xl font-bold md:col-span-1">Vibe Coding</h3>
+                            <p class="md:col-span-2 text-gray-700 leading-relaxed text-lg">
+                                This portfolio is a testament to the power of iterative development with AI. Built entirely through a conversational process with Google's Gemini, every element, from the layout and animations to the color scheme, was refined bit by bit based on continuous prompts and feedback.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Detail 2: Figma Prototype -->
+                    <div class="spotlight-card reveal">
+                        <div class="grid md:grid-cols-3 gap-8 items-center">
+                            <h3 class="text-2xl md:text-3xl font-bold md:col-span-1">Figma Prototype</h3>
+                            <p class="md:col-span-2 text-gray-700 leading-relaxed text-lg">
+                                A comprehensive, high-fidelity prototype for a modern fintech application. This project involved designing the entire user interface and user experience from the ground up in Figma, focusing on intuitive navigation and a clean, modern aesthetic.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Detail 3: n8n Automation -->
+                    <div class="spotlight-card reveal">
+                         <div class="grid md:grid-cols-3 gap-8 items-center">
+                            <h3 class="text-2xl md:text-3xl font-bold md:col-span-1">n8n Automation</h3>
+                            <p class="md:col-span-2 text-gray-700 leading-relaxed text-lg">
+                                This project showcases an intelligent automation workflow designed to streamline client data management. It utilizes an n8n canvas where an AI Agent, powered by the Gemini Model, processes incoming chat messages and automatically updates or retrieves corresponding information from a Google Sheet.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Detail 4: Personalized Chatbot -->
+                    <div class="spotlight-card reveal">
+                        <div class="grid md:grid-cols-3 gap-8 items-center">
+                            <h3 class="text-2xl md:text-3xl font-bold md:col-span-1">Personalized Chatbot</h3>
+                            <p class="md:col-span-2 text-gray-700 leading-relaxed text-lg">
+                                A custom-built conversational AI designed to be a helpful assistant. The chatbot can understand natural language queries to answer questions, perform specific tasks, and provide information in an interactive and engaging manner.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
 
         <!-- Contact Section -->
         <section id="contact" class="py-16 sm:py-20 md:py-32">
@@ -446,11 +512,6 @@
     <!-- Footer -->
     <footer class="border-t border-black/10 py-8">
         <div class="container mx-auto px-4 sm:px-6 text-center text-gray-500">
-            <div class="flex justify-center space-x-6 mb-4">
-                <a href="#" class="hover:text-black transition duration-300">Twitter</a>
-                <a href="#" class="hover:text-black transition duration-300">LinkedIn</a>
-                <a href="#" class="hover:text-black transition duration-300">GitHub</a>
-            </div>
             <p>&copy; 2025 Aansh Gupta. All Rights Reserved.</p>
         </div>
     </footer>
@@ -534,13 +595,13 @@
                     }
                 });
             }, {
-                threshold: 0.2
+                threshold: 0.1
             });
 
             document.querySelectorAll('.reveal').forEach((el, index) => {
                  // Staggered delay for project cards
-                if (el.classList.contains('project-card')) {
-                     el.style.transitionDelay = `${index * 100}ms`;
+                if (el.classList.contains('project-card') || el.classList.contains('spotlight-card')) {
+                     el.style.transitionDelay = `${(index % 4) * 100}ms`;
                 }
                 observer.observe(el);
             });
@@ -568,7 +629,7 @@
                     cursorDot.style.top = `${e.clientY}px`;
                 });
                 
-                const interactiveElements = document.querySelectorAll('a, button, .project-card');
+                const interactiveElements = document.querySelectorAll('a, button, .project-card, .spotlight-card');
                 interactiveElements.forEach(el => {
                     el.addEventListener('mouseenter', () => cursorDot.classList.add('hovered'));
                     el.addEventListener('mouseleave', () => cursorDot.classList.remove('hovered'));
@@ -577,22 +638,6 @@
                 cursorDot.style.display = 'none';
                 document.body.style.cursor = 'auto';
             }
-
-            // --- 3D Tilt Effect for Project Cards (disabled for hover effect) ---
-            // document.querySelectorAll('.project-card').forEach(card => {
-            //     card.addEventListener('mousemove', (e) => {
-            //         const rect = card.getBoundingClientRect();
-            //         const x = e.clientX - rect.left;
-            //         const y = e.clientY - rect.top;
-            //         const { width, height } = rect;
-            //         const rotateX = (y / height - 0.5) * -20;
-            //         const rotateY = (x / width - 0.5) * 20;
-            //         card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-            //     });
-            //     card.addEventListener('mouseleave', () => {
-            //         card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
-            //     });
-            // });
             
             // --- Modal Logic ---
             const imageModal = document.getElementById('image-modal');
@@ -636,4 +681,3 @@
 </body>
 </html>
 
-,                                         
