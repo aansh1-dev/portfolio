@@ -542,6 +542,18 @@
             </div>
         </div>
     </div>
+    
+    <!-- Dark Mode Suggestion Popup -->
+    <div id="dark-mode-popup" class="modal-overlay">
+        <div class="modal-content text-center max-w-sm">
+            <h3 class="text-2xl font-bold mb-4">Experience the Dark Side</h3>
+            <p class="text-gray-600 mb-6">This portfolio is best viewed in dark mode. Would you like to switch?</p>
+            <div class="flex justify-center gap-4">
+                <button id="switch-to-dark-btn" class="beautify-btn inline-block bg-black text-white dark:bg-white dark:text-black font-semibold px-6 py-2 rounded-full">Switch to Dark</button>
+                <button id="close-popup-btn" class="beautify-btn inline-block bg-transparent border border-black/20 dark:border-white/20 font-semibold px-6 py-2 rounded-full">Maybe Later</button>
+            </div>
+        </div>
+    </div>
 
 
     <script>
@@ -669,6 +681,7 @@
             const closeAllModals = () => {
                 closeModal(imageModal);
                 closeModal(n8nModal);
+                closeModal(darkModePopup); // Also close dark mode popup if open
             }
             allCloseButtons.forEach(btn => btn.addEventListener('click', closeAllModals));
             document.querySelectorAll('.modal-overlay').forEach(modal => {
@@ -676,6 +689,33 @@
                     if (e.target === modal) closeAllModals();
                 });
             });
+
+            // --- Dark Mode Popup Logic ---
+            const darkModePopup = document.getElementById('dark-mode-popup');
+            const switchToDarkBtn = document.getElementById('switch-to-dark-btn');
+            const closePopupBtn = document.getElementById('close-popup-btn');
+
+            setTimeout(() => {
+                const isDarkMode = document.documentElement.classList.contains('dark');
+                const hasBeenPrompted = sessionStorage.getItem('darkModePrompted');
+
+                if (!isDarkMode && !hasBeenPrompted) {
+                    darkModePopup.classList.add('visible');
+                }
+            }, 10000);
+
+            const closeDrkPopup = () => {
+                darkModePopup.classList.remove('visible');
+                sessionStorage.setItem('darkModePrompted', 'true');
+            }
+
+            switchToDarkBtn.addEventListener('click', () => {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                closeDrkPopup();
+            });
+
+            closePopupBtn.addEventListener('click', closeDrkPopup);
         });
     </script>
 </body>
