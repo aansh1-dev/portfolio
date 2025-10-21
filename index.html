@@ -3,11 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Aansh Gupta, a teen AI enthusiast and developer exploring automation and building projects.">
+    <meta name="keywords" content="Aansh Gupta, AI, Artificial Intelligence, Portfolio, n8n, Automation, Developer, Figma">
     <title>Aansh Gupta - Teen on Project Hunting</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        // Set theme on initial load
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -15,17 +26,57 @@
             color: #0a0a0a;
             cursor: none; /* Hide default cursor */
         }
+        /* Dark Mode styles */
+        .dark body {
+            background-color: #0a0a0a;
+            color: #f0f0f0;
+        }
+        .dark .header-scrolled {
+            background-color: rgba(10, 10, 10, 0.7);
+            border-bottom-color: rgba(255, 255, 255, 0.1);
+        }
+        .dark header nav a, .dark #mobile-menu a {
+            color: #a0a0a0;
+        }
+        .dark header nav a:hover, .dark #mobile-menu a:hover, .dark footer a:hover {
+            color: #ffffff;
+        }
+        .dark header nav a::after { background-color: #f0f0f0; }
+        .dark ::-webkit-scrollbar-track { background: #0a0a0a; }
+        .dark ::-webkit-scrollbar-thumb { background: #333; }
+        .dark ::-webkit-scrollbar-thumb:hover { background: #555; }
+        .dark .hero-title { color: #f0f0f0; }
+        .dark .text-gray-600 { color: #a0a0a0; }
+        .dark .text-gray-700 { color: #d0d0d0; }
+        .dark #work { background-color: #111; }
+        .dark .project-card img { filter: brightness(0.9); }
+        .dark .project-info {
+            background-color: rgba(20, 20, 20, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .dark .project-info .text-gray-600 { color: #a0a0a0; }
+        .dark .project-info .text-black { color: #f0f0f0; }
+        .dark .project-info .text-gray-300 { color: #d1d5db; }
+        .dark #contact { background-color: #0a0a0a; }
+        .dark footer { border-top-color: rgba(255, 255, 255, 0.1); }
+        .dark .text-gray-500 { color: #888; }
+        .dark .modal-content {
+            background-color: rgba(26, 26, 26, 0.7);
+            backdrop-filter: blur(32px);
+            -webkit-backdrop-filter: blur(32px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
         /* Header style on scroll */
         .header-scrolled {
-            background-color: rgba(240, 240, 240, 0.75); /* Slightly more transparent */
-            backdrop-filter: blur(24px); /* Apple-level blur */
-            -webkit-backdrop-filter: blur(24px); /* For Safari */
+            background-color: rgba(240, 240, 240, 0.7);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
+        
         /* Menu bar hover animation */
-        header nav a {
-            position: relative;
-        }
+        header nav a { position: relative; }
         header nav a::after {
             content: '';
             position: absolute;
@@ -37,26 +88,20 @@
             background-color: #0a0a0a;
             transition: width 0.3s ease-out;
         }
-        header nav a:hover::after {
-            width: 100%;
-        }
+        header nav a:hover::after { width: 100%; }
+        
         /* Animation classes */
         .reveal {
             opacity: 0;
-            transform: translateY(50px);
+            transform: translateY(40px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
         .reveal.visible {
             opacity: 1;
             transform: translateY(0);
         }
-        /* Header animation */
-        #header.reveal {
-            transform: translateY(-100%);
-        }
-        #header.reveal.visible {
-            transform: translateY(0);
-        }
+        #header.reveal { transform: translateY(-100%); }
+        #header.reveal.visible { transform: translateY(0); }
 
         .hero-text-line {
             display: block;
@@ -64,78 +109,57 @@
             transform: translateY(100%);
             transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
-        .hero-text-line.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .hero-text-line.visible { opacity: 1; transform: translateY(0); }
 
         /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f0f0f0;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #c0c0c0;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #a0a0a0;
-        }
-        /* Project card hover effect */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f0f0f0; }
+        ::-webkit-scrollbar-thumb { background: #c0c0c0; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #a0a0a0; }
+        
+        /* Project card */
         .project-card {
             transform-style: preserve-3d;
-            transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.8s ease-out, transform 0.8s ease-out;
+            transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease-out;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            min-height: 350px; /* Ensure consistent height */
         }
-        .project-card .project-info {
+        .project-card:hover {
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+        }
+        .project-info {
             opacity: 0;
             transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            background-color: rgba(240, 240, 240, 0.6);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
-        .project-card:hover .project-info {
-           opacity: 1;
-        }
-        .project-card img {
-            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-        .project-card:hover img {
-            transform: scale(1.05);
-        }
+        .project-card:hover .project-info { opacity: 1; }
+        .project-card img { transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); }
+        .project-card:hover img { transform: scale(1.05); }
+
         /* Custom cursor */
-        .cursor-dot, .cursor-outline {
-            position: fixed;
-            top: 0;
-            left: 0;
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 10001; /* Ensure cursor is on top of the modal */
-        }
         .cursor-dot {
-            width: 8px;
-            height: 8px;
-            background-color: #0a0a0a;
+            position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); border-radius: 50%; pointer-events: none; z-index: 10001; width: 24px; height: 24px; border: 2px solid white; background-color: transparent; mix-blend-mode: difference;
+            transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), background-color 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
-        .cursor-outline {
-            width: 30px;
-            height: 30px;
-            border: 2px solid #0a0a0a;
-            transition: all 0.1s ease-out;
-        }
+        .cursor-dot.hovered { transform: translate(-50%, -50%) scale(1.5); background-color: white; }
+        
         .hero-title {
-            font-size: clamp(2.5rem, 12vw, 8rem);
-            line-height: 1;
-            font-weight: 800;
-            letter-spacing: -0.05em;
-            overflow: hidden; /* Hide text before animation */
+            font-size: clamp(2.5rem, 10vw, 8rem); line-height: 1; font-weight: 800; letter-spacing: -0.05em; overflow: hidden;
         }
-        /* Progress Bar */
+
+        /* Progress Bars */
         .progress-bar-container {
             width: 100%;
             background-color: #e0e0e0;
             border-radius: 9999px;
             overflow: hidden;
-            margin-bottom: 1rem;
+        }
+        .dark .progress-bar-container {
+            background-color: #333;
         }
         .progress-bar {
             height: 8px;
@@ -144,28 +168,20 @@
             border-radius: 9999px;
             transition: width 1.5s cubic-bezier(0.25, 1, 0.5, 1);
         }
+        .dark .progress-bar {
+            background-color: #f0f0f0;
+        }
+
         /* Modal Styles */
         .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.85);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 10000;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.85); display: flex; justify-content: center; align-items: center; z-index: 10000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
         }
-        .modal-overlay.visible {
-            opacity: 1;
-            pointer-events: auto;
-        }
+        .modal-overlay.visible { opacity: 1; pointer-events: auto; }
         .modal-content {
-            background: #fff;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(32px);
+            -webkit-backdrop-filter: blur(32px);
+            border: 1px solid rgba(0, 0, 0, 0.1);
             padding: 2rem;
             border-radius: 1rem;
             max-width: 90vw;
@@ -174,39 +190,49 @@
             transform: scale(0.9);
             transition: transform 0.3s ease;
         }
-        .modal-overlay.visible .modal-content {
-            transform: scale(1);
-        }
-        .modal-close {
+        .modal-overlay.visible .modal-content { transform: scale(1); }
+        .modal-close { position: absolute; top: 20px; right: 20px; font-size: 2rem; color: white; cursor: pointer; }
+        
+        /* Project Text Effects */
+        .text-container { position: relative; display: grid; place-items: center; user-select: none; }
+        .base-text { grid-area: 1 / 1; font-size: clamp(3.5rem, 15vw, 6rem); font-weight: 900; line-height: 1; text-align: center;}
+        .vibe-text { font-size: clamp(3rem, 12vw, 4.5rem); }
+        .text-blur { color: rgba(255, 255, 255, 0.1); filter: blur(8px); transition: filter 0.3s ease; }
+        .text-sharp { color: rgba(255, 255, 255, 0.8); }
+        .project-card:hover .text-blur { filter: blur(4px); }
+        
+        /* Scroll Indicator */
+        .scroll-indicator {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 2rem;
-            color: white;
-            cursor: pointer;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
         }
-        /* Figma project text effect */
-        .figma-text-container, .n8n-text-container {
-            position: relative;
-            display: grid;
-            place-items: center;
-            user-select: none;
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); } 40% { transform: translate(-50%, -20px); } 60% { transform: translate(-50%, -10px); } }
+        
+        /* Tech Stack Badges */
+        .tech-badge {
+            background-color: rgba(0,0,0,0.05);
+            color: #333;
+            padding: 2px 8px;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
         }
-        .figma-text, .n8n-text {
-            grid-area: 1 / 1; /* Both spans occupy the same cell */
-            font-size: 6rem;
-            font-weight: 900;
+        .dark .tech-badge {
+             background-color: rgba(255,255,255,0.1);
+             color: #ccc;
         }
-        .figma-text-blur, .n8n-text-blur {
-            color: rgba(255, 255, 255, 0.1);
-            filter: blur(8px);
-            transition: filter 0.3s ease;
+
+        /* Beautified Buttons */
+        .beautify-btn {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
         }
-        .figma-text-sharp, .n8n-text-sharp {
-             color: rgba(255, 255, 255, 0.8);
-        }
-        .project-card:hover .figma-text-blur, .project-card:hover .n8n-text-blur {
-            filter: blur(4px);
+        .beautify-btn:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
     </style>
 </head>
@@ -214,37 +240,41 @@
 
     <!-- Custom Cursor -->
     <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
 
     <!-- Header & Navigation -->
     <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 reveal">
         <div class="container mx-auto px-4 sm:px-6 py-5 flex justify-between items-center">
             <a href="#" class="text-xl font-bold tracking-wider">AANSH GUPTA</a>
-            <nav class="hidden md:flex items-center space-x-8">
-                <a href="#about" class="text-gray-700 hover:text-black transition duration-300">About</a>
-                <a href="#work" class="text-gray-700 hover:text-black transition duration-300">Work</a>
-                <a href="#contact" class="text-gray-700 hover:text-black transition duration-300">Contact</a>
-            </nav>
-            <a href="mailto:aanshg2007@gmail.com" class="hidden md:block bg-black text-white font-medium px-4 py-2 rounded-full hover:bg-gray-800 transition-colors duration-300">
-                aanshg2007@gmail.com
-            </a>
+            <div class="flex items-center space-x-8">
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#about">About</a>
+                    <a href="#work">Work</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+                 <!-- Dark Mode Toggle -->
+                <button id="theme-toggle" class="w-10 h-10 rounded-full flex items-center justify-center text-gray-700 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-800 transition-colors">
+                    <svg id="theme-icon-light" class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm-.707 10.607a1 1 0 010-1.414l.707-.707a1 1 0 111.414 1.414l-.707.707a1 1 0 01-1.414 0zM3 11a1 1 0 100-2H2a1 1 0 100 2h1z"></path></svg>
+                    <svg id="theme-icon-dark" class="w-5 h-5 block dark:hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                </button>
+            </div>
+            
             <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="md:hidden text-black focus:outline-none">
+            <button id="mobile-menu-btn" class="md:hidden text-black dark:text-white focus:outline-none">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
         </div>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white/90 backdrop-blur-lg">
-            <a href="#about" class="block py-3 px-6 text-gray-700 hover:bg-gray-100">About</a>
-            <a href="#work" class="block py-3 px-6 text-gray-700 hover:bg-gray-100">Work</a>
-            <a href="#contact" class="block py-3 px-6 text-gray-700 hover:bg-gray-100">Contact</a>
-            <a href="mailto:aanshg2007@gmail.com" class="block py-3 px-6 text-gray-700 hover:bg-gray-100">Email Me</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-white/90 dark:bg-black/90 backdrop-blur-lg">
+            <a href="#about" class="block py-3 px-6">About</a>
+            <a href="#work" class="block py-3 px-6">Work</a>
+            <a href="#contact" class="block py-3 px-6">Contact</a>
+            <a href="mailto:aanshg2007@gmail.com" class="block py-3 px-6">Email Me</a>
         </div>
     </header>
 
     <main>
         <!-- Hero Section -->
-        <section id="hero" class="min-h-screen pt-40 pb-20 flex flex-col justify-center text-center">
+        <section id="hero" class="relative min-h-screen pt-32 pb-16 sm:pt-40 sm:pb-20 flex flex-col justify-center text-center">
             <div class="container mx-auto px-4 sm:px-6">
                 <div class="max-w-5xl mx-auto">
                     <h1 class="hero-title">
@@ -252,18 +282,20 @@
                         <span class="hero-text-line">PROJECT</span>
                         <span class="hero-text-line">HUNTING</span>
                     </h1>
-                    <div class="flex flex-col sm:flex-row sm:justify-between items-center mt-8 text-base sm:text-lg text-gray-600 reveal space-y-2 sm:space-y-0">
-                        <p>EXPLORING AI & BUILDING PROJECTS</p>
-                        <p>2025</p>
-                    </div>
+                    <p class="mt-6 text-lg md:text-xl text-gray-600 reveal">
+                        AI Enthusiast | Automation Developer
+                    </p>
                 </div>
+            </div>
+            <div class="scroll-indicator">
+                <svg class="w-6 h-6 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </div>
         </section>
 
         <!-- About Section -->
-        <section id="about" class="py-20 md:py-32">
+        <section id="about" class="py-16 sm:py-20 md:py-32">
             <div class="container mx-auto px-4 sm:px-6">
-                <div class="grid md:grid-cols-2 gap-12">
+                <div class="grid md:grid-cols-2 gap-8 md:gap-16">
                     <div class="reveal">
                         <h2 class="text-3xl md:text-5xl font-bold mb-6">About Me</h2>
                         <p class="text-gray-700 mb-8 leading-relaxed text-lg">
@@ -274,43 +306,47 @@
                             My goal is to continue learning and growing in the field of AI, with a focus on developing projects that are not only technically challenging but also impactful. I'm always looking for new opportunities to learn and collaborate with others who share my curiosity.
                         </p>
                     </div>
-                    <div class="reveal skills-container">
-                        <h3 class="text-3xl md:text-4xl font-semibold mb-6">Core Skills</h3>
-                        <div>
-                            <div class="mb-4">
-                                <div class="flex justify-between mb-1">
-                                    <span class="font-medium">Vibe Coding</span>
-                                    <span class="font-medium">65%</span>
-                                </div>
-                                <div class="progress-bar-container">
-                                    <div class="progress-bar" data-width="65%"></div>
-                                </div>
-                            </div>
-                            <div class="mb-4">
-                                <div class="flex justify-between mb-1">
-                                    <span class="font-medium">Figma Design Prototyping</span>
-                                    <span class="font-medium">80%</span>
-                                </div>
-                                <div class="progress-bar-container">
-                                    <div class="progress-bar" data-width="80%"></div>
-                                </div>
-                            </div>
-                             <div class="mb-4">
+                    <div class="reveal">
+                        <h3 class="text-3xl md:text-4xl font-semibold mb-8">Core Skills</h3>
+                        <div class="space-y-6">
+                             <!-- Skill 1: Prompt Engineering -->
+                            <div>
                                 <div class="flex justify-between mb-1">
                                     <span class="font-medium">Prompt Engineering</span>
-                                    <span class="font-medium">75%</span>
+                                    <span class="text-sm font-medium">60%</span>
                                 </div>
                                 <div class="progress-bar-container">
-                                    <div class="progress-bar" data-width="75%"></div>
+                                    <div class="progress-bar" data-width="60%"></div>
                                 </div>
                             </div>
-                             <div class="mb-4">
+                             <!-- Skill 2: n8n -->
+                            <div>
                                 <div class="flex justify-between mb-1">
-                                    <span class="font-medium">Automation</span>
-                                    <span class="font-medium">55%</span>
+                                    <span class="font-medium">n8n</span>
+                                    <span class="text-sm font-medium">55%</span>
                                 </div>
                                 <div class="progress-bar-container">
                                     <div class="progress-bar" data-width="55%"></div>
+                                </div>
+                            </div>
+                             <!-- Skill 3: Automation -->
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Automation</span>
+                                    <span class="text-sm font-medium">50%</span>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar" data-width="50%"></div>
+                                </div>
+                            </div>
+                             <!-- Skill 4: Figma -->
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Figma</span>
+                                    <span class="text-sm font-medium">45%</span>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar" data-width="45%"></div>
                                 </div>
                             </div>
                         </div>
@@ -320,50 +356,68 @@
         </section>
 
         <!-- Projects Section -->
-        <section id="work" class="py-20 md:py-32 bg-white">
+        <section id="work" class="py-16 sm:py-20 md:py-32 bg-white">
             <div class="container mx-auto px-4 sm:px-6">
                 <h2 class="text-3xl md:text-5xl font-bold mb-12 text-center reveal">Featured Work</h2>
-                <div class="grid md:grid-cols-2 gap-10">
+                <div class="grid md:grid-cols-2 gap-6 md:gap-10">
                     <!-- Project Card 1 -->
-                    <div class="project-card reveal group relative overflow-hidden rounded-lg">
-                        <img src="https://placehold.co/800x600/1a1a1a/ffffff?text=Project+One" alt="Project One" class="w-full h-full object-cover">
-                        <div class="project-info absolute inset-0 bg-white/90 p-6 flex flex-col justify-center items-center text-center">
-                            <h3 class="text-2xl md:text-3xl font-bold mb-2 project-title">AI Sentiment Analysis</h3>
-                            <p class="text-gray-600 mb-4 project-description">A web app that analyzes text to determine its emotional tone using an NLP model.</p>
-                            <a href="#" class="text-black font-semibold hover:underline">View Case Study</a>
+                    <div class="project-card reveal group relative overflow-hidden rounded-lg bg-black flex items-center justify-center">
+                        <div class="text-container">
+                            <span class="base-text vibe-text text-blur">Vibe<br>Coding</span>
+                            <span class="base-text vibe-text text-sharp">Vibe<br>Coding</span>
+                        </div>
+                        <div class="project-info absolute inset-0 p-6 flex flex-col justify-center items-center text-center">
+                            <h3 class="text-2xl md:text-3xl font-bold mb-2 project-title">Vibe Coding</h3>
+                            <p class="text-gray-300 mb-4 project-description">This very site was built through continuous prompts in Gemini, refined bit by bit.</p>
+                            <div class="flex flex-wrap gap-2 justify-center mb-4">
+                                <span class="tech-badge">Gemini AI</span><span class="tech-badge">HTML/CSS</span>
+                            </div>
+                            <span class="text-white font-semibold">You're looking at it!</span>
                         </div>
                     </div>
                     <!-- Project Card 2 -->
                     <div class="project-card reveal group relative overflow-hidden rounded-lg bg-black flex items-center justify-center" data-image-src="https://i.postimg.cc/TPb53Qgw/figma-prototype.png">
-                        <div class="figma-text-container">
-                            <span class="figma-text figma-text-blur">Figma</span>
-                            <span class="figma-text figma-text-sharp">Figma</span>
+                        <div class="text-container">
+                            <span class="base-text text-blur">Figma</span>
+                            <span class="base-text text-sharp">Figma</span>
                         </div>
-                         <div class="project-info absolute inset-0 bg-black/90 text-white p-6 flex flex-col justify-center items-center text-center">
-                            <h3 class="text-2xl md:text-3xl font-bold mb-2 project-title">Figma Prototype</h3>
+                         <div class="project-info absolute inset-0 text-white p-6 flex flex-col justify-center items-center text-center">
+                            <h3 class="text-2xl md:text-3xl font-bold mb-2 project-title">Fintech App Prototype</h3>
                             <p class="text-gray-300 mb-4 project-description">A high-fidelity prototype for a fintech app, designed entirely in Figma.</p>
+                             <div class="flex flex-wrap gap-2 justify-center mb-4">
+                                <span class="tech-badge">Figma</span><span class="tech-badge">UI/UX Design</span>
+                            </div>
                             <button class="view-image-btn text-white font-semibold hover:underline">Click to Reveal</button>
                         </div>
                     </div>
                     <!-- Project Card 3 -->
                     <div id="n8n-card" class="project-card reveal group relative overflow-hidden rounded-lg bg-black flex items-center justify-center">
-                         <div class="n8n-text-container">
-                            <span class="n8n-text n8n-text-blur">n8n</span>
-                            <span class="n8n-text n8n-text-sharp">n8n</span>
+                         <div class="text-container">
+                            <span class="base-text text-blur">n8n</span>
+                            <span class="base-text text-sharp">n8n</span>
                         </div>
-                        <div class="project-info absolute inset-0 bg-black/90 text-white p-6 flex flex-col justify-center items-center text-center">
-                            <h3 class="text-2xl md:text-3xl font-bold mb-2 project-title">n8n Automation</h3>
+                        <div class="project-info absolute inset-0 text-white p-6 flex flex-col justify-center items-center text-center">
+                            <h3 class="text-2xl md:text-3xl font-bold mb-2 project-title">AI Automation</h3>
                             <p class="text-gray-300 mb-4 project-description">An automated workflow to manage client data using an AI Agent.</p>
+                            <div class="flex flex-wrap gap-2 justify-center mb-4">
+                                <span class="tech-badge">n8n</span><span class="tech-badge">Gemini AI</span><span class="tech-badge">Google Sheets</span>
+                            </div>
                             <button class="view-case-study-btn text-white font-semibold hover:underline">View Case Study</button>
                         </div>
                     </div>
                     <!-- Project Card 4 -->
-                    <div class="project-card reveal group relative overflow-hidden rounded-lg">
-                        <img src="https://placehold.co/800x600/1a1a1a/ffffff?text=Project+Four" alt="Project Four" class="w-full h-full object-cover">
-                         <div class="project-info absolute inset-0 bg-white/90 p-6 flex flex-col justify-center items-center text-center">
+                    <div class="project-card reveal group relative overflow-hidden rounded-lg bg-black flex items-center justify-center">
+                         <div class="text-container">
+                            <span class="base-text text-blur">Chatbot</span>
+                            <span class="base-text text-sharp">Chatbot</span>
+                        </div>
+                         <div class="project-info absolute inset-0 text-white p-6 flex flex-col justify-center items-center text-center">
                             <h3 class="text-2xl md:text-3xl font-bold mb-2 project-title">Personalized Chatbot</h3>
-                            <p class="text-gray-600 mb-4 project-description">A conversational AI built to answer questions and perform tasks.</p>
-                            <a href="#" class="text-black font-semibold hover:underline">View Case Study</a>
+                            <p class="text-gray-300 mb-4 project-description">A conversational AI built to answer questions and perform tasks.</p>
+                             <div class="flex flex-wrap gap-2 justify-center mb-4">
+                                <span class="tech-badge">JavaScript</span><span class="tech-badge">AI</span>
+                            </div>
+                            <a href="#" class="text-white font-semibold hover:underline">View Case Study</a>
                         </div>
                     </div>
                 </div>
@@ -371,15 +425,18 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="py-20 md:py-32">
+        <section id="contact" class="py-16 sm:py-20 md:py-32">
             <div class="container mx-auto px-4 sm:px-6 text-center">
                 <h2 class="text-3xl md:text-5xl font-bold mb-4 reveal">Let's Connect</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto mb-10 reveal text-lg">
-                    Have a project in mind or just want to say hi? Feel free to reach out.
+                    Have a project in mind or just want to say hi? I'm currently open to new opportunities and collaborations.
                 </p>
-                <div class="reveal">
-                    <a href="mailto:aanshg2007@gmail.com" class="inline-block bg-black text-white font-semibold text-lg px-12 py-4 rounded-full hover:bg-gray-800 transition duration-300">
+                <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="mailto:aanshg2007@gmail.com" class="beautify-btn inline-block bg-black text-white dark:bg-white dark:text-black font-semibold text-lg px-8 py-3 sm:px-12 sm:py-4 rounded-full">
                         Get In Touch
+                    </a>
+                     <a href="#" class="beautify-btn inline-block bg-transparent border border-black/20 dark:border-white/20 font-semibold text-lg px-8 py-3 sm:px-12 sm:py-4 rounded-full">
+                        Download Resume
                     </a>
                 </div>
             </div>
@@ -418,7 +475,7 @@
             <img src="https://i.postimg.cc/hvg3DcYk/n8n-google-sheet.png" alt="Google Sheet Result" class="rounded-lg mb-8 w-full" loading="lazy">
             
             <div class="text-center">
-                <a href="https://aansh-n8n.lovable.app/" target="_blank" class="inline-block bg-black text-white font-semibold px-8 py-3 rounded-full hover:bg-gray-800 transition duration-300">
+                <a href="https://aansh-n8n.lovable.app/" target="_blank" class="inline-block bg-black text-white dark:bg-white dark:text-black font-semibold px-8 py-3 rounded-full hover:bg-gray-800 dark:hover:bg-gray-200 transition duration-300">
                     View Live Dashboard
                 </a>
             </div>
@@ -445,44 +502,48 @@
                 }
             });
 
+            // --- Dark Mode Toggle ---
+            const themeToggle = document.getElementById('theme-toggle');
+            themeToggle.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark');
+                if (document.documentElement.classList.contains('dark')) {
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+
             // --- Intersection Observer for Scroll Animations ---
             const observer = new IntersectionObserver((entries, observerInstance) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // Apply staggered delay for project cards
-                        if (entry.target.classList.contains('project-card')) {
-                            const delay = entry.target.getAttribute('data-delay');
-                            entry.target.style.transitionDelay = delay;
-                        }
                         entry.target.classList.add('visible');
-                        
-                        // Animate progress bars when they become visible
-                        if (entry.target.classList.contains('skills-container')) {
-                            const progressBars = entry.target.querySelectorAll('.progress-bar');
-                            progressBars.forEach((bar, index) => {
+
+                        // Animate progress bars within the visible element
+                        const progressBars = entry.target.querySelectorAll('.progress-bar');
+                        if (progressBars.length > 0) {
+                            progressBars.forEach(bar => {
+                                const targetWidth = bar.dataset.width;
                                 setTimeout(() => {
-                                    const width = bar.getAttribute('data-width');
-                                    bar.style.width = width;
-                                }, index * 150);
+                                    bar.style.width = targetWidth;
+                                }, 250); // Stagger animation start slightly
                             });
                         }
-                        observerInstance.unobserve(entry.target); // Unobserve after animation to prevent re-triggering
+                        
+                        observerInstance.unobserve(entry.target);
                     }
                 });
             }, {
                 threshold: 0.2
             });
 
-            document.querySelectorAll('.reveal').forEach(el => {
+            document.querySelectorAll('.reveal').forEach((el, index) => {
+                 // Staggered delay for project cards
+                if (el.classList.contains('project-card')) {
+                     el.style.transitionDelay = `${index * 100}ms`;
+                }
                 observer.observe(el);
             });
-            
-            // --- Staggered Animation for Project Cards ---
-            const projectCards = document.querySelectorAll('.project-card.reveal');
-            projectCards.forEach((card, index) => {
-                card.style.transitionDelay = `${index * 200}ms`;
-            });
-
 
             // --- Animate Header and Hero Text on Load ---
             setTimeout(() => {
@@ -492,80 +553,46 @@
                         line.classList.add('visible');
                     }, index * 150);
                 });
-                 // Animate the sub-header text after the main title
                 setTimeout(() => {
                     document.querySelector('#hero .reveal').classList.add('visible');
                 }, 600);
             }, 300);
-
-
+            
             // --- Custom Cursor ---
             const cursorDot = document.querySelector('.cursor-dot');
-            const cursorOutline = document.querySelector('.cursor-outline');
             const isTouchDevice = () => 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
             if (!isTouchDevice()) {
-                document.body.style.cursor = 'none';
                 window.addEventListener('mousemove', (e) => {
-                    const posX = e.clientX;
-                    const posY = e.clientY;
-
-                    cursorDot.style.left = `${posX}px`;
-                    cursorDot.style.top = `${posY}px`;
-
-                    cursorOutline.animate({
-                        left: `${posX}px`,
-                        top: `${posY}px`
-                    }, { duration: 500, fill: 'forwards' });
+                    cursorDot.style.left = `${e.clientX}px`;
+                    cursorDot.style.top = `${e.clientY}px`;
                 });
                 
-                // Cursor hover effects
                 const interactiveElements = document.querySelectorAll('a, button, .project-card');
                 interactiveElements.forEach(el => {
-                    el.addEventListener('mouseenter', () => {
-                        cursorOutline.style.transform = 'translate(-50%, -50%) scale(1.5)';
-                        cursorOutline.style.borderWidth = '1px';
-                    });
-                    el.addEventListener('mouseleave', () => {
-                        cursorOutline.style.transform = 'translate(-50%, -50%) scale(1)';
-                        cursorOutline.style.borderWidth = '2px';
-                    });
+                    el.addEventListener('mouseenter', () => cursorDot.classList.add('hovered'));
+                    el.addEventListener('mouseleave', () => cursorDot.classList.remove('hovered'));
                 });
             } else {
                 cursorDot.style.display = 'none';
-                cursorOutline.style.display = 'none';
+                document.body.style.cursor = 'auto';
             }
 
-
-            // --- Parallax Scroll for About Image ---
-            const aboutImage = document.getElementById('about-image');
-            window.addEventListener('scroll', () => {
-                const scrollY = window.scrollY;
-                const speed = 0.1;
-                const offset = scrollY * speed;
-                // Only apply parallax if the image is in view for performance
-                if (aboutImage && aboutImage.getBoundingClientRect().top < window.innerHeight && aboutImage.getBoundingClientRect().bottom > 0) {
-                    aboutImage.style.transform = `translateY(${offset}px)`;
-                }
-            });
-
-            // --- 3D Tilt Effect for Project Cards ---
-            projectCards.forEach(card => {
-                card.addEventListener('mousemove', (e) => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    const { width, height } = rect;
-                    const rotateX = (y / height - 0.5) * -20; // Max rotation 10deg
-                    const rotateY = (x / width - 0.5) * 20;  // Max rotation 10deg
-                    
-                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-                });
-
-                card.addEventListener('mouseleave', () => {
-                    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
-                });
-            });
+            // --- 3D Tilt Effect for Project Cards (disabled for hover effect) ---
+            // document.querySelectorAll('.project-card').forEach(card => {
+            //     card.addEventListener('mousemove', (e) => {
+            //         const rect = card.getBoundingClientRect();
+            //         const x = e.clientX - rect.left;
+            //         const y = e.clientY - rect.top;
+            //         const { width, height } = rect;
+            //         const rotateX = (y / height - 0.5) * -20;
+            //         const rotateY = (x / width - 0.5) * 20;
+            //         card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            //     });
+            //     card.addEventListener('mouseleave', () => {
+            //         card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+            //     });
+            // });
             
             // --- Modal Logic ---
             const imageModal = document.getElementById('image-modal');
@@ -577,39 +604,36 @@
             
             const allCloseButtons = document.querySelectorAll('.modal-close');
 
-            // Open Figma Image Modal
+            const openModal = (modal) => modal.classList.add('visible');
+            const closeModal = (modal) => modal.classList.remove('visible');
+
             viewImageBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Prevent card click from firing
                     const card = btn.closest('.project-card');
                     const imageSrc = card.dataset.imageSrc;
                     if(imageSrc) {
                         modalImg.src = imageSrc;
-                        imageModal.classList.add('visible');
+                        openModal(imageModal);
                     }
                 });
             });
 
-            // Open n8n Case Study Modal
-            n8nCard.addEventListener('click', () => {
-                n8nModal.classList.add('visible');
-            });
+            n8nCard.addEventListener('click', () => openModal(n8nModal));
 
-            // Close any open modal
             const closeAllModals = () => {
-                imageModal.classList.remove('visible');
-                n8nModal.classList.remove('visible');
+                closeModal(imageModal);
+                closeModal(n8nModal);
             }
-
             allCloseButtons.forEach(btn => btn.addEventListener('click', closeAllModals));
-            
-            imageModal.addEventListener('click', (e) => {
-                if (e.target === imageModal) closeAllModals();
+            document.querySelectorAll('.modal-overlay').forEach(modal => {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) closeAllModals();
+                });
             });
-             n8nModal.addEventListener('click', (e) => {
-                if (e.target === n8nModal) closeAllModals();
-            });
-
         });
     </script>
 </body>
 </html>
+
+,                                         
