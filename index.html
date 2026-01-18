@@ -4,625 +4,613 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Portfolio of Aansh Gupta, an 18-year-old developer and strategic thinker focused on AI, automation, and personal mastery.">
-    <meta name="keywords" content="Aansh Gupta, AI, Artificial Intelligence, Portfolio, n8n, Automation, Developer, Strategy, Leadership, Communicator">
-    <title>Aansh Gupta - Striving for Mastery</title>
+    <title>Aansh Gupta — Striving for Mastery</title>
+    
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <script>
-        // Set theme on initial load - defaults to light mode
-        if (localStorage.getItem('theme') === 'dark') {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
 
-        // Image fallback helper - creates a clean professional placeholder
-        function handleImgError(image, title) {
-            image.onerror = null;
-            const text = encodeURIComponent(title || 'Certificate');
-            image.src = `https://placehold.co/800x600/1a1a1a/ffffff/png?text=${text}+Preview\n(Link+Expired)`;
-            image.classList.add('opacity-80');
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            500: '#64748b',
+                            900: '#0f172a',
+                            950: '#020617',
+                        }
+                    },
+                    boxShadow: {
+                        'premium': '0 25px 50px -12px rgba(0, 0, 0, 0.08)',
+                        'premium-dark': '0 30px 60px -12px rgba(0, 0, 0, 0.7)',
+                    }
+                }
+            }
         }
     </script>
+
     <style>
+        :root {
+            --cursor-size: 20px;
+        }
+        
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #ffffff;
-            color: #0a0a0a;
-            cursor: none;
-        }
-        .dark body {
-            background-color: #0a0a0a;
-            color: #f0f0f0;
-        }
-        
-        /* High Contrast Text Rules */
-        .readable-p {
-            color: #000000 !important;
-        }
-        .dark .readable-p {
-            color: #ffffff !important;
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.5s ease;
         }
 
-        .dark .header-scrolled {
-            background-color: rgba(10, 10, 10, 0.7);
-            border-bottom-color: rgba(255, 255, 255, 0.1);
-        }
-        .dark header nav a, .dark #mobile-menu a {
-            color: #a0a0a0;
-        }
-        .dark header nav a:hover, .dark #mobile-menu a:hover, .dark footer a:hover {
-            color: #ffffff;
-        }
-        .dark ::-webkit-scrollbar-track { background: #0a0a0a; }
-        .dark ::-webkit-scrollbar-thumb { background: #333; }
-        .dark .hero-title { color: #f0f0f0; }
-        
-        .dark .projects-container {
-             background-color: rgba(20, 20, 20, 0.3);
-             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75);
-        }
-        .dark .project-card {
-            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
-        .dark .project-card:hover {
-            box-shadow: 0 20px 40px rgba(0,0,0,0.7);
-        }
-        .dark .project-info {
-            background: rgba(30, 30, 30, 0.8);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .dark .base-text { color: #555; }
-        .dark .text-sharp { color: #e0e0e0; }
-        .dark #contact { background-color: #0a0a0a; }
-        
-        .dark .spotlight-card {
-            background-color: rgba(26, 26, 26, 0.5);
-            border-color: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
-        }
-        .dark .cursor-dot { background-color: #ffffff; }
+        .font-heading { font-family: 'Plus Jakarta Sans', sans-serif; }
 
-        .header-scrolled {
-            background-color: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        .dark ::-webkit-scrollbar-thumb { background: #334155; }
 
+        /* Smooth Reveal */
         .reveal {
             opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
         }
         .reveal.visible {
             opacity: 1;
             transform: translateY(0);
         }
-        #header.reveal { transform: translateY(-100%); }
-        #header.reveal.visible { transform: translateY(0); }
 
-        .hero-text-line {
-            display: block;
-            opacity: 0;
-            transform: translateY(100%);
-            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-        .hero-text-line.visible { opacity: 1; transform: translateY(0); }
-
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #f0f0f0; }
-        ::-webkit-scrollbar-thumb { background: #c0c0c0; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #a0a0a0; }
-
-        .projects-container {
-            background-color: rgba(245, 245, 245, 0.6);
-            padding: 2.5rem;
-            border-radius: 1rem;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0,0,0,0.05);
-        }
-
-        .project-card {
-            background: linear-gradient(135deg, #f8f8f8, #ffffff);
-            transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease-out, border 0.4s ease-out;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-            min-height: 350px;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 0.5rem;
-            border: 1px solid rgba(0,0,0,0.08);
-        }
-        .project-card:hover {
-            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
-            transform: translateY(-8px);
-            border-color: rgba(0,0,0,0.15);
-        }
-        .project-info {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 100%;
-            transform: translateY(100%);
-            opacity: 0;
-            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            background: rgba(255, 255, 255, 0.95);
+        /* Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.75);
             backdrop-filter: blur(16px);
-            border-top: 1px solid rgba(0, 0, 0, 0.08);
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
-        .project-card:hover .project-info {
-            transform: translateY(0);
-            opacity: 1;
+        .dark .glass {
+            background: rgba(15, 23, 42, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .cursor-dot {
+        /* Grid Pattern Background */
+        .bg-grid {
+            background-image: radial-gradient(circle, #cbd5e1 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+        .dark .bg-grid {
+            background-image: radial-gradient(circle, #334155 1px, transparent 1px);
+        }
+
+        /* Hero Text Gradient */
+        .text-gradient {
+            background: linear-gradient(135deg, #020617 0%, #64748b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .dark .text-gradient {
+            background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Interactive Cursor */
+        .cursor-follower {
             position: fixed;
-            top: 0;
-            left: 0;
-            transform: translate(-50%, -50%);
+            width: var(--cursor-size);
+            height: var(--cursor-size);
+            background: rgba(0,0,0,0.1);
             border-radius: 50%;
             pointer-events: none;
-            z-index: 10001;
-            width: 8px;
-            height: 8px;
-            background-color: #0a0a0a;
-            transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.2s ease-out;
+            z-index: 9999;
+            transition: transform 0.1s ease-out, background 0.3s ease;
+            transform: translate(-50%, -50%);
         }
-        .cursor-dot.hovered {
-            transform: translate(-50%, -50%) scale(3);
-            opacity: 0.5;
-        }
-
-        .hero-title {
-            font-size: clamp(2.5rem, 10vw, 8rem); line-height: 1; font-weight: 800; letter-spacing: -0.05em; overflow: hidden;
+        .dark .cursor-follower { background: rgba(255,255,255,0.1); }
+        .cursor-follower.active {
+            transform: translate(-50%, -50%) scale(3.5);
+            background: rgba(0,0,0,0.03);
+            backdrop-filter: invert(1);
         }
 
-        .progress-bar-container {
-            width: 100%;
-            background-color: #e0e0e0;
-            border-radius: 9999px;
-            overflow: hidden;
+        /* Card Hover Effects */
+        .project-card {
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
         }
-        .dark .progress-bar-container { background-color: #333; }
+        .project-card:hover {
+            transform: translateY(-12px);
+            border-color: rgba(0, 0, 0, 0.15);
+        }
+        .dark .project-card:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .progress-container:hover .progress-bar {
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            transform: scaleY(1.5);
+        }
+        .dark .progress-container:hover .progress-bar {
+            box-shadow: 0 0 15px rgba(255,255,255,0.2);
+        }
         .progress-bar {
-            height: 8px;
-            background-color: #0a0a0a;
-            width: 0;
-            border-radius: 9999px;
-            transition: width 1.5s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-        .dark .progress-bar { background-color: #f0f0f0; }
-
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.9); display: flex; justify-content: center; align-items: center; z-index: 10000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
-        }
-        .modal-overlay.visible { opacity: 1; pointer-events: auto; }
-        .modal-content {
-            background: #fff;
-            padding: 0.5rem;
-            border-radius: 0.5rem;
-            max-width: 90vw;
-            max-height: 90vh;
-            object-fit: contain;
-            transform: scale(0.9);
-            transition: transform 0.3s ease;
-        }
-        .modal-overlay.visible .modal-content { transform: scale(1); }
-        .modal-close { position: absolute; top: 20px; right: 20px; font-size: 2.5rem; color: white; cursor: pointer; z-index: 10001; }
-
-        .text-container { position: relative; display: grid; place-items: center; user-select: none; transition: opacity 0.4s ease-out; }
-        .base-text { grid-area: 1 / 1; font-size: clamp(3.5rem, 15vw, 6rem); font-weight: 900; line-height: 1; text-align: center; color: #aaa; }
-        .vibe-text { font-size: clamp(3rem, 12vw, 4.5rem); }
-        .text-sharp { color: #555; }
-        .project-card:hover .text-container { opacity: 0; }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
-        }
-        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); } 40% { transform: translate(-50%, -20px); } 60% { transform: translate(-50%, -10px); } }
-
-        .tech-badge {
-            background-color: rgba(0,0,0,0.05);
-            color: #333;
-            padding: 2px 8px;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 500;
-        }
-        .dark .tech-badge {
-             background-color: rgba(255,255,255,0.1);
-             color: #ccc;
-        }
-
-        .beautify-btn {
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease-in-out;
-        }
-        .beautify-btn:hover {
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1), transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .spotlight-card {
-            background-color: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            border-radius: 1rem;
-            padding: 2rem;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-            transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
+            position: relative;
+            overflow: hidden;
         }
-        .spotlight-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        .spotlight-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255,255,255,0.12) 0%, transparent 80%);
+            opacity: 0;
+            transition: opacity 0.4s;
+            pointer-events: none;
+        }
+        .spotlight-card:hover::before { opacity: 1; }
+
+        /* Animation Delays */
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+
+        @media (hover: none) {
+            .cursor-follower { display: none; }
         }
     </style>
 </head>
-<body class="overflow-x-hidden">
+<body class="bg-slate-50 dark:bg-brand-950 text-slate-900 dark:text-slate-100 selection:bg-brand-500 selection:text-white overflow-x-hidden">
 
-    <div class="cursor-dot"></div>
+    <div class="cursor-follower" id="cursor"></div>
 
-    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 reveal">
-        <div class="container mx-auto px-4 sm:px-6 py-5 flex justify-between items-center">
-            <a href="#" class="text-xl font-bold tracking-wider">AANSH GUPTA</a>
-            <div class="flex items-center space-x-8">
-                <nav class="hidden md:flex items-center space-x-8">
-                    <a href="#about" class="text-gray-700 hover:text-black transition duration-300 font-medium">About</a>
-                    <a href="#work" class="text-gray-700 hover:text-black transition duration-300 font-medium">Work</a>
-                    <a href="#education" class="text-gray-700 hover:text-black transition duration-300 font-medium">Learning</a>
-                    <a href="#contact" class="text-gray-700 hover:text-black transition duration-300 font-medium">Contact</a>
-                </nav>
-                <button id="theme-toggle" class="w-10 h-10 rounded-full flex items-center justify-center text-gray-700 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-800 transition-colors">
-                    <svg id="theme-icon-light" class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm-.707 10.607a1 1 0 010-1.414l.707-.707a1 1 0 111.414 1.414l-.707.707a1 1 0 01-1.414 0zM3 11a1 1 0 100-2H2a1 1 0 100 2h1z"></path></svg>
-                    <svg id="theme-icon-dark" class="w-5 h-5 block dark:hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+    <!-- Navigation -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b border-transparent">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="font-heading text-lg font-extrabold tracking-tighter">AANSH GUPTA</a>
+            
+            <nav class="hidden md:flex items-center space-x-1 glass rounded-full px-2 py-1 shadow-sm border border-slate-200 dark:border-white/10">
+                <a href="#about" class="px-5 py-2 text-sm font-medium hover:text-brand-500 transition-colors">About</a>
+                <a href="#work" class="px-5 py-2 text-sm font-medium hover:text-brand-500 transition-colors">Work</a>
+                <a href="#learning" class="px-5 py-2 text-sm font-medium hover:text-brand-500 transition-colors">Learning</a>
+                <a href="#contact" class="px-5 py-2 text-sm font-medium hover:text-brand-500 transition-colors">Contact</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+                    <svg id="sun" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z"></path></svg>
+                    <svg id="moon" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
+                <button id="mobile-menu-btn" class="md:hidden p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                 </button>
             </div>
-            <button id="mobile-menu-btn" class="md:hidden text-black dark:text-white focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-            </button>
-        </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-white/90 dark:bg-black/90 backdrop-blur-lg">
-            <a href="#about" class="block py-3 px-6">About</a>
-            <a href="#work" class="block py-3 px-6">Work</a>
-            <a href="#education" class="block py-3 px-6">Learning</a>
-            <a href="#contact" class="block py-3 px-6">Contact</a>
-            <a href="mailto:aanshg2007@gmail.com" class="block py-3 px-6">Email Me</a>
         </div>
     </header>
 
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-40 bg-white dark:bg-brand-950 hidden flex-col items-center justify-center space-y-8 text-2xl font-heading">
+        <a href="#about" class="mobile-link">About</a>
+        <a href="#work" class="mobile-link">Work</a>
+        <a href="#learning" class="mobile-link">Learning</a>
+        <a href="#contact" class="mobile-link">Contact</a>
+        <button id="close-menu" class="absolute top-6 right-6 p-2">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l18 18"></path></svg>
+        </button>
+    </div>
+
     <main>
-        <!-- Hero Section -->
-        <section id="hero" class="relative min-h-screen pt-32 pb-16 sm:pt-40 sm:pb-20 flex flex-col justify-center text-center">
-            <div class="container mx-auto px-4 sm:px-6">
-                <div class="max-w-5xl mx-auto">
-                    <h1 class="hero-title">
-                        <span class="hero-text-line">STRIVING FOR</span>
-                        <span class="hero-text-line">MASTERY</span>
-                    </h1>
-                    <p class="mt-6 text-lg md:text-xl text-gray-600 reveal font-medium">
-                        AI Enthusiast | Automation Developer | Strategic Leader | Fluent Communicator
-                    </p>
+        <!-- Hero -->
+        <section id="hero" class="min-h-screen flex flex-col justify-center items-center px-6 pt-20 overflow-hidden relative">
+            <div class="absolute inset-0 -z-10 bg-grid opacity-30"></div>
+            <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_50%,rgba(100,116,139,0.1),transparent)]"></div>
+            
+            <div class="text-center space-y-8 max-w-5xl mx-auto">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white dark:bg-brand-900 border border-slate-200 dark:border-white/10 text-brand-500 dark:text-brand-100 text-xs font-bold tracking-widest uppercase reveal shadow-sm">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
+                    </span>
+                    Portfolio 2026
                 </div>
-            </div>
-            <div class="scroll-indicator">
-                <svg class="w-6 h-6 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="py-16 sm:py-20 md:py-32">
-            <div class="container mx-auto px-4 sm:px-6">
-                <div class="grid md:grid-cols-2 gap-8 md:gap-16">
-                    <div class="reveal">
-                        <h2 class="text-3xl md:text-5xl font-bold mb-6">Who I Am</h2>
-                        <p class="readable-p mb-8 leading-relaxed text-lg font-bold">
-                            I am Aansh Gupta, an 18-year-old on a mission to build a high-performance life. I don't just see myself as a coder; I'm a strategic thinker who values leadership and the power of clear, impactful communication. My journey is about blending technical expertise with the human elements of strategy and discipline.
-                        </p>
-                        <h2 class="text-3xl md:text-5xl font-bold mb-6">The Goal</h2>
-                        <p class="readable-p leading-relaxed text-lg font-bold">
-                            My focus is total mastery. This means reaching the edge of what's possible in AI and automation, but also becoming a top-tier communicator and a strategic leader. I spend my time reading deeply, refining my fluency, and building systems that solve problems. I believe true mastery requires both a sharp mind and a disciplined lifestyle.
-                        </p>
-                    </div>
-                    <div class="reveal">
-                        <h3 class="text-3xl md:text-4xl font-semibold mb-8">Personal Arsenal</h3>
-                        <div class="space-y-6">
-                            <!-- AI & Automation -->
-                            <div>
-                                <div class="flex justify-between mb-1">
-                                    <span class="font-bold">AI & Automation</span>
-                                    <span class="text-sm font-bold">60%</span>
-                                </div>
-                                <div class="progress-bar-container">
-                                    <div class="progress-bar" data-width="60%"></div>
-                                </div>
-                            </div>
-                            <!-- Communication & Fluency -->
-                            <div>
-                                <div class="flex justify-between mb-1">
-                                    <span class="font-bold">Communication & Fluency</span>
-                                    <span class="text-sm font-bold">75%</span>
-                                </div>
-                                <div class="progress-bar-container">
-                                    <div class="progress-bar" data-width="75%"></div>
-                                </div>
-                            </div>
-                            <!-- Strategy & Leadership -->
-                            <div>
-                                <div class="flex justify-between mb-1">
-                                    <span class="font-bold">Strategy & Leadership</span>
-                                    <span class="text-sm font-bold">55%</span>
-                                </div>
-                                <div class="progress-bar-container">
-                                    <div class="progress-bar" data-width="55%"></div>
-                                </div>
-                            </div>
-                            <!-- Curiosity & Reading -->
-                            <div>
-                                <div class="flex justify-between mb-1">
-                                    <span class="font-bold">Knowledge Accumulation (Reading)</span>
-                                    <span class="text-sm font-bold">85%</span>
-                                </div>
-                                <div class="progress-bar-container">
-                                    <div class="progress-bar" data-width="85%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="work" class="py-16 sm:py-20 md:py-32">
-            <div class="container mx-auto px-4 sm:px-6">
-                <h2 class="text-3xl md:text-5xl font-bold mb-12 text-center reveal">Featured Work</h2>
-                <div class="projects-container reveal">
-                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
-                        <!-- Vibe Coding -->
-                        <div class="project-card reveal group rounded-lg">
-                            <div class="text-container">
-                                <span class="base-text vibe-text text-sharp">Vibe<br>Coding</span>
-                            </div>
-                            <div class="project-info">
-                                <h3 class="text-2xl font-bold mb-2 project-title readable-p text-center">Vibe Coding</h3>
-                                <p class="readable-p mb-4 project-description font-bold text-center text-sm">This very site is a product of "Vibe Coding"—leveraging conversational AI, precise prompt engineering, and iterative refinements for every single line of code.</p>
-                                <div class="flex flex-wrap gap-2 justify-center mb-4">
-                                    <span class="tech-badge">Gemini AI</span><span class="tech-badge">Prompting</span><span class="tech-badge">HTML/CSS</span>
-                                </div>
-                                <span class="readable-p font-bold">A living example!</span>
-                            </div>
-                        </div>
-                        <!-- Figma Prototype -->
-                        <div class="project-card reveal group rounded-lg" data-image-src="https://i.ibb.co/qM9fPvGr/Google-certificate.jpg">
-                            <div class="text-container">
-                                <span class="base-text text-sharp">Figma</span>
-                            </div>
-                            <div class="project-info">
-                                <h3 class="text-2xl font-bold mb-2 project-title readable-p text-center">Fintech App Prototype</h3>
-                                <p class="readable-p mb-4 project-description font-bold text-center text-sm">A high-fidelity prototype for a fintech app, designed entirely in Figma to explore modern UX patterns.</p>
-                                <div class="flex flex-wrap gap-2 justify-center mb-4">
-                                    <span class="tech-badge">Figma</span><span class="tech-badge">UI/UX Design</span>
-                                </div>
-                                <button class="view-image-btn beautify-btn px-6 py-2 bg-black text-white dark:bg-white dark:text-black rounded-full font-bold text-xs">View Prototype</button>
-                            </div>
-                        </div>
-                        <!-- n8n Automation -->
-                        <div id="n8n-card" class="project-card reveal group rounded-lg">
-                            <div class="text-container">
-                                <span class="base-text text-sharp">n8n</span>
-                            </div>
-                            <div class="project-info">
-                                <h3 class="text-2xl font-bold mb-2 project-title readable-p text-center">AI Automation</h3>
-                                <p class="readable-p mb-4 project-description font-bold text-center text-sm">An automated workflow to manage client data using an AI Agent integrated with Google Sheets.</p>
-                                <div class="flex flex-wrap gap-2 justify-center mb-4">
-                                    <span class="tech-badge">n8n</span><span class="tech-badge">Gemini AI</span><span class="tech-badge">Automations</span>
-                                </div>
-                                <button class="view-case-study-btn beautify-btn px-6 py-2 bg-black text-white dark:bg-white dark:text-black rounded-full font-bold text-xs">View Case Study</button>
-                            </div>
-                        </div>
-                    </div>
-                 </div>
-            </div>
-        </section>
-
-        <!-- Education & Certificates Section -->
-        <section id="education" class="py-16 sm:py-20 md:py-32">
-            <div class="container mx-auto px-4 sm:px-6">
-                <h2 class="text-3xl md:text-5xl font-bold mb-12 text-center reveal">Academic & Certifications</h2>
-                <div class="space-y-12">
-                    <!-- Academic Performance Card -->
-                    <div class="spotlight-card reveal">
-                        <h3 class="text-2xl md:text-3xl font-bold mb-6 text-center">Academic Performance</h3>
-                        <div class="grid md:grid-cols-3 gap-8">
-                            <div class="p-6 rounded-xl border border-gray-100 dark:border-white/10 bg-gray-50/50 dark:bg-white/5 text-center">
-                                <h4 class="font-bold text-lg mb-2">ICSE (10th)</h4>
-                                <p class="readable-p font-bold text-xl mb-1">85%</p>
-                                <p class="readable-p text-sm opacity-70">Janki Devi Public School, Mumbai</p>
-                            </div>
-                            <div class="p-6 rounded-xl border border-gray-100 dark:border-white/10 bg-gray-50/50 dark:bg-white/5 text-center">
-                                <h4 class="font-bold text-lg mb-2">HSC (12th)</h4>
-                                <p class="readable-p font-bold text-xl mb-1">70%</p>
-                                <p class="readable-p text-sm opacity-70">Hill Spring International Junior College</p>
-                            </div>
-                            <div class="p-6 rounded-xl border border-gray-100 dark:border-white/10 bg-gray-50/50 dark:bg-white/5 text-center">
-                                <h4 class="font-bold text-lg mb-2">Current Pursuit</h4>
-                                <p class="readable-p font-bold text-xl mb-1">BMS</p>
-                                <p class="readable-p text-sm opacity-70">K.P.B. Hinduja College of Commerce</p>
-                            </div>
-                        </div>
-                        <div class="mt-8 p-6 rounded-xl border border-black/10 bg-black/5 dark:bg-white/10 text-center">
-                             <h4 class="font-bold text-xl mb-2">National Entrance Achievement</h4>
-                             <p class="readable-p text-2xl font-black mb-1">97.6 Percentile (MAH-CET)</p>
-                             <p class="readable-p font-bold text-sm">Rank: All India ~1500</p>
-                        </div>
-                    </div>
-
-                    <!-- Certification Cards -->
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <div class="spotlight-card reveal" data-image-src="https://i.ibb.co/qFmnYbJB/Google-certificate.png">
-                            <h3 class="text-xl font-bold mb-4">Google Digital Unlocked</h3>
-                            <p class="readable-p leading-relaxed mb-6 font-bold">Fundamentals of Digital Marketing certification exam completed via Google & IAB Europe.</p>
-                            <div class="flex flex-col items-center">
-                                <img src="https://i.ibb.co/qFmnYbJB/Google-certificate.png" onerror="handleImgError(this, 'Google Certificate')" alt="Google Cert" class="rounded-lg shadow-md w-full max-w-sm mb-4 cursor-pointer view-image-btn transition-transform hover:scale-105">
-                                <button class="view-image-btn beautify-btn px-6 py-2 bg-black text-white dark:bg-white dark:text-black rounded-full font-bold text-sm">View Certificate</button>
-                            </div>
-                        </div>
-                        <div class="spotlight-card reveal" data-image-src="https://i.ibb.co/m5yRKRx8/Aansh-Gupta-Generative-AI-Tools.png">
-                            <h3 class="text-xl font-bold mb-4">Generative AI Tools</h3>
-                            <p class="readable-p leading-relaxed mb-6 font-bold">Mastery of practical AI applications, prompt engineering, and modern generative workflows.</p>
-                            <div class="flex flex-col items-center">
-                                <img src="https://i.ibb.co/m5yRKRx8/Aansh-Gupta-Generative-AI-Tools.png" onerror="handleImgError(this, 'AI Tools Certificate')" alt="AI Tools Cert" class="rounded-lg shadow-md w-full max-w-sm mb-4 cursor-pointer view-image-btn transition-transform hover:scale-105">
-                                <button class="view-image-btn beautify-btn px-6 py-2 bg-black text-white dark:bg-white dark:text-black rounded-full font-bold text-sm">View Certificate</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="py-16 sm:py-20 md:py-32">
-            <div class="container mx-auto px-4 sm:px-6 text-center">
-                <h2 class="text-3xl md:text-5xl font-bold mb-4 reveal">Connect with Me</h2>
-                <p class="readable-p max-w-2xl mx-auto mb-10 reveal text-lg font-bold">
-                    Whether it's strategy, AI, or discussing personal mastery, I'm always open to meaningful dialogue.
+                
+                <h1 class="font-heading text-6xl md:text-9xl font-extrabold tracking-tighter leading-[0.85] reveal delay-100">
+                    STRIVING FOR <br>
+                    <span class="text-gradient">MASTERY</span>
+                </h1>
+                
+                <p class="text-slate-500 dark:text-slate-400 text-lg md:text-xl font-medium reveal delay-200 tracking-tight max-w-2xl mx-auto">
+                    AI Enthusiast <span class="mx-3 opacity-30">/</span> Automation Developer <span class="mx-3 opacity-30">/</span> Strategic Leader
                 </p>
-                <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="mailto:aanshg2007@gmail.com" class="beautify-btn inline-block bg-black text-white dark:bg-white dark:text-black font-bold text-lg px-8 py-3 sm:px-12 sm:py-4 rounded-full">
-                        Send an Email
-                    </a>
-                    <a href="#" class="beautify-btn inline-block bg-transparent border border-black/20 dark:border-white/20 font-bold text-lg px-8 py-3 sm:px-12 sm:py-4 rounded-full">
-                        Download My Resume
-                    </a>
+
+                <div class="flex flex-wrap justify-center gap-4 pt-4 reveal delay-300">
+                    <a href="#work" class="px-10 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-950 rounded-2xl font-bold shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1">View Projects</a>
+                    <a href="#contact" class="px-10 py-4 glass rounded-2xl font-bold border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">Get in Touch</a>
+                </div>
+            </div>
+
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-30">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7-7-7"></path></svg>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section id="about" class="py-32 px-6 border-t border-slate-200 dark:border-slate-800 relative">
+            <div class="container mx-auto max-w-6xl">
+                <div class="grid lg:grid-cols-12 gap-20 items-start">
+                    <div class="lg:col-span-7 space-y-10 reveal">
+                        <h2 class="font-heading text-5xl md:text-6xl font-extrabold tracking-tight">Who I Am</h2>
+                        <div class="space-y-8 text-xl leading-relaxed text-slate-600 dark:text-slate-300">
+                            <p>
+                                I am <span class="text-slate-900 dark:text-white font-semibold">Aansh Gupta</span>, an 18-year-old on a mission to build a high-performance life. I don't just see myself as a coder; I'm a strategic thinker who values leadership and the power of clear, impactful communication.
+                            </p>
+                            <p class="font-light">
+                                My journey is about blending technical expertise with the human elements of strategy and discipline. I spend my time reading deeply, refining my fluency, and building systems that solve problems.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="lg:col-span-5 space-y-8 reveal delay-200">
+                        <div class="glass p-10 rounded-[2.5rem] border border-slate-200 dark:border-slate-800 space-y-10 shadow-premium dark:shadow-premium-dark">
+                            <h3 class="font-heading text-xs font-black uppercase tracking-[0.3em] text-brand-500">Personal Arsenal</h3>
+                            
+                            <div class="space-y-10">
+                                <!-- AI & Automation -->
+                                <div class="space-y-3 progress-container cursor-default">
+                                    <div class="flex justify-between text-sm font-bold uppercase tracking-tight">
+                                        <span>AI & Automation</span>
+                                        <span class="opacity-50">60%</span>
+                                    </div>
+                                    <div class="h-2 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                        <div class="progress-bar h-full bg-slate-900 dark:bg-white w-0" data-width="60%"></div>
+                                    </div>
+                                </div>
+                                <!-- Communication -->
+                                <div class="space-y-3 progress-container cursor-default">
+                                    <div class="flex justify-between text-sm font-bold uppercase tracking-tight">
+                                        <span>Communication & Fluency</span>
+                                        <span class="opacity-50">75%</span>
+                                    </div>
+                                    <div class="h-2 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                        <div class="progress-bar h-full bg-slate-900 dark:bg-white w-0" data-width="75%"></div>
+                                    </div>
+                                </div>
+                                <!-- Knowledge -->
+                                <div class="space-y-3 progress-container cursor-default">
+                                    <div class="flex justify-between text-sm font-bold uppercase tracking-tight">
+                                        <span>Knowledge Accumulation</span>
+                                        <span class="opacity-50">85%</span>
+                                    </div>
+                                    <div class="h-2 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                        <div class="progress-bar h-full bg-slate-900 dark:bg-white w-0" data-width="85%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work -->
+        <section id="work" class="py-32 px-6 bg-slate-100/50 dark:bg-brand-900/10 border-y border-slate-200 dark:border-slate-800">
+            <div class="container mx-auto max-w-6xl">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8 reveal">
+                    <div class="space-y-6">
+                        <h2 class="font-heading text-5xl md:text-6xl font-extrabold tracking-tight">Featured Work</h2>
+                        <p class="text-slate-500 text-xl max-w-xl">Engineering elegant solutions through precise iteration and AI-assisted workflows.</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- Vibe Coding -->
+                    <div class="project-card group glass rounded-[2.5rem] p-10 flex flex-col justify-between min-h-[480px] reveal shadow-premium dark:shadow-premium-dark border border-slate-200 dark:border-white/5">
+                        <div class="space-y-6">
+                            <div class="w-16 h-16 bg-slate-900 dark:bg-white text-white dark:text-slate-950 rounded-2xl flex items-center justify-center font-bold text-2xl shadow-lg">V</div>
+                            <h3 class="font-heading text-3xl font-bold tracking-tight">Vibe Coding</h3>
+                            <p class="text-slate-500 dark:text-slate-400 text-base leading-relaxed">
+                                This very site is a product of "Vibe Coding"—leveraging conversational AI, precise prompt engineering, and iterative refinements for every single line of code.
+                            </p>
+                        </div>
+                        <div class="pt-8 mt-8 border-t border-slate-200 dark:border-slate-800">
+                             <a href="#" class="block w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-950 rounded-2xl font-black text-center text-sm shadow-xl hover:scale-[1.02] transition-transform">Explore "Vibe" Process</a>
+                        </div>
+                    </div>
+
+                    <!-- Fintech -->
+                    <div class="project-card group glass rounded-[2.5rem] p-10 flex flex-col justify-between min-h-[480px] reveal delay-100 shadow-premium dark:shadow-premium-dark border border-slate-200 dark:border-white/5" data-img="https://i.ibb.co/qM9fPvGr/Google-certificate.jpg">
+                        <div class="space-y-6">
+                            <div class="w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center shadow-lg">
+                                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"></path><path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd"></path></svg>
+                            </div>
+                            <h3 class="font-heading text-3xl font-bold tracking-tight">Figma: Fintech Prototype</h3>
+                            <p class="text-slate-500 dark:text-slate-400 text-base leading-relaxed">
+                                A high-fidelity prototype for a fintech app, designed entirely in Figma to explore modern UX patterns and user behavior flows for next-gen banking.
+                            </p>
+                        </div>
+                        <div class="pt-8 mt-8">
+                            <button class="view-btn w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-950 rounded-2xl font-black text-sm shadow-xl hover:scale-[1.02] transition-transform">View Prototype Details</button>
+                        </div>
+                    </div>
+
+                    <!-- Automation -->
+                    <div class="project-card group glass rounded-[2.5rem] p-10 flex flex-col justify-between min-h-[480px] reveal delay-200 shadow-premium dark:shadow-premium-dark border border-slate-200 dark:border-white/5" id="n8n-trigger">
+                        <div class="space-y-6">
+                            <div class="w-16 h-16 bg-orange-600 text-white rounded-2xl flex items-center justify-center font-bold text-xl shadow-lg">n8n</div>
+                            <h3 class="font-heading text-3xl font-bold tracking-tight">AI Automation</h3>
+                            <p class="text-slate-500 dark:text-slate-400 text-base leading-relaxed">
+                                An automated workflow to manage client data using an AI Agent integrated with Google Sheets, reducing data entry overhead by over 80%.
+                            </p>
+                        </div>
+                        <div class="pt-8 mt-8">
+                            <button class="w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-950 rounded-2xl font-black text-sm shadow-xl hover:scale-[1.02] transition-transform">Case Study Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Growth & Recognition -->
+        <section id="learning" class="py-32 px-6 relative overflow-hidden">
+            <div class="container mx-auto max-w-6xl">
+                <h2 class="font-heading text-5xl md:text-6xl font-extrabold tracking-tight mb-20 text-center reveal">Growth & Recognition</h2>
+                
+                <div class="grid lg:grid-cols-2 gap-10 items-stretch">
+                    <!-- Academic Performance - Wireframe Style -->
+                    <div class="spotlight-card glass p-10 rounded-[3rem] reveal border-dashed border-2 border-slate-300 dark:border-slate-700 shadow-xl flex flex-col justify-center">
+                        <div class="flex items-center gap-4 mb-10">
+                            <div class="w-12 h-12 rounded-xl bg-brand-100 dark:bg-brand-900 flex items-center justify-center text-brand-500">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path></svg>
+                            </div>
+                            <h3 class="font-heading text-2xl font-bold">Academic Performance</h3>
+                        </div>
+                        
+                        <div class="space-y-8">
+                            <div class="relative p-8 bg-slate-50 dark:bg-brand-950/50 rounded-2xl border border-slate-200 dark:border-white/10 shadow-sm">
+                                <div class="flex justify-between items-center">
+                                    <div class="space-y-1">
+                                        <p class="font-bold text-lg">MAH-CET Entrance</p>
+                                        <p class="text-xs text-brand-500 uppercase font-black tracking-widest">Rank: All India ~1500</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="text-4xl font-black text-slate-900 dark:text-white">97.6%</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-6">
+                                <div class="p-8 bg-white dark:bg-brand-950/50 rounded-2xl border border-slate-200 dark:border-white/10 text-center space-y-2 shadow-sm">
+                                    <p class="text-xs text-slate-400 font-bold uppercase tracking-tighter">ICSE (10th)</p>
+                                    <p class="text-2xl font-black">85%</p>
+                                </div>
+                                <div class="p-8 bg-white dark:bg-brand-950/50 rounded-2xl border border-slate-200 dark:border-white/10 text-center space-y-2 shadow-sm">
+                                    <p class="text-xs text-slate-400 font-bold uppercase tracking-tighter">HSC (12th)</p>
+                                    <p class="text-2xl font-black">70%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Certifications - Larger Tiles -->
+                    <div class="grid gap-8 reveal delay-200">
+                        <div class="spotlight-card glass p-10 rounded-[3rem] flex items-center gap-10 border border-slate-200 dark:border-slate-800 shadow-premium dark:shadow-premium-dark group hover:border-brand-500 transition-all">
+                            <div class="relative w-28 h-28 bg-slate-900 dark:bg-white text-white dark:text-slate-950 rounded-[2rem] flex-shrink-0 flex items-center justify-center shadow-2xl transition-transform group-hover:scale-110">
+                                <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"><path d="M12.545 11.033v4.309c0 .597.478 1.074 1.074 1.074H24v-5.383h-11.455zM24 0H11.455v5.383h11.471c.596 0 1.074.478 1.074 1.074v4.309H24V0zM12.545 0H0v11.033h11.455c.597 0 1.074-.478 1.074-1.074V1.074C12.529.478 12.051 0 11.455 0zM0 12.545V24h11.455v-5.383H1.074c-.596 0-1.074-.478-1.074-1.074v-4.309H0z"></path></svg>
+                                <span class="absolute -top-2 -right-2 bg-brand-500 text-white text-[10px] px-2 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity font-bold uppercase tracking-widest">Preview</span>
+                            </div>
+                            <div class="space-y-3">
+                                <h4 class="font-bold text-2xl tracking-tight">Google Digital Unlocked</h4>
+                                <p class="text-sm text-slate-500 font-medium leading-relaxed">Fundamentals of Digital Marketing certification.</p>
+                                <button class="text-xs font-black uppercase text-brand-500 hover:text-brand-700 transition-colors tracking-widest cert-btn flex items-center gap-2" data-cert="https://i.ibb.co/qFmnYbJB/Google-certificate.png">
+                                    View Certificate 
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="spotlight-card glass p-10 rounded-[3rem] flex items-center gap-10 border border-slate-200 dark:border-slate-800 shadow-premium dark:shadow-premium-dark group hover:border-brand-500 transition-all">
+                            <div class="relative w-28 h-28 bg-slate-900 dark:bg-white text-white dark:text-slate-950 rounded-[2rem] flex-shrink-0 flex items-center justify-center shadow-2xl transition-transform group-hover:scale-110">
+                                <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                <span class="absolute -top-2 -right-2 bg-brand-500 text-white text-[10px] px-2 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity font-bold uppercase tracking-widest">Preview</span>
+                            </div>
+                            <div class="space-y-3">
+                                <h4 class="font-bold text-2xl tracking-tight">Generative AI Tools</h4>
+                                <p class="text-sm text-slate-500 font-medium leading-relaxed">Mastery of Practical AI Apps & Prompt Engineering.</p>
+                                <button class="text-xs font-black uppercase text-brand-500 hover:text-brand-700 transition-colors tracking-widest cert-btn flex items-center gap-2" data-cert="https://i.ibb.co/m5yRKRx8/Aansh-Gupta-Generative-AI-Tools.png">
+                                    View Certificate
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="py-32 px-6 mb-20 relative">
+            <div class="container mx-auto max-w-4xl glass rounded-[4rem] p-12 md:p-24 text-center space-y-10 reveal shadow-premium dark:shadow-premium-dark border border-slate-200 dark:border-white/5">
+                <h2 class="font-heading text-5xl md:text-7xl font-extrabold tracking-tighter">Let's Connect</h2>
+                <p class="text-xl text-slate-500 dark:text-slate-400 max-w-xl mx-auto leading-relaxed">
+                    Whether it's strategy, AI automation, or discussing the edge of personal mastery, I'm always open to high-impact dialogue.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-6 pt-6">
+                    <a href="mailto:aanshg2007@gmail.com" class="px-12 py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-950 rounded-2xl font-black text-lg shadow-2xl transition-all hover:scale-105 active:scale-95">Send an Email</a>
+                    <a href="#" class="px-12 py-5 glass border border-slate-200 dark:border-white/10 rounded-2xl font-black text-lg transition-all hover:bg-slate-100 dark:hover:bg-slate-800">Download CV</a>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="border-t border-black/10 dark:border-white/10 py-8">
-        <div class="container mx-auto px-4 sm:px-6 text-center text-gray-500">
-             <p class="text-sm mb-2 font-medium uppercase tracking-widest">Aansh Gupta Portfolio | Version 2.9 (The Mastery Era)</p>
-            <p class="font-bold">&copy; 2026 Aansh Gupta. All Rights Reserved.</p>
+    <footer class="py-16 border-t border-slate-200 dark:border-slate-800">
+        <div class="container mx-auto px-6 text-center space-y-6">
+            <p class="text-xs font-black uppercase tracking-[0.4em] text-slate-400">Aansh Gupta Portfolio | Version 3.2</p>
+            <p class="text-sm font-medium text-slate-500">&copy; 2026 Aansh Gupta. Built with Vibe, AI & Strategic Intent.</p>
         </div>
     </footer>
 
-    <div id="image-modal" class="modal-overlay">
-        <span class="modal-close">&times;</span>
-        <img class="modal-content" id="modal-image" src="">
+    <!-- Modals -->
+    <div id="modal" class="fixed inset-0 z-[100] bg-slate-950/95 backdrop-blur-md hidden items-center justify-center p-6 opacity-0 transition-opacity duration-300">
+        <button id="modal-close" class="absolute top-10 right-10 text-white hover:rotate-90 transition-transform duration-300">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <img id="modal-img" class="max-w-full max-h-[85vh] rounded-3xl shadow-2xl scale-95 transition-transform duration-300 border border-white/10" src="">
     </div>
 
-    <div id="n8n-modal" class="modal-overlay">
-        <span class="modal-close">&times;</span>
-        <div class="modal-content max-w-3xl overflow-y-auto">
-            <h2 class="text-3xl font-bold mb-4 text-black">n8n Automation Workflow</h2>
-            <p class="text-black mb-6 font-bold">This workflow processes client requests using AI agents to streamline backend operations.</p>
-            <img src="https://i.postimg.cc/Twn4vptj/n8n-automation-pic.png" alt="Workflow" class="rounded-lg mb-6 w-full shadow-md">
-            <img src="https://i.postimg.cc/hvg3DcYk/n8n-google-sheet.png" alt="Data" class="rounded-lg mb-8 w-full shadow-md">
-            <div class="text-center">
-                <a href="https://aansh-n8n.lovable.app/" target="_blank" class="inline-block bg-black text-white px-8 py-3 rounded-full font-bold">View Live Dashboard</a>
+    <!-- n8n Modal Content -->
+    <div id="n8n-modal" class="fixed inset-0 z-[100] bg-slate-950/95 backdrop-blur-md hidden items-center justify-center p-6">
+        <div class="bg-white dark:bg-brand-950 w-full max-w-5xl max-h-[90vh] overflow-y-auto rounded-[3rem] p-10 md:p-16 relative border border-white/10 shadow-2xl">
+            <button id="n8n-close" class="absolute top-8 right-8 text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <div class="space-y-12 text-black dark:text-white">
+                <div class="space-y-4 text-center">
+                    <h2 class="font-heading text-4xl font-extrabold tracking-tight">n8n Automation Workflow</h2>
+                    <p class="text-slate-500 text-lg">Detailed breakdown of the AI-integrated business automation system.</p>
+                </div>
+                <div class="grid gap-10">
+                    <div class="space-y-4">
+                        <p class="text-xs font-black uppercase tracking-widest text-brand-500">System Architecture</p>
+                        <img src="https://i.postimg.cc/Twn4vptj/n8n-automation-pic.png" alt="Workflow" class="rounded-[2rem] border border-slate-200 dark:border-white/5 w-full shadow-2xl">
+                    </div>
+                    <div class="space-y-4">
+                        <p class="text-xs font-black uppercase tracking-widest text-brand-500">Live Data Sync</p>
+                        <img src="https://i.postimg.cc/hvg3DcYk/n8n-google-sheet.png" alt="Data" class="rounded-[2rem] border border-slate-200 dark:border-white/5 w-full shadow-2xl">
+                    </div>
+                </div>
+                <div class="flex justify-center pt-8">
+                    <a href="https://aansh-n8n.lovable.app/" target="_blank" class="px-12 py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-950 rounded-[2rem] font-black text-lg shadow-xl hover:scale-105 transition-transform">Launch Live Dashboard</a>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme Logic
+            const themeToggle = document.getElementById('theme-toggle');
+            const toggleTheme = () => {
+                const isDark = document.documentElement.classList.toggle('dark');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            };
+            themeToggle.addEventListener('click', toggleTheme);
+            if (localStorage.theme === 'dark') document.documentElement.classList.add('dark');
 
+            // Scroll Header
             const header = document.getElementById('header');
             window.addEventListener('scroll', () => {
-                window.scrollY > 50 ? header.classList.add('header-scrolled') : header.classList.remove('header-scrolled');
+                if (window.scrollY > 80) {
+                    header.classList.add('glass', 'py-2', 'border-slate-200', 'dark:border-white/10');
+                    header.classList.remove('py-4', 'border-transparent');
+                } else {
+                    header.classList.remove('glass', 'py-2', 'border-slate-200', 'dark:border-white/10');
+                    header.classList.add('py-4', 'border-transparent');
+                }
             });
 
-            const themeToggle = document.getElementById('theme-toggle');
-            themeToggle.addEventListener('click', () => {
-                document.documentElement.classList.toggle('dark');
-                localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
-            });
-
+            // Intersection Observer for Reveal
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        const progressBars = entry.target.querySelectorAll('.progress-bar');
-                        progressBars.forEach(bar => bar.style.width = bar.dataset.width);
+                        const progress = entry.target.querySelectorAll('.progress-bar');
+                        progress.forEach(bar => {
+                            bar.style.width = bar.dataset.width;
+                        });
                     }
                 });
             }, { threshold: 0.1 });
 
-            document.querySelectorAll('.reveal').forEach((el, index) => {
-                let delay = 100;
-                if (el.classList.contains('project-card')) delay = (index % 3) * 100;
-                el.style.transitionDelay = `${delay}ms`;
-                observer.observe(el);
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+            // Custom Cursor
+            const cursor = document.getElementById('cursor');
+            window.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
             });
 
-            setTimeout(() => document.getElementById('header').classList.add('visible'), 300);
-            document.querySelectorAll('.hero-text-line').forEach((line, i) => {
-                setTimeout(() => line.classList.add('visible'), 300 + (i * 150));
+            document.querySelectorAll('a, button, .project-card, .cert-btn, .progress-container').forEach(el => {
+                el.addEventListener('mouseenter', () => cursor.classList.add('active'));
+                el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
             });
 
-            const cursorDot = document.querySelector('.cursor-dot');
-            const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-            if (!isTouch) {
-                window.addEventListener('mousemove', (e) => {
-                    cursorDot.style.left = `${e.clientX}px`;
-                    cursorDot.style.top = `${e.clientY}px`;
-                });
-                document.querySelectorAll('a, button, .project-card, .spotlight-card').forEach(el => {
-                    el.addEventListener('mouseenter', () => cursorDot.classList.add('hovered'));
-                    el.addEventListener('mouseleave', () => cursorDot.classList.remove('hovered'));
-                });
-            } else {
-                cursorDot.style.display = 'none';
-                document.body.style.cursor = 'auto';
-            }
-
-            const imgModal = document.getElementById('image-modal');
-            const n8nModal = document.getElementById('n8n-modal');
-            const modalImg = document.getElementById('modal-image');
-            
-            document.querySelectorAll('.view-image-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    const parent = btn.closest('[data-image-src]');
-                    if (parent) {
-                        modalImg.src = parent.dataset.imageSrc;
-                        imgModal.classList.add('visible');
-                    }
+            // Spotlight Effect
+            document.querySelectorAll('.spotlight-card').forEach(card => {
+                card.addEventListener('mousemove', e => {
+                    const rect = card.getBoundingClientRect();
+                    const x = ((e.clientX - rect.left) / card.clientWidth) * 100;
+                    const y = ((e.clientY - rect.top) / card.clientHeight) * 100;
+                    card.style.setProperty('--x', x + '%');
+                    card.style.setProperty('--y', y + '%');
                 });
             });
 
-            const n8nCard = document.getElementById('n8n-card');
-            if (n8nCard) n8nCard.addEventListener('click', () => n8nModal.classList.add('visible'));
-
-            const closeAll = () => {
-                imgModal.classList.remove('visible');
-                n8nModal.classList.remove('visible');
+            // Modals Logic
+            const modal = document.getElementById('modal');
+            const modalImg = document.getElementById('modal-img');
+            const openModal = (src) => {
+                modalImg.src = src;
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                setTimeout(() => {
+                    modal.classList.add('opacity-100');
+                    modalImg.classList.add('scale-100');
+                }, 10);
             };
-            document.querySelectorAll('.modal-close').forEach(b => b.addEventListener('click', closeAll));
-            document.querySelectorAll('.modal-overlay').forEach(m => m.addEventListener('click', (e) => e.target === m && closeAll()));
+            const closeModal = () => {
+                modal.classList.remove('opacity-100');
+                modalImg.classList.remove('scale-100');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    modal.classList.remove('flex');
+                }, 300);
+            };
+
+            document.querySelectorAll('.cert-btn').forEach(btn => {
+                btn.addEventListener('click', () => openModal(btn.dataset.cert));
+            });
+
+            document.querySelectorAll('.view-btn').forEach(btn => {
+                const parent = btn.closest('[data-img]');
+                if(parent) btn.addEventListener('click', () => openModal(parent.dataset.img));
+            });
+
+            document.getElementById('modal-close').addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => e.target === modal && closeModal());
+
+            // n8n Modal
+            const n8nTrigger = document.getElementById('n8n-trigger');
+            const n8nModal = document.getElementById('n8n-modal');
+            const n8nClose = document.getElementById('n8n-close');
+
+            n8nTrigger.addEventListener('click', () => {
+                n8nModal.classList.remove('hidden');
+                n8nModal.classList.add('flex');
+            });
+            n8nClose.addEventListener('click', () => {
+                n8nModal.classList.add('hidden');
+                n8nModal.classList.remove('flex');
+            });
+
+            // Mobile Menu
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            const closeMenu = document.getElementById('close-menu');
+
+            menuBtn.addEventListener('click', () => menu.classList.remove('hidden'));
+            closeMenu.addEventListener('click', () => menu.classList.add('hidden'));
+            document.querySelectorAll('.mobile-link').forEach(link => {
+                link.addEventListener('click', () => menu.classList.add('hidden'));
+            });
         });
     </script>
 </body>
