@@ -3,34 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio of Aansh Gupta, a teen AI enthusiast and developer exploring automation and building projects.">
-    <meta name="keywords" content="Aansh Gupta, AI, Artificial Intelligence, Portfolio, n8n, Automation, Developer, Figma">
-    <title>Aansh Gupta - Teen on Project Hunting</title>
+    <meta name="description" content="Portfolio of Aansh Gupta, an 18-year-old developer and strategic thinker focused on AI, automation, and personal mastery.">
+    <meta name="keywords" content="Aansh Gupta, AI, Artificial Intelligence, Portfolio, n8n, Automation, Developer, Strategy, Leadership, Communicator">
+    <title>Aansh Gupta - Striving for Mastery</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script>
-        // Set theme on initial load - now defaults to light mode
+        // Set theme on initial load - defaults to light mode
         if (localStorage.getItem('theme') === 'dark') {
             document.documentElement.classList.add('dark');
         } else {
             document.documentElement.classList.remove('dark');
         }
+
+        // Image fallback helper - creates a clean professional placeholder
+        function handleImgError(image, title) {
+            image.onerror = null;
+            const text = encodeURIComponent(title || 'Certificate');
+            image.src = `https://placehold.co/800x600/1a1a1a/ffffff/png?text=${text}+Preview\n(Link+Expired)`;
+            image.classList.add('opacity-80');
+        }
     </script>
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #ffffff; /* Changed to white */
+            background-color: #ffffff;
             color: #0a0a0a;
-            cursor: none; /* Hide default cursor */
+            cursor: none;
         }
-        /* Dark Mode styles */
         .dark body {
             background-color: #0a0a0a;
             color: #f0f0f0;
         }
+        
+        /* High Contrast Text Rules */
+        .readable-p {
+            color: #000000 !important;
+        }
+        .dark .readable-p {
+            color: #ffffff !important;
+        }
+
         .dark .header-scrolled {
             background-color: rgba(10, 10, 10, 0.7);
             border-bottom-color: rgba(255, 255, 255, 0.1);
@@ -41,66 +57,44 @@
         .dark header nav a:hover, .dark #mobile-menu a:hover, .dark footer a:hover {
             color: #ffffff;
         }
-        /* Removed dark mode ::after rule */
         .dark ::-webkit-scrollbar-track { background: #0a0a0a; }
         .dark ::-webkit-scrollbar-thumb { background: #333; }
-        .dark ::-webkit-scrollbar-thumb:hover { background: #555; }
         .dark .hero-title { color: #f0f0f0; }
-        .dark .text-gray-600 { color: #a0a0a0; }
-        .dark .text-gray-700 { color: #d0d0d0; }
-        .dark #work { background-color: transparent; } /* Use body bg */
+        
         .dark .projects-container {
-             background-color: rgba(20, 20, 20, 0.3); /* Darker container bg */
-             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75); /* Heavier dark shadow */
+             background-color: rgba(20, 20, 20, 0.3);
+             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75);
         }
         .dark .project-card {
             background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5); /* Enhanced dark mode shadow */
-            border: 1px solid rgba(255, 255, 255, 0.15); /* Subtle dark mode border */
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
         .dark .project-card:hover {
-            box-shadow: 0 20px 40px rgba(0,0,0,0.7); /* Enhanced dark mode hover shadow */
+            box-shadow: 0 20px 40px rgba(0,0,0,0.7);
         }
-        .dark .project-card img { filter: brightness(0.9); }
         .dark .project-info {
-            background: rgba(30, 30, 30, 0.6); /* Slightly darker glass */
+            background: rgba(30, 30, 30, 0.8);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .dark .project-info .text-gray-600 { color: #a0a0a0; }
-        .dark .project-info .text-black { color: #f0f0f0; }
-        .dark .project-info .text-gray-300 { color: #d1d5db; }
-        .dark .base-text { color: #555; } /* Darker base text in dark mode */
+        .dark .base-text { color: #555; }
         .dark .text-sharp { color: #e0e0e0; }
         .dark #contact { background-color: #0a0a0a; }
-        .dark footer { border-top-color: rgba(255, 255, 255, 0.1); }
-        .dark .text-gray-500 { color: #888; }
-        .dark .modal-content {
-            background-color: rgba(26, 26, 26, 0.7);
-            backdrop-filter: blur(32px);
-            -webkit-backdrop-filter: blur(32px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
+        
         .dark .spotlight-card {
             background-color: rgba(26, 26, 26, 0.5);
             border-color: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.4); /* Enhanced dark shadow */
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
         }
-         .dark .spotlight-card:hover {
-            box-shadow: 0 25px 50px rgba(0,0,0,0.6); /* Enhanced dark hover shadow */
-        }
-        .dark .cursor-dot { background-color: #ffffff; } /* White cursor in dark mode */
+        .dark .cursor-dot { background-color: #ffffff; }
 
-        /* Header style on scroll */
         .header-scrolled {
-            background-color: rgba(255, 255, 255, 0.7); /* Adjusted for white bg */
+            background-color: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
-        /* Menu bar hover animation - REMOVED */
-
-        /* Animation classes */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -121,55 +115,50 @@
         }
         .hero-text-line.visible { opacity: 1; transform: translateY(0); }
 
-        /* Custom scrollbar */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #f0f0f0; }
         ::-webkit-scrollbar-thumb { background: #c0c0c0; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #a0a0a0; }
 
-        /* Projects container */
         .projects-container {
-            background-color: rgba(245, 245, 245, 0.6); /* Slightly off-white */
-            padding: 2.5rem; /* Add padding */
-            border-radius: 1rem; /* Rounded corners */
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); /* Heavy shadow */
+            background-color: rgba(245, 245, 245, 0.6);
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
             backdrop-filter: blur(10px);
-             -webkit-backdrop-filter: blur(10px);
-             border: 1px solid rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.05);
         }
 
-        /* Project card */
         .project-card {
-            background: linear-gradient(135deg, #f8f8f8, #ffffff); /* Brighter light gradient */
+            background: linear-gradient(135deg, #f8f8f8, #ffffff);
             transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease-out, border 0.4s ease-out;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15); /* Enhanced shadow */
-            min-height: 350px; /* Ensure consistent height */
-            position: relative; /* Needed for absolute positioning of overlay */
-            overflow: hidden; /* Hide overlay initially */
-            display: flex; /* Use flexbox for centering */
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            min-height: 350px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 0.5rem; /* Ensure rounded corners */
-            border: 1px solid rgba(0,0,0,0.08); /* Subtle border for definition */
+            border-radius: 0.5rem;
+            border: 1px solid rgba(0,0,0,0.08);
         }
         .project-card:hover {
-            box-shadow: 0 25px 50px rgba(0,0,0,0.2); /* Enhanced hover shadow */
-            transform: translateY(-8px); /* Slightly more lift */
-            border-color: rgba(0,0,0,0.15); /* Slightly darker border on hover */
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            transform: translateY(-8px);
+            border-color: rgba(0,0,0,0.15);
         }
         .project-info {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            height: 100%; /* Cover full height initially */
-            transform: translateY(100%); /* Start hidden below */
+            height: 100%;
+            transform: translateY(100%);
             opacity: 0;
-            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother transition */
-            background: rgba(255, 255, 255, 0.7); /* Lighter glass */
+            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-top: 1px solid rgba(0, 0, 0, 0.08); /* Consistent border */
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
             padding: 1.5rem;
             display: flex;
             flex-direction: column;
@@ -178,11 +167,10 @@
             text-align: center;
         }
         .project-card:hover .project-info {
-            transform: translateY(0); /* Slide up */
+            transform: translateY(0);
             opacity: 1;
         }
 
-        /* High-Contrast Custom cursor */
         .cursor-dot {
             position: fixed;
             top: 0;
@@ -191,13 +179,13 @@
             border-radius: 50%;
             pointer-events: none;
             z-index: 10001;
-            width: 8px; /* Smaller solid dot */
+            width: 8px;
             height: 8px;
-            background-color: #0a0a0a; /* Default black */
+            background-color: #0a0a0a;
             transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.2s ease-out;
         }
         .cursor-dot.hovered {
-            transform: translate(-50%, -50%) scale(3); /* Scale up significantly */
+            transform: translate(-50%, -50%) scale(3);
             opacity: 0.5;
         }
 
@@ -205,16 +193,13 @@
             font-size: clamp(2.5rem, 10vw, 8rem); line-height: 1; font-weight: 800; letter-spacing: -0.05em; overflow: hidden;
         }
 
-        /* Progress Bars */
         .progress-bar-container {
             width: 100%;
             background-color: #e0e0e0;
             border-radius: 9999px;
             overflow: hidden;
         }
-        .dark .progress-bar-container {
-            background-color: #333;
-        }
+        .dark .progress-bar-container { background-color: #333; }
         .progress-bar {
             height: 8px;
             background-color: #0a0a0a;
@@ -222,41 +207,31 @@
             border-radius: 9999px;
             transition: width 1.5s cubic-bezier(0.25, 1, 0.5, 1);
         }
-        .dark .progress-bar {
-            background-color: #f0f0f0;
-        }
+        .dark .progress-bar { background-color: #f0f0f0; }
 
-        /* Modal Styles */
         .modal-overlay {
-            position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.85); display: flex; justify-content: center; align-items: center; z-index: 10000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.9); display: flex; justify-content: center; align-items: center; z-index: 10000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
         }
         .modal-overlay.visible { opacity: 1; pointer-events: auto; }
         .modal-content {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(32px);
-            -webkit-backdrop-filter: blur(32px);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            padding: 2rem;
-            border-radius: 1rem;
+            background: #fff;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
             max-width: 90vw;
             max-height: 90vh;
-            overflow-y: auto;
+            object-fit: contain;
             transform: scale(0.9);
             transition: transform 0.3s ease;
         }
         .modal-overlay.visible .modal-content { transform: scale(1); }
-        .modal-close { position: absolute; top: 20px; right: 20px; font-size: 2rem; color: white; cursor: pointer; }
+        .modal-close { position: absolute; top: 20px; right: 20px; font-size: 2.5rem; color: white; cursor: pointer; z-index: 10001; }
 
-        /* Project Text Effects */
         .text-container { position: relative; display: grid; place-items: center; user-select: none; transition: opacity 0.4s ease-out; }
-        .base-text { grid-area: 1 / 1; font-size: clamp(3.5rem, 15vw, 6rem); font-weight: 900; line-height: 1; text-align: center; color: #aaa; } /* Lighter base text */
+        .base-text { grid-area: 1 / 1; font-size: clamp(3.5rem, 15vw, 6rem); font-weight: 900; line-height: 1; text-align: center; color: #aaa; }
         .vibe-text { font-size: clamp(3rem, 12vw, 4.5rem); }
-        .brand-text { font-size: clamp(2.5rem, 10vw, 3.5rem); } /* Made slightly smaller for "Brand Identity Builder" */
-        .img-tool-text { font-size: clamp(3rem, 12vw, 4.5rem); } /* Adjusted size */
-        .text-sharp { color: #555; } /* Darker sharp text */
-        .project-card:hover .text-container { opacity: 0; } /* Hide text container on hover */
+        .text-sharp { color: #555; }
+        .project-card:hover .text-container { opacity: 0; }
 
-        /* Scroll Indicator */
         .scroll-indicator {
             position: absolute;
             bottom: 2rem;
@@ -266,7 +241,6 @@
         }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); } 40% { transform: translate(-50%, -20px); } 60% { transform: translate(-50%, -10px); } }
 
-        /* Tech Stack Badges */
         .tech-badge {
             background-color: rgba(0,0,0,0.05);
             color: #333;
@@ -280,7 +254,6 @@
              color: #ccc;
         }
 
-        /* Beautified Buttons */
         .beautify-btn {
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease-in-out;
@@ -290,65 +263,64 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
 
-        /* Spotlight Card */
         .spotlight-card {
-            background-color: rgba(255, 255, 255, 0.7); /* Slightly less transparent */
+            background-color: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(0, 0, 0, 0.08); /* Match project card border */
+            border: 1px solid rgba(0, 0, 0, 0.08);
             border-radius: 1rem;
             padding: 2rem;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1); /* Enhanced shadow */
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
             transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
         }
         .spotlight-card:hover {
-            transform: translateY(-8px); /* Match project card lift */
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15); /* Enhanced hover shadow */
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
         }
     </style>
 </head>
 <body class="overflow-x-hidden">
 
-    <!-- Custom Cursor --><div class="cursor-dot"></div>
+    <div class="cursor-dot"></div>
 
-    <!-- Header & Navigation --><header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 reveal">
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 reveal">
         <div class="container mx-auto px-4 sm:px-6 py-5 flex justify-between items-center">
             <a href="#" class="text-xl font-bold tracking-wider">AANSH GUPTA</a>
             <div class="flex items-center space-x-8">
                 <nav class="hidden md:flex items-center space-x-8">
-                    <a href="#about" class="text-gray-700 hover:text-black transition duration-300">About</a>
-                    <a href="#work" class="text-gray-700 hover:text-black transition duration-300">Work</a>
-                    <a href="#contact" class="text-gray-700 hover:text-black transition duration-300">Contact</a>
+                    <a href="#about" class="text-gray-700 hover:text-black transition duration-300 font-medium">About</a>
+                    <a href="#work" class="text-gray-700 hover:text-black transition duration-300 font-medium">Work</a>
+                    <a href="#education" class="text-gray-700 hover:text-black transition duration-300 font-medium">Learning</a>
+                    <a href="#contact" class="text-gray-700 hover:text-black transition duration-300 font-medium">Contact</a>
                 </nav>
-                 <!-- Dark Mode Toggle --><button id="theme-toggle" class="w-10 h-10 rounded-full flex items-center justify-center text-gray-700 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-800 transition-colors">
+                <button id="theme-toggle" class="w-10 h-10 rounded-full flex items-center justify-center text-gray-700 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-800 transition-colors">
                     <svg id="theme-icon-light" class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm-.707 10.607a1 1 0 010-1.414l.707-.707a1 1 0 111.414 1.414l-.707.707a1 1 0 01-1.414 0zM3 11a1 1 0 100-2H2a1 1 0 100 2h1z"></path></svg>
                     <svg id="theme-icon-dark" class="w-5 h-5 block dark:hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
                 </button>
             </div>
-
-            <!-- Mobile Menu Button --><button id="mobile-menu-btn" class="md:hidden text-black dark:text-white focus:outline-none">
+            <button id="mobile-menu-btn" class="md:hidden text-black dark:text-white focus:outline-none">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
         </div>
-        <!-- Mobile Menu --><div id="mobile-menu" class="hidden md:hidden bg-white/90 dark:bg-black/90 backdrop-blur-lg">
+        <div id="mobile-menu" class="hidden md:hidden bg-white/90 dark:bg-black/90 backdrop-blur-lg">
             <a href="#about" class="block py-3 px-6">About</a>
             <a href="#work" class="block py-3 px-6">Work</a>
+            <a href="#education" class="block py-3 px-6">Learning</a>
             <a href="#contact" class="block py-3 px-6">Contact</a>
             <a href="mailto:aanshg2007@gmail.com" class="block py-3 px-6">Email Me</a>
         </div>
     </header>
 
     <main>
-        <!-- Hero Section --><section id="hero" class="relative min-h-screen pt-32 pb-16 sm:pt-40 sm:pb-20 flex flex-col justify-center text-center">
+        <!-- Hero Section -->
+        <section id="hero" class="relative min-h-screen pt-32 pb-16 sm:pt-40 sm:pb-20 flex flex-col justify-center text-center">
             <div class="container mx-auto px-4 sm:px-6">
                 <div class="max-w-5xl mx-auto">
                     <h1 class="hero-title">
-                        <span class="hero-text-line">TEEN ON</span>
-                        <span class="hero-text-line">PROJECT</span>
-                        <span class="hero-text-line">HUNTING</span>
+                        <span class="hero-text-line">STRIVING FOR</span>
+                        <span class="hero-text-line">MASTERY</span>
                     </h1>
-                    <p class="mt-6 text-lg md:text-xl text-gray-600 reveal">
-                        AI Enthusiast | Automation Developer | Vibe Coder
+                    <p class="mt-6 text-lg md:text-xl text-gray-600 reveal font-medium">
+                        AI Enthusiast | Automation Developer | Strategic Leader | Fluent Communicator
                     </p>
                 </div>
             </div>
@@ -357,56 +329,61 @@
             </div>
         </section>
 
-        <!-- About Section --><section id="about" class="py-16 sm:py-20 md:py-32">
+        <!-- About Section -->
+        <section id="about" class="py-16 sm:py-20 md:py-32">
             <div class="container mx-auto px-4 sm:px-6">
                 <div class="grid md:grid-cols-2 gap-8 md:gap-16">
                     <div class="reveal">
-                        <h2 class="text-3xl md:text-5xl font-bold mb-6">About Me</h2>
-                        <p class="text-gray-700 mb-8 leading-relaxed text-lg">
-                            I'm a 17-year-old student with a deep passion for Artificial Intelligence and its potential to solve real-world problems. From my first experiments with machine learning models, I've been captivated by the power of data and algorithms to create intelligent systems.
+                        <h2 class="text-3xl md:text-5xl font-bold mb-6">Who I Am</h2>
+                        <p class="readable-p mb-8 leading-relaxed text-lg font-bold">
+                            I am Aansh Gupta, an 18-year-old on a mission to build a high-performance life. I don't just see myself as a coder; I'm a strategic thinker who values leadership and the power of clear, impactful communication. My journey is about blending technical expertise with the human elements of strategy and discipline.
                         </p>
-                        <h2 class="text-3xl md:text-5xl font-bold mb-6">Goal</h2>
-                        <p class="text-gray-700 leading-relaxed text-lg">
-                            My goal is to continue learning and growing in the field of AI, with a focus on developing projects that are not only technically challenging but also impactful. I'm always looking for new opportunities to learn and collaborate with others who share my curiosity.
+                        <h2 class="text-3xl md:text-5xl font-bold mb-6">The Goal</h2>
+                        <p class="readable-p leading-relaxed text-lg font-bold">
+                            My focus is total mastery. This means reaching the edge of what's possible in AI and automation, but also becoming a top-tier communicator and a strategic leader. I spend my time reading deeply, refining my fluency, and building systems that solve problems. I believe true mastery requires both a sharp mind and a disciplined lifestyle.
                         </p>
                     </div>
                     <div class="reveal">
-                        <h3 class="text-3xl md:text-4xl font-semibold mb-8">Core Skills</h3>
+                        <h3 class="text-3xl md:text-4xl font-semibold mb-8">Personal Arsenal</h3>
                         <div class="space-y-6">
-                             <!-- Skill 1: Prompt Engineering --><div>
+                            <!-- AI & Automation -->
+                            <div>
                                 <div class="flex justify-between mb-1">
-                                    <span class="font-medium">Prompt Engineering</span>
-                                    <span class="text-sm font-medium">60%</span>
+                                    <span class="font-bold">AI & Automation</span>
+                                    <span class="text-sm font-bold">60%</span>
                                 </div>
                                 <div class="progress-bar-container">
                                     <div class="progress-bar" data-width="60%"></div>
                                 </div>
                             </div>
-                             <!-- Skill 2: n8n --><div>
+                            <!-- Communication & Fluency -->
+                            <div>
                                 <div class="flex justify-between mb-1">
-                                    <span class="font-medium">n8n</span>
-                                    <span class="text-sm font-medium">55%</span>
+                                    <span class="font-bold">Communication & Fluency</span>
+                                    <span class="text-sm font-bold">75%</span>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar" data-width="75%"></div>
+                                </div>
+                            </div>
+                            <!-- Strategy & Leadership -->
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-bold">Strategy & Leadership</span>
+                                    <span class="text-sm font-bold">55%</span>
                                 </div>
                                 <div class="progress-bar-container">
                                     <div class="progress-bar" data-width="55%"></div>
                                 </div>
                             </div>
-                             <!-- Skill 3: Automation --><div>
+                            <!-- Curiosity & Reading -->
+                            <div>
                                 <div class="flex justify-between mb-1">
-                                    <span class="font-medium">Automation</span>
-                                    <span class="text-sm font-medium">50%</span>
+                                    <span class="font-bold">Knowledge Accumulation (Reading)</span>
+                                    <span class="text-sm font-bold">85%</span>
                                 </div>
                                 <div class="progress-bar-container">
-                                    <div class="progress-bar" data-width="50%"></div>
-                                </div>
-                            </div>
-                             <!-- Skill 4: Figma --><div>
-                                <div class="flex justify-between mb-1">
-                                    <span class="font-medium">Figma</span>
-                                    <span class="text-sm font-medium">45%</span>
-                                </div>
-                                <div class="progress-bar-container">
-                                    <div class="progress-bar" data-width="45%"></div>
+                                    <div class="progress-bar" data-width="85%"></div>
                                 </div>
                             </div>
                         </div>
@@ -415,74 +392,52 @@
             </div>
         </section>
 
-        <!-- Projects Section --><section id="work" class="py-16 sm:py-20 md:py-32">
+        <!-- Projects Section -->
+        <section id="work" class="py-16 sm:py-20 md:py-32">
             <div class="container mx-auto px-4 sm:px-6">
                 <h2 class="text-3xl md:text-5xl font-bold mb-12 text-center reveal">Featured Work</h2>
                 <div class="projects-container reveal">
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
-                        <!-- Project Card 1 --><div class="project-card reveal group rounded-lg">
+                        <!-- Vibe Coding -->
+                        <div class="project-card reveal group rounded-lg">
                             <div class="text-container">
                                 <span class="base-text vibe-text text-sharp">Vibe<br>Coding</span>
                             </div>
                             <div class="project-info">
-                                <h3 class="text-2xl font-bold mb-2 project-title">Vibe Coding</h3>
-                                <p class="text-gray-700 dark:text-gray-300 mb-4 project-description">This very site was built through continuous prompts in Gemini, refined bit by bit.</p>
+                                <h3 class="text-2xl font-bold mb-2 project-title readable-p text-center">Vibe Coding</h3>
+                                <p class="readable-p mb-4 project-description font-bold text-center text-sm">This very site is a product of "Vibe Coding"—leveraging conversational AI, precise prompt engineering, and iterative refinements for every single line of code.</p>
                                 <div class="flex flex-wrap gap-2 justify-center mb-4">
-                                    <span class="tech-badge">Gemini AI</span><span class="tech-badge">HTML/CSS</span>
+                                    <span class="tech-badge">Gemini AI</span><span class="tech-badge">Prompting</span><span class="tech-badge">HTML/CSS</span>
                                 </div>
-                                <span class="text-black dark:text-white font-semibold">You're looking at it!</span>
+                                <span class="readable-p font-bold">A living example!</span>
                             </div>
                         </div>
-                        <!-- Project Card 2 --><div class="project-card reveal group rounded-lg" data-image-src="https://i.postimg.cc/TPb53Qgw/figma-prototype.png">
+                        <!-- Figma Prototype -->
+                        <div class="project-card reveal group rounded-lg" data-image-src="https://i.ibb.co/qM9fPvGr/Google-certificate.jpg">
                             <div class="text-container">
-                            <span class="base-text text-sharp">Figma</span>
+                                <span class="base-text text-sharp">Figma</span>
                             </div>
                             <div class="project-info">
-                                <h3 class="text-2xl font-bold mb-2 project-title">Fintech App Prototype</h3>
-                                <p class="text-gray-700 dark:text-gray-300 mb-4 project-description">A high-fidelity prototype for a fintech app, designed entirely in Figma.</p>
+                                <h3 class="text-2xl font-bold mb-2 project-title readable-p text-center">Fintech App Prototype</h3>
+                                <p class="readable-p mb-4 project-description font-bold text-center text-sm">A high-fidelity prototype for a fintech app, designed entirely in Figma to explore modern UX patterns.</p>
                                 <div class="flex flex-wrap gap-2 justify-center mb-4">
                                     <span class="tech-badge">Figma</span><span class="tech-badge">UI/UX Design</span>
                                 </div>
-                                <button class="view-image-btn text-black dark:text-white font-semibold hover:underline">Click to Reveal</button>
+                                <button class="view-image-btn beautify-btn px-6 py-2 bg-black text-white dark:bg-white dark:text-black rounded-full font-bold text-xs">View Prototype</button>
                             </div>
                         </div>
-                        <!-- Project Card 3 --><div id="n8n-card" class="project-card reveal group rounded-lg">
+                        <!-- n8n Automation -->
+                        <div id="n8n-card" class="project-card reveal group rounded-lg">
                             <div class="text-container">
                                 <span class="base-text text-sharp">n8n</span>
                             </div>
                             <div class="project-info">
-                                <h3 class="text-2xl font-bold mb-2 project-title">AI Automation</h3>
-                                <p class="text-gray-700 dark:text-gray-300 mb-4 project-description">An automated workflow to manage client data using an AI Agent.</p>
+                                <h3 class="text-2xl font-bold mb-2 project-title readable-p text-center">AI Automation</h3>
+                                <p class="readable-p mb-4 project-description font-bold text-center text-sm">An automated workflow to manage client data using an AI Agent integrated with Google Sheets.</p>
                                 <div class="flex flex-wrap gap-2 justify-center mb-4">
-                                    <span class="tech-badge">n8n</span><span class="tech-badge">Gemini AI</span><span class="tech-badge">Google Sheets</span>
+                                    <span class="tech-badge">n8n</span><span class="tech-badge">Gemini AI</span><span class="tech-badge">Automations</span>
                                 </div>
-                                <button class="view-case-study-btn text-black dark:text-white font-semibold hover:underline">View Case Study</button>
-                            </div>
-                        </div>
-                        <!-- Project Card 4 --><div class="project-card reveal group rounded-lg">
-                            <div class="text-container">
-                                <span class="base-text img-tool-text text-sharp">Image<br>Tool</span>
-                            </div>
-                            <div class="project-info">
-                                <h3 class="text-2xl font-bold mb-2 project-title">Image Tool</h3>
-                                <p class="text-gray-700 dark:text-gray-300 mb-4 project-description">An AI-powered tool for generating and editing images.</p>
-                                <div class="flex flex-wrap gap-2 justify-center mb-4">
-                                    <span class="tech-badge">AI</span><span class="tech-badge">Image Generation</span>
-                                </div>
-                                <a href="#" class="text-black dark:text-white font-semibold hover:underline">View Project (WIP)</a>
-                            </div>
-                        </div>
-                        <!-- Project Card 5 --><div class="project-card reveal group rounded-lg">
-                            <div class="text-container">
-                                <span class="base-text brand-text text-sharp">Brand Identity<br>Builder</span>
-                            </div>
-                            <div class="project-info">
-                                <h3 class="text-2xl font-bold mb-2 project-title">Brand Identity Builder</h3>
-                                <p class="text-gray-700 dark:text-gray-300 mb-4 project-description">Generates logos, color palettes, and typography based on brand keywords.</p>
-                                <div class="flex flex-wrap gap-2 justify-center mb-4">
-                                <span class="tech-badge">AI</span><span class="tech-badge">Design</span><span class="tech-badge">Figma</span>
-                                </div>
-                                <a href="#" class="text-black dark:text-white font-semibold hover:underline">View Project (WIP)</a>
+                                <button class="view-case-study-btn beautify-btn px-6 py-2 bg-black text-white dark:bg-white dark:text-black rounded-full font-bold text-xs">View Case Study</button>
                             </div>
                         </div>
                     </div>
@@ -490,211 +445,152 @@
             </div>
         </section>
 
-        <!-- Project Details Section --><section id="project-details" class="py-16 sm:py-20 md:py-32">
+        <!-- Education & Certificates Section -->
+        <section id="education" class="py-16 sm:py-20 md:py-32">
             <div class="container mx-auto px-4 sm:px-6">
-                <h2 class="text-3xl md:text-5xl font-bold mb-12 text-center reveal">Project Spotlight</h2>
-                <div class="space-y-16">
-                    <!-- Detail 1: Vibe Coding --><div class="spotlight-card reveal">
-                        <div class="grid md:grid-cols-3 gap-8 items-center">
-                            <h3 class="text-2xl md:text-3xl font-bold md:col-span-1">Vibe Coding</h3>
-                            <p class="md:col-span-2 text-gray-700 leading-relaxed text-lg">
-                                This portfolio is a testament to the power of iterative development with AI. Built entirely through a conversational process with Google's Gemini, every element, from the layout and animations to the color scheme, was refined bit by bit based on continuous prompts and feedback.
-                            </p>
+                <h2 class="text-3xl md:text-5xl font-bold mb-12 text-center reveal">Academic & Certifications</h2>
+                <div class="space-y-12">
+                    <!-- Academic Performance Card -->
+                    <div class="spotlight-card reveal">
+                        <h3 class="text-2xl md:text-3xl font-bold mb-6 text-center">Academic Performance</h3>
+                        <div class="grid md:grid-cols-3 gap-8">
+                            <div class="p-6 rounded-xl border border-gray-100 dark:border-white/10 bg-gray-50/50 dark:bg-white/5 text-center">
+                                <h4 class="font-bold text-lg mb-2">ICSE (10th)</h4>
+                                <p class="readable-p font-bold text-xl mb-1">85%</p>
+                                <p class="readable-p text-sm opacity-70">Janki Devi Public School, Mumbai</p>
+                            </div>
+                            <div class="p-6 rounded-xl border border-gray-100 dark:border-white/10 bg-gray-50/50 dark:bg-white/5 text-center">
+                                <h4 class="font-bold text-lg mb-2">HSC (12th)</h4>
+                                <p class="readable-p font-bold text-xl mb-1">70%</p>
+                                <p class="readable-p text-sm opacity-70">Hill Spring International Junior College</p>
+                            </div>
+                            <div class="p-6 rounded-xl border border-gray-100 dark:border-white/10 bg-gray-50/50 dark:bg-white/5 text-center">
+                                <h4 class="font-bold text-lg mb-2">Current Pursuit</h4>
+                                <p class="readable-p font-bold text-xl mb-1">BMS</p>
+                                <p class="readable-p text-sm opacity-70">K.P.B. Hinduja College of Commerce</p>
+                            </div>
+                        </div>
+                        <div class="mt-8 p-6 rounded-xl border border-black/10 bg-black/5 dark:bg-white/10 text-center">
+                             <h4 class="font-bold text-xl mb-2">National Entrance Achievement</h4>
+                             <p class="readable-p text-2xl font-black mb-1">97.6 Percentile (MAH-CET)</p>
+                             <p class="readable-p font-bold text-sm">Rank: All India ~1500</p>
                         </div>
                     </div>
-                    <!-- Detail 2: Figma Prototype --><div class="spotlight-card reveal">
-                        <div class="grid md:grid-cols-3 gap-8 items-center">
-                            <h3 class="text-2xl md:text-3xl font-bold md:col-span-1">Figma Prototype</h3>
-                            <p class="md:col-span-2 text-gray-700 leading-relaxed text-lg">
-                                A comprehensive, high-fidelity prototype for a modern fintech application. This project involved designing the entire user interface and user experience from the ground up in Figma, focusing on intuitive navigation and a clean, modern aesthetic.
-                            </p>
+
+                    <!-- Certification Cards -->
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="spotlight-card reveal" data-image-src="https://i.ibb.co/qFmnYbJB/Google-certificate.png">
+                            <h3 class="text-xl font-bold mb-4">Google Digital Unlocked</h3>
+                            <p class="readable-p leading-relaxed mb-6 font-bold">Fundamentals of Digital Marketing certification exam completed via Google & IAB Europe.</p>
+                            <div class="flex flex-col items-center">
+                                <img src="https://i.ibb.co/qFmnYbJB/Google-certificate.png" onerror="handleImgError(this, 'Google Certificate')" alt="Google Cert" class="rounded-lg shadow-md w-full max-w-sm mb-4 cursor-pointer view-image-btn transition-transform hover:scale-105">
+                                <button class="view-image-btn beautify-btn px-6 py-2 bg-black text-white dark:bg-white dark:text-black rounded-full font-bold text-sm">View Certificate</button>
+                            </div>
                         </div>
-                    </div>
-                    <!-- Detail 3: n8n Automation --><div class="spotlight-card reveal">
-                         <div class="grid md:grid-cols-3 gap-8 items-center">
-                            <h3 class="text-2xl md:text-3xl font-bold md:col-span-1">n8n Automation</h3>
-                            <p class="md:col-span-2 text-gray-700 leading-relaxed text-lg">
-                                This project showcases an intelligent automation workflow designed to streamline client data management. It utilizes an n8n canvas where an AI Agent, powered by the Gemini Model, processes incoming chat messages and automatically updates or retrieves corresponding information from a Google Sheet.
-                            </p>
-                        </div>
-                    </div>
-                    <!-- Detail 4: Image Tool --><div class="spotlight-card reveal">
-                        <div class="grid md:grid-cols-3 gap-8 items-center">
-                            <h3 class="text-2xl md:text-3xl font-bold md:col-span-1">Image Tool</h3>
-                            <p class="md:col-span-2 text-gray-700 leading-relaxed text-lg">
-                                An AI-powered application designed for generating unique images from text prompts and performing intuitive image editing tasks. Explores the creative potential of generative AI models.
-                            </p>
-                        </div>
-                    </div>
-                     <!-- Detail 5: Brand ID Builder --><div class="spotlight-card reveal">
-                        <div class="grid md:grid-cols-3 gap-8 items-center">
-                            <h3 class="text-2xl md:text-3xl font-bold md:col-span-1">Brand Identity Builder</h3>
-                            <p class="md:col-span-2 text-gray-700 leading-relaxed text-lg">
-                                Utilizes AI to generate cohesive brand identity elements. Based on user-provided keywords and preferences, it suggests logos, color palettes, and typography pairings, streamlining the initial branding process.
-                            </p>
+                        <div class="spotlight-card reveal" data-image-src="https://i.ibb.co/m5yRKRx8/Aansh-Gupta-Generative-AI-Tools.png">
+                            <h3 class="text-xl font-bold mb-4">Generative AI Tools</h3>
+                            <p class="readable-p leading-relaxed mb-6 font-bold">Mastery of practical AI applications, prompt engineering, and modern generative workflows.</p>
+                            <div class="flex flex-col items-center">
+                                <img src="https://i.ibb.co/m5yRKRx8/Aansh-Gupta-Generative-AI-Tools.png" onerror="handleImgError(this, 'AI Tools Certificate')" alt="AI Tools Cert" class="rounded-lg shadow-md w-full max-w-sm mb-4 cursor-pointer view-image-btn transition-transform hover:scale-105">
+                                <button class="view-image-btn beautify-btn px-6 py-2 bg-black text-white dark:bg-white dark:text-black rounded-full font-bold text-sm">View Certificate</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-
-        <!-- Contact Section --><section id="contact" class="py-16 sm:py-20 md:py-32">
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 sm:py-20 md:py-32">
             <div class="container mx-auto px-4 sm:px-6 text-center">
-                <h2 class="text-3xl md:text-5xl font-bold mb-4 reveal">Let's Connect</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto mb-10 reveal text-lg">
-                    Have a project in mind or just want to say hi? I'm currently open to new opportunities and collaborations.
+                <h2 class="text-3xl md:text-5xl font-bold mb-4 reveal">Connect with Me</h2>
+                <p class="readable-p max-w-2xl mx-auto mb-10 reveal text-lg font-bold">
+                    Whether it's strategy, AI, or discussing personal mastery, I'm always open to meaningful dialogue.
                 </p>
                 <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="mailto:aanshg2007@gmail.com" class="beautify-btn inline-block bg-black text-white dark:bg-white dark:text-black font-semibold text-lg px-8 py-3 sm:px-12 sm:py-4 rounded-full">
-                        Get In Touch
+                    <a href="mailto:aanshg2007@gmail.com" class="beautify-btn inline-block bg-black text-white dark:bg-white dark:text-black font-bold text-lg px-8 py-3 sm:px-12 sm:py-4 rounded-full">
+                        Send an Email
                     </a>
-                     <a href="#" class="beautify-btn inline-block bg-transparent border border-black/20 dark:border-white/20 font-semibold text-lg px-8 py-3 sm:px-12 sm:py-4 rounded-full">
-                        Download Resume
+                    <a href="#" class="beautify-btn inline-block bg-transparent border border-black/20 dark:border-white/20 font-bold text-lg px-8 py-3 sm:px-12 sm:py-4 rounded-full">
+                        Download My Resume
                     </a>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer --><footer class="border-t border-black/10 py-8">
+    <footer class="border-t border-black/10 dark:border-white/10 py-8">
         <div class="container mx-auto px-4 sm:px-6 text-center text-gray-500">
-             <p class="text-sm mb-2">Note: Site currently in Beta and optimized for desktop viewing.</p>
-            <p>&copy; 2025 Aansh Gupta. All Rights Reserved.</p>
+             <p class="text-sm mb-2 font-medium uppercase tracking-widest">Aansh Gupta Portfolio | Version 2.9 (The Mastery Era)</p>
+            <p class="font-bold">&copy; 2026 Aansh Gupta. All Rights Reserved.</p>
         </div>
     </footer>
 
-    <!-- Image Modal --><div id="image-modal" class="modal-overlay">
+    <div id="image-modal" class="modal-overlay">
         <span class="modal-close">&times;</span>
         <img class="modal-content" id="modal-image" src="">
     </div>
 
-    <!-- n8n Case Study Modal --><div id="n8n-modal" class="modal-overlay">
+    <div id="n8n-modal" class="modal-overlay">
         <span class="modal-close">&times;</span>
-        <div class="modal-content max-w-3xl">
-            <h2 class="text-3xl font-bold mb-4">n8n Automation Workflow</h2>
-            <p class="text-gray-600 mb-6">This workflow automates client data management. When a chat message is received, an AI Agent powered by the Google Gemini Model processes the request. It then updates or retrieves client information from a Google Sheet, streamlining the entire process.</p>
-
-            <h3 class="text-2xl font-semibold mb-3">The Workflow</h3>
-            <img src="https://i.postimg.cc/Twn4vptj/n8n-automation-pic.png" alt="n8n Automation Workflow" class="rounded-lg mb-6 w-full" loading="lazy">
-
-            <h3 class="text-2xl font-semibold mb-3">Datasheets</h3>
-            <img src="https://i.postimg.cc/hvg3DcYk/n8n-google-sheet.png" alt="Google Sheet Result" class="rounded-lg mb-8 w-full" loading="lazy">
-
+        <div class="modal-content max-w-3xl overflow-y-auto">
+            <h2 class="text-3xl font-bold mb-4 text-black">n8n Automation Workflow</h2>
+            <p class="text-black mb-6 font-bold">This workflow processes client requests using AI agents to streamline backend operations.</p>
+            <img src="https://i.postimg.cc/Twn4vptj/n8n-automation-pic.png" alt="Workflow" class="rounded-lg mb-6 w-full shadow-md">
+            <img src="https://i.postimg.cc/hvg3DcYk/n8n-google-sheet.png" alt="Data" class="rounded-lg mb-8 w-full shadow-md">
             <div class="text-center">
-                <a href="https://aansh-n8n.lovable.app/" target="_blank" class="inline-block bg-black text-white dark:bg-white dark:text-black font-semibold px-8 py-3 rounded-full hover:bg-gray-800 dark:hover:bg-gray-200 transition duration-300">
-                    View Live Dashboard
-                </a>
+                <a href="https://aansh-n8n.lovable.app/" target="_blank" class="inline-block bg-black text-white px-8 py-3 rounded-full font-bold">View Live Dashboard</a>
             </div>
         </div>
     </div>
-
-    <!-- Dark Mode Suggestion Popup --><div id="dark-mode-popup" class="modal-overlay">
-        <div class="modal-content text-center max-w-sm">
-            <h3 class="text-2xl font-bold mb-4">Experience the Dark Side</h3>
-            <p class="text-gray-600 mb-6">This portfolio is best viewed in dark mode. Would you like to switch?</p>
-            <div class="flex justify-center gap-4">
-                <button id="switch-to-dark-btn" class="beautify-btn inline-block bg-black text-white dark:bg-white dark:text-black font-semibold px-6 py-2 rounded-full">Switch to Dark</button>
-                <button id="close-popup-btn" class="beautify-btn inline-block bg-transparent border border-black/20 dark:border-white/20 font-semibold px-6 py-2 rounded-full">Maybe Later</button>
-            </div>
-        </div>
-    </div>
-
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // --- Mobile Menu Toggle ---
             const mobileMenuBtn = document.getElementById('mobile-menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenuBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
+            mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
 
-            // --- Header Style on Scroll ---
             const header = document.getElementById('header');
             window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    header.classList.add('header-scrolled');
-                } else {
-                    header.classList.remove('header-scrolled');
-                }
+                window.scrollY > 50 ? header.classList.add('header-scrolled') : header.classList.remove('header-scrolled');
             });
 
-            // --- Dark Mode Toggle ---
             const themeToggle = document.getElementById('theme-toggle');
             themeToggle.addEventListener('click', () => {
                 document.documentElement.classList.toggle('dark');
-                if (document.documentElement.classList.contains('dark')) {
-                    localStorage.setItem('theme', 'dark');
-                } else {
-                    localStorage.setItem('theme', 'light');
-                }
+                localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
             });
 
-            // --- Intersection Observer for Scroll Animations ---
-            const observer = new IntersectionObserver((entries, observerInstance) => {
+            const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-
-                        // Animate progress bars within the visible element
                         const progressBars = entry.target.querySelectorAll('.progress-bar');
-                        if (progressBars.length > 0) {
-                            progressBars.forEach(bar => {
-                                const targetWidth = bar.dataset.width;
-                                setTimeout(() => {
-                                    bar.style.width = targetWidth;
-                                }, 250); // Stagger animation start slightly
-                            });
-                        }
-
-                        observerInstance.unobserve(entry.target);
+                        progressBars.forEach(bar => bar.style.width = bar.dataset.width);
                     }
                 });
-            }, {
-                threshold: 0.1 // Trigger animation slightly earlier
-            });
+            }, { threshold: 0.1 });
 
             document.querySelectorAll('.reveal').forEach((el, index) => {
-                 // Staggered delay logic needs refinement for grid items
-                let delay = 100; // Default delay
-                 if (el.classList.contains('project-card')) {
-                     // Calculate delay based on grid position (assuming 2 columns on medium, 3 on large)
-                    const isLg = window.innerWidth >= 1024;
-                    const colCount = isLg ? 3 : 2;
-                    delay = (index % colCount) * 100;
-                 } else if (el.classList.contains('spotlight-card')) {
-                     delay = index * 100; // Simple stagger for spotlight
-                 }
-                 el.style.transitionDelay = `${delay}ms`;
+                let delay = 100;
+                if (el.classList.contains('project-card')) delay = (index % 3) * 100;
+                el.style.transitionDelay = `${delay}ms`;
                 observer.observe(el);
             });
 
-            // --- Animate Header and Hero Text on Load ---
-            setTimeout(() => {
-                document.getElementById('header').classList.add('visible');
-                document.querySelectorAll('.hero-text-line').forEach((line, index) => {
-                    setTimeout(() => {
-                        line.classList.add('visible');
-                    }, index * 150);
-                });
-                setTimeout(() => {
-                    document.querySelector('#hero .reveal').classList.add('visible');
-                }, 600);
-            }, 300);
+            setTimeout(() => document.getElementById('header').classList.add('visible'), 300);
+            document.querySelectorAll('.hero-text-line').forEach((line, i) => {
+                setTimeout(() => line.classList.add('visible'), 300 + (i * 150));
+            });
 
-            // --- Custom Cursor ---
             const cursorDot = document.querySelector('.cursor-dot');
-            const isTouchDevice = () => 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-
-            if (!isTouchDevice()) {
+            const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+            if (!isTouch) {
                 window.addEventListener('mousemove', (e) => {
                     cursorDot.style.left = `${e.clientX}px`;
                     cursorDot.style.top = `${e.clientY}px`;
                 });
-
-                const interactiveElements = document.querySelectorAll('a, button, .project-card, .spotlight-card');
-                interactiveElements.forEach(el => {
+                document.querySelectorAll('a, button, .project-card, .spotlight-card').forEach(el => {
                     el.addEventListener('mouseenter', () => cursorDot.classList.add('hovered'));
                     el.addEventListener('mouseleave', () => cursorDot.classList.remove('hovered'));
                 });
@@ -703,73 +599,31 @@
                 document.body.style.cursor = 'auto';
             }
 
-            // --- Modal Logic ---
-            const imageModal = document.getElementById('image-modal');
+            const imgModal = document.getElementById('image-modal');
             const n8nModal = document.getElementById('n8n-modal');
             const modalImg = document.getElementById('modal-image');
-
-            const viewImageBtns = document.querySelectorAll('.view-image-btn');
-            const n8nCard = document.getElementById('n8n-card');
-
-            const allCloseButtons = document.querySelectorAll('.modal-close');
-
-            const openModal = (modal) => modal.classList.add('visible');
-            const closeModal = (modal) => modal.classList.remove('visible');
-
-            viewImageBtns.forEach(btn => {
+            
+            document.querySelectorAll('.view-image-btn').forEach(btn => {
                 btn.addEventListener('click', (e) => {
-                    e.stopPropagation(); // Prevent card click from firing
-                    const card = btn.closest('.project-card');
-                    const imageSrc = card.dataset.imageSrc;
-                    if(imageSrc) {
-                        modalImg.src = imageSrc;
-                        openModal(imageModal);
+                    e.stopPropagation();
+                    const parent = btn.closest('[data-image-src]');
+                    if (parent) {
+                        modalImg.src = parent.dataset.imageSrc;
+                        imgModal.classList.add('visible');
                     }
                 });
             });
 
-            n8nCard.addEventListener('click', () => openModal(n8nModal));
+            const n8nCard = document.getElementById('n8n-card');
+            if (n8nCard) n8nCard.addEventListener('click', () => n8nModal.classList.add('visible'));
 
-            const closeAllModals = () => {
-                closeModal(imageModal);
-                closeModal(n8nModal);
-                closeModal(darkModePopup); // Also close dark mode popup if open
-            }
-            allCloseButtons.forEach(btn => btn.addEventListener('click', closeAllModals));
-            document.querySelectorAll('.modal-overlay').forEach(modal => {
-                modal.addEventListener('click', (e) => {
-                    if (e.target === modal) closeAllModals();
-                });
-            });
-
-            // --- Dark Mode Popup Logic ---
-            const darkModePopup = document.getElementById('dark-mode-popup');
-            const switchToDarkBtn = document.getElementById('switch-to-dark-btn');
-            const closePopupBtn = document.getElementById('close-popup-btn');
-
-            setTimeout(() => {
-                const isDarkMode = document.documentElement.classList.contains('dark');
-                const hasBeenPrompted = sessionStorage.getItem('darkModePrompted');
-
-                if (!isDarkMode && !hasBeenPrompted) {
-                    darkModePopup.classList.add('visible');
-                }
-            }, 10000);
-
-            const closeDrkPopup = () => {
-                darkModePopup.classList.remove('visible');
-                sessionStorage.setItem('darkModePrompted', 'true');
-            }
-
-            switchToDarkBtn.addEventListener('click', () => {
-                document.documentElement.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
-                closeDrkPopup();
-            });
-
-            closePopupBtn.addEventListener('click', closeDrkPopup);
+            const closeAll = () => {
+                imgModal.classList.remove('visible');
+                n8nModal.classList.remove('visible');
+            };
+            document.querySelectorAll('.modal-close').forEach(b => b.addEventListener('click', closeAll));
+            document.querySelectorAll('.modal-overlay').forEach(m => m.addEventListener('click', (e) => e.target === m && closeAll()));
         });
     </script>
 </body>
 </html>
-
