@@ -8,6 +8,7 @@
     
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏆</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
@@ -51,6 +52,7 @@
             border-radius: 3rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
             transition: transform 0.4s ease, box-shadow 0.4s ease;
+            height: 100%;
         }
         
         .hero-card:hover {
@@ -73,138 +75,154 @@
         }
         
         .nav-pill {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(0,0,0,0.05);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
         }
 
         .progress-bar { transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1); }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: minmax(320px, auto);
+            gap: 2rem;
+        }
+
+        @media (max-width: 1024px) {
+            .bento-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-auto-rows: auto;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 240px;
+            margin: auto;
+        }
+
+        /* Project View Specific Styles */
+        .project-view-overlay {
+            position: fixed;
+            inset: 0;
+            background: #F3F4F6;
+            z-index: 100;
+            overflow-y: auto;
+            transform: translateY(100%);
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .project-view-overlay.active {
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body class="overflow-x-hidden">
 
     <div class="cursor-follower" id="cursor"></div>
 
-    <!-- Top Bar Metrics -->
-    <div class="w-full px-6 py-8 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-7xl mx-auto reveal">
+    <!-- 1. Top Bar Metrics -->
+    <div class="w-full px-6 py-10 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-7xl mx-auto reveal">
         <div class="space-y-1">
             <p class="marquee-text opacity-40 uppercase">Global Tenure</p>
-            <p class="font-bold text-sm tracking-tight">18 YEARS CURIOSITY</p>
+            <p class="font-black text-sm tracking-tight uppercase">18 YEARS CURIOSITY</p>
         </div>
         <div class="space-y-1 text-right md:text-left">
             <p class="marquee-text opacity-40 uppercase">Strategic Base</p>
-            <p class="font-bold text-sm uppercase">Mumbai, India</p>
+            <p class="font-black text-sm uppercase tracking-tight">Mumbai, India</p>
         </div>
         <div class="space-y-1 hidden md:block">
-            <p class="marquee-text opacity-40 uppercase">Academic Path</p>
-            <p class="font-bold text-sm uppercase">BMS @ Hinduja College</p>
+            <p class="marquee-text opacity-40 uppercase">Specialization</p>
+            <p class="font-black text-sm uppercase tracking-tight">Marketing (BMS)</p>
         </div>
         <div class="space-y-1 text-right">
-            <p class="marquee-text opacity-40 uppercase">Core Focus</p>
-            <p class="font-bold text-sm uppercase">Personal Mastery & Strategy</p>
+            <p class="marquee-text opacity-40 uppercase">Focus</p>
+            <p class="font-black text-sm uppercase tracking-tight">Personal Mastery & Strategy</p>
         </div>
     </div>
 
-    <!-- Centered Nav Pill -->
-    <div class="flex justify-center mb-12 sticky top-6 z-50 reveal delay-100">
-        <nav class="nav-pill rounded-full px-10 py-4 flex items-center gap-10">
+    <!-- 2. Nav Pill -->
+    <div class="flex justify-center mb-16 sticky top-8 z-50 reveal delay-100">
+        <nav class="nav-pill rounded-full px-10 py-5 flex items-center gap-12">
             <a href="#hero" class="text-xs font-black uppercase tracking-widest hover:opacity-50 transition-opacity">Profile</a>
             <a href="#about" class="text-xs font-black uppercase tracking-widest hover:opacity-50 transition-opacity">About</a>
             <a href="#intel" class="text-xs font-black uppercase tracking-widest hover:opacity-50 transition-opacity">Intel</a>
-            <a href="#work" class="text-xs font-black uppercase tracking-widest hover:opacity-50 transition-opacity">Work</a>
-            <a href="#learning" class="text-xs font-black uppercase tracking-widest hover:opacity-50 transition-opacity">Growth</a>
+            <a href="#education" class="text-xs font-black uppercase tracking-widest hover:opacity-50 transition-opacity">Edu</a>
+            <a href="#projects" class="text-xs font-black uppercase tracking-widest hover:opacity-50 transition-opacity">Projects</a>
+            <a href="#work" class="text-xs font-black uppercase tracking-widest hover:opacity-50 transition-opacity">Archive</a>
         </nav>
     </div>
 
     <main class="max-w-7xl mx-auto px-6">
-        <!-- Hero Section Grid -->
-        <section id="hero" class="grid lg:grid-cols-12 gap-6 pb-20">
-            <!-- Left Profile Card (Blank image space removed) -->
-            <div class="lg:col-span-8 hero-card p-12 md:p-16 flex flex-col justify-center items-start reveal delay-200">
-                <div class="space-y-10 text-left w-full">
+        
+        <!-- 3. Hero Section -->
+        <section id="hero" class="pb-20 pt-10">
+            <div class="hero-card p-12 md:p-24 flex flex-col justify-center items-start reveal delay-200">
+                <div class="space-y-12 text-left w-full">
                     <div class="space-y-6">
                         <div class="flex items-center gap-4">
                             <p class="marquee-text opacity-40 uppercase">Vibe Coder & Strategist</p>
                             <div class="h-[1px] w-24 bg-black/10"></div>
                         </div>
-                        <h1 class="text-8xl md:text-[10rem] font-black leading-[0.75] tracking-tighter">Aansh</h1>
-                        <h1 class="text-8xl md:text-[10rem] font-serif italic text-slate-300 leading-[0.75] tracking-tighter">Gupta.</h1>
+                        <h1 class="text-[6rem] md:text-[10rem] font-black leading-[0.75] tracking-tighter">Aansh</h1>
+                        <h1 class="text-[6rem] md:text-[10rem] font-serif italic text-slate-300 leading-[0.75] tracking-tighter">Gupta.</h1>
                     </div>
                     <p class="text-2xl md:text-3xl text-slate-500 font-medium leading-relaxed max-w-2xl">
                         Pioneering conversational AI workflows and high-stakes personal mastery for the next generation of strategic thinkers.
                     </p>
                 </div>
             </div>
-
-            <!-- Right Highlight Card (CET Performance) -->
-            <div class="lg:col-span-4 hero-card p-12 flex flex-col justify-between items-center text-center reveal delay-300">
-                <div class="flex items-center gap-4">
-                    <p class="marquee-text uppercase tracking-[0.2em] opacity-40">Academic Mastery</p>
-                    <div class="h-[1px] w-8 bg-black/10"></div>
-                </div>
-                
-                <div class="py-12">
-                    <h2 class="text-[9.5rem] font-black tracking-tighter leading-none">97.6</h2>
-                    <p class="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mt-8">Percentile MAH-CET</p>
-                </div>
-
-                <div class="space-y-1">
-                    <p class="font-bold text-xs tracking-widest uppercase text-slate-300">National Milestone</p>
-                    <p class="font-black text-sm uppercase">Top 1.5% Ranking</p>
-                </div>
-            </div>
         </section>
 
-        <!-- About Me Section -->
+        <!-- 4. About Me Section -->
         <section id="about" class="py-32 border-t border-black/10 relative">
             <div class="grid lg:grid-cols-12 gap-12 items-start">
                 <div class="lg:col-span-7 space-y-12 reveal">
                     <div class="space-y-4">
-                        <p class="marquee-text opacity-40 uppercase tracking-widest">Personal Logic</p>
-                        <h2 class="text-5xl md:text-6xl font-black tracking-tighter uppercase leading-none">About Me</h2>
+                        <p class="marquee-text uppercase tracking-widest">Personal Logic</p>
+                        <h2 class="text-5xl md:text-6xl font-black tracking-tighter uppercase leading-none text-black">About Me</h2>
                     </div>
                     <div class="space-y-8 text-xl leading-relaxed text-slate-600">
                         <p>
-                            I am <span class="text-black font-bold">Aansh Gupta</span>, an 18-year-old on a mission to build a high-performance life. I don't just see myself as a coder; I'm a strategic thinker who values leadership and the power of clear, impactful communication.
+                            I am <span class="text-black font-bold">Aansh Gupta</span>, an 18-year-old on a mission to build a high-performance life. I am currently pursuing <span class="text-black font-bold">BMS @ K.P.B. Hinduja College</span>, specializing in Marketing. 
                         </p>
                         <p>
-                            My journey is about blending technical expertise with the human elements of strategy and discipline. I spend my time refining my fluency and building agentic workflows that solve real-world bottlenecks. Currently pursuing <span class="text-black font-bold">BMS @ K.P.B. Hinduja College</span>, I view every challenge as an algorithmic problem to be optimized.
+                            My approach combines technical AI implementation with human strategy. I utilize conversational AI (Vibe Coding) to solve algorithmic problems while focusing on the emotional resonance of brand orchestration.
                         </p>
                     </div>
                 </div>
 
-                <!-- Personal Arsenal (Visual Skills Data) -->
                 <div class="lg:col-span-5 reveal delay-200">
                     <div class="bg-white p-12 rounded-[3.5rem] border border-black/5 shadow-sm space-y-12">
                         <h3 class="text-xs font-black uppercase tracking-[0.3em] text-black opacity-40">Personal Arsenal</h3>
-                        
                         <div class="space-y-10">
-                            <!-- AI Implementation -->
                             <div class="space-y-3 group cursor-default">
                                 <div class="flex justify-between text-xs font-black uppercase tracking-widest text-black">
-                                    <span>AI Implementation</span>
-                                    <span>60%</span>
+                                    <span>AI Implementation</span><span>60%</span>
                                 </div>
                                 <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
                                     <div class="progress-bar h-full bg-black w-0 group-hover:bg-brand-500 transition-colors" data-width="60%"></div>
                                 </div>
                             </div>
-                            <!-- Strategic Communication -->
                             <div class="space-y-3 group cursor-default">
                                 <div class="flex justify-between text-xs font-black uppercase tracking-widest text-black">
-                                    <span>Strategic Communication</span>
-                                    <span>75%</span>
+                                    <span>Strategic Communication</span><span>75%</span>
                                 </div>
                                 <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
                                     <div class="progress-bar h-full bg-black w-0 group-hover:bg-brand-500 transition-colors" data-width="75%"></div>
                                 </div>
                             </div>
-                            <!-- Knowledge Architecture -->
                             <div class="space-y-3 group cursor-default">
                                 <div class="flex justify-between text-xs font-black uppercase tracking-widest text-black">
-                                    <span>Knowledge Architecture</span>
-                                    <span>85%</span>
+                                    <span>Knowledge Architecture</span><span>85%</span>
                                 </div>
                                 <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
                                     <div class="progress-bar h-full bg-black w-0 group-hover:bg-brand-500 transition-colors" data-width="85%"></div>
@@ -216,146 +234,268 @@
             </div>
         </section>
 
-        <!-- Strategic Intel Section -->
+        <!-- 5. Strategic Intel Section -->
         <section id="intel" class="py-32 border-t border-black/10">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 reveal">
                 <div class="space-y-4">
-                    <h2 class="text-4xl md:text-5xl font-black tracking-tighter uppercase">Strategic Intel</h2>
-                    <p class="text-black text-[10px] font-black uppercase tracking-[0.3em]">Foundation of Habits & Logic</p>
+                    <h2 class="text-4xl md:text-5xl font-black tracking-tighter uppercase text-black">Strategic Intel</h2>
+                    <p class="text-black text-[10px] font-black uppercase tracking-[0.3em]">Foundation</p>
                 </div>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-                <!-- Book Tiles - High Contrast Black -->
-                <div class="p-10 hero-card space-y-6 reveal transition-transform hover:-translate-y-2">
-                    <div class="text-[10px] font-black uppercase text-black tracking-widest">Systems</div>
+                <div class="p-10 hero-card space-y-6 reveal transition-transform hover:-translate-y-2 border border-black/5">
+                    <div class="text-[10px] font-black uppercase text-black tracking-widest opacity-40">Systems</div>
                     <h4 class="font-bold text-2xl leading-tight text-black uppercase">Atomic Habits</h4>
-                    <p class="text-xs font-bold text-black">By James Clear</p>
+                    <p class="text-xs font-bold text-black uppercase tracking-tighter italic">Read</p>
                 </div>
-                <div class="p-10 hero-card space-y-6 reveal delay-100 transition-transform hover:-translate-y-2">
-                    <div class="text-[10px] font-black uppercase text-black tracking-widest">Mindset</div>
+                <div class="p-10 hero-card space-y-6 reveal delay-100 transition-transform hover:-translate-y-2 border border-black/5">
+                    <div class="text-[10px] font-black uppercase text-black tracking-widest opacity-40">Mindset</div>
                     <h4 class="font-bold text-2xl leading-tight text-black uppercase">Subtle Art</h4>
-                    <p class="text-xs font-bold text-black">By Mark Manson</p>
+                    <p class="text-xs font-bold text-black uppercase tracking-tighter italic">Read</p>
                 </div>
-                <div class="p-10 hero-card space-y-6 reveal delay-200 transition-transform hover:-translate-y-2">
-                    <div class="text-[10px] font-black uppercase text-black tracking-widest">Action</div>
+                <div class="p-10 hero-card space-y-6 reveal delay-200 transition-transform hover:-translate-y-2 border border-black/5">
+                    <div class="text-[10px] font-black uppercase text-black tracking-widest opacity-40">Action</div>
                     <h4 class="font-bold text-2xl leading-tight text-black uppercase">Do Epic Sh*t</h4>
-                    <p class="text-xs font-bold text-black">By Ankur Warikoo</p>
+                    <p class="text-xs font-bold text-black uppercase tracking-tighter italic">Read</p>
                 </div>
-                <div class="p-10 hero-card border-2 border-black space-y-6 reveal delay-300 transition-transform hover:-translate-y-2">
+                <div class="p-10 hero-card border-2 border-black space-y-6 reveal delay-300 transition-transform hover:-translate-y-2 bg-slate-50">
                     <div class="flex items-center gap-2">
-                        <div class="text-[10px] font-black uppercase text-black tracking-widest">Growth</div>
-                        <span class="text-[8px] bg-black text-white px-2 py-0.5 rounded-full animate-pulse font-black">READING</span>
+                        <div class="text-[10px] font-black uppercase text-black tracking-widest opacity-40">Active</div>
+                        <span class="text-[8px] bg-black text-white px-2 py-0.5 rounded-full animate-pulse font-black uppercase">Reading</span>
                     </div>
                     <h4 class="font-bold text-2xl leading-tight text-black uppercase">Thinking Big</h4>
-                    <p class="text-xs font-bold text-black">By David J. Schwartz</p>
+                    <p class="text-xs font-bold text-black uppercase tracking-tighter italic">Current Intake</p>
                 </div>
             </div>
         </section>
 
-        <!-- Featured Work Section -->
+        <!-- 6. Education Section -->
+        <section id="education" class="py-32 border-t border-black/10">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 reveal">
+                <div class="space-y-4">
+                    <h2 class="text-4xl md:text-5xl font-black tracking-tighter uppercase text-black">Educational Qualification</h2>
+                    <p class="text-black text-[10px] font-black uppercase tracking-[0.3em]">Academic Tenure</p>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-6 items-stretch">
+                <div class="lg:col-span-4 hero-card p-12 reveal border border-black/5 flex flex-col justify-center">
+                    <p class="marquee-text opacity-40 uppercase mb-4">Focus Path</p>
+                    <div class="space-y-10 text-black">
+                        <div class="border-l-4 border-black pl-8">
+                            <h4 class="font-black text-xl uppercase">BMS @ Hinduja</h4>
+                            <p class="text-slate-500 font-bold uppercase text-xs mt-1 tracking-widest">Marketing Specialization</p>
+                        </div>
+                        <div class="border-l-4 border-slate-200 pl-8">
+                            <h4 class="font-black text-xl uppercase">Secondary Ed</h4>
+                            <p class="text-slate-500 font-bold uppercase text-xs mt-1 tracking-widest">ICSE (85%) / HSC (70%)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-8 hero-card p-12 md:p-20 flex flex-col md:flex-row justify-between items-center bg-black text-white reveal delay-100">
+                    <div class="text-left space-y-4">
+                        <p class="text-xs font-black uppercase tracking-[0.4em] opacity-50 text-brand-500">Competitive Achievement</p>
+                        <h3 class="text-5xl font-black uppercase tracking-tighter">National MAH-CET Exam</h3>
+                        <p class="text-xl opacity-70">Top 1.5% Rank among All India candidates</p>
+                    </div>
+                    <div class="text-center md:text-right mt-12 md:mt-0">
+                        <h2 class="text-[10rem] font-black leading-none tracking-tighter">97.6</h2>
+                        <p class="text-[10px] font-black uppercase tracking-[0.3em] opacity-40">Percentile Score</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Featured Projects Section -->
+        <section id="projects" class="py-32 border-t border-black/10">
+            <div class="mb-16 space-y-4 reveal">
+                <h2 class="text-4xl md:text-5xl font-black tracking-tighter uppercase text-black">Featured Projects</h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project Tile: Nike Brand Analysis Strategy -->
+                <div class="hero-card p-10 flex flex-col justify-between min-h-[400px] reveal">
+                    <div class="space-y-6">
+                        <div class="w-12 h-12 bg-black text-white rounded-2xl flex items-center justify-center font-bold text-xl uppercase">🚀</div>
+                        <h3 class="text-2xl font-black uppercase tracking-tight">Nike Brand Analysis Strategy</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">
+                            Deciphering the emotional branding and trust-logic that fuels Nike's global dominance.
+                        </p>
+                    </div>
+                    <div class="pt-8">
+                        <button onclick="toggleNikeProject()" class="w-full py-4 bg-black text-white rounded-2xl font-black text-[10px] uppercase tracking-widest hover:opacity-80 transition-all">
+                            View Full Analysis 🔗
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Future project slot placeholders -->
+                <div class="hero-card p-10 flex flex-col justify-center items-center min-h-[400px] border-dashed border-2 border-slate-200 reveal opacity-30">
+                    <p class="text-xs font-black uppercase tracking-widest">Next Strategy Pending</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. Technical Archive -->
         <section id="work" class="py-32 border-t border-black/10">
-            <h2 class="text-4xl md:text-5xl font-black tracking-tighter uppercase mb-20 reveal">Featured Work</h2>
+            <h2 class="text-4xl md:text-5xl font-black tracking-tighter uppercase mb-20 reveal text-black">Technical Archive</h2>
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- Project 1 -->
-                <div class="hero-card p-10 flex flex-col justify-between min-h-[480px] reveal border border-black/5">
-                    <div class="space-y-8">
-                        <div class="w-16 h-16 bg-slate-900 text-white rounded-2xl flex items-center justify-center font-bold text-3xl">V</div>
-                        <h3 class="text-2xl font-black uppercase tracking-tight">Vibe Coding</h3>
-                        <p class="text-slate-500 text-base leading-relaxed">Leveraging generative AI and precise prompt engineering to ship full digital products with speed and accuracy.</p>
+                <!-- Tech 1 -->
+                <div class="hero-card p-12 rounded-[3.5rem] flex flex-col justify-between min-h-[450px] border border-black/5 hover:border-black transition-all group reveal">
+                    <div class="space-y-6 text-left">
+                        <div class="w-12 h-12 bg-slate-100 rounded-2xl flex items-center justify-center font-black text-xl group-hover:bg-black group-hover:text-white transition-colors">V</div>
+                        <h3 class="text-xl font-black uppercase tracking-tight text-black leading-none">Vibe Coding</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed font-medium">Generative AI workflows to architect and ship digital products with institutional speed.</p>
                     </div>
-                    <a href="#" class="mt-12 block w-full py-5 bg-black text-white text-center text-[10px] font-black uppercase tracking-[0.3em] rounded-2xl hover:opacity-80 transition-all">Explore Method</a>
+                    <div class="pt-8">
+                        <a href="#" class="w-full py-4 bg-black text-white rounded-2xl font-black text-[10px] uppercase tracking-widest hover:opacity-80 transition-all block text-center">Architecture 🔗</a>
+                    </div>
                 </div>
-                <!-- Project 2 -->
-                <div class="hero-card p-10 flex flex-col justify-between min-h-[480px] reveal delay-100 border border-black/5" data-img="https://i.ibb.co/6M3WfcL/FIGMA.png">
-                    <div class="space-y-8">
-                        <div class="w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center text-3xl">F</div>
-                        <h3 class="text-2xl font-black uppercase tracking-tight">Figma: Fintech</h3>
-                        <p class="text-slate-500 text-base leading-relaxed">A high-fidelity prototype exploring next-gen personal banking interfaces and user flow logic.</p>
+                <!-- Tech 2 -->
+                <div class="hero-card p-12 rounded-[3.5rem] flex flex-col justify-between min-h-[450px] border border-black/5 hover:border-black transition-all group reveal delay-100" data-img="https://i.ibb.co/6M3WfcL/FIGMA.png">
+                    <div class="space-y-6 text-left text-black">
+                        <div class="w-12 h-12 bg-slate-100 rounded-2xl flex items-center justify-center font-black text-xl group-hover:bg-blue-600 group-hover:text-white transition-colors text-black">F</div>
+                        <h3 class="text-xl font-black uppercase tracking-tight leading-none text-black">Figma: Fintech</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed font-medium">High-fidelity prototype exploring next-gen personal banking interfaces.</p>
                     </div>
-                    <button class="view-btn mt-12 w-full py-5 bg-black text-white text-[10px] font-black uppercase tracking-[0.3em] rounded-2xl hover:opacity-80 transition-all">View Prototype</button>
+                    <div class="pt-8">
+                        <button class="view-btn w-full py-4 bg-black text-white rounded-2xl font-black text-[10px] uppercase tracking-widest hover:opacity-80 transition-all text-center">Prototype 🔗</button>
+                    </div>
                 </div>
-                <!-- Project 3 -->
-                <div class="hero-card p-10 flex flex-col justify-between min-h-[480px] reveal delay-200 border border-black/5" id="n8n-trigger">
-                    <div class="space-y-8">
-                        <div class="w-16 h-16 bg-orange-600 text-white rounded-2xl flex items-center justify-center font-bold text-2xl uppercase">N8</div>
-                        <h3 class="text-2xl font-black uppercase tracking-tight">Agentic Logic</h3>
-                        <p class="text-slate-500 text-base leading-relaxed">Automated agent workflows that process complex data through Google Sheets with zero manual friction.</p>
+                <!-- Tech 3 -->
+                <div class="hero-card p-12 rounded-[3.5rem] flex flex-col justify-between min-h-[450px] border border-black/5 hover:border-black transition-all group reveal delay-200" id="n8n-trigger">
+                    <div class="space-y-6 text-left text-black">
+                        <div class="w-12 h-12 bg-slate-100 rounded-2xl flex items-center justify-center font-black text-xl group-hover:bg-orange-600 group-hover:text-white transition-colors text-black">N8</div>
+                        <h3 class="text-xl font-black uppercase tracking-tight leading-none text-black">Agentic Logic</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed font-medium">Automated agent workflows processing complex data streams with zero manual friction.</p>
                     </div>
-                    <button class="mt-12 w-full py-5 bg-black text-white text-[10px] font-black uppercase tracking-[0.3em] rounded-2xl hover:opacity-80 transition-all">Case Study</button>
+                    <div class="pt-8">
+                        <button class="w-full py-4 bg-black text-white rounded-2xl font-black text-[10px] uppercase tracking-widest hover:opacity-80 transition-all text-center">Case Study 🔗</button>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Growth & Recognition Section -->
+        <!-- 9. Certificates Section (Renamed and Cleaned) -->
         <section id="learning" class="py-32 border-t border-black/10">
-            <h2 class="text-4xl md:text-5xl font-black tracking-tighter uppercase text-center mb-20 reveal">Growth & Recognition</h2>
-            <div class="grid lg:grid-cols-2 gap-12 items-start">
-                <div class="hero-card p-12 reveal border-dashed border-2 border-slate-200">
-                    <h3 class="text-xl font-black uppercase tracking-widest mb-12 flex items-center gap-4">
-                        <span class="w-2 h-2 bg-black rounded-full"></span> Timeline
-                    </h3>
-                    <div class="space-y-16 relative">
-                        <div class="absolute left-[7px] top-2 bottom-2 w-[1px] bg-slate-200"></div>
-                        <div class="pl-12 relative">
-                            <div class="absolute left-0 top-1.5 w-4 h-4 rounded-full bg-black border-4 border-white"></div>
-                            <h4 class="font-black text-xl uppercase">MAH-CET Excellence</h4>
-                            <p class="text-sm text-slate-500 font-bold uppercase tracking-widest mt-2">Score: 97.6 Percentile / Rank ~1500</p>
+            <h2 class="text-5xl font-black tracking-tighter uppercase text-center mb-24 reveal text-black">Certificates</h2>
+            <div class="max-w-5xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8 reveal delay-200">
+                    <div class="hero-card p-12 flex items-center gap-12 border border-black/5 shadow-sm group cursor-pointer hover:border-black transition-all">
+                        <div class="w-24 h-24 bg-slate-50 rounded-3xl flex items-center justify-center font-black text-4xl border border-black/5 transition-transform group-hover:scale-105">G</div>
+                        <div class="space-y-4">
+                            <h4 class="font-black text-2xl uppercase tracking-tighter text-black leading-none text-black">Google Marketing</h4>
+                            <button class="cert-btn text-[10px] font-black uppercase tracking-[0.2em] text-black group-hover:opacity-50 transition-opacity" data-cert="https://i.ibb.co/qFmnYbJB/Google-certificate.png">View Certificate 📖</button>
                         </div>
-                        <div class="pl-12 relative">
-                            <div class="absolute left-0 top-1.5 w-4 h-4 rounded-full bg-slate-300 border-4 border-white"></div>
-                            <h4 class="font-black text-xl uppercase">Foundations</h4>
-                            <p class="text-sm text-slate-500 font-bold uppercase tracking-widest mt-2">ICSE 85% / HSC 70%</p>
-                        </div>
-                        <div class="pl-12 relative">
-                            <div class="absolute left-0 top-1.5 w-4 h-4 rounded-full bg-slate-100 border-4 border-white"></div>
-                            <h4 class="font-black text-xl uppercase">Current Pursuit</h4>
-                            <p class="text-sm text-slate-500 font-bold uppercase tracking-widest mt-2">BMS @ Hinduja College</p>
+                    </div>
+                    <div class="hero-card p-12 flex items-center gap-12 border border-black/5 shadow-sm group cursor-pointer hover:border-black transition-all">
+                        <div class="w-24 h-24 bg-slate-50 rounded-3xl flex items-center justify-center font-black text-4xl border border-black/5 transition-transform group-hover:scale-105">AI</div>
+                        <div class="space-y-4">
+                            <h4 class="font-black text-2xl uppercase tracking-tighter text-black leading-none text-black">Generative AI</h4>
+                            <button class="cert-btn text-[10px] font-black uppercase tracking-[0.2em] text-black group-hover:opacity-50 transition-opacity" data-cert="https://i.ibb.co/m5yRKRx8/Aansh-Gupta-Generative-AI-Tools.png">View Certificate 📖</button>
                         </div>
                     </div>
                 </div>
-
-                <div class="grid gap-6 reveal delay-200">
-                    <div class="hero-card p-10 flex items-center gap-10 border border-black/5 shadow-sm group cursor-pointer hover:border-black transition-all">
-                        <div class="w-24 h-24 bg-slate-50 rounded-3xl flex items-center justify-center font-black text-3xl border border-black/5 group-hover:scale-105 transition-transform">G</div>
-                        <div class="space-y-3">
-                            <h4 class="font-black text-xl uppercase tracking-tight">Google Marketing</h4>
-                            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Certified Credential</p>
-                            <button class="cert-btn text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 group-hover:text-black transition-colors" data-cert="https://i.ibb.co/qFmnYbJB/Google-certificate.png">View Certificate 📖</button>
-                        </div>
-                    </div>
-                    <div class="hero-card p-10 flex items-center gap-10 border border-black/5 shadow-sm group cursor-pointer hover:border-black transition-all">
-                        <div class="w-24 h-24 bg-slate-50 rounded-3xl flex items-center justify-center font-black text-3xl border border-black/5 group-hover:scale-105 transition-transform">AI</div>
-                        <div class="space-y-3">
-                            <h4 class="font-black text-xl uppercase tracking-tight">Generative AI</h4>
-                            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Technical Credential</p>
-                            <button class="cert-btn text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 group-hover:text-black transition-colors" data-cert="https://i.ibb.co/m5yRKRx8/Aansh-Gupta-Generative-AI-Tools.png">View Certificate 📖</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Final Contact CTA -->
-        <section id="contact" class="py-32 text-center reveal">
-            <h2 class="text-7xl md:text-9xl font-black uppercase tracking-tighter mb-16 leading-[0.8]">Let's <br><span class="text-slate-300">Connect.</span></h2>
-            <div class="flex flex-col sm:flex-row justify-center gap-6">
-                <a href="mailto:aanshg2007@gmail.com" class="px-16 py-6 bg-black text-white font-black uppercase text-[10px] tracking-[0.3em] rounded-[2rem] shadow-2xl transform hover:scale-105 transition-all">Send an Email</a>
-                <a href="https://www.linkedin.com/in/aansh1" target="_blank" class="px-16 py-6 border-2 border-black text-black font-black uppercase text-[10px] tracking-[0.3em] rounded-[2rem] hover:bg-black hover:text-white transition-all flex items-center justify-center gap-4">
-                    LinkedIn 🔗
-                </a>
             </div>
         </section>
     </main>
 
-    <footer class="py-20 bg-white text-center border-t border-black/5">
-        <p class="text-[10px] font-black uppercase tracking-[0.5em] text-slate-400">Aansh Gupta Portfolio — Strategic Architect Edition</p>
+    <footer class="py-24 bg-white text-center border-t border-black/5">
+        <p class="text-[11px] font-black uppercase tracking-[0.5em] text-slate-400">Aansh Gupta Portfolio — Strategic Mastery Edition v8.5</p>
     </footer>
 
-    <!-- Modals -->
+    <!-- Full Deep-Dive Project Modal (Internal Page Transition) -->
+    <div id="nike-project-view" class="project-view-overlay">
+        <div class="max-w-7xl mx-auto px-6 py-20 relative">
+            <button onclick="toggleNikeProject()" class="fixed top-10 right-10 z-[110] bg-black text-white w-16 h-16 rounded-full flex items-center justify-center text-4xl font-light shadow-2xl">×</button>
+            
+            <div class="mb-16 space-y-6">
+                <p class="marquee-text uppercase tracking-widest">Case Study Analysis</p>
+                <h2 class="text-5xl md:text-8xl font-black tracking-tighter uppercase leading-none text-black">Nike Strategy <br><span class="text-slate-400 italic">Brand Analysis</span></h2>
+            </div>
+
+            <div class="bento-grid">
+                <div class="hero-card p-12 lg:row-span-2 flex flex-col justify-center border-l-8 border-black">
+                    <h3 class="text-3xl font-black uppercase mb-10 text-brand-500">The Objective</h3>
+                    <p class="text-xl text-slate-600 leading-relaxed italic">
+                        "I wanted to see how Nike pulls in so many people and keeps them buying, especially when a lot of it is just because of the brand name and reputation."
+                    </p>
+                </div>
+
+                <div class="hero-card p-10 bg-black text-white flex flex-col justify-center">
+                    <h3 class="text-2xl font-black uppercase mb-6 text-white text-brand-500">01 Emotional Branding</h3>
+                    <p class="text-slate-400 leading-relaxed text-sm">
+                        Nike pushes motivation and confidence. But as a giant, many buy it now simply because they trust the name and know the quality is solid.
+                    </p>
+                </div>
+
+                <div class="hero-card p-10 flex flex-col justify-center">
+                    <h3 class="text-2xl font-black uppercase mb-6 text-black">02 Storytelling</h3>
+                    <p class="text-slate-500 leading-relaxed text-sm">
+                        Showing real athlete struggles and wins. Many buy the swoosh now because it feels premium, often beyond the need for the story itself.
+                    </p>
+                </div>
+
+                <div class="hero-card p-10 flex flex-col justify-center">
+                    <h3 class="text-2xl font-black uppercase mb-6 text-black">03 Consistency</h3>
+                    <p class="text-slate-500 leading-relaxed text-sm">
+                        Keeping everything clean and visuals the same builds brand value so high that people buy automatically, similar to the "Apple" logic.
+                    </p>
+                </div>
+
+                <div class="hero-card p-10 flex flex-col justify-center">
+                    <h3 class="text-2xl font-black uppercase mb-6 text-black">04 Trust & Status</h3>
+                    <p class="text-slate-500 leading-relaxed text-sm">
+                        Teaming with pros creates an aspirational "cool." When everyone wears it, the "everyone has it" comfort drives stickiness.
+                    </p>
+                </div>
+
+                <div class="hero-card p-12 lg:row-span-2 flex flex-col justify-center items-center">
+                    <h3 class="text-2xl font-black uppercase mb-10 text-black">Strategy Radar</h3>
+                    <div class="chart-container">
+                        <canvas id="nikeChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-3 hero-card p-12 border-2 border-black flex flex-col justify-center">
+                    <div class="flex items-center gap-6 mb-12">
+                        <h3 class="text-4xl font-black uppercase text-black">Key Learnings & Insights</h3>
+                        <div class="h-[1px] flex-1 bg-black/5"></div>
+                    </div>
+                    <div class="grid md:grid-cols-4 gap-10">
+                        <div class="space-y-4">
+                            <p class="text-[10px] font-black uppercase text-brand-500">Market Trust</p>
+                            <p class="font-bold text-lg leading-snug text-black">Trust in name and quality sustains scale once established.</p>
+                        </div>
+                        <div class="space-y-4">
+                            <p class="text-[10px] font-black uppercase text-brand-500">Sales Velocity</p>
+                            <p class="font-bold text-lg leading-snug text-black">A strong name sells products automatically without story.</p>
+                        </div>
+                        <div class="space-y-4">
+                            <p class="text-[10px] font-black uppercase text-brand-500">Loyalty Loop</p>
+                            <p class="font-bold text-lg leading-snug text-black">Consistency builds value where people don't think twice.</p>
+                        </div>
+                        <div class="space-y-4">
+                            <p class="text-[10px] font-black uppercase text-brand-500">Social Proof</p>
+                            <p class="font-bold text-lg leading-snug text-black">Collabs add status; everyone having it adds comfort.</p>
+                        </div>
+                    </div>
+                    <div class="mt-16 p-10 bg-slate-100 rounded-[3rem] border border-black/5">
+                        <p class="marquee-text opacity-40 mb-4 font-black">Personal Insight</p>
+                        <p class="text-3xl font-black italic tracking-tighter leading-tight text-black">
+                            "Smaller brands should start with stories and emotions, but the end goal is to be so trusted that the name alone equals quality."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- General Image Modal -->
     <div id="modal" class="fixed inset-0 z-[100] bg-white/95 backdrop-blur-md hidden items-center justify-center p-6 opacity-0 transition-opacity duration-300">
-        <button id="modal-close" class="absolute top-10 right-10 text-black text-5xl font-light hover:rotate-90 transition-transform">×</button>
-        <img id="modal-img" class="max-w-full max-h-[80vh] rounded-3xl shadow-2xl border border-black/5" src="">
+        <button id="modal-close" class="absolute top-10 right-10 text-black text-6xl font-light hover:rotate-90 transition-transform">×</button>
+        <img id="modal-img" class="max-w-full max-h-[85vh] rounded-[2rem] shadow-2xl border border-black/5" src="">
     </div>
 
     <script>
@@ -366,18 +506,50 @@
                 cursor.style.top = e.clientY + 'px';
             });
 
+            // Intersection Observer
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        const progressBars = entry.target.querySelectorAll('.progress-bar');
-                        progressBars.forEach(bar => bar.style.width = bar.dataset.width);
+                        const bars = entry.target.querySelectorAll('.progress-bar');
+                        bars.forEach(bar => bar.style.width = bar.dataset.width);
                     }
                 });
             }, { threshold: 0.1 });
 
             document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+            // Nike Chart Init
+            const ctx = document.getElementById('nikeChart').getContext('2d');
+            const nikeChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Quality', 'Status', 'Emotion', 'Story', 'Identity', 'Consistency'],
+                    datasets: [{
+                        data: [98, 95, 80, 75, 92, 94],
+                        backgroundColor: 'rgba(0, 0, 0, 0.05)',
+                        borderColor: '#000',
+                        borderWidth: 2,
+                        pointBackgroundColor: '#000'
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            grid: { color: 'rgba(0,0,0,0.1)' },
+                            angleLines: { color: 'rgba(0,0,0,0.1)' },
+                            suggestedMin: 0,
+                            suggestedMax: 100,
+                            ticks: { display: false },
+                            pointLabels: { color: '#000', font: { size: 10, weight: 'bold' } }
+                        }
+                    },
+                    plugins: { legend: { display: false } }
+                }
+            });
+
+            // Modals Logic
             const modal = document.getElementById('modal');
             const modalImg = document.getElementById('modal-img');
             const openModal = (src) => {
@@ -388,7 +560,10 @@
             };
             const closeModal = () => {
                 modal.classList.remove('opacity-100');
-                setTimeout(() => { modal.classList.add('hidden'); modal.classList.remove('flex'); }, 300);
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    modal.classList.remove('flex');
+                }, 300);
             };
 
             document.querySelectorAll('.cert-btn').forEach(btn => btn.addEventListener('click', () => openModal(btn.dataset.cert)));
@@ -397,7 +572,20 @@
                 if(parent) btn.addEventListener('click', () => openModal(parent.dataset.img));
             });
             document.getElementById('modal-close').addEventListener('click', closeModal);
-            modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
+
+            window.toggleNikeProject = function() {
+                const view = document.getElementById('nike-project-view');
+                const body = document.body;
+                if (view.classList.contains('active')) {
+                    view.classList.remove('active');
+                    body.classList.remove('overflow-hidden');
+                } else {
+                    view.classList.add('active');
+                    body.classList.add('overflow-hidden');
+                    // Force chart update on view open
+                    nikeChart.update();
+                }
+            };
 
             const n8nTrigger = document.getElementById('n8n-trigger');
             n8nTrigger.addEventListener('click', () => openModal('https://i.postimg.cc/Twn4vptj/n8n-automation-pic.png'));
