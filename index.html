@@ -89,7 +89,8 @@
             max-width: 90vw;
         }
 
-        .progress-bar { transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
         .bento-grid {
             display: grid;
@@ -137,6 +138,21 @@
         .project-view-overlay.active {
             transform: translateY(0);
         }
+
+        /* Carousel Styles */
+        .carousel-slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+            animation: fadeIn 0.5s ease;
+        }
+        .carousel-slide.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
+        }
     </style>
 </head>
 <body class="overflow-x-hidden">
@@ -183,10 +199,9 @@
                     <div class="space-y-6">
                         <div class="flex flex-col md:flex-row md:items-center gap-4">
                             <div class="flex items-center gap-4">
-                                <p class="marquee-text opacity-40 uppercase">BMS Student | Building Skills in Marketing, Business Strategy & Digital Growth</p>
+                                <p class="marquee-text opacity-40 uppercase">Marketing Strategist & AI Enthusiast</p>
                                 <div class="hidden md:block h-[1px] w-24 bg-black/10"></div>
                             </div>
-                            <!-- Availability Badge -->
                             <div class="inline-flex items-center gap-2 px-3 py-1 bg-green-50 text-green-700 rounded-full text-[10px] font-black uppercase tracking-widest border border-green-100 self-start md:self-auto">
                                 <span class="relative flex h-2 w-2">
                                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -226,7 +241,6 @@
                 <div class="lg:col-span-5 reveal delay-200">
                     <div class="bg-white p-8 md:p-12 rounded-[2.5rem] md:rounded-[3.5rem] border border-black/5 shadow-sm space-y-8 md:space-y-12">
                         <h3 class="text-xs font-black uppercase tracking-[0.3em] text-black opacity-40">Personal Arsenal</h3>
-                        
                         <div class="flex flex-wrap gap-3 md:gap-4">
                             <div class="px-4 md:px-6 py-3 md:py-4 bg-black text-white rounded-xl md:rounded-2xl font-black text-[10px] md:text-xs uppercase tracking-widest hover:scale-105 transition-transform">
                                 AI Implementation
@@ -249,36 +263,22 @@
                 <h2 class="text-4xl md:text-5xl font-black tracking-tighter uppercase text-black">Core Skills</h2>
                 <p class="text-black text-[10px] font-black uppercase tracking-[0.3em] mt-2">Professional Arsenal</p>
             </div>
-
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-                <div class="p-8 md:p-10 hero-card flex flex-col justify-center items-center text-center reveal border border-black/5 min-h-[120px] md:min-h-[200px]">
-                    <h4 class="font-black text-lg md:text-xl uppercase text-black">Marketing Strategy</h4>
-                </div>
-                <div class="p-8 md:p-10 hero-card flex flex-col justify-center items-center text-center reveal delay-100 border border-black/5 min-h-[120px] md:min-h-[200px]">
-                    <h4 class="font-black text-lg md:text-xl uppercase text-black">AI Tools & Automation</h4>
-                </div>
-                <div class="p-8 md:p-10 hero-card flex flex-col justify-center items-center text-center reveal delay-200 border border-black/5 min-h-[120px] md:min-h-[200px]">
-                    <h4 class="font-black text-lg md:text-xl uppercase text-black">Brand Analysis</h4>
-                </div>
-                <div class="p-8 md:p-10 hero-card flex flex-col justify-center items-center text-center reveal delay-300 border border-black/5 min-h-[120px] md:min-h-[200px]">
-                    <h4 class="font-black text-lg md:text-xl uppercase text-black">Figma & Prototyping</h4>
-                </div>
-                <div class="p-8 md:p-10 hero-card flex flex-col justify-center items-center text-center reveal delay-400 border border-black/5 min-h-[120px] md:min-h-[200px]">
-                    <h4 class="font-black text-lg md:text-xl uppercase text-black">Presentation Design</h4>
-                </div>
-                <div class="p-8 md:p-10 hero-card flex flex-col justify-center items-center text-center reveal delay-500 border border-black/5 min-h-[120px] md:min-h-[200px]">
-                    <h4 class="font-black text-lg md:text-xl uppercase text-black">Event Coordination</h4>
-                </div>
+                <div class="p-8 md:p-10 hero-card flex flex-col justify-center items-center text-center reveal border border-black/5 min-h-[120px] md:min-h-[200px]"><h4 class="font-black text-lg md:text-xl uppercase text-black">Marketing Strategy</h4></div>
+                <div class="p-8 md:p-10 hero-card flex flex-col justify-center items-center text-center reveal delay-100 border border-black/5 min-h-[120px] md:min-h-[200px]"><h4 class="font-black text-lg md:text-xl uppercase text-black">AI Tools & Automation</h4></div>
+                <div class="p-8 md:p-10 hero-card flex flex-col justify-center items-center text-center reveal delay-200 border border-black/5 min-h-[120px] md:min-h-[200px]"><h4 class="font-black text-lg md:text-xl uppercase text-black">Brand Analysis</h4></div>
+                <div class="p-8 md:p-10 hero-card flex flex-col justify-center items-center text-center reveal delay-300 border border-black/5 min-h-[120px] md:min-h-[200px]"><h4 class="font-black text-lg md:text-xl uppercase text-black">Figma & Prototyping</h4></div>
+                <div class="p-8 md:p-10 hero-card flex flex-col justify-center items-center text-center reveal delay-400 border border-black/5 min-h-[120px] md:min-h-[200px]"><h4 class="font-black text-lg md:text-xl uppercase text-black">Presentation Design</h4></div>
+                <div class="p-8 md:p-10 hero-card flex flex-col justify-center items-center text-center reveal delay-500 border border-black/5 min-h-[120px] md:min-h-[200px]"><h4 class="font-black text-lg md:text-xl uppercase text-black">Event Coordination</h4></div>
             </div>
         </section>
 
         <!-- 6. Education Section -->
         <section id="education" class="py-20 md:py-32 border-t border-black/10">
             <div class="mb-12 md:mb-16 reveal">
-                <h2 class="text-4xl md:text-5xl font-black tracking-tighter uppercase text-black">Education</h2>
+                <h2 class="text-4xl md:text-5xl font-black tracking-tighter uppercase text-black">Educational Qualification</h2>
                 <p class="text-black text-[10px] font-black uppercase tracking-[0.3em] mt-2">Academic Tenure</p>
             </div>
-
             <div class="grid lg:grid-cols-12 gap-6 items-stretch">
                 <div class="lg:col-span-4 hero-card p-8 md:p-12 reveal border border-black/5 flex flex-col justify-center">
                     <p class="marquee-text opacity-40 uppercase mb-4">Focus Path</p>
@@ -312,70 +312,58 @@
             <div class="mb-12 md:mb-16 space-y-4 reveal">
                 <h2 class="text-4xl md:text-5xl font-black tracking-tighter uppercase text-black">Featured Projects</h2>
             </div>
-
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                <!-- Project Tile: Nike Brand Analysis Strategy -->
+                <!-- Project Tile: Nike -->
                 <div class="hero-card p-8 md:p-10 flex flex-col justify-between min-h-[400px] reveal">
                     <div class="space-y-6">
                         <div class="w-12 h-12 bg-black text-white rounded-2xl flex items-center justify-center font-bold text-xl uppercase">🚀</div>
-                        <h3 class="text-xl md:text-2xl font-black uppercase tracking-tight">Nike Brand Analysis Strategy</h3>
-                        <p class="text-slate-500 text-sm leading-relaxed">
-                            Deciphering the emotional branding and trust-logic that fuels Nike's global dominance.
-                        </p>
+                        <h3 class="text-xl md:text-2xl font-black uppercase tracking-tight leading-tight">Nike Brand Analysis Strategy</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">Deciphering the emotional branding and trust-logic that fuels Nike's global dominance.</p>
                     </div>
-                    <div class="pt-8">
-                        <button onclick="toggleNikeProject()" class="w-full py-4 bg-black text-white rounded-2xl font-black text-[10px] uppercase tracking-widest hover:opacity-80 transition-all">
-                            View Full Analysis 🔗
-                        </button>
+                    <div class="pt-8"><button onclick="toggleNikeProject()" class="w-full py-4 bg-black text-white rounded-2xl font-black text-[10px] uppercase tracking-widest hover:opacity-80 transition-all">View Full Analysis 🔗</button></div>
+                </div>
+
+                <!-- Project Tile: Swiggy vs Zomato -->
+                <div class="hero-card p-8 md:p-10 flex flex-col justify-between min-h-[400px] reveal delay-100">
+                    <div class="space-y-6">
+                        <div class="w-12 h-12 bg-black text-white rounded-2xl flex items-center justify-center font-bold text-xl uppercase">🔍</div>
+                        <h3 class="text-xl md:text-2xl font-black uppercase tracking-tight leading-tight">Swiggy vs Zomato — UX Case Study</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">Primary UX audit comparing Swiggy and Zomato — same order, same restaurant, 13 screenshots captured live across both platforms.</p>
+                    </div>
+                    <div class="pt-8 space-y-3">
+                        <button onclick="toggleSwiggyProject()" class="w-full py-4 bg-black text-white rounded-2xl font-black text-[10px] uppercase tracking-widest hover:opacity-80 transition-all block text-center">View Case Study 🔗</button>
+                        <div class="w-full py-3 md:py-4 bg-slate-50 text-black rounded-xl font-black text-[9px] uppercase tracking-widest text-center border border-black/5">UX Research · Primary Data</div>
                     </div>
                 </div>
 
-                <!-- Project Tile: College Marketing Presentation -->
-                <div class="hero-card p-8 md:p-10 flex flex-col justify-between min-h-[400px] reveal delay-100">
+                <!-- Project Tile: College Marketing -->
+                <div class="hero-card p-8 md:p-10 flex flex-col justify-between min-h-[400px] reveal delay-200">
                     <div class="space-y-6">
                         <div class="w-12 h-12 bg-black text-white rounded-2xl flex items-center justify-center font-bold text-xl uppercase">📊</div>
                         <h3 class="text-xl md:text-2xl font-black uppercase tracking-tight leading-tight">College Marketing Presentation</h3>
-                        <p class="text-slate-500 text-sm leading-relaxed">
-                            Group project developing a structured marketing strategy presentation — handled research and deck design.
-                        </p>
+                        <p class="text-slate-500 text-sm leading-relaxed">Group project developing a structured marketing strategy presentation — handled research and deck design.</p>
                     </div>
-                    <div class="pt-8">
-                        <div class="w-full py-3 md:py-4 bg-slate-50 text-black rounded-xl font-black text-[9px] uppercase tracking-widest text-center border border-black/5">
-                            Academic | Team Project
-                        </div>
-                    </div>
+                    <div class="pt-8"><div class="w-full py-3 md:py-4 bg-slate-50 text-black rounded-xl font-black text-[9px] uppercase tracking-widest text-center border border-black/5">Academic | Team Project</div></div>
                 </div>
-
-                <!-- Project Tile: AI Automation Workflow -->
-                <div class="hero-card p-8 md:p-10 flex flex-col justify-between min-h-[400px] reveal delay-200">
+                
+                <!-- Project Tile: AI Automation -->
+                <div class="hero-card p-8 md:p-10 flex flex-col justify-between min-h-[400px] reveal delay-300">
                     <div class="space-y-6">
                         <div class="w-12 h-12 bg-black text-white rounded-2xl flex items-center justify-center font-bold text-xl uppercase">🤖</div>
                         <h3 class="text-xl md:text-2xl font-black uppercase tracking-tight leading-tight">AI Automation Workflow</h3>
-                        <p class="text-slate-500 text-sm leading-relaxed">
-                            Built agentic workflows using n8n to automate repetitive data tasks with zero-code logic.
-                        </p>
+                        <p class="text-slate-500 text-sm leading-relaxed">Built agentic workflows using n8n to automate repetitive data tasks with zero-code logic.</p>
                     </div>
-                    <div class="pt-8">
-                        <div class="w-full py-3 md:py-4 bg-slate-50 text-black rounded-xl font-black text-[9px] uppercase tracking-widest text-center border border-black/5">
-                            AI | Automation
-                        </div>
-                    </div>
+                    <div class="pt-8"><div class="w-full py-3 md:py-4 bg-slate-50 text-black rounded-xl font-black text-[9px] uppercase tracking-widest text-center border border-black/5">AI | Automation</div></div>
                 </div>
 
-                <!-- Project Tile: College Event — Tech & Execution -->
-                <div class="hero-card p-8 md:p-10 flex flex-col justify-between min-h-[400px] reveal delay-300">
+                <!-- Project Tile: College Event -->
+                <div class="hero-card p-8 md:p-10 flex flex-col justify-between min-h-[400px] reveal delay-[400ms]">
                     <div class="space-y-6">
                         <div class="w-12 h-12 bg-black text-white rounded-2xl flex items-center justify-center font-bold text-xl uppercase">⚡</div>
                         <h3 class="text-xl md:text-2xl font-black uppercase tracking-tight leading-tight">College Event Execution</h3>
-                        <p class="text-slate-500 text-sm leading-relaxed">
-                            Volunteered in the Tech and Execution department — managed coordination and on-ground logistics.
-                        </p>
+                        <p class="text-slate-500 text-sm leading-relaxed">Volunteered in the Tech and Execution department — managed coordination and on-ground logistics.</p>
                     </div>
-                    <div class="pt-8">
-                        <div class="w-full py-3 md:py-4 bg-slate-50 text-black rounded-xl font-black text-[9px] uppercase tracking-widest text-center border border-black/5">
-                            Leadership | Event Mgmt
-                        </div>
-                    </div>
+                    <div class="pt-8"><div class="w-full py-3 md:py-4 bg-slate-50 text-black rounded-xl font-black text-[9px] uppercase tracking-widest text-center border border-black/5">Leadership | Event Mgmt</div></div>
                 </div>
             </div>
         </section>
@@ -384,38 +372,29 @@
         <section id="work" class="py-20 md:py-32 border-t border-black/10">
             <h2 class="text-4xl md:text-5xl font-black tracking-tighter uppercase mb-16 md:mb-20 reveal text-black">Technical Archive</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-                <!-- Tech 1 -->
                 <div class="hero-card p-10 md:p-12 rounded-[2.5rem] md:rounded-[3.5rem] flex flex-col justify-between min-h-[400px] md:min-h-[450px] border border-black/5 hover:border-black transition-all group reveal">
                     <div class="space-y-6 text-left">
                         <div class="w-12 h-12 bg-slate-100 rounded-2xl flex items-center justify-center font-black text-xl group-hover:bg-black group-hover:text-white transition-colors">V</div>
                         <h3 class="text-xl font-black uppercase tracking-tight text-black leading-none">Vibe Coding</h3>
-                        <p class="text-slate-500 text-sm leading-relaxed font-medium">Generative AI workflows to architect and ship digital products with institutional speed.</p>
+                        <p class="text-slate-500 text-sm leading-relaxed font-medium">Generative AI workflows to architect and ship digital products with speed.</p>
                     </div>
-                    <div class="pt-8">
-                        <a href="https://github.com/aansh1-dev" target="_blank" class="w-full py-4 bg-black text-white rounded-2xl font-black text-[10px] uppercase tracking-widest hover:opacity-80 transition-all block text-center">Architecture 🔗</a>
-                    </div>
+                    <div class="pt-8"><a href="https://github.com/aansh1-dev" target="_blank" class="w-full py-4 bg-black text-white rounded-2xl font-black text-[10px] uppercase tracking-widest hover:opacity-80 transition-all block text-center">Architecture 🔗</a></div>
                 </div>
-                <!-- Tech 2 -->
                 <div class="hero-card p-10 md:p-12 rounded-[2.5rem] md:rounded-[3.5rem] flex flex-col justify-between min-h-[400px] md:min-h-[450px] border border-black/5 hover:border-black transition-all group reveal delay-100" data-img="https://i.ibb.co/6M3WfcL/FIGMA.png">
                     <div class="space-y-6 text-left text-black">
                         <div class="w-12 h-12 bg-slate-100 rounded-2xl flex items-center justify-center font-black text-xl group-hover:bg-blue-600 group-hover:text-white transition-colors text-black">F</div>
                         <h3 class="text-xl font-black uppercase tracking-tight leading-none text-black">Figma: Fintech</h3>
                         <p class="text-slate-500 text-sm leading-relaxed font-medium">High-fidelity prototype exploring next-gen personal banking interfaces.</p>
                     </div>
-                    <div class="pt-8">
-                        <button class="view-btn w-full py-4 bg-black text-white rounded-2xl font-black text-[10px] uppercase tracking-widest hover:opacity-80 transition-all text-center">Prototype 🔗</button>
-                    </div>
+                    <div class="pt-8"><button class="view-btn w-full py-4 bg-black text-white rounded-2xl font-black text-[10px] uppercase tracking-widest hover:opacity-80 transition-all text-center">Prototype 🔗</button></div>
                 </div>
-                <!-- Tech 3 -->
                 <div class="hero-card p-10 md:p-12 rounded-[2.5rem] md:rounded-[3.5rem] flex flex-col justify-between min-h-[400px] md:min-h-[450px] border border-black/5 hover:border-black transition-all group reveal delay-200" id="n8n-trigger">
                     <div class="space-y-6 text-left text-black">
                         <div class="w-12 h-12 bg-slate-100 rounded-2xl flex items-center justify-center font-black text-xl group-hover:bg-orange-600 group-hover:text-white transition-colors text-black">N8</div>
                         <h3 class="text-xl font-black uppercase tracking-tight leading-none text-black">Agentic Logic</h3>
-                        <p class="text-slate-500 text-sm leading-relaxed font-medium">Automated agent workflows processing complex data streams with zero manual friction.</p>
+                        <p class="text-slate-500 text-sm leading-relaxed font-medium">Automated agent workflows processing complex data streams with zero friction.</p>
                     </div>
-                    <div class="pt-8">
-                        <button class="w-full py-4 bg-black text-white rounded-2xl font-black text-[10px] uppercase tracking-widest hover:opacity-80 transition-all text-center">Case Study 🔗</button>
-                    </div>
+                    <div class="pt-8"><button class="w-full py-4 bg-black text-white rounded-2xl font-black text-[10px] uppercase tracking-widest hover:opacity-80 transition-all text-center">Case Study 🔗</button></div>
                 </div>
             </div>
         </section>
@@ -459,87 +438,111 @@
         <p class="text-[10px] md:text-[11px] font-black uppercase tracking-[0.3em] md:tracking-[0.5em] text-slate-400 px-4">© 2025 Aansh Gupta · Mumbai, India · Open to Internships</p>
     </footer>
 
-    <!-- Full Deep-Dive Project Modal -->
+    <!-- MODAL: NIKE -->
     <div id="nike-project-view" class="project-view-overlay">
         <div class="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-20 relative">
             <button onclick="toggleNikeProject()" class="fixed top-6 right-6 md:top-10 md:right-10 z-[110] bg-black text-white w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center text-3xl md:text-4xl font-light shadow-2xl">×</button>
-            
-            <div class="mb-12 md:mb-16 space-y-4 md:space-y-6">
-                <p class="marquee-text uppercase tracking-widest">Case Study Analysis</p>
-                <h2 class="text-4xl md:text-8xl font-black tracking-tighter uppercase leading-none text-black">Nike Strategy <br><span class="text-slate-400 italic">Brand Analysis</span></h2>
+            <div class="mb-12 md:mb-16 space-y-4 md:space-y-6"><p class="marquee-text uppercase tracking-widest text-black">Case Study Analysis</p><h2 class="text-4xl md:text-8xl font-black tracking-tighter uppercase leading-none text-black">Nike Strategy <br><span class="text-slate-400 italic">Brand Analysis</span></h2></div>
+            <div class="flex flex-col gap-6 md:gap-8 lg:grid lg:grid-cols-3">
+                <div class="hero-card p-8 md:p-12 lg:row-span-2 flex flex-col justify-center border-l-8 border-black"><h3 class="text-2xl md:text-3xl font-black uppercase mb-6 md:mb-10 text-brand-500">The Objective</h3><p class="text-lg md:text-xl text-slate-600 leading-relaxed italic">"I wanted to see how Nike pulls in so many people and keeps them buying, especially when a lot of it is just because of the brand name and reputation."</p></div>
+                <div class="hero-card p-8 md:p-10 bg-black text-white flex flex-col justify-center"><h3 class="text-xl md:text-2xl font-black uppercase mb-4 text-brand-500">01 Emotional Branding</h3><p class="text-slate-400 leading-relaxed text-sm">Nike pushes motivation and confidence. But as a giant, many buy it now simply because they trust the name.</p></div>
+                <div class="hero-card p-8 md:p-10 flex flex-col justify-center"><h3 class="text-xl md:text-2xl font-black uppercase mb-4 text-black">02 Storytelling</h3><p class="text-slate-500 leading-relaxed text-sm">Showing real athlete struggles and wins. Many buy the swoosh now because it feels premium.</p></div>
+                <div class="hero-card p-8 md:p-10 flex flex-col justify-center"><h3 class="text-xl md:text-2xl font-black uppercase mb-4 text-black">03 Consistency</h3><p class="text-slate-500 leading-relaxed text-sm">Keeping everything clean and visuals the same builds brand value so high that people buy automatically.</p></div>
+                <div class="hero-card p-8 md:p-10 flex flex-col justify-center"><h3 class="text-xl md:text-2xl font-black uppercase mb-4 text-black">04 Trust & Status</h3><p class="text-slate-500 leading-relaxed text-sm">Teaming with pros creates an aspirational "cool." Social proof drives comfort.</p></div>
+                <div class="hero-card p-8 md:p-12 lg:row-span-2 flex flex-col justify-center items-center overflow-hidden"><h3 class="text-xl md:text-2xl font-black uppercase mb-10 text-black">Strategy Radar</h3><div class="chart-container"><canvas id="nikeChart"></canvas></div></div>
+                <div class="lg:col-span-3 hero-card p-8 md:p-12 border-2 border-black flex flex-col justify-center">
+                    <div class="flex flex-col md:flex-row md:items-center gap-4 md:gap-6 mb-8 md:mb-12"><h3 class="text-3xl md:text-4xl font-black uppercase text-black">Key Learnings</h3><div class="h-[1px] flex-1 bg-black/5"></div></div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
+                        <div class="space-y-3"><p class="text-[10px] font-black uppercase text-brand-500">Market Trust</p><p class="font-bold text-base md:text-lg leading-snug text-black">Trust in name and quality sustains scale once established.</p></div>
+                        <div class="space-y-3"><p class="text-[10px] font-black uppercase text-brand-500">Sales Velocity</p><p class="font-bold text-base md:text-lg leading-snug text-black">A strong name sells products automatically without story.</p></div>
+                        <div class="space-y-3"><p class="text-[10px] font-black uppercase text-brand-500">Loyalty Loop</p><p class="font-bold text-base md:text-lg leading-snug text-black">Consistency builds value where people don't think twice.</p></div>
+                        <div class="space-y-3"><p class="text-[10px] font-black uppercase text-brand-500">Social Proof</p><p class="font-bold text-base md:text-lg leading-snug text-black">Collabs add status; everyone having it adds comfort.</p></div>
+                    </div>
+                </div>
             </div>
+        </div>
+    </div>
 
+    <!-- MODAL: SWIGGY VS ZOMATO -->
+    <div id="swiggy-project-view" class="project-view-overlay">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-20 relative">
+            <button onclick="toggleSwiggyProject()" class="fixed top-6 right-6 md:top-10 md:right-10 z-[110] bg-black text-white w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center text-3xl md:text-4xl font-light shadow-2xl">×</button>
+            <div class="mb-12 md:mb-16 space-y-4 md:space-y-6">
+                <p class="marquee-text uppercase tracking-widest text-black">Primary UX Research | April 2026</p>
+                <h2 class="text-4xl md:text-8xl font-black tracking-tighter uppercase leading-none text-black">Swiggy vs Zomato <br><span class="text-slate-400 italic">UX Case Study</span></h2>
+            </div>
             <div class="flex flex-col gap-6 md:gap-8 lg:grid lg:grid-cols-3">
                 <div class="hero-card p-8 md:p-12 lg:row-span-2 flex flex-col justify-center border-l-8 border-black">
                     <h3 class="text-2xl md:text-3xl font-black uppercase mb-6 md:mb-10 text-brand-500">The Objective</h3>
-                    <p class="text-lg md:text-xl text-slate-600 leading-relaxed italic">
-                        "I wanted to see how Nike pulls in so many people and keeps them buying, especially when a lot of it is just because of the brand name and reputation."
-                    </p>
+                    <p class="text-lg md:text-xl text-slate-600 leading-relaxed italic">I placed the same order (Domino's Big Big 6in1 Cheeseburst, ₹999) on both Swiggy and Zomato and screenshotted every step of the flow. Here's what I found:</p>
+                </div>
+
+                <div class="hero-card p-4 flex flex-col justify-center items-center relative group min-h-[300px]">
+                    <!-- Carousel Indicator & Counter -->
+                    <div class="absolute top-8 left-1/2 -translate-x-1/2 z-20 bg-black/60 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20 shadow-xl pointer-events-none">
+                         <span id="swiggy-counter" class="text-white font-black text-[10px] uppercase tracking-[0.2em]">1 / 4 • Audit Evidence</span>
+                    </div>
+                    
+                    <div class="absolute inset-x-4 top-1/2 -translate-y-1/2 flex justify-between z-10">
+                        <button onclick="moveCarousel(-1)" class="w-10 h-10 bg-black/40 hover:bg-black text-white rounded-full flex items-center justify-center text-xl backdrop-blur-sm transition-all border border-white/10">←</button>
+                        <button onclick="moveCarousel(1)" class="w-10 h-10 bg-black/40 hover:bg-black text-white rounded-full flex items-center justify-center text-xl backdrop-blur-sm transition-all border border-white/10">→</button>
+                    </div>
+                    
+                    <div class="w-full h-full flex items-center justify-center overflow-hidden rounded-2xl bg-slate-50 relative">
+                        <img src="https://i.ibb.co/jP3t8x2g/Screenshot-2026-04-01-12-36-47-406-in-swiggy-android-edit.jpg" class="carousel-slide active object-contain max-h-[400px] cursor-zoom-in" onclick="openModal(this.src)">
+                        <img src="https://i.ibb.co/23zw19qh/Screenshot-2026-04-01-12-39-55-473-com-application-zomato-edit.jpg" class="carousel-slide object-contain max-h-[400px] cursor-zoom-in" onclick="openModal(this.src)">
+                        <img src="https://i.ibb.co/NdBYMYTm/Screenshot-2026-04-01-12-40-28-570-com-application-zomato-edit.jpg" class="carousel-slide object-contain max-h-[400px] cursor-zoom-in" onclick="openModal(this.src)">
+                        <img src="https://i.ibb.co/zVqM1Vx8/Screenshot-2026-04-01-12-36-34-793-in-swiggy-android-edit.jpg" class="carousel-slide object-contain max-h-[400px] cursor-zoom-in" onclick="openModal(this.src)">
+                    </div>
+                    <div class="mt-4 flex gap-2">
+                        <div class="w-2 h-2 rounded-full bg-black carousel-dot shadow-sm"></div>
+                        <div class="w-2 h-2 rounded-full bg-slate-300 carousel-dot shadow-sm"></div>
+                        <div class="w-2 h-2 rounded-full bg-slate-300 carousel-dot shadow-sm"></div>
+                        <div class="w-2 h-2 rounded-full bg-slate-300 carousel-dot shadow-sm"></div>
+                    </div>
                 </div>
 
                 <div class="hero-card p-8 md:p-10 bg-black text-white flex flex-col justify-center">
-                    <h3 class="text-xl md:text-2xl font-black uppercase mb-4 text-brand-500">01 Emotional Branding</h3>
-                    <p class="text-slate-400 leading-relaxed text-sm">
-                        Nike pushes motivation and confidence. Many buy it now simply because they trust the name and know the quality is solid.
-                    </p>
-                </div>
-
-                <div class="hero-card p-8 md:p-10 flex flex-col justify-center">
-                    <h3 class="text-xl md:text-2xl font-black uppercase mb-4 text-black">02 Storytelling</h3>
-                    <p class="text-slate-500 leading-relaxed text-sm">
-                        Showing real athlete struggles and wins. Many buy the swoosh now because it feels premium, often beyond the need for the story itself.
-                    </p>
-                </div>
-
-                <div class="hero-card p-8 md:p-10 flex flex-col justify-center">
-                    <h3 class="text-xl md:text-2xl font-black uppercase mb-4 text-black">03 Consistency</h3>
-                    <p class="text-slate-500 leading-relaxed text-sm">
-                        Keeping everything clean and visuals the same builds brand value so high that people buy automatically.
-                    </p>
-                </div>
-
-                <div class="hero-card p-8 md:p-10 flex flex-col justify-center">
-                    <h3 class="text-xl md:text-2xl font-black uppercase mb-4 text-black">04 Trust & Status</h3>
-                    <p class="text-slate-500 leading-relaxed text-sm">
-                        Teaming with pros creates an aspirational "cool." When everyone wears it, the "everyone has it" comfort drives stickiness.
-                    </p>
-                </div>
-
-                <div class="hero-card p-8 md:p-12 lg:row-span-2 flex flex-col justify-center items-center overflow-hidden">
-                    <h3 class="text-xl md:text-2xl font-black uppercase mb-10 text-black">Strategy Radar</h3>
-                    <div class="chart-container">
-                        <canvas id="nikeChart"></canvas>
+                    <h3 class="text-xl md:text-2xl font-black uppercase mb-4 text-brand-500">01 Price Transparency</h3>
+                    <div class="text-slate-400 text-sm space-y-2">
+                        <p>• Both apps show ₹999 on the restaurant page</p>
+                        <p>• Swiggy checkout: ₹1,111 final (₹111.63 added as "GST & Other Charges" — no breakdown)</p>
+                        <p>• Zomato checkout: ₹1,113.63 final (itemised: ₹42 packaging + ₹14.90 fee + ₹54.73 GST + ₹3 donation)</p>
+                        <p>• <span class="text-white font-bold underline decoration-brand-500">Result:</span> Swiggy inflates cart price by 11.2% at checkout with zero explanation. Zomato is slightly more expensive but fully transparent.</p>
                     </div>
                 </div>
-
-                <div class="lg:col-span-3 hero-card p-8 md:p-12 border-2 border-black flex flex-col justify-center">
-                    <div class="flex flex-col md:flex-row md:items-center gap-4 md:gap-6 mb-8 md:mb-12">
-                        <h3 class="text-3xl md:text-4xl font-black uppercase text-black">Key Learnings</h3>
-                        <div class="h-[1px] flex-1 bg-black/5"></div>
+                <div class="hero-card p-8 md:p-10 flex flex-col justify-center">
+                    <h3 class="text-xl md:text-2xl font-black uppercase mb-4 text-black">02 Coupon UX</h3>
+                    <div class="text-slate-500 text-sm space-y-2">
+                        <p>• Swiggy coupon page opens with "Items added to your cart are not eligible for any coupons" — then shows 3 coupons anyway, all requiring more spend</p>
+                        <p>• Zomato auto-applied ₹1,150 discount before checkout without user doing anything</p>
+                        <p>• Zomato coupon page shows exact savings per code (₹33.41, ₹55.68) calculated for your current cart</p>
                     </div>
+                </div>
+                <div class="hero-card p-8 md:p-10 flex flex-col justify-center">
+                    <h3 class="text-xl md:text-2xl font-black uppercase mb-4 text-black">03 Navigation</h3>
+                    <div class="text-slate-500 text-sm space-y-2">
+                        <p>• Swiggy: 5 service tabs + banner carousel + promotional tiles before restaurant results — promotion-first design</p>
+                        <p>• Zomato: Category chips, filter buttons, "Healthy Mode" tab — more user-controlled navigation</p>
+                        <p>• Both apps show competitor ads in search — Zomato labels them clearly as "Ad"</p>
+                    </div>
+                </div>
+                <div class="hero-card p-8 md:p-10 flex flex-col justify-center">
+                    <h3 class="text-xl md:text-2xl font-black uppercase mb-4 text-black">04 Verdict</h3>
+                    <p class="text-slate-600 text-sm font-bold italic leading-relaxed">"Zomato wins on transparency and coupon UX. Swiggy wins on service breadth. On pure food ordering experience, Zomato is more honest at the moments that matter most."</p>
+                </div>
+                <div class="hero-card p-8 md:p-12 lg:row-span-2 flex flex-col justify-center items-center overflow-hidden"><h3 class="text-xl md:text-2xl font-black uppercase mb-10 text-black">Comparison Radar</h3><div class="chart-container"><canvas id="swiggyChart"></canvas></div></div>
+                <div class="lg:col-span-3 hero-card p-8 md:p-12 border-2 border-black flex flex-col justify-center text-black">
+                    <div class="flex flex-col md:flex-row md:items-center gap-4 md:gap-6 mb-8 md:mb-12"><h3 class="text-3xl md:text-4xl font-black uppercase">Recommendations</h3><div class="h-[1px] flex-1 bg-black/5"></div></div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
-                        <div class="space-y-3">
-                            <p class="text-[10px] font-black uppercase text-brand-500">Market Trust</p>
-                            <p class="font-bold text-base md:text-lg leading-snug text-black">Trust in name and quality sustains scale once established.</p>
-                        </div>
-                        <div class="space-y-3">
-                            <p class="text-[10px] font-black uppercase text-brand-500">Sales Velocity</p>
-                            <p class="font-bold text-base md:text-lg leading-snug text-black">A strong name sells products automatically without story.</p>
-                        </div>
-                        <div class="space-y-3">
-                            <p class="text-[10px] font-black uppercase text-brand-500">Loyalty Loop</p>
-                            <p class="font-bold text-base md:text-lg leading-snug text-black">Consistency builds value where people don't think twice.</p>
-                        </div>
-                        <div class="space-y-3">
-                            <p class="text-[10px] font-black uppercase text-brand-500">Social Proof</p>
-                            <p class="font-bold text-base md:text-lg leading-snug text-black">Collabs add status; everyone having it adds comfort.</p>
-                        </div>
+                        <div class="space-y-2"><p class="text-[10px] font-black uppercase text-brand-500">Rec 1 (Swiggy)</p><p class="font-bold text-sm">Only show applicable coupons at checkout.</p></div>
+                        <div class="space-y-2"><p class="text-[10px] font-black uppercase text-brand-500">Rec 2 (Swiggy)</p><p class="font-bold text-sm">Break down "GST & Other Charges" into itemized line items.</p></div>
+                        <div class="space-y-2"><p class="text-[10px] font-black uppercase text-brand-500">Rec 3 (Zomato)</p><p class="font-bold text-sm">Reduce competitor ad density in direct restaurant searches.</p></div>
+                        <div class="space-y-2"><p class="text-[10px] font-black uppercase text-brand-500">Rec 4 (Both)</p><p class="font-bold text-sm">Show estimated final price (incl. charges) on the restaurant page, before checkout.</p></div>
                     </div>
-                    <div class="mt-8 md:mt-16 p-6 md:p-10 bg-slate-100 rounded-3xl md:rounded-[3rem] border border-black/5">
-                        <p class="marquee-text opacity-40 mb-4 font-black">Personal Insight</p>
-                        <p class="text-xl md:text-3xl font-black italic tracking-tighter leading-tight text-black">
-                            "Smaller brands should start with stories and emotions, but the end goal is to be so trusted that the name alone equals quality."
-                        </p>
+                    <div class="mt-8 pt-8 border-t border-black/5">
+                        <p class="marquee-text opacity-40 mb-2">Resume Highlight</p>
+                        <p class="text-lg font-bold italic">"Conducted a primary UX audit of Swiggy vs Zomato — same order, same restaurant, 13 screens captured — identifying 3 friction points in pricing transparency, coupon UX, and navigation with specific redesign recommendations."</p>
                     </div>
                 </div>
             </div>
@@ -547,12 +550,29 @@
     </div>
 
     <!-- General Image Modal -->
-    <div id="modal" class="fixed inset-0 z-[100] bg-white/95 backdrop-blur-md hidden items-center justify-center p-6 opacity-0 transition-opacity duration-300">
+    <div id="modal" class="fixed inset-0 z-[200] bg-white/95 backdrop-blur-md hidden items-center justify-center p-6 opacity-0 transition-opacity duration-300">
         <button id="modal-close" class="absolute top-6 right-6 text-black text-4xl font-light">×</button>
         <img id="modal-img" class="max-w-full max-h-[85vh] rounded-[2rem] shadow-2xl border border-black/5" src="">
     </div>
 
     <script>
+        let currentSlide = 0;
+        function moveCarousel(direction) {
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dots = document.querySelectorAll('.carousel-dot');
+            const counter = document.getElementById('swiggy-counter');
+            
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.replace('bg-black', 'bg-slate-300');
+            
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.replace('bg-slate-300', 'bg-black');
+            
+            if (counter) counter.innerText = `${currentSlide + 1} / ${slides.length} • Audit Evidence`;
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             const cursor = document.getElementById('cursor');
             window.addEventListener('mousemove', (e) => {
@@ -561,45 +581,36 @@
             });
 
             const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) entry.target.classList.add('visible');
-                });
+                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
             }, { threshold: 0.05 });
-
             document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-            const ctx = document.getElementById('nikeChart').getContext('2d');
-            const nikeChart = new Chart(ctx, {
+            const nikeCtx = document.getElementById('nikeChart').getContext('2d');
+            const nikeChart = new Chart(nikeCtx, {
                 type: 'radar',
                 data: {
                     labels: ['Quality', 'Status', 'Emotion', 'Story', 'Identity', 'Consistency'],
-                    datasets: [{
-                        data: [98, 95, 80, 75, 92, 94],
-                        backgroundColor: 'rgba(0, 0, 0, 0.05)',
-                        borderColor: '#000',
-                        borderWidth: 2,
-                        pointBackgroundColor: '#000'
-                    }]
+                    datasets: [{ data: [98, 95, 80, 75, 92, 94], backgroundColor: 'rgba(0, 0, 0, 0.05)', borderColor: '#000', borderWidth: 2, pointBackgroundColor: '#000' }]
                 },
-                options: {
-                    maintainAspectRatio: false,
-                    scales: {
-                        r: {
-                            grid: { color: 'rgba(0,0,0,0.1)' },
-                            angleLines: { color: 'rgba(0,0,0,0.1)' },
-                            suggestedMin: 0,
-                            suggestedMax: 100,
-                            ticks: { display: false },
-                            pointLabels: { color: '#000', font: { size: 9, weight: 'bold' } }
-                        }
-                    },
-                    plugins: { legend: { display: false } }
-                }
+                options: { maintainAspectRatio: false, scales: { r: { grid: { color: 'rgba(0,0,0,0.1)' }, angleLines: { color: 'rgba(0,0,0,0.1)' }, suggestedMin: 0, suggestedMax: 100, ticks: { display: false }, pointLabels: { color: '#000', font: { size: 9, weight: 'bold' } } } }, plugins: { legend: { display: false } } }
+            });
+
+            const swiggyCtx = document.getElementById('swiggyChart').getContext('2d');
+            const swiggyChart = new Chart(swiggyCtx, {
+                type: 'radar',
+                data: {
+                    labels: ['Visual Delight', 'Transparency', 'Navigation', 'Coupon UX', 'Speed', 'Utility'],
+                    datasets: [
+                        { label: 'Swiggy', data: [75, 60, 80, 70, 95, 92], backgroundColor: 'rgba(0, 0, 0, 0.05)', borderColor: '#000', borderWidth: 1, pointBackgroundColor: '#000' },
+                        { label: 'Zomato', data: [95, 88, 85, 92, 88, 85], backgroundColor: 'rgba(100, 116, 139, 0.1)', borderColor: '#64748b', borderWidth: 1, pointBackgroundColor: '#64748b' }
+                    ]
+                },
+                options: { maintainAspectRatio: false, scales: { r: { grid: { color: 'rgba(0,0,0,0.05)' }, angleLines: { color: 'rgba(0,0,0,0.05)' }, suggestedMin: 0, suggestedMax: 100, ticks: { display: false }, pointLabels: { color: '#000', font: { size: 9, weight: 'bold' } } } }, plugins: { legend: { display: false } } }
             });
 
             const modal = document.getElementById('modal');
             const modalImg = document.getElementById('modal-img');
-            const openModal = (src) => {
+            window.openModal = (src) => {
                 modalImg.src = src;
                 modal.classList.remove('hidden');
                 modal.classList.add('flex');
@@ -611,23 +622,18 @@
             };
 
             document.querySelectorAll('.cert-btn').forEach(btn => btn.addEventListener('click', () => openModal(btn.dataset.cert)));
-            document.querySelectorAll('.view-btn').forEach(btn => {
-                const parent = btn.closest('[data-img]');
-                if(parent) btn.addEventListener('click', () => openModal(parent.dataset.img));
-            });
             document.getElementById('modal-close').addEventListener('click', closeModal);
 
             window.toggleNikeProject = function() {
                 const view = document.getElementById('nike-project-view');
-                const body = document.body;
-                if (view.classList.contains('active')) {
-                    view.classList.remove('active');
-                    body.classList.remove('overflow-hidden');
-                } else {
-                    view.classList.add('active');
-                    body.classList.add('overflow-hidden');
-                    nikeChart.update();
-                }
+                if (view.classList.contains('active')) { view.classList.remove('active'); document.body.classList.remove('overflow-hidden'); }
+                else { view.classList.add('active'); document.body.classList.add('overflow-hidden'); nikeChart.update(); }
+            };
+
+            window.toggleSwiggyProject = function() {
+                const view = document.getElementById('swiggy-project-view');
+                if (view.classList.contains('active')) { view.classList.remove('active'); document.body.classList.remove('overflow-hidden'); }
+                else { view.classList.add('active'); document.body.classList.add('overflow-hidden'); swiggyChart.update(); }
             };
 
             const n8nTrigger = document.getElementById('n8n-trigger');
