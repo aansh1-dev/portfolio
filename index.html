@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="BMS student at Hinduja College specializing in Marketing and AI tools. MAH-CET Top 1.5%. Open to internship opportunities in Mumbai.">
-    <title>Aansh Gupta | Marketing & AI Intern | Mumbai</title>
+    <title>Aansh Gupta</title>
     
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏆</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -50,9 +50,10 @@
         .hero-card {
             background: #FFFFFF;
             border-radius: 2.5rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
             height: 100%;
+            border: 1px solid rgba(0,0,0,0.03);
         }
         
         @media (min-width: 768px) {
@@ -60,15 +61,17 @@
         }
 
         .hero-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+            border-color: rgba(0,0,0,0.08);
         }
 
         .nav-pill {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(0,0,0,0.05);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
             max-width: 95vw;
         }
 
@@ -78,7 +81,9 @@
         .project-view-overlay {
             position: fixed;
             inset: 0;
-            background: #F3F4F6;
+            background: rgba(243, 244, 246, 0.85);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             z-index: 100;
             overflow-y: auto;
             transform: translateY(100%);
@@ -107,6 +112,16 @@
             background: rgba(0,0,0,0.08); border-radius: 50%; pointer-events: none; z-index: 9999;
             transition: transform 0.1s ease-out; transform: translate(-50%, -50%);
         }
+
+        .glass-dark {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .shadow-premium {
+            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.25), 0 18px 36px -18px rgba(0, 0, 0, 0.3);
+        }
     </style>
 </head>
 <body class="overflow-x-hidden">
@@ -114,7 +129,7 @@
     <div class="cursor-follower" id="cursor"></div>
 
     <!-- Navigation -->
-    <div class="flex justify-center mb-12 md:mb-16 sticky top-4 md:top-8 z-50 reveal delay-100 mt-8">
+    <div class="flex justify-center mb-12 md:mb-16 sticky top-4 md:top-8 z-50 reveal delay-100 mt-8 px-4">
         <nav class="nav-pill rounded-full px-6 md:px-10 py-3 md:py-5 flex items-center gap-4 md:gap-12 overflow-x-auto no-scrollbar">
             <a href="#hero" class="text-[10px] md:text-xs font-black uppercase tracking-widest hover:opacity-50 transition-opacity whitespace-nowrap">Profile</a>
             <a href="#about" class="text-[10px] md:text-xs font-black uppercase tracking-widest hover:opacity-50 transition-opacity whitespace-nowrap">About</a>
@@ -128,23 +143,31 @@
         
         <!-- Hero Section -->
         <section id="hero" class="pb-12 md:pb-20">
-            <div class="hero-card p-8 md:p-24 flex flex-col justify-center items-start reveal delay-200 overflow-hidden">
-                <div class="space-y-8 md:y-12 text-left w-full">
+            <div class="hero-card p-8 md:p-24 reveal delay-200 overflow-hidden">
+                <div class="flex flex-col lg:flex-row justify-between items-center w-full gap-10">
                     <div class="space-y-6">
                         <div class="flex flex-col md:flex-row md:items-center gap-4">
-                            <h2 class="text-sm md:text-lg font-bold text-slate-500 uppercase tracking-widest">
-                                BMS Student · MAH-CET Top 1.5%
+                            <h2 class="text-sm md:text-lg font-bold text-slate-400 uppercase tracking-widest">
+                                BMS Student · Year 1
                             </h2>
-                            <div class="inline-flex items-center gap-2 px-3 py-1 bg-green-50 text-green-700 rounded-full text-[10px] font-black uppercase tracking-widest border border-green-100 self-start md:self-auto">
-                                <span class="relative flex h-2 w-2">
-                                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                                    <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                                </span>
-                                Open to Internships
-                            </div>
                         </div>
-                        <h1 class="text-6xl sm:text-8xl md:text-[10rem] font-black leading-[0.8] md:leading-[0.75] tracking-tighter">Aansh</h1>
-                        <h1 class="text-6xl sm:text-8xl md:text-[10rem] font-serif italic text-slate-300 leading-[0.8] md:leading-[0.75] tracking-tighter">Gupta.</h1>
+                        <div class="space-y-0">
+                            <h1 class="text-6xl sm:text-8xl md:text-[10rem] font-black leading-[0.8] md:leading-[0.75] tracking-tighter text-black">Aansh</h1>
+                            <h1 class="text-6xl sm:text-8xl md:text-[10rem] font-serif italic text-slate-300 leading-[0.8] md:leading-[0.75] tracking-tighter">Gupta.</h1>
+                        </div>
+                    </div>
+
+                    <!-- Hero Score Tile -->
+                    <div class="bg-black text-white p-10 md:p-14 rounded-[2.5rem] md:rounded-[3rem] shadow-premium flex flex-col justify-center items-center text-center min-w-[280px] lg:min-w-[320px] border border-white/5 reveal">
+                        <div class="flex items-center gap-3 mb-4">
+                            <p class="text-[10px] font-black uppercase tracking-[0.4em] text-brand-500">MAH-CET Score</p>
+                            <span class="relative flex h-2 w-2">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                            </span>
+                        </div>
+                        <h2 class="text-7xl md:text-9xl font-black leading-none tracking-tighter">97.6</h2>
+                        <p class="text-[10px] font-bold uppercase tracking-[0.3em] opacity-40 mt-6">Top 1.5% Nationally</p>
                     </div>
                 </div>
             </div>
@@ -156,7 +179,7 @@
                 <h2 class="text-3xl md:text-4xl font-black tracking-tighter uppercase text-black">About Me</h2>
                 <div class="space-y-6 text-lg md:text-xl leading-relaxed text-slate-600">
                     <p>
-                        I am an 18-year-old BMS student at K.P.B. Hinduja College of Commerce, Mumbai. I have conducted primary UX audits on major food-delivery apps and built automated data workflows to reduce manual task overhead. I am currently seeking a corporate marketing internship to apply my research skills before targeting a Tier 1 MBA.
+                        BMS student at K.P.B. Hinduja College, Mumbai — ranked in the top 1.5% nationally in MAH-CET. I build things to understand them: a UX audit comparing Swiggy and Zomato checkout flows, automated workflows in N8N, and this site. Working toward a corporate internship and a Tier 1 MBA.
                     </p>
                 </div>
             </div>
@@ -170,70 +193,70 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                 
                 <!-- Project 1: Swiggy vs Zomato -->
-                <div class="hero-card p-8 md:p-12 flex flex-col justify-between min-h-[400px] reveal border border-black/5">
+                <div class="hero-card p-8 md:p-12 flex flex-col justify-between min-h-[400px] reveal">
                     <div class="space-y-6">
                         <div class="flex justify-between items-start">
-                            <div class="w-12 h-12 bg-black text-white rounded-2xl flex items-center justify-center font-bold text-xl">🔍</div>
-                            <span class="px-3 py-1 bg-slate-100 rounded-full text-[10px] font-black uppercase tracking-widest">Featured Case Study</span>
+                            <div class="w-12 h-12 bg-black text-white rounded-2xl shadow-lg flex items-center justify-center font-bold text-xl uppercase">🔍</div>
+                            <span class="px-3 py-1 bg-slate-100 rounded-full text-[10px] font-black uppercase tracking-widest border border-black/5">Featured Case Study</span>
                         </div>
                         <h3 class="text-2xl font-black uppercase tracking-tight">Swiggy vs Zomato UX Audit</h3>
                         <p class="text-slate-500 text-sm leading-relaxed">
-                            Audited 2 food-delivery apps by placing simultaneous Domino's orders and capturing 13 live screenshots of the checkout flow. Exposed Swiggy’s 11.2% hidden price inflation vs Zomato’s itemized transparency in a full HTML case study.
+                            Placed the same Domino's order on Swiggy and Zomato simultaneously, captured 13 checkout screenshots, and found Swiggy added ₹111 in undisclosed charges vs Zomato's itemized breakdown. Documented findings in a full HTML case study with price data and coupon UX analysis.
                         </p>
                     </div>
                     <div class="pt-8">
-                        <button onclick="toggleSwiggyProject()" class="w-full py-4 bg-black text-white rounded-2xl font-black text-[10px] uppercase tracking-widest hover:opacity-80 transition-all block text-center">View Case Study 🔗</button>
+                        <button onclick="toggleSwiggyProject()" class="w-full py-4 bg-black text-white rounded-2xl font-black text-[10px] uppercase tracking-widest hover:opacity-80 transition-all block text-center shadow-lg hover:shadow-xl">View Case Study 🔗</button>
                     </div>
                 </div>
 
                 <!-- Project 2: Portfolio -->
-                <div class="hero-card p-8 md:p-12 flex flex-col justify-between min-h-[400px] reveal delay-100 border border-black/5">
+                <div class="hero-card p-8 md:p-12 flex flex-col justify-between min-h-[400px] reveal delay-100">
                     <div class="space-y-6">
                         <div class="flex justify-between items-start">
-                            <div class="w-12 h-12 bg-slate-100 rounded-2xl flex items-center justify-center font-bold text-xl">🌐</div>
-                            <span class="px-3 py-1 bg-slate-100 rounded-full text-[10px] font-black uppercase tracking-widest">Live Project</span>
+                            <div class="w-12 h-12 bg-slate-100 rounded-2xl flex items-center justify-center font-bold text-xl uppercase border border-black/5">🌐</div>
+                            <span class="px-3 py-1 bg-slate-100 rounded-full text-[10px] font-black uppercase tracking-widest border border-black/5">Live Project</span>
                         </div>
                         <h3 class="text-2xl font-black uppercase tracking-tight">Portfolio Website</h3>
                         <p class="text-slate-500 text-sm leading-relaxed">
-                            Designed and built this responsive portfolio from scratch using HTML, CSS, and JavaScript. Shipped 8+ iterations based on feedback and deployed the final build via GitHub Pages.
+                            Built from scratch using AI and HTML — no templates. Deployed via GitHub Pages based on direct feedback.
                         </p>
                     </div>
                     <div class="pt-8">
-                        <a href="https://github.com/aansh1-dev" target="_blank" class="w-full py-4 border-2 border-black text-black rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-black hover:text-white transition-all block text-center">View Code 🔗</a>
+                        <a href="#hero" class="w-full py-4 bg-black text-white rounded-2xl font-black text-[10px] uppercase tracking-widest hover:opacity-80 transition-all block text-center shadow-lg hover:shadow-xl">This Website 🔗</a>
                     </div>
                 </div>
 
                 <!-- Project 3: Figma -->
-                <div class="hero-card p-8 md:p-12 flex flex-col justify-between min-h-[400px] reveal delay-200 border border-black/5">
+                <div class="hero-card p-8 md:p-12 flex flex-col justify-between min-h-[400px] reveal delay-200">
                     <div class="space-y-6">
                         <div class="flex justify-between items-start">
-                            <div class="w-12 h-12 bg-slate-100 rounded-2xl flex items-center justify-center font-bold text-xl">🎨</div>
-                            <span class="px-3 py-1 bg-slate-100 rounded-full text-[10px] font-black uppercase tracking-widest">UI/UX</span>
+                            <div class="w-12 h-12 bg-slate-100 rounded-2xl flex items-center justify-center font-bold text-xl uppercase border border-black/5">🎨</div>
+                            <span class="px-3 py-1 bg-slate-100 rounded-full text-[10px] font-black uppercase tracking-widest border border-black/5">UI/UX</span>
                         </div>
                         <h3 class="text-2xl font-black uppercase tracking-tight">Figma Fintech App Design</h3>
                         <p class="text-slate-500 text-sm leading-relaxed">
-                            Built a high-fidelity personal banking prototype in Figma to explore next-gen fintech user flows. Delivered a clickable interface focused on simplifying complex transaction logic for retail users.
+                            Designed a high-fidelity fintech app UI in Figma — conceptual layout covering account overview, transfers, and transaction history.
                         </p>
                     </div>
                     <div class="pt-8">
-                        <button class="view-btn w-full py-4 border-2 border-black text-black rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-black hover:text-white transition-all text-center" data-img="https://i.ibb.co/VWgWLr8C/Screenshot-2025-08-23-202723.png">View Prototype 🔗</button>
+                        <button class="view-btn w-full py-4 bg-black text-white rounded-2xl font-black text-[10px] uppercase tracking-widest hover:opacity-80 transition-all text-center shadow-lg hover:shadow-xl" data-img="https://i.ibb.co/VWgWLr8C/Screenshot-2025-08-23-202723.png">View Design 🔗</button>
                     </div>
                 </div>
 
                 <!-- Project 4: N8N -->
-                <div class="hero-card p-8 md:p-12 flex flex-col justify-between min-h-[400px] reveal delay-300 border border-black/5">
+                <div class="hero-card p-8 md:p-12 flex flex-col justify-between min-h-[400px] reveal delay-300">
                     <div class="space-y-6">
                         <div class="flex justify-between items-start">
-                            <div class="w-12 h-12 bg-slate-100 rounded-2xl flex items-center justify-center font-bold text-xl">⚙️</div>
-                            <span class="px-3 py-1 bg-slate-100 rounded-full text-[10px] font-black uppercase tracking-widest">Automation</span>
+                            <div class="w-12 h-12 bg-slate-100 rounded-2xl flex items-center justify-center font-bold text-xl uppercase border border-black/5">⚙️</div>
+                            <span class="px-3 py-1 bg-slate-100 rounded-full text-[10px] font-black uppercase tracking-widest border border-black/5">Automation</span>
                         </div>
-                        <h3 class="text-2xl font-black uppercase tracking-tight">N8N Automation Workflow</h3>
+                        <h3 class="text-2xl font-black uppercase tracking-tight">N8N Automation Dashboard</h3>
                         <p class="text-slate-500 text-sm leading-relaxed">
-                            Configured automated workflows in N8N to process data streams and reduce manual task overhead. Shipped a node-based logic system that handles repetitive inputs without manual intervention.
+                            Built node-based automation workflows in N8N to handle repetitive data tasks without manual input using Google Sheets integration.
                         </p>
                     </div>
                     <div class="pt-8">
-                        <button onclick="openModal('https://i.postimg.cc/Twn4vptj/n8n-automation-pic.png')" class="w-full py-4 border-2 border-black text-black rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-black hover:text-white transition-all text-center">View Workflow 🔗</button>
+                        <a href="https://aansh-n8n.lovable.app" target="_blank" class="w-full py-4 bg-black text-white rounded-2xl font-black text-[10px] uppercase tracking-widest hover:opacity-80 transition-all block text-center shadow-lg hover:shadow-xl">View Dashboard 🔗</a>
                     </div>
                 </div>
 
@@ -246,9 +269,9 @@
                 <h2 class="text-3xl md:text-4xl font-black tracking-tighter uppercase text-black">Education</h2>
             </div>
             <div class="grid lg:grid-cols-12 gap-8 items-stretch">
-                <div class="lg:col-span-8 hero-card p-10 md:p-20 bg-black text-white flex flex-col md:flex-row justify-between items-center reveal">
+                <div class="lg:col-span-8 hero-card p-10 md:p-20 bg-black text-white flex flex-col md:flex-row justify-between items-center reveal shadow-premium">
                     <div class="text-left space-y-4 w-full">
-                        <p class="text-xs font-black uppercase tracking-[0.4em] text-brand-500">Academic Standing</p>
+                        <p class="text-xs font-black uppercase tracking-[0.4em] text-brand-500">Key Credential</p>
                         <h3 class="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-tight">National MAH-CET Exam</h3>
                         <p class="text-lg md:text-xl opacity-70">Top 1.5% Nationally</p>
                     </div>
@@ -258,7 +281,7 @@
                     </div>
                 </div>
                 
-                <div class="lg:col-span-4 hero-card p-8 md:p-12 reveal border border-black/5 flex flex-col justify-center space-y-8">
+                <div class="lg:col-span-4 hero-card p-8 md:p-12 reveal flex flex-col justify-center space-y-8 text-black">
                     <div class="border-l-4 border-black pl-6">
                         <h4 class="font-black text-lg md:text-xl uppercase">BMS @ Hinduja College</h4>
                         <p class="text-slate-500 font-bold uppercase text-[10px] md:text-xs mt-1">Marketing Specialization · Year 1</p>
@@ -275,12 +298,10 @@
         <section id="certificates" class="py-20 md:py-32 border-t border-black/10">
             <h2 class="text-3xl md:text-4xl font-black tracking-tighter uppercase text-center mb-16 reveal text-black">Certificates</h2>
             <div class="max-w-4xl mx-auto flex flex-col md:flex-row gap-6">
-                <div class="flex-1 hero-card p-8 flex items-center gap-6 border border-black/5 group cursor-pointer hover:border-black transition-all" onclick="openModal('https://i.ibb.co/qFmnYbJB/Google-certificate.png')">
-                    <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center font-black text-2xl">G</div>
+                <div class="flex-1 hero-card p-8 flex items-center justify-center border border-black/5 group cursor-pointer hover:border-black transition-all" onclick="openModal('https://i.ibb.co/qFmnYbJB/Google-certificate.png')">
                     <h4 class="font-bold text-lg uppercase text-black">Google Marketing Certificate</h4>
                 </div>
-                <div class="flex-1 hero-card p-8 flex items-center gap-6 border border-black/5 group cursor-pointer hover:border-black transition-all" onclick="openModal('https://i.ibb.co/m5yRKRx8/Aansh-Gupta-Generative-AI-Tools.png')">
-                    <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center font-black text-2xl">AI</div>
+                <div class="flex-1 hero-card p-8 flex items-center justify-center border border-black/5 group cursor-pointer hover:border-black transition-all" onclick="openModal('https://i.ibb.co/m5yRKRx8/Aansh-Gupta-Generative-AI-Tools.png')">
                     <h4 class="font-bold text-lg uppercase text-black">Generative AI Certificate</h4>
                 </div>
             </div>
@@ -288,11 +309,11 @@
 
         <!-- Contact Section -->
         <section id="contact" class="py-20 md:py-32 border-t border-black/10">
-            <div class="hero-card p-10 md:p-24 bg-black text-white text-center reveal">
+            <div class="hero-card p-10 md:p-24 bg-black text-white text-center reveal shadow-premium">
                 <h2 class="text-5xl sm:text-7xl md:text-[8rem] font-black uppercase tracking-tighter mb-10 leading-[0.8]">Let's <br><span class="text-brand-500 italic font-serif">Connect.</span></h2>
                 <div class="flex flex-col sm:flex-row justify-center gap-4 md:gap-8">
-                    <a href="mailto:aanshg2007@gmail.com" class="px-12 md:px-20 py-5 border-2 border-white text-white font-black uppercase text-[10px] tracking-[0.3em] rounded-2xl hover:bg-white hover:text-black transition-all">Email Me</a>
-                    <a href="https://www.linkedin.com/in/aansh1" target="_blank" class="px-12 md:px-20 py-5 border-2 border-white text-white font-black uppercase text-[10px] tracking-[0.3em] rounded-2xl hover:bg-white hover:text-black transition-all">LinkedIn</a>
+                    <a href="mailto:aanshg2007@gmail.com" class="px-12 md:px-20 py-5 border-2 border-white text-white font-black uppercase text-[10px] tracking-[0.3em] rounded-2xl hover:bg-white hover:text-black transition-all shadow-xl">Email Me</a>
+                    <a href="https://www.linkedin.com/in/aansh1" target="_blank" class="px-12 md:px-20 py-5 border-2 border-white text-white font-black uppercase text-[10px] tracking-[0.3em] rounded-2xl hover:bg-white hover:text-black transition-all shadow-xl">LinkedIn</a>
                 </div>
             </div>
         </section>
@@ -305,16 +326,16 @@
     <!-- CASE STUDY MODAL: SWIGGY VS ZOMATO -->
     <div id="swiggy-project-view" class="project-view-overlay">
         <div class="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-20 relative">
-            <button onclick="toggleSwiggyProject()" class="fixed top-6 right-6 md:top-10 md:right-10 z-[110] bg-black text-white w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center text-3xl md:text-4xl font-light shadow-2xl">×</button>
+            <button onclick="toggleSwiggyProject()" class="fixed top-6 right-6 md:top-10 md:right-10 z-[110] bg-black text-white w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center text-3xl md:text-4xl font-light shadow-2xl glass-dark hover:scale-110 transition-transform">×</button>
             <div class="mb-12 md:mb-16 space-y-4 md:space-y-6">
-                <p class="marquee-text uppercase tracking-widest text-black">Primary UX Research | April 2026</p>
+                <p class="marquee-text uppercase tracking-widest text-black">UX Audit | April 2026</p>
                 <h2 class="text-4xl md:text-8xl font-black tracking-tighter uppercase leading-none text-black">Swiggy vs Zomato <br><span class="text-slate-400 italic">UX Case Study</span></h2>
             </div>
             
             <div class="flex flex-col gap-6 md:gap-8 lg:grid lg:grid-cols-3">
                 <div class="hero-card p-8 md:p-12 lg:row-span-2 flex flex-col justify-center border-l-8 border-black">
                     <h3 class="text-2xl md:text-3xl font-black uppercase mb-6 md:mb-10 text-brand-500">The Objective</h3>
-                    <p class="text-lg md:text-xl text-slate-600 leading-relaxed italic">I placed 1 order (Domino's Big Big 6in1 Cheeseburst, ₹999) on both Swiggy and Zomato and captured every step of the flow. Here is the data:</p>
+                    <p class="text-lg md:text-xl text-slate-600 leading-relaxed italic">I placed the same Domino's order on Swiggy and Zomato simultaneously and captured 13 live checkout screenshots to audit pricing transparency and coupon friction.</p>
                 </div>
 
                 <div class="hero-card p-4 flex flex-col justify-center items-center relative group min-h-[350px]">
@@ -322,8 +343,8 @@
                          <span id="swiggy-counter" class="text-white font-black text-[10px] uppercase tracking-[0.2em]">1 / 4 • Audit Evidence</span>
                     </div>
                     <div class="absolute inset-x-4 top-1/2 -translate-y-1/2 flex justify-between z-10">
-                        <button onclick="moveCarousel(-1)" class="w-10 h-10 bg-black/40 hover:bg-black text-white rounded-full flex items-center justify-center text-xl backdrop-blur-sm transition-all border border-white/10">←</button>
-                        <button onclick="moveCarousel(1)" class="w-10 h-10 bg-black/40 hover:bg-black text-white rounded-full flex items-center justify-center text-xl backdrop-blur-sm transition-all border border-white/10">→</button>
+                        <button onclick="moveCarousel(-1)" class="w-10 h-10 bg-black/40 hover:bg-black text-white rounded-full flex items-center justify-center text-xl backdrop-blur-sm transition-all border border-white/10 shadow-lg">←</button>
+                        <button onclick="moveCarousel(1)" class="w-10 h-10 bg-black/40 hover:bg-black text-white rounded-full flex items-center justify-center text-xl backdrop-blur-sm transition-all border border-white/10 shadow-lg">→</button>
                     </div>
                     <div class="w-full h-full flex items-center justify-center overflow-hidden rounded-2xl bg-slate-50 relative">
                         <img src="https://i.ibb.co/jP3t8x2g/Screenshot-2026-04-01-12-36-47-406-in-swiggy-android-edit.jpg" class="carousel-slide active object-contain max-h-[450px] cursor-zoom-in" onclick="openModal(this.src)">
@@ -339,28 +360,28 @@
                     </div>
                 </div>
 
-                <div class="hero-card p-8 md:p-10 bg-black text-white flex flex-col justify-center text-sm">
+                <div class="hero-card p-8 md:p-10 bg-black text-white flex flex-col justify-center text-sm shadow-premium">
                     <h3 class="text-xl md:text-2xl font-black uppercase mb-4 text-brand-500">01 Price Transparency</h3>
                     <div class="space-y-2 opacity-80">
                         <p>• Swiggy checkout: ₹1,111 final (₹111.63 added as "GST & Other Charges")</p>
                         <p>• Zomato checkout: ₹1,113.63 final (itemised breakdown provided)</p>
-                        <p class="text-white font-bold underline decoration-brand-500 mt-4">Outcome: Exposed 11.2% hidden inflation on Swiggy at checkout.</p>
+                        <p class="text-white font-bold underline decoration-brand-500 mt-4">Findings: Swiggy added ₹111 in undisclosed charges vs Zomato's itemized breakdown.</p>
                     </div>
                 </div>
-                <div class="hero-card p-8 md:p-10 flex flex-col justify-center text-sm">
-                    <h3 class="text-xl md:text-2xl font-black uppercase mb-4 text-black">02 Coupon UX</h3>
+                <div class="hero-card p-8 md:p-10 flex flex-col justify-center text-sm text-black">
+                    <h3 class="text-xl md:text-2xl font-black uppercase mb-4">02 Coupon UX</h3>
                     <div class="space-y-2 text-slate-500">
                         <p>• Swiggy: Displayed 3 ineligible coupons, increasing spend friction.</p>
-                        <p>• Zomato: Auto-applied discount and itemized exact savings.</p>
+                        <p>• Zomato: Auto-applied discount and itemized exact savings per code.</p>
                     </div>
                 </div>
                 <div class="hero-card p-8 md:p-12 border-2 border-black flex flex-col justify-center text-black lg:col-span-3">
                     <h3 class="text-3xl font-black uppercase mb-8">Redesign Recommendations</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <div class="space-y-2"><p class="text-[10px] font-black uppercase text-brand-500">Rec 1</p><p class="font-bold text-sm">Shipped redesign: show only applicable coupons at checkout.</p></div>
-                        <div class="space-y-2"><p class="text-[10px] font-black uppercase text-brand-500">Rec 2</p><p class="font-bold text-sm">Audited line items: break down "GST & Other Charges".</p></div>
-                        <div class="space-y-2"><p class="text-[10px] font-black uppercase text-brand-500">Rec 3</p><p class="font-bold text-sm">Drove clarity: reduce competitor ad density in direct searches.</p></div>
-                        <div class="space-y-2"><p class="text-[10px] font-black uppercase text-brand-500">Rec 4</p><p class="font-bold text-sm">Led transparency: show estimated final price on restaurant page.</p></div>
+                        <div class="space-y-2"><p class="text-[10px] font-black uppercase text-brand-500">Rec 1</p><p class="font-bold text-sm">Show only applicable coupons at checkout to reduce decision friction.</p></div>
+                        <div class="space-y-2"><p class="text-[10px] font-black uppercase text-brand-500">Rec 2</p><p class="font-bold text-sm">Break down "GST & Other Charges" into line items at the cart stage.</p></div>
+                        <div class="space-y-2"><p class="text-[10px] font-black uppercase text-brand-500">Rec 3</p><p class="font-bold text-sm">Remove competitor ads from direct branded searches.</p></div>
+                        <div class="space-y-2"><p class="text-[10px] font-black uppercase text-brand-500">Rec 4</p><p class="font-bold text-sm">Show estimated final price on the restaurant page, before checkout.</p></div>
                     </div>
                 </div>
             </div>
@@ -368,9 +389,9 @@
     </div>
 
     <!-- General Image Modal -->
-    <div id="modal" class="fixed inset-0 z-[200] bg-white/95 backdrop-blur-md hidden items-center justify-center p-6 opacity-0 transition-opacity duration-300">
-        <button id="modal-close" class="absolute top-6 right-6 text-black text-4xl font-light">×</button>
-        <img id="modal-img" class="max-w-full max-h-[85vh] rounded-[2rem] shadow-2xl border border-black/5" src="">
+    <div id="modal" class="fixed inset-0 z-[200] bg-black/40 backdrop-blur-2xl hidden items-center justify-center p-6 opacity-0 transition-opacity duration-300">
+        <button id="modal-close" class="absolute top-6 right-6 text-white text-5xl font-light hover:scale-110 transition-transform">×</button>
+        <img id="modal-img" class="max-w-full max-h-[85vh] rounded-[2rem] shadow-premium border border-white/10" src="">
     </div>
 
     <script>
