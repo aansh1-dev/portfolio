@@ -63,7 +63,7 @@
             .hero-card { border-radius: 3rem; }
         }
 
-        .hero-card:hover {
+        .hero-card:hover:not(.pointer-events-none) {
             transform: translateY(-10px);
             box-shadow: 0 60px 120px -20px rgba(0, 0, 0, 0.15), 0 30px 60px -30px rgba(0, 0, 0, 0.15);
             background: rgba(255, 255, 255, 1);
@@ -88,6 +88,35 @@
         /* Shadow & Blur depth requested from status card */
         .shadow-premium {
             box-shadow: 0 40px 80px -15px rgba(0, 0, 0, 0.35), 0 20px 40px -20px rgba(0, 0, 0, 0.45);
+        }
+
+        .project-view-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(243, 244, 246, 0.9);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            z-index: 1000;
+            overflow-y: auto;
+            transform: translateY(100%);
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .project-view-overlay.active {
+            transform: translateY(0);
+        }
+
+        .carousel-slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+            animation: fadeIn 0.5s ease;
+        }
+        .carousel-slide.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         .cursor-follower {
@@ -134,7 +163,7 @@
         
         <!-- Hero Section -->
         <section id="hero" class="py-12 md:py-24">
-            <div class="hero-card p-8 md:p-24 reveal delay-200 overflow-hidden">
+            <div class="hero-card p-8 md:p-24 reveal delay-200 overflow-hidden pointer-events-none">
                 <div class="grid lg:grid-cols-2 items-center gap-16 w-full text-left">
                     <div class="space-y-8">
                         <div class="space-y-0">
@@ -171,8 +200,8 @@
         </section>
 
         <!-- About Me Section -->
-        <section id="about" class="py-20 md:py-32 border-t border-black/10">
-            <div class="max-w-4xl space-y-12 reveal">
+        <section id="about" class="py-20 md:py-32 border-t border-black/10 reveal">
+            <div class="max-w-4xl space-y-12">
                 <h2 class="text-3xl md:text-4xl font-black tracking-tighter uppercase text-black">About</h2>
                 <div class="space-y-6 text-lg md:text-xl leading-relaxed text-slate-600 font-medium">
                     <p>
@@ -183,14 +212,14 @@
         </section>
 
         <!-- Layered Skills Section -->
-        <section id="skills" class="py-20 md:py-32 border-t border-black/10">
-            <div class="mb-16 md:mb-20 reveal">
+        <section id="skills" class="py-20 md:py-32 border-t border-black/10 reveal">
+            <div class="mb-16 md:mb-20">
                 <h2 class="text-3xl md:text-4xl font-black tracking-tighter uppercase text-black">Skills</h2>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 reveal">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 
                 <!-- Category 1: Strategy & Insights -->
-                <div class="hero-card p-10 md:p-14 flex flex-col justify-center">
+                <div class="hero-card p-10 md:p-14 flex flex-col justify-center pointer-events-none">
                     <div class="space-y-8">
                         <p class="text-[10px] font-black uppercase tracking-widest text-brand-500">Strategy & Research</p>
                         <div class="space-y-6">
@@ -203,7 +232,7 @@
                 </div>
 
                 <!-- Category 2: Data & AI Tools -->
-                <div class="hero-card p-10 md:p-14 flex flex-col justify-center">
+                <div class="hero-card p-10 md:p-14 flex flex-col justify-center pointer-events-none">
                     <div class="space-y-8">
                         <p class="text-[10px] font-black uppercase tracking-widest text-brand-500">Technical & Systems</p>
                         <div class="space-y-6">
@@ -216,7 +245,7 @@
                 </div>
 
                 <!-- Category 3: Creative & Strategy -->
-                <div class="hero-card p-10 md:p-14 flex flex-col justify-center">
+                <div class="hero-card p-10 md:p-14 flex flex-col justify-center pointer-events-none">
                     <div class="space-y-8">
                         <p class="text-[10px] font-black uppercase tracking-widest text-brand-500">Creative Production</p>
                         <div class="space-y-6">
@@ -229,7 +258,7 @@
                 </div>
 
                 <!-- Category 4: Operations & Management -->
-                <div class="hero-card p-10 md:p-14 flex flex-col justify-center">
+                <div class="hero-card p-10 md:p-14 flex flex-col justify-center pointer-events-none">
                     <div class="space-y-8">
                         <p class="text-[10px] font-black uppercase tracking-widest text-brand-500">Professional Ops</p>
                         <div class="space-y-6">
@@ -245,14 +274,14 @@
         </section>
 
         <!-- Projects Section -->
-        <section id="projects" class="py-20 md:py-32 border-t border-black/10">
-            <div class="mb-16 md:mb-20 reveal">
+        <section id="projects" class="py-20 md:py-32 border-t border-black/10 reveal">
+            <div class="mb-16 md:mb-20">
                 <h2 class="text-3xl md:text-4xl font-black tracking-tighter uppercase text-black">Projects</h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
                 
                 <!-- Project 1: Swiggy vs Zomato -->
-                <div class="hero-card p-10 md:p-14 flex flex-col justify-between min-h-[480px] reveal">
+                <div class="hero-card p-10 md:p-14 flex flex-col justify-between min-h-[480px]">
                     <div class="space-y-8">
                         <div class="flex justify-between items-start">
                             <div class="w-14 h-14 bg-black text-white rounded-[1.5rem] shadow-xl flex items-center justify-center font-bold text-2xl">🔍</div>
@@ -267,7 +296,7 @@
                         </div>
                     </div>
                     <div class="pt-10">
-                        <button class="w-full py-5 black-btn rounded-2xl font-black text-xs uppercase tracking-widest block text-center">View Case Study 🔗</button>
+                        <button onclick="toggleSwiggyProject()" class="w-full py-5 black-btn rounded-2xl font-black text-xs uppercase tracking-widest block text-center">View Case Study 🔗</button>
                     </div>
                 </div>
 
@@ -334,13 +363,87 @@
             </div>
         </section>
 
+        <!-- Tools I Work With Section -->
+        <section id="tools" class="py-20 md:py-32 border-t border-black/10 reveal">
+            <h2 class="text-3xl md:text-4xl font-black tracking-tighter uppercase text-black mb-12 md:mb-16">Tools I Work With</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Group 1: Research & Ideation (UPDATED) -->
+                <div class="hero-card p-8 md:p-10 pointer-events-none">
+                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-6">Research & Ideation</p>
+                    <div class="space-y-4">
+                        <div>
+                            <p class="font-black text-sm uppercase text-black">ChatGPT</p>
+                            <p class="text-slate-500 text-xs mt-0.5"> — idea generation, research, copy drafts</p>
+                        </div>
+                        <div>
+                            <p class="font-black text-sm uppercase text-black">Gemini</p>
+                            <p class="text-slate-500 text-xs mt-0.5"> — multimodal research, data synthesis, search integration</p>
+                        </div>
+                        <div>
+                            <p class="font-black text-sm uppercase text-black">Claude</p>
+                            <p class="text-slate-500 text-xs mt-0.5"> — nuanced writing, complex logic, document analysis</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Group 2: Design & Content -->
+                <div class="hero-card p-8 md:p-10 pointer-events-none">
+                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-6">Design & Content</p>
+                    <div class="space-y-4">
+                        <div>
+                            <p class="font-black text-sm uppercase text-black">Canva</p>
+                            <p class="text-slate-500 text-xs mt-0.5"> — social creatives, presentations, thumbnails</p>
+                        </div>
+                        <div>
+                            <p class="font-black text-sm uppercase text-black">CapCut</p>
+                            <p class="text-slate-500 text-xs mt-0.5"> — video editing, reels</p>
+                        </div>
+                        <div>
+                            <p class="font-black text-sm uppercase text-black">Figma</p>
+                            <p class="text-slate-500 text-xs mt-0.5"> — wireframes, layouts, prototypes</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Group 3: Web & Build -->
+                <div class="hero-card p-8 md:p-10 pointer-events-none">
+                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-6">Web & Build</p>
+                    <div class="space-y-4">
+                        <div>
+                            <p class="font-black text-sm uppercase text-black">HTML/CSS</p>
+                            <p class="text-slate-500 text-xs mt-0.5"> — building and shipping this portfolio</p>
+                        </div>
+                        <div>
+                            <p class="font-black text-sm uppercase text-black">GitHub</p>
+                            <p class="text-slate-500 text-xs mt-0.5"> — version control, deployment via GitHub Pages</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Group 4: Productivity & Analysis -->
+                <div class="hero-card p-8 md:p-10 pointer-events-none">
+                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-6">Productivity & Analysis</p>
+                    <div class="space-y-4">
+                        <div>
+                            <p class="font-black text-sm uppercase text-black">Notion</p>
+                            <p class="text-slate-500 text-xs mt-0.5"> — planning, notes, project tracking</p>
+                        </div>
+                        <div>
+                            <p class="font-black text-sm uppercase text-black">Excel</p>
+                            <p class="text-slate-500 text-xs mt-0.5"> — data organisation, basic analysis</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Education Section -->
-        <section id="education" class="py-20 md:py-32 border-t border-black/10">
-            <div class="mb-16 reveal">
+        <section id="education" class="py-20 md:py-32 border-t border-black/10 reveal">
+            <div class="mb-16">
                 <h2 class="text-3xl md:text-4xl font-black tracking-tighter uppercase text-black">Education</h2>
             </div>
             <div class="grid lg:grid-cols-12 gap-10 items-stretch">
-                <div class="lg:col-span-8 hero-card p-12 md:p-20 bg-black text-white flex flex-col md:flex-row justify-between items-center reveal shadow-premium border border-white/5">
+                <div class="lg:col-span-8 hero-card p-12 md:p-20 bg-black text-white flex flex-col md:flex-row justify-between items-center reveal shadow-premium border border-white/5 pointer-events-none">
                     <div class="text-left space-y-6 w-full text-left">
                         <p class="text-[10px] font-black uppercase tracking-[0.4em] text-brand-500 text-left">Competitive Exam</p>
                         <h3 class="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-tight text-left">National MAH-CET Exam</h3>
@@ -352,7 +455,7 @@
                     </div>
                 </div>
                 
-                <div class="lg:col-span-4 hero-card p-10 md:p-14 reveal flex flex-col justify-center space-y-12 text-black">
+                <div class="lg:col-span-4 hero-card p-10 md:p-14 reveal flex flex-col justify-center space-y-12 text-black pointer-events-none">
                     <div class="border-l-8 border-black pl-8">
                         <h4 class="font-black text-2xl uppercase">BMS @ Hinduja College</h4>
                         <p class="text-slate-500 font-bold uppercase text-[11px] mt-2">Marketing Specialization · Year 1</p>
@@ -366,7 +469,7 @@
         </section>
 
         <!-- Connect Section -->
-        <section id="contact" class="py-20 md:py-32 border-t border-black/10">
+        <section id="contact" class="py-20 md:py-32 border-t border-black/10 reveal">
             <div class="hero-card p-12 md:p-32 bg-black text-white text-center reveal shadow-status border border-white/5">
                 <h2 class="text-6xl md:text-[9rem] font-black uppercase tracking-tighter mb-12 leading-[0.8]">Let's <br><span class="text-brand-500 italic font-serif">Connect.</span></h2>
                 <div class="max-w-3xl mx-auto mb-20">
@@ -386,13 +489,84 @@
         <p class="text-xs font-black uppercase tracking-[0.4em] text-slate-400">Aansh Gupta © 2025</p>
     </footer>
 
+    <!-- CASE STUDY MODAL: SWIGGY VS ZOMATO -->
+    <div id="swiggy-project-view" class="project-view-overlay">
+        <div class="max-w-7xl mx-auto px-6 py-16 md:py-24 relative text-black">
+            <button onclick="toggleSwiggyProject()" class="fixed top-8 right-8 md:top-12 md:right-12 z-[1100] bg-black text-white w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center text-4xl font-light shadow-premium hover:scale-110 transition-transform">×</button>
+            <div class="mb-16 md:mb-24 space-y-4">
+                <p class="text-xs font-black uppercase tracking-[0.4em] opacity-40">Pricing & Flow Audit | April 2026</p>
+                <h2 class="text-5xl md:text-[8rem] font-black tracking-tighter uppercase leading-none">Swiggy vs Zomato <br><span class="text-slate-400 italic font-serif">Pricing Audit</span></h2>
+            </div>
+            
+            <div class="flex flex-col gap-10 lg:grid lg:grid-cols-3 items-stretch">
+                <div class="hero-card p-10 md:p-14 lg:row-span-2 flex flex-col justify-center border-l-[12px] border-black pointer-events-none">
+                    <h3 class="text-2xl md:text-3xl font-black uppercase mb-8 text-brand-500">The Objective</h3>
+                    <p class="text-lg md:text-2xl text-slate-600 leading-relaxed italic font-medium">I placed the same Domino's order on Swiggy and Zomato simultaneously and captured 13 live checkout screenshots to audit pricing transparency and coupon friction.</p>
+                </div>
+
+                <!-- Evidence Carousel -->
+                <div class="hero-card p-6 flex flex-col justify-center items-center relative group min-h-[400px]">
+                    <div class="absolute top-10 left-1/2 -translate-x-1/2 z-20 bg-black/80 backdrop-blur-md px-5 py-2 rounded-full border border-white/20 shadow-premium pointer-events-none">
+                         <span id="swiggy-counter" class="text-white font-black text-[11px] uppercase tracking-[0.3em]">1 / 4 • Audit Evidence</span>
+                    </div>
+                    <div class="absolute inset-x-6 top-1/2 -translate-y-1/2 flex justify-between z-10">
+                        <button onclick="moveCarousel(-1)" class="w-12 h-12 bg-black/60 hover:bg-black text-white rounded-full flex items-center justify-center text-2xl backdrop-blur-sm transition-all border border-white/10 shadow-premium">←</button>
+                        <button onclick="moveCarousel(1)" class="w-12 h-12 bg-black/60 hover:bg-black text-white rounded-full flex items-center justify-center text-2xl backdrop-blur-sm transition-all border border-white/10 shadow-premium">→</button>
+                    </div>
+                    <div class="w-full h-full flex items-center justify-center overflow-hidden rounded-[2rem] bg-slate-50 relative">
+                        <img src="https://i.ibb.co/jP3t8x2g/Screenshot-2026-04-01-12-36-47-406-in-swiggy-android-edit.jpg" class="carousel-slide active object-contain max-h-[500px] cursor-zoom-in" onclick="openModal(this.src)">
+                        <img src="https://i.ibb.co/23zw19qh/Screenshot-2026-04-01-12-39-55-473-com-application-zomato-edit.jpg" class="carousel-slide object-contain max-h-[500px] cursor-zoom-in" onclick="openModal(this.src)">
+                        <img src="https://i.ibb.co/NdBYMYTm/Screenshot-2026-04-01-12-40-28-570-com-application-zomato-edit.jpg" class="carousel-slide object-contain max-h-[500px] cursor-zoom-in" onclick="openModal(this.src)">
+                        <img src="https://i.ibb.co/zVqM1Vx8/Screenshot-2026-04-01-12-36-34-793-in-swiggy-android-edit.jpg" class="carousel-slide object-contain max-h-[500px] cursor-zoom-in" onclick="openModal(this.src)">
+                    </div>
+                </div>
+
+                <div class="hero-card p-10 md:p-12 bg-black text-white flex flex-col justify-center text-sm shadow-premium pointer-events-none">
+                    <h3 class="text-xl md:text-2xl font-black uppercase mb-6 text-brand-500">01 Price Transparency</h3>
+                    <div class="space-y-4 opacity-80 text-base leading-relaxed font-medium">
+                        <p>• Swiggy checkout: ₹1,111 final (₹111.63 added as "GST & Other Charges")</p>
+                        <p>• Zomato checkout: ₹1,113.63 final (itemised breakdown provided)</p>
+                        <p class="text-white font-bold underline decoration-brand-500 mt-6 pt-4 border-t border-white/10 text-lg">Findings: Swiggy added ₹111 in undisclosed charges vs Zomato's itemized breakdown.</p>
+                    </div>
+                </div>
+                <div class="hero-card p-10 md:p-12 flex flex-col justify-center text-sm text-black shadow-lg pointer-events-none">
+                    <h3 class="text-xl md:text-2xl font-black uppercase mb-6">02 Coupon UX</h3>
+                    <div class="space-y-4 text-slate-500 text-base leading-relaxed font-medium">
+                        <p>• Swiggy: Displayed 3 ineligible coupons, increasing spend friction.</p>
+                        <p>• Zomato: Auto-applied discount and itemized exact savings per code.</p>
+                    </div>
+                </div>
+                <div class="hero-card p-10 md:p-16 border-2 border-black flex flex-col justify-center text-black lg:col-span-3 shadow-premium pointer-events-none">
+                    <h3 class="text-3xl md:text-4xl font-black uppercase mb-12">Redesign Recommendations</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                        <div class="space-y-3"><p class="text-[10px] font-black uppercase text-brand-500">Rec 1</p><p class="font-bold text-base leading-tight">Show only applicable coupons at checkout to reduce decision friction.</p></div>
+                        <div class="space-y-3"><p class="text-[10px] font-black uppercase text-brand-500">Rec 2</p><p class="font-bold text-base leading-tight">Break down "GST & Other Charges" into line items at the cart stage.</p></div>
+                        <div class="space-y-3"><p class="text-[10px] font-black uppercase text-brand-500">Rec 3</p><p class="font-bold text-base leading-tight">Remove competitor ads from direct branded searches.</p></div>
+                        <div class="space-y-3"><p class="text-[10px] font-black uppercase text-brand-500">Rec 4</p><p class="font-bold text-base leading-tight">Show estimated final price on the restaurant page, before checkout.</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- General Image Modal -->
-    <div id="modal" class="fixed inset-0 z-[2000] bg-black/50 backdrop-blur-3xl hidden items-center justify-center p-6 opacity-0 transition-opacity duration-400">
+    <div id="modal" class="fixed inset-0 z-[2000] bg-black/60 backdrop-blur-3xl hidden items-center justify-center p-6 opacity-0 transition-opacity duration-400">
         <button id="modal-close" class="absolute top-8 right-8 text-white text-5xl font-light hover:scale-110 transition-transform">×</button>
         <img id="modal-img" class="max-w-full max-h-[85vh] rounded-[2.5rem] shadow-status border border-white/10" src="">
     </div>
 
     <script>
+        let currentSlide = 0;
+        function moveCarousel(direction) {
+            const slides = document.querySelectorAll('.carousel-slide');
+            const counter = document.getElementById('swiggy-counter');
+            if(!slides.length) return;
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+            if (counter) counter.innerText = `${currentSlide + 1} / ${slides.length} • Audit Evidence`;
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             const cursor = document.getElementById('cursor');
             window.addEventListener('mousemove', (e) => {
@@ -421,9 +595,23 @@
             };
 
             document.getElementById('modal-close').addEventListener('click', closeModal);
+            
+            // Standard image viewers
             document.querySelectorAll('.view-btn').forEach(btn => {
                 btn.addEventListener('click', () => openModal(btn.dataset.img));
             });
+
+            // Toggle logic for the case study overlay
+            window.toggleSwiggyProject = function() {
+                const view = document.getElementById('swiggy-project-view');
+                if (view.classList.contains('active')) { 
+                    view.classList.remove('active'); 
+                    document.body.style.overflow = 'auto'; 
+                } else { 
+                    view.classList.add('active'); 
+                    document.body.style.overflow = 'hidden'; 
+                }
+            };
         });
     </script>
 </body>
