@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="BMS Student Portfolio - Aansh Gupta. Focused on Business Analysis, Growth & Practical Execution.">
-    <title>Aansh Gupta — Digital Archive</title>
+    <meta name="description" content="Portfolio of Aansh Gupta - BMS Student at Hinduja College focusing on Business Analysis and Automation.">
+    <title>Aansh Gupta — Portfolio</title>
     
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏆</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -27,7 +27,7 @@
                     colors: {
                         brand: {
                             bg: '#000000',
-                            accent: '#3b82f6', // Brighter blue for visibility
+                            accent: '#3b82f6', 
                         }
                     },
                 }
@@ -42,44 +42,54 @@
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
             font-family: 'Inter', sans-serif;
-            background-image: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.04), transparent 70%);
-            background-attachment: fixed;
+        }
+
+        /* Enhanced Ambient Blobs */
+        .ambient-blob {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(140px);
+            z-index: -1;
+            opacity: 0.2;
+            pointer-events: none;
         }
 
         .grid-bg {
             position: fixed;
             inset: 0;
             background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+                linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
             background-size: 60px 60px;
             pointer-events: none;
             z-index: -1;
         }
 
+        /* Fixed Liquid Glass - Visible even on pure black */
         .liquid-glass {
-            background: rgba(20, 20, 22, 0.45);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
             backdrop-filter: blur(40px) saturate(210%);
             -webkit-backdrop-filter: blur(40px) saturate(210%);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 3.5rem;
             transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
         }
 
         .liquid-glass:hover:not(.no-hover) {
-            background: rgba(30, 30, 35, 0.6);
-            border-color: rgba(255, 255, 255, 0.15);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.05) 100%);
+            border-color: rgba(255, 255, 255, 0.25);
             transform: scale(1.015) translateY(-5px);
-            box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.9);
+            box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.9), inset 0 1px 2px rgba(255, 255, 255, 0.2);
         }
 
         .spotlight::after {
             content: "";
             position: absolute;
             inset: 0;
-            background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(59, 130, 246, 0.12), transparent 40%);
+            background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(59, 130, 246, 0.15), transparent 40%);
             opacity: 0;
             transition: opacity 0.5s ease;
             pointer-events: none;
@@ -87,18 +97,33 @@
         }
         .spotlight:hover::after { opacity: 1; }
 
-        .site-header {
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(15px);
-            z-index: 1000;
+        /* Floating Pill Nav Bar */
+        .site-header-container {
+            position: fixed;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2000;
+            width: calc(100% - 3rem);
+            max-width: 1100px;
+        }
+
+        .pill-nav {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(30px) saturate(200%);
+            -webkit-backdrop-filter: blur(30px) saturate(200%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 999px;
+            padding: 1.25rem 2.5rem;
+            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.6);
         }
 
         .nav-link {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 9px;
+            font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 0.2em;
-            opacity: 0.5;
+            opacity: 0.6;
             transition: all 0.3s ease;
         }
         .nav-link:hover { opacity: 1; color: #3b82f6; }
@@ -110,14 +135,14 @@
             font-weight: 900;
         }
 
-        .reveal { opacity: 0; transform: translateY(40px); }
+        .reveal { opacity: 0; transform: translateY(60px) rotateX(10deg); }
 
         .skill-pill {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 8px 24px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 12px 32px;
             border-radius: 999px;
-            font-size: 11px;
+            font-size: 13px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.1em;
@@ -130,22 +155,18 @@
         }
 
         .section-title-btn {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 10px 24px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 14px 36px;
             border-radius: 999px;
             display: inline-flex;
             align-items: center;
             font-family: 'Playfair Display', serif;
             font-style: italic;
             color: #3b82f6;
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             transition: all 0.3s ease;
-        }
-        .section-title-btn:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(59, 130, 246, 0.5);
         }
 
         #cursor {
@@ -161,7 +182,7 @@
             inset: 0;
             background: rgba(0, 0, 0, 0.98);
             backdrop-filter: blur(50px);
-            z-index: 2000;
+            z-index: 3000;
             overflow-y: auto;
             transform: translateY(100%);
             transition: transform 0.8s cubic-bezier(0.8, 0, 0.2, 1);
@@ -170,14 +191,22 @@
 
         .section-number {
             font-family: 'JetBrains Mono', monospace;
-            color: rgba(255, 255, 255, 0.3);
-            font-size: 0.65rem;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.8rem;
             font-weight: 700;
-            margin-right: 0.75rem;
-            letter-spacing: 0.1em;
+            margin-right: 1rem;
+            letter-spacing: 0.15em;
         }
 
-        .image-zoom:hover { transform: scale(1.05); transition: transform 0.8s ease; }
+        @keyframes blob-float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(60px, -80px) scale(1.2); }
+            66% { transform: translate(-40px, 40px) scale(0.8); }
+        }
+
+        .animate-blob {
+            animation: blob-float 18s infinite ease-in-out;
+        }
     </style>
 </head>
 <body class="bg-black text-white selection:bg-brand-accent">
@@ -185,36 +214,43 @@
     <div id="cursor" class="hidden md:block"></div>
     <div class="grid-bg"></div>
 
+    <!-- Background Decoration for Glass Effects -->
+    <div class="fixed inset-0 pointer-events-none z-[-1] overflow-hidden">
+        <div class="ambient-blob animate-blob top-[-5%] left-[10%] w-[60%] h-[60%] bg-brand-accent/20"></div>
+        <div class="ambient-blob animate-blob bottom-[-10%] right-[15%] w-[55%] h-[55%] bg-blue-400/10" style="animation-delay: -5s;"></div>
+        <div class="ambient-blob animate-blob top-[25%] left-[-15%] w-[45%] h-[45%] bg-purple-500/10" style="animation-delay: -10s;"></div>
+    </div>
+
     <!-- Navigation -->
-    <header class="site-header fixed top-0 left-0 w-full h-14 flex items-center justify-center border-b border-white/5">
-        <div class="max-w-[1200px] w-full px-8 flex justify-between items-center">
-            <a href="#hero" class="text-xs font-black tracking-tighter uppercase">Aansh Gupta</a>
-            <nav class="hidden md:flex items-center gap-8">
+    <div class="site-header-container">
+        <header class="pill-nav flex items-center justify-between">
+            <a href="#hero" class="text-[12px] font-black tracking-tighter uppercase ml-4">Aansh Gupta</a>
+            <nav class="hidden md:flex items-center gap-10 lg:gap-14">
                 <a href="#about" class="nav-link">About</a>
                 <a href="#projects" class="nav-link">Work</a>
                 <a href="#tools" class="nav-link">Tools</a>
-                <a href="#skills" class="nav-link">Expertise</a>
+                <a href="#skills" class="nav-link">Capabilities</a>
                 <a href="#education" class="nav-link">Pedigree</a>
             </nav>
-            <a href="mailto:aanshg2007@gmail.com" class="text-[11px] font-bold uppercase tracking-widest text-brand-accent">Contact →</a>
-        </div>
-    </header>
+            <a href="mailto:aanshg2007@gmail.com" class="text-[12px] font-bold uppercase tracking-widest bg-brand-accent/20 text-brand-accent px-10 py-3.5 rounded-full border border-brand-accent/30 hover:bg-brand-accent hover:text-white transition-all shadow-lg mr-2">Contact →</a>
+        </header>
+    </div>
 
     <main class="max-w-[1200px] mx-auto px-8">
         
         <!-- Hero Section -->
-        <section id="hero" class="min-h-screen flex flex-col justify-center items-center text-center">
+        <section id="hero" class="min-h-screen flex flex-col justify-center items-center text-center pt-32">
             <div class="space-y-6">
-                <div class="reveal">
+                <div class="hero-reveal">
                     <h1 class="hero-name uppercase">
                         AANSH <br> 
                         <span class="font-serif italic font-normal text-zinc-700">GUPTA.</span>
                     </h1>
                 </div>
                 
-                <div class="reveal pt-12">
+                <div class="hero-reveal pt-12">
                     <div class="flex flex-wrap justify-center gap-4">
-                        <a href="mailto:aanshg2007@gmail.com" class="bg-white text-black px-12 py-5 rounded-full text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-transform shadow-[0_0_40px_rgba(255,255,255,0.1)]">Contact Studio</a>
+                        <a href="mailto:aanshg2007@gmail.com" class="bg-white text-black px-12 py-5 rounded-full text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-transform shadow-[0_0_40px_rgba(255,255,255,0.1)]">Get in touch</a>
                         <a href="#projects" class="border border-white/10 px-12 py-5 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-white/5 transition-all">Explore Work</a>
                     </div>
                 </div>
@@ -225,17 +261,17 @@
         <section id="about" class="py-40 border-t border-white/5 reveal">
             <div class="grid lg:grid-cols-12 gap-12 mb-12">
                 <div class="lg:col-span-12">
-                    <div class="section-title-btn no-hover">
+                    <div class="section-title-btn spotlight no-hover">
                         <span class="section-number">01 /</span> The Profile
                     </div>
                 </div>
             </div>
             <div class="grid lg:grid-cols-2 gap-16">
                 <p class="text-lg md:text-xl text-white/90 leading-relaxed font-light">
-                    First-year BMS student at K.P.B. Hinduja College, Mumbai, with a strong interest in business growth, research, digital tools, and practical problem-solving. I focus on bridging the gap between abstract strategy and high-performance execution.
+                    First-year BMS student at K.P.B. Hinduja College, Mumbai. I have a strong interest in business growth, practical research, and applying digital tools to solve everyday problems. I focus on turning analysis into actionable steps.
                 </p>
                 <p class="text-lg md:text-xl text-white/90 leading-relaxed font-light">
-                    I’ve built hands-on projects across competitive analysis, automation dashboards, content growth, and web development. I learn new tools quickly, work independently, and enjoy turning ideas into useful outcomes while seeking internship opportunities to gain real experience.
+                    I’ve worked on projects involving competitive research, process automation, and web development. I enjoy learning new tools quickly, working independently, and turning ideas into results while seeking internships to gain corporate experience.
                 </p>
             </div>
         </section>
@@ -243,63 +279,59 @@
         <!-- 02 / Selected Work Grid -->
         <section id="projects" class="py-40 border-t border-white/5">
             <div class="mb-24 reveal">
-                <div class="section-title-btn no-hover mb-6">
+                <div class="section-title-btn spotlight no-hover mb-6">
                     <span class="section-number">02 /</span> Portfolio
                 </div>
                 <h3 class="text-5xl md:text-8xl font-black tracking-tighter uppercase mt-4">Selected Work.</h3>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                <!-- Swiggy vs Zomato -->
                 <div class="liquid-glass spotlight p-10 flex flex-col justify-between min-h-[550px] reveal group cursor-pointer" onclick="toggleSwiggyProject()">
                     <div>
                         <div class="flex justify-between items-start mb-12">
-                            <span class="text-[9px] font-mono text-zinc-500 uppercase tracking-widest">Featured Case Study</span>
+                            <span class="text-[9px] font-mono text-zinc-500 uppercase tracking-widest">Pricing Audit</span>
                             <span class="text-xl font-serif">01</span>
                         </div>
-                        <h4 class="text-4xl font-bold tracking-tight mb-6 group-hover:text-brand-accent transition-colors">Swiggy vs Zomato <br>Pricing & Flow Audit.</h4>
-                        <p class="text-zinc-400 font-light leading-relaxed">Audited checkout flows by placing simultaneous Domino's orders. Exposed 11.2% hidden price inflation vs itemized transparency across 13 breakpoints.</p>
+                        <h4 class="text-4xl font-bold tracking-tight mb-6 group-hover:text-brand-accent transition-colors">Food Delivery <br>Pricing Audit.</h4>
+                        <p class="text-zinc-400 font-light leading-relaxed">A comparative study of checkout flows. Placed simultaneous orders to document price differences and transparency across platform interfaces.</p>
                     </div>
-                    <p class="text-[9px] font-mono text-zinc-600 mt-12 pt-6 border-t border-white/5 uppercase">View Case Study</p>
+                    <p class="text-[9px] font-mono text-zinc-600 mt-12 pt-6 border-t border-white/5 uppercase group-hover:text-white transition-colors">View Project Details</p>
                 </div>
 
-                <!-- N8N Dashboard -->
                 <a href="https://aansh-n8n.lovable.app" target="_blank" class="liquid-glass spotlight p-10 flex flex-col justify-between min-h-[550px] reveal delay-100 group">
                     <div>
                         <div class="flex justify-between items-start mb-12">
                             <span class="text-[9px] font-mono text-zinc-500 uppercase tracking-widest">Automation</span>
                             <span class="text-xl font-serif">02</span>
                         </div>
-                        <h4 class="text-4xl font-bold tracking-tight mb-6 group-hover:text-brand-accent transition-colors">N8N Real-time <br>Analytics Dashboard.</h4>
-                        <p class="text-zinc-400 font-light leading-relaxed">Configured node-based workflows to process data streams and reduce manual task overhead via live KPI monitoring systems.</p>
+                        <h4 class="text-4xl font-bold tracking-tight mb-6 group-hover:text-brand-accent transition-colors">N8N Live <br>Analytics Dashboard.</h4>
+                        <p class="text-zinc-400 font-light leading-relaxed">Built a visual dashboard to monitor project data. Used node-based automation to sync information and reduce manual data entry tasks.</p>
                     </div>
-                    <p class="text-[9px] font-mono text-zinc-600 mt-12 pt-6 border-t border-white/5 uppercase group-hover:text-white transition-colors">Launch Build ↗</p>
+                    <p class="text-[9px] font-mono text-zinc-600 mt-12 pt-6 border-t border-white/5 uppercase group-hover:text-white transition-colors">Launch Dashboard ↗</p>
                 </a>
 
-                <!-- This Portfolio -->
                 <div class="liquid-glass spotlight p-10 flex flex-col justify-between min-h-[550px] reveal group">
                     <div>
                         <div class="flex justify-between items-start mb-12">
-                            <span class="text-[9px] font-mono text-zinc-500 uppercase tracking-widest">Live Project</span>
+                            <span class="text-[9px] font-mono text-zinc-500 uppercase tracking-widest">Development</span>
                             <span class="text-xl font-serif">03</span>
                         </div>
-                        <h4 class="text-4xl font-bold tracking-tight mb-6 group-hover:text-brand-accent transition-colors">Digital Archive <br>Personal Portfolio.</h4>
-                        <p class="text-zinc-400 font-light leading-relaxed">Designed and engineered from scratch focusing on cinematic motion, GSAP logic, and Liquid Glass UI components.</p>
+                        <h4 class="text-4xl font-bold tracking-tight mb-6 group-hover:text-brand-accent transition-colors">Personal Portfolio <br>Web Project.</h4>
+                        <p class="text-zinc-400 font-light leading-relaxed">Designed and coded this site from scratch. Focused on clean layouts, smooth interactions, and responsive design for all devices.</p>
                     </div>
-                    <p class="text-[9px] font-mono text-zinc-600 mt-12 pt-6 border-t border-white/5 uppercase">Current Build</p>
+                    <p class="text-[9px] font-mono text-brand-accent mt-12 pt-6 border-t border-white/5 uppercase">Current Environment</p>
                 </div>
 
-                <!-- Figma Fintech -->
                 <div class="liquid-glass spotlight p-10 flex flex-col justify-between min-h-[550px] reveal delay-100 group cursor-pointer view-btn" data-img="https://i.ibb.co/VWgWLr8C/Screenshot-2025-08-23-202723.png">
                     <div>
                         <div class="flex justify-between items-start mb-12">
-                            <span class="text-[9px] font-mono text-zinc-500 uppercase tracking-widest">UI/UX Design</span>
+                            <span class="text-[9px] font-mono text-zinc-500 uppercase tracking-widest">Interface Design</span>
                             <span class="text-xl font-serif">04</span>
                         </div>
-                        <h4 class="text-4xl font-bold tracking-tight mb-6 group-hover:text-brand-accent transition-colors">Fintech Protocol <br>App Architecture.</h4>
-                        <p class="text-zinc-400 font-light leading-relaxed">High-fidelity banking prototype in Figma covering account onboarding, transaction mapping, and simplified dashboards.</p>
+                        <h4 class="text-4xl font-bold tracking-tight mb-6 group-hover:text-brand-accent transition-colors">Fintech App <br>UI Prototype.</h4>
+                        <p class="text-zinc-400 font-light leading-relaxed">Created a high-fidelity mobile banking concept in Figma, exploring simplified user flows for onboarding and transactions.</p>
                     </div>
-                    <p class="text-[9px] font-mono text-zinc-600 mt-12 pt-6 border-t border-white/5 uppercase group-hover:text-white transition-colors">View Mockups</p>
+                    <p class="text-[9px] font-mono text-zinc-600 mt-12 pt-6 border-t border-white/5 uppercase group-hover:text-white transition-colors">View Design</p>
                 </div>
             </div>
         </section>
@@ -307,73 +339,65 @@
         <!-- 03 / Toolkit Section -->
         <section id="tools" class="py-40 border-t border-white/5 reveal">
             <div class="mb-24">
-                <div class="section-title-btn no-hover mb-6">
+                <div class="section-title-btn spotlight no-hover mb-6">
                     <span class="section-number">03 /</span> Toolkit
                 </div>
-                <h3 class="text-5xl md:text-8xl font-black tracking-tighter uppercase mt-4">Intelligence & Production.</h3>
+                <h3 class="text-5xl md:text-8xl font-black tracking-tighter uppercase mt-4">Tools & Systems.</h3>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
-                <!-- Intelligence -->
-                <div class="liquid-glass spotlight p-10 space-y-8 no-hover bg-zinc-900/30">
-                    <p class="text-xl font-serif italic text-brand-accent font-black border-b border-white/10 pb-4">Intelligence Stack</p>
+                <div class="liquid-glass spotlight p-10 space-y-8 no-hover">
+                    <p class="text-xl font-serif italic text-brand-accent font-black border-b border-white/10 pb-4">AI Productivity Tools</p>
                     <div class="space-y-6">
                         <div class="group">
-                            <p class="text-sm font-bold uppercase tracking-widest group-hover:text-brand-accent transition-colors">Gemini</p>
-                            <p class="text-xs text-zinc-500 mt-1">Multimodal research, data synthesis, search integration.</p>
-                        </div>
-                        <div class="group">
-                            <p class="text-sm font-bold uppercase tracking-widest group-hover:text-brand-accent transition-colors">Claude</p>
-                            <p class="text-xs text-zinc-500 mt-1">Nuanced writing, complex logic, document analysis.</p>
+                            <p class="text-sm font-bold uppercase tracking-widest group-hover:text-brand-accent transition-colors">Gemini / Claude</p>
+                            <p class="text-xs text-zinc-500 mt-1">Used for data synthesis, research support, and logic mapping.</p>
                         </div>
                         <div class="group">
                             <p class="text-sm font-bold uppercase tracking-widest group-hover:text-brand-accent transition-colors">ChatGPT</p>
-                            <p class="text-xs text-zinc-500 mt-1">Idea generation, rapid research, copy drafts.</p>
+                            <p class="text-xs text-zinc-500 mt-1">Ideation, copy drafting, and rapid research assistance.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Design & Content -->
-                <div class="liquid-glass spotlight p-10 space-y-8 no-hover bg-zinc-900/30">
-                    <p class="text-xl font-serif italic text-brand-accent font-black border-b border-white/10 pb-4">Design & Concept</p>
+                <div class="liquid-glass spotlight p-10 space-y-8 no-hover">
+                    <p class="text-xl font-serif italic text-brand-accent font-black border-b border-white/10 pb-4">Design & Content</p>
                     <div class="space-y-6">
                         <div class="group">
                             <p class="text-sm font-bold uppercase tracking-widest group-hover:text-brand-accent transition-colors">Canva / Figma</p>
-                            <p class="text-xs text-zinc-500 mt-1">Social creatives, presentations, wireframes, prototypes.</p>
+                            <p class="text-xs text-zinc-500 mt-1">Visual assets, wireframes, and presentation layouts.</p>
                         </div>
                         <div class="group">
                             <p class="text-sm font-bold uppercase tracking-widest group-hover:text-brand-accent transition-colors">CapCut</p>
-                            <p class="text-xs text-zinc-500 mt-1">Video editing, high-engagement reels, motion design.</p>
+                            <p class="text-xs text-zinc-500 mt-1">Basic video editing for social content and reels.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Web & Build -->
-                <div class="liquid-glass spotlight p-10 space-y-8 no-hover bg-zinc-900/30">
+                <div class="liquid-glass spotlight p-10 space-y-8 no-hover">
                     <p class="text-xl font-serif italic text-brand-accent font-black border-b border-white/10 pb-4">Web & Build</p>
                     <div class="space-y-6">
                         <div class="group">
                             <p class="text-sm font-bold uppercase tracking-widest group-hover:text-brand-accent transition-colors">HTML / CSS / JS</p>
-                            <p class="text-xs text-zinc-500 mt-1">Frontend engineering, responsive layouts, shipping portfolio.</p>
+                            <p class="text-xs text-zinc-500 mt-1">Frontend structure and responsive web layouts.</p>
                         </div>
                         <div class="group">
                             <p class="text-sm font-bold uppercase tracking-widest group-hover:text-brand-accent transition-colors">GitHub</p>
-                            <p class="text-xs text-zinc-500 mt-1">Version control, deployment logic, GitHub Pages management.</p>
+                            <p class="text-xs text-zinc-500 mt-1">Project hosting and basic version control management.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Productivity -->
-                <div class="liquid-glass spotlight p-10 space-y-8 no-hover bg-zinc-900/30">
-                    <p class="text-xl font-serif italic text-brand-accent font-black border-b border-white/10 pb-4">Productivity & Analysis</p>
+                <div class="liquid-glass spotlight p-10 space-y-8 no-hover">
+                    <p class="text-xl font-serif italic text-brand-accent font-black border-b border-white/10 pb-4">Productivity & Data</p>
                     <div class="space-y-6">
                         <div class="group">
                             <p class="text-sm font-bold uppercase tracking-widest group-hover:text-brand-accent transition-colors">Notion</p>
-                            <p class="text-xs text-zinc-500 mt-1">Planning, documentation, project tracking systems.</p>
+                            <p class="text-xs text-zinc-500 mt-1">Task planning, project tracking, and documentation.</p>
                         </div>
                         <div class="group">
                             <p class="text-sm font-bold uppercase tracking-widest group-hover:text-brand-accent transition-colors">Excel / Sheets</p>
-                            <p class="text-xs text-zinc-500 mt-1">Data organization, basic analysis, dashboard logic.</p>
+                            <p class="text-xs text-zinc-500 mt-1">Data organization, basic analysis, and simple tracking sheets.</p>
                         </div>
                     </div>
                 </div>
@@ -383,26 +407,26 @@
         <!-- 04 / Capabilities -->
         <section id="skills" class="py-40 border-t border-white/5 text-center">
             <div class="max-w-4xl mx-auto space-y-16">
-                <div class="section-title-btn no-hover mb-6">
+                <div class="section-title-btn spotlight no-hover mb-6">
                     <span class="section-number">04 /</span> Capabilities
                 </div>
                 <div class="pill-cloud reveal justify-center">
                     <span class="skill-pill">Research</span>
-                    <span class="skill-pill">Growth Strategy</span>
-                    <span class="skill-pill">Excel Mastery</span>
+                    <span class="skill-pill">Growth Focus</span>
+                    <span class="skill-pill">Data Org</span>
                     <span class="skill-pill">Prototyping</span>
                 </div>
                 
                 <h3 class="text-3xl md:text-5xl font-black tracking-tight leading-tight reveal px-4">
-                    I'm a <span class="text-brand-accent italic">Data-driven designer</span> skilled in UI/UX, Wireframing, Prototyping, and tools like <span class="underline decoration-zinc-800">Gemini, Claude, and Sheets.</span>
+                    Solving problems using <span class="text-brand-accent italic">modern tools</span>, automation workflows, and research-based <span class="underline decoration-zinc-800">decision making.</span>
                 </h3>
 
                 <div class="pill-cloud reveal justify-center">
-                    <span class="skill-pill">N8N Workflows</span>
+                    <span class="skill-pill">n8n Logic</span>
                     <span class="skill-pill">Canva</span>
                     <span class="skill-pill">Figma</span>
                     <span class="skill-pill">Execution</span>
-                    <span class="skill-pill">Communication</span>
+                    <span class="skill-pill">Coordination</span>
                 </div>
             </div>
         </section>
@@ -410,7 +434,7 @@
         <!-- 05 / Pedigree -->
         <section id="education" class="py-40 border-t border-white/5 reveal">
             <div class="mb-24">
-                <div class="section-title-btn no-hover">
+                <div class="section-title-btn spotlight no-hover">
                     <span class="section-number">05 /</span> Pedigree
                 </div>
             </div>
@@ -427,11 +451,11 @@
                     </div>
                     <div class="grid grid-cols-2 gap-6">
                         <div class="liquid-glass spotlight p-8 no-hover text-center">
-                            <p class="text-[10px] font-black opacity-30 mb-2 uppercase tracking-widest">ICSE</p>
+                            <p class="text-[10px] font-black opacity-30 mb-2 uppercase tracking-widest">ICSE Score</p>
                             <p class="text-3xl font-black">85%</p>
                         </div>
                         <div class="liquid-glass spotlight p-8 no-hover text-center">
-                            <p class="text-[10px] font-black opacity-30 mb-2 uppercase tracking-widest">HSC</p>
+                            <p class="text-[10px] font-black opacity-30 mb-2 uppercase tracking-widest">HSC Score</p>
                             <p class="text-3xl font-black">70%</p>
                         </div>
                     </div>
@@ -439,13 +463,13 @@
             </div>
         </section>
 
-        <!-- Final Sync -->
+        <!-- Connect -->
         <section id="contact" class="py-56 text-center reveal">
             <h3 class="text-6xl md:text-[14rem] font-black tracking-tighter leading-[0.8] mb-24 uppercase">
                 Let's <span class="font-serif italic font-normal text-zinc-700">Sync.</span>
             </h3>
             <div class="flex flex-col md:flex-row justify-center gap-16 items-center">
-                <a href="mailto:aanshg2007@gmail.com" class="bg-white text-black px-16 py-8 rounded-full text-xs font-black tracking-[0.4em] uppercase shadow-2xl hover:scale-110 transition-all">Start Project</a>
+                <a href="mailto:aanshg2007@gmail.com" class="bg-white text-black px-16 py-8 rounded-full text-xs font-black tracking-[0.4em] uppercase shadow-2xl hover:scale-110 transition-all">Send an Email</a>
                 <a href="https://www.linkedin.com/in/aansh1" target="_blank" class="nav-link text-xl opacity-100 border-b border-brand-accent pb-2">LinkedIn ↗</a>
             </div>
         </section>
@@ -453,40 +477,35 @@
     </main>
 
     <footer class="py-20 border-t border-white/5 text-center">
-        <p class="text-[9px] font-mono uppercase tracking-[0.5em] opacity-20">Aansh Gupta Studio © MMXXV</p>
+        <p class="text-[9px] font-mono uppercase tracking-[0.5em] opacity-20">Aansh Gupta Portfolio © 2025</p>
     </footer>
 
-    <!-- CASE STUDY OVERLAY -->
+    <!-- CASE STUDY MODAL -->
     <div id="swiggy-project-view" class="project-view-overlay">
         <div class="max-w-[1000px] mx-auto px-8 py-24 relative text-white">
             <button onclick="toggleSwiggyProject()" class="fixed top-12 right-12 w-16 h-16 rounded-full flex items-center justify-center text-4xl font-light border border-white/20 hover:bg-white hover:text-black transition-all">×</button>
             <div class="space-y-12">
-                <p class="nav-link">Audit / 01</p>
-                <h2 class="text-7xl md:text-9xl font-serif italic font-black tracking-tighter">Price Logic.</h2>
+                <p class="nav-link">Project Analysis / 01</p>
+                <h2 class="text-7xl md:text-9xl font-serif italic font-black tracking-tighter">Audit Findings.</h2>
                 <div class="grid lg:grid-cols-2 gap-16 pt-12">
                     <div class="liquid-glass spotlight p-10 no-hover bg-zinc-900/50">
-                        <h4 class="text-xl font-bold uppercase tracking-widest border-b border-white/5 pb-4 mb-6">Findings</h4>
+                        <h4 class="text-xl font-bold uppercase tracking-widest border-b border-white/5 pb-4 mb-6 text-brand-accent">Insights</h4>
                         <ul class="space-y-8 text-zinc-300 font-light text-lg">
-                            <li class="flex gap-6"><span class="text-brand-accent">/ 01</span> <span>Swiggy added ₹111 in undisclosed charges per order unit.</span></li>
-                            <li class="flex gap-6"><span class="text-brand-accent">/ 02</span> <span>Zomato maintained itemized transparency, reducing bounce rates.</span></li>
-                            <li class="flex gap-6"><span class="text-brand-accent">/ 03</span> <span>Audit revealed 11.2% hidden inflation discrepancy.</span></li>
+                            <li class="flex gap-6"><span>/ 01</span> <span>Detected hidden fees across specific platform order units.</span></li>
+                            <li class="flex gap-6"><span>/ 02</span> <span>Analyzed transparency differences between major delivery apps.</span></li>
                         </ul>
                     </div>
                     <div class="grid grid-cols-2 gap-4">
-                        <div class="liquid-glass overflow-hidden rounded-3xl cursor-zoom-in group" onclick="openModal(this.querySelector('img').src)">
-                            <img src="https://i.ibb.co/jP3t8x2g/Screenshot-2026-04-01-12-36-47-406-in-swiggy-android-edit.jpg" class="w-full opacity-60 hover:opacity-100 transition-opacity duration-700">
-                        </div>
-                        <div class="liquid-glass overflow-hidden rounded-3xl cursor-zoom-in group" onclick="openModal(this.querySelector('img').src)">
-                            <img src="https://i.ibb.co/23zw19qh/Screenshot-2026-04-01-12-39-55-473-com-application-zomato-edit.jpg" class="w-full opacity-60 hover:opacity-100 transition-opacity duration-700">
-                        </div>
+                        <img src="https://i.ibb.co/jP3t8x2g/Screenshot-2026-04-01-12-36-47-406-in-swiggy-android-edit.jpg" class="liquid-glass rounded-3xl opacity-60 hover:opacity-100" onclick="openModal(this.src)">
+                        <img src="https://i.ibb.co/23zw19qh/Screenshot-2026-04-01-12-39-55-473-com-application-zomato-edit.jpg" class="liquid-glass rounded-3xl opacity-60 hover:opacity-100" onclick="openModal(this.src)">
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- General Zoom Modal -->
-    <div id="modal" class="fixed inset-0 z-[3000] bg-black/98 hidden items-center justify-center p-6 opacity-0 transition-opacity duration-400">
+    <!-- Zoom Modal -->
+    <div id="modal" class="fixed inset-0 z-[4000] bg-black/98 hidden items-center justify-center p-6 opacity-0 transition-opacity duration-400">
         <button id="modal-close" class="absolute top-12 right-12 text-white text-5xl font-light transition-transform hover:scale-110">×</button>
         <img id="modal-img" class="max-w-full max-h-[85vh] rounded-[3rem] border border-white/10 shadow-2xl" src="">
     </div>
@@ -510,12 +529,21 @@
                 });
             });
 
-            gsap.utils.toArray('.reveal').forEach(el => {
-                gsap.to(el, {
-                    scrollTrigger: { trigger: el, start: "top 95%", toggleActions: "play none none none" },
-                    opacity: 1, y: 0, duration: 1.2, ease: "power4.out"
-                });
+            gsap.utils.toArray('.reveal').forEach((el) => {
+                gsap.fromTo(el, 
+                    { opacity: 0, y: 100, rotateX: 15, scale: 0.9 },
+                    {
+                        scrollTrigger: { 
+                            trigger: el, 
+                            start: "top 95%", 
+                            toggleActions: "play none none none" 
+                        },
+                        opacity: 1, y: 0, rotateX: 0, scale: 1, duration: 1.4, ease: "expo.out", clearProps: "transform" 
+                    }
+                );
             });
+
+            gsap.from('.hero-reveal', { opacity: 0, y: 50, duration: 2, ease: "expo.out", stagger: 0.2 });
 
             const modal = document.getElementById('modal');
             const modalImg = document.getElementById('modal-img');
