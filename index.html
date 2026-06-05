@@ -44,7 +44,7 @@
             font-family: 'Inter', sans-serif;
         }
 
-        /* Ambient Blobs for persistent refraction lighting */
+        /* Enhanced Ambient Blobs for persistent refraction lighting */
         .ambient-blob {
             position: fixed;
             border-radius: 50%;
@@ -58,8 +58,8 @@
             position: fixed;
             inset: 0;
             background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+                linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
             background-size: 60px 60px;
             pointer-events: none;
             z-index: -1;
@@ -91,7 +91,7 @@
             content: "";
             position: absolute;
             inset: 0;
-            background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.12), transparent 40%);
+            background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(59, 130, 246, 0.15), transparent 40%);
             opacity: 0;
             transition: opacity 0.5s ease;
             pointer-events: none;
@@ -142,9 +142,9 @@
         .skill-pill {
             background: rgba(255, 255, 255, 0.12);
             border: 1px solid rgba(255, 255, 255, 0.25);
-            padding: 10px 24px;
+            padding: 12px 32px;
             border-radius: 999px;
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.1em;
@@ -216,7 +216,7 @@
     <div id="cursor" class="hidden md:block"></div>
     <div class="grid-bg"></div>
 
-    <!-- Persistent Background Refraction Light -->
+    <!-- Background Decoration -->
     <div class="fixed inset-0 pointer-events-none z-[-1] overflow-hidden">
         <div class="ambient-blob animate-blob top-[-5%] left-[10%] w-[60%] h-[60%] bg-brand-accent/20"></div>
         <div class="ambient-blob animate-blob bottom-[-10%] right-[15%] w-[55%] h-[55%] bg-blue-400/15" style="animation-delay: -5s;"></div>
@@ -260,7 +260,7 @@
             </div>
         </section>
 
-        <!-- 01 / About Section -->
+        <!-- 01 / About Section (Updated Copy) -->
         <section id="about" class="py-40 border-t border-white/5 reveal">
             <div class="grid lg:grid-cols-12 gap-12 mb-12">
                 <div class="lg:col-span-12">
@@ -269,12 +269,13 @@
                     </div>
                 </div>
             </div>
+            <!-- Symmetrical Paragraphs with refined value propositions -->
             <div class="grid lg:grid-cols-2 gap-16">
                 <p class="text-lg md:text-xl text-white/90 leading-relaxed font-light">
-                    First-year BMS student at K.P.B. Hinduja College, Mumbai. MAH-CET Top 1.5%. I'm interested in how businesses grow — through marketing, strategy, and the tools that make both faster. I don't wait for classrooms to teach me things.
+                    I am currently pursuing a Bachelor of Management Studies (BMS) at K.P.B. Hinduja College, with a strong interest in the intersection of business and technology. Beyond academics, I actively explore areas such as AI tools, automation, UI/UX design, app development, and digital productivity. I enjoy learning how technology can be applied to solve problems, improve processes, and create better user experiences.
                 </p>
                 <p class="text-lg md:text-xl text-white/90 leading-relaxed font-light">
-                    I've done a pricing audit on Swiggy vs Zomato, built an automation workflow demo, and designed a fintech prototype in Figma — all self-initiated. Currently looking for internships where I can do real work, not just shadow people.
+                    I am committed to continuously developing my skills, expanding my knowledge, and gaining practical exposure through projects, learning opportunities, and meaningful professional connections. I value curiosity, analytical thinking, and continuous improvement, and I am always open to connecting with individuals who share an interest in business, technology, and innovation.
                 </p>
             </div>
         </section>
@@ -289,8 +290,10 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <!-- Project 01: Swiggy vs Zomato Audit -->
                 <div class="liquid-glass spotlight p-10 flex flex-col justify-between min-h-[550px] reveal group cursor-pointer" onclick="toggleSwiggyProject()">
-                    <div>
+                    <div class="tile-glow"></div>
+                    <div class="relative z-10">
                         <div class="flex justify-between items-start mb-12">
                             <span class="text-[9px] font-mono text-zinc-500 uppercase tracking-widest">Featured Audit</span>
                             <span class="text-xl font-serif">01</span>
@@ -298,23 +301,27 @@
                         <h4 class="text-4xl font-bold tracking-tight mb-6 group-hover:text-brand-accent transition-colors">Swiggy vs Zomato <br>Audit.</h4>
                         <p class="text-zinc-400 font-light leading-relaxed">Exposing undisclosed charges and pricing transparency differences through a documented checkout flow audit across 13 breakpoints.</p>
                     </div>
-                    <p class="text-[9px] font-mono text-zinc-600 mt-12 pt-6 border-t border-white/5 uppercase group-hover:text-white transition-colors">View Analysis Details</p>
+                    <p class="relative z-10 text-[9px] font-mono text-zinc-600 mt-12 pt-6 border-t border-white/5 uppercase group-hover:text-white transition-colors">View Analysis Details</p>
                 </div>
 
+                <!-- Project 02: N8N Dashboard -->
                 <a href="https://aansh-n8n.lovable.app" target="_blank" class="liquid-glass spotlight p-10 flex flex-col justify-between min-h-[550px] reveal delay-100 group">
-                    <div>
+                    <div class="tile-glow"></div>
+                    <div class="relative z-10">
                         <div class="flex justify-between items-start mb-12">
-                            <span class="text-[9px] font-mono text-zinc-500 uppercase tracking-widest">Automation | No-Code</span>
+                            <span class="text-[9px] font-mono text-zinc-500 uppercase tracking-widest">Automation | No-Code | Demo Project</span>
                             <span class="text-xl font-serif">02</span>
                         </div>
                         <h4 class="text-4xl font-bold tracking-tight mb-6 group-hover:text-brand-accent transition-colors">Automated Workflow <br>Demo — n8n</h4>
-                        <p class="text-zinc-400 font-light leading-relaxed">Built a sample automation workflow using n8n to demonstrate how repetitive business tasks can be structured without code. Hosted as a live demo — uses sample data to illustrate logic and visualization.</p>
+                        <p class="text-zinc-400 font-light leading-relaxed">Built a sample automation workflow using n8n to demonstrate how repetitive business tasks can be structured without code. Hosted as a live demo — uses sample data to illustrate workflow logic and dashboard visualization.</p>
                     </div>
-                    <p class="text-[9px] font-mono text-zinc-600 mt-12 pt-6 border-t border-white/5 uppercase group-hover:text-white transition-colors">Launch Dashboard ↗</p>
+                    <p class="relative z-10 text-[9px] font-mono text-zinc-600 mt-12 pt-6 border-t border-white/5 uppercase group-hover:text-white transition-colors">Launch Dashboard ↗</p>
                 </a>
 
+                <!-- Project 03: Fintech Prototype -->
                 <div class="liquid-glass spotlight p-10 flex flex-col justify-between min-h-[550px] reveal delay-100 group cursor-pointer view-btn" data-img="https://i.ibb.co/VWgWLr8C/Screenshot-2025-08-23-202723.png">
-                    <div>
+                    <div class="tile-glow"></div>
+                    <div class="relative z-10">
                         <div class="flex justify-between items-start mb-12">
                             <span class="text-[9px] font-mono text-zinc-500 uppercase tracking-widest">Interface Design</span>
                             <span class="text-xl font-serif">03</span>
@@ -322,110 +329,141 @@
                         <h4 class="text-4xl font-bold tracking-tight mb-6 group-hover:text-brand-accent transition-colors">Fintech App <br>UI Prototype.</h4>
                         <p class="text-zinc-400 font-light leading-relaxed">Created a high-fidelity mobile banking concept in Figma, exploring simplified user flows for onboarding and transactions.</p>
                     </div>
-                    <p class="text-[9px] font-mono text-zinc-600 mt-12 pt-6 border-t border-white/5 uppercase group-hover:text-white transition-colors">View Design</p>
+                    <p class="relative z-10 text-[9px] font-mono text-zinc-600 mt-12 pt-6 border-t border-white/5 uppercase group-hover:text-white transition-colors">View Design</p>
+                </div>
+
+                <!-- Project 04: Vibe Coded Web Application -->
+                <div class="liquid-glass spotlight p-10 flex flex-col justify-between min-h-[550px] reveal delay-200 group cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                    <div class="tile-glow"></div>
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-start mb-12">
+                            <span class="text-[9px] font-mono text-zinc-500 uppercase tracking-widest">Prompt Engineering / AI Prototyping</span>
+                            <span class="text-xl font-serif">04</span>
+                        </div>
+                        <h4 class="text-4xl font-bold tracking-tight mb-6 group-hover:text-brand-accent transition-colors">Interactive Portfolio <br>Vibe-Coded Project.</h4>
+                        <p class="text-zinc-400 font-light leading-relaxed">Engineered and shipped this interactive profile completely through iterative prompt sessions, converting high-level design constraints and structural layout instructions into an optimized production deployment.</p>
+                    </div>
+                    <p class="relative z-10 text-[9px] font-mono text-zinc-600 mt-12 pt-6 border-t border-white/5 uppercase group-hover:text-white transition-colors">This site was vibe-coded entirely through prompt engineering</p>
                 </div>
             </div>
         </section>
 
-        <!-- 03 / Toolkit Section -->
+        <!-- 03 / Toolkit Section (Renamed & Structured) -->
         <section id="tools" class="py-40 border-t border-white/5 reveal">
             <div class="mb-24">
-                <div class="section-title-btn spotlight no-hover mb-6">
+                <div class="section-title-btn no-hover mb-6">
                     <span class="section-number">03 /</span> Toolkit
                 </div>
-                <h3 class="text-5xl md:text-8xl font-black tracking-tighter uppercase mt-4">Tools & Systems.</h3>
+                <h3 class="text-5xl md:text-8xl font-black tracking-tighter uppercase mt-4">Tools & AI I Use Personally.</h3>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+                <!-- AI-Assisted Workflows (Updated) -->
                 <div class="liquid-glass spotlight p-10 space-y-8 no-hover">
-                    <p class="text-xl font-serif italic text-brand-accent font-black border-b border-white/10 pb-4">AI-Assisted Workflows</p>
-                    <div class="space-y-6">
-                        <div class="group">
-                            <p class="text-sm font-bold uppercase tracking-widest group-hover:text-brand-accent transition-colors">Gemini / Claude</p>
-                            <p class="text-xs text-zinc-500 mt-1">Research synthesis, content structuring, and logic mapping across projects.</p>
-                        </div>
-                        <div class="group">
-                            <p class="text-sm font-bold uppercase tracking-widest group-hover:text-brand-accent transition-colors">ChatGPT</p>
-                            <p class="text-xs text-zinc-500 mt-1">Ideation support, copy drafting, and rapid prototyping of ideas.</p>
-                        </div>
-                        <p class="text-[10px] italic text-zinc-600 pt-2 opacity-60">"Used as tools, not shortcuts."</p>
-                    </div>
-                </div>
-
-                <div class="liquid-glass spotlight p-10 space-y-8 no-hover">
-                    <p class="text-xl font-serif italic text-brand-accent font-black border-b border-white/10 pb-4">Design & Content</p>
-                    <div class="space-y-6">
-                        <div class="group">
-                            <p class="text-sm font-bold uppercase tracking-widest group-hover:text-brand-accent transition-colors">Canva / Figma</p>
-                            <p class="text-xs text-zinc-500 mt-1">Visual assets, wireframes, and presentation layouts.</p>
-                        </div>
-                        <div class="group">
-                            <p class="text-sm font-bold uppercase tracking-widest group-hover:text-brand-accent transition-colors">CapCut</p>
-                            <p class="text-xs text-zinc-500 mt-1">Basic video editing for social content and reels.</p>
+                    <div class="tile-glow"></div>
+                    <div class="relative z-10">
+                        <p class="text-xl font-serif italic text-brand-accent font-black border-b border-white/10 pb-4">AI-Assisted Workflows</p>
+                        <div class="space-y-6 mt-6">
+                            <div class="group">
+                                <p class="text-sm font-bold uppercase tracking-widest group-hover:text-brand-accent transition-colors">Gemini / Claude</p>
+                                <p class="text-xs text-zinc-500 mt-1">Research synthesis, content structuring, and logic mapping across projects.</p>
+                            </div>
+                            <div class="group">
+                                <p class="text-sm font-bold uppercase tracking-widest group-hover:text-brand-accent transition-colors">ChatGPT</p>
+                                <p class="text-xs text-zinc-500 mt-1">Ideation support, copy drafting, and rapid prototyping of ideas.</p>
+                            </div>
+                            <p class="text-[10px] italic text-zinc-600 pt-2 opacity-60">"Used as tools, not shortcuts."</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="liquid-glass spotlight p-10 space-y-8 no-hover">
-                    <p class="text-xl font-serif italic text-brand-accent font-black border-b border-white/10 pb-4">Web & Build</p>
-                    <div class="space-y-6">
-                        <div class="group">
-                            <p class="text-sm font-bold uppercase tracking-widest group-hover:text-brand-accent transition-colors">HTML / CSS / JS</p>
-                            <p class="text-xs text-zinc-500 mt-1">Frontend structure and responsive web layouts.</p>
-                        </div>
-                        <div class="group">
-                            <p class="text-sm font-bold uppercase tracking-widest group-hover:text-brand-accent transition-colors">GitHub</p>
-                            <p class="text-xs text-zinc-500 mt-1">Project hosting and basic version control management.</p>
+                    <div class="tile-glow"></div>
+                    <div class="relative z-10">
+                        <p class="text-xl font-serif italic text-brand-accent font-black border-b border-white/10 pb-4">Design & Content</p>
+                        <div class="space-y-6 mt-6">
+                            <div class="group">
+                                <p class="text-sm font-bold uppercase tracking-widest group-hover:text-brand-accent transition-colors">Canva / Figma</p>
+                                <p class="text-xs text-zinc-500 mt-1">Visual assets, wireframes, and presentation layouts.</p>
+                            </div>
+                            <div class="group">
+                                <p class="text-sm font-bold uppercase tracking-widest group-hover:text-brand-accent transition-colors">CapCut</p>
+                                <p class="text-xs text-zinc-500 mt-1">Video editing for high-engagement reels and motion concepts.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="liquid-glass spotlight p-10 space-y-8 no-hover">
-                    <p class="text-xl font-serif italic text-brand-accent font-black border-b border-white/10 pb-4">Productivity & Data</p>
-                    <div class="space-y-6">
-                        <div class="group">
-                            <p class="text-sm font-bold uppercase tracking-widest group-hover:text-brand-accent transition-colors">Notion</p>
-                            <p class="text-xs text-zinc-500 mt-1">Task planning, project tracking, and documentation.</p>
+                    <div class="tile-glow"></div>
+                    <div class="relative z-10">
+                        <p class="text-xl font-serif italic text-brand-accent font-black border-b border-white/10 pb-4">Web & Build</p>
+                        <div class="space-y-6 mt-6">
+                            <div class="group">
+                                <p class="text-sm font-bold uppercase tracking-widest group-hover:text-brand-accent transition-colors">HTML / CSSS Vibe Coding</p>
+                                <p class="text-xs text-zinc-500 mt-1">Refining layouts, applying responsive overrides, and code composition via prompts.</p>
+                            </div>
+                            <div class="group">
+                                <p class="text-sm font-bold uppercase tracking-widest group-hover:text-brand-accent transition-colors">GitHub</p>
+                                <p class="text-xs text-zinc-500 mt-1">Project hosting and basic version control management.</p>
+                            </div>
                         </div>
-                        <div class="group">
-                            <p class="text-sm font-bold uppercase tracking-widest group-hover:text-brand-accent transition-colors">Excel / Sheets</p>
-                            <p class="text-xs text-zinc-500 mt-1">Data organization, basic analysis, and simple tracking sheets.</p>
+                    </div>
+                </div>
+
+                <!-- Productivity & Data Updated with Power BI -->
+                <div class="liquid-glass spotlight p-10 space-y-8 no-hover">
+                    <div class="tile-glow"></div>
+                    <div class="relative z-10">
+                        <p class="text-xl font-serif italic text-brand-accent font-black border-b border-white/10 pb-4">Productivity & Data</p>
+                        <div class="space-y-6 mt-6">
+                            <div class="group">
+                                <p class="text-sm font-bold uppercase tracking-widest group-hover:text-brand-accent transition-colors">Power BI / Excel</p>
+                                <p class="text-xs text-zinc-500 mt-1">Data organization, basic metrics modeling, and automated dashboard interfaces.</p>
+                            </div>
+                            <div class="group">
+                                <p class="text-sm font-bold uppercase tracking-widest group-hover:text-brand-accent transition-colors">Notion</p>
+                                <p class="text-xs text-zinc-500 mt-1">Task planning, system documentation, and personal knowledge management.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 04 / Capabilities (CLEAN MINIMAL DESIGN) -->
+        <!-- 04 / Capabilities (Humble Statement Refined) -->
         <section id="skills" class="py-40 border-t border-white/5">
             <div class="mb-24 reveal text-center">
                 <div class="section-title-btn spotlight no-hover mb-12">
                     <span class="section-number">04 /</span> Capabilities
                 </div>
                 
-                <div class="max-w-4xl mx-auto mb-20">
-                    <h3 class="text-2xl md:text-5xl font-black tracking-tight leading-tight">
+                <!-- Humble Statement Restored -->
+                <div class="max-w-4xl mx-auto mb-24">
+                    <h3 class="text-2xl md:text-5xl font-black tracking-tight leading-tight px-4">
                         An 18-year-old who taught himself to build things — audits, automations, prototypes — before anyone asked him to. Looking for a place to do that <span class='text-brand-accent italic'>professionally.</span>
                     </h3>
                 </div>
-            </div>
 
-            <div class="liquid-glass spotlight p-12 md:p-20 reveal">
-                <div class="flex flex-wrap justify-center gap-6">
-                    <span class="skill-pill">Research</span>
-                    <span class="skill-pill">Growth Focus</span>
-                    <span class="skill-pill">n8n Logic</span>
-                    <span class="skill-pill">Data Org</span>
-                    <span class="skill-pill">Prototyping</span>
-                    <span class="skill-pill">Canva / Figma</span>
-                    <span class="skill-pill">Execution</span>
-                    <span class="skill-pill">Coordination</span>
-                    <span class="skill-pill">Communication</span>
+                <!-- Glass Bento Skill Grid -->
+                <div class="liquid-glass spotlight p-12 md:p-20 relative overflow-hidden">
+                    <div class="tile-glow" style="left:50%; top:50%; transform:translate(-50%, -50%); width:80%; height:80%; opacity:0.1;"></div>
+                    <div class="flex flex-wrap justify-center gap-6 relative z-10">
+                        <span class="skill-pill">Research</span>
+                        <span class="skill-pill">Growth Focus</span>
+                        <span class="skill-pill">n8n Logic</span>
+                        <span class="skill-pill">Data Org</span>
+                        <span class="skill-pill">Prototyping</span>
+                        <span class="skill-pill">Canva / Figma</span>
+                        <span class="skill-pill">Execution</span>
+                        <span class="skill-pill">Coordination</span>
+                        <span class="skill-pill">Communication</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- 05 / Education Section -->
+        <!-- 05 / Pedigree -->
         <section id="education" class="py-40 border-t border-white/5 reveal">
             <div class="mb-24">
                 <div class="section-title-btn spotlight no-hover">
@@ -439,11 +477,13 @@
                 </div>
                 <div class="space-y-6">
                     <div class="liquid-glass spotlight p-10 no-hover">
+                        <div class="tile-glow"></div>
                         <p class="text-xl font-serif italic text-brand-accent mb-4">University Path</p>
                         <h5 class="text-3xl font-bold uppercase">K.P.B. Hinduja College</h5>
                         <p class="text-zinc-500 text-lg">Year 1 · Bachelor of Management Studies</p>
                     </div>
                     <div class="liquid-glass spotlight p-8 no-hover text-center">
+                        <div class="tile-glow"></div>
                         <p class="text-[10px] font-black opacity-30 mb-2 uppercase tracking-widest">ICSE Score</p>
                         <p class="text-3xl font-black">85%</p>
                     </div>
@@ -468,7 +508,7 @@
         <p class="text-[9px] font-mono uppercase tracking-[0.5em] opacity-20">Aansh Gupta Portfolio © 2025</p>
     </footer>
 
-    <!-- CASE STUDY MODAL (UPDATED INSIGHTS) -->
+    <!-- CASE STUDY OVERLAY -->
     <div id="swiggy-project-view" class="project-view-overlay">
         <div class="max-w-[1000px] mx-auto px-8 py-24 relative text-white">
             <button onclick="toggleSwiggyProject()" class="fixed top-12 right-12 w-16 h-16 rounded-full flex items-center justify-center text-4xl font-light border border-white/20 hover:bg-white hover:text-black transition-all">×</button>
