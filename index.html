@@ -83,17 +83,32 @@
             background-color: #FFFFFF;
             border-radius: 2.5rem;
             padding: 3rem;
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.5s ease;
             box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.02);
             border: 1px solid rgba(0,0,0,0.04);
             position: relative;
             overflow: hidden;
         }
 
+        .bento-card.interactive::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top right, rgba(0,0,0,0.03) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+        }
+
         .bento-card.interactive:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
-            border-color: rgba(0,0,0,0.08);
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.12), 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            border-color: rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+
+        .bento-card.interactive:hover::after {
+            opacity: 1;
         }
 
         /* Tag Styling */
@@ -172,16 +187,16 @@
     <!-- Floating Navigation -->
     <div class="fixed top-6 left-0 right-0 z-50 px-6 flex justify-center pointer-events-none">
         <nav class="pill-nav rounded-full px-4 py-3 flex items-center gap-2 pointer-events-auto">
-            <a href="#hero" class="text-ink font-serif text-xl font-bold italic tracking-tight hover:opacity-70 transition-opacity px-4 border-r border-black/10">Ag.</a>
+            <a href="#hero" class="text-ink font-serif text-xl font-bold italic tracking-tight hover:opacity-70 transition-opacity px-4 border-r border-black/10 magnetic inline-block">Ag.</a>
             
             <div class="hidden md:flex items-center gap-2 px-4">
-                <a href="#about" class="text-xs font-mono font-medium text-ink/70 hover:text-ink hover:bg-black/5 px-4 py-2 rounded-full transition-all uppercase tracking-wider">Profile</a>
-                <a href="#projects" class="text-xs font-mono font-medium text-ink/70 hover:text-ink hover:bg-black/5 px-4 py-2 rounded-full transition-all uppercase tracking-wider">Work</a>
-                <a href="#tools" class="text-xs font-mono font-medium text-ink/70 hover:text-ink hover:bg-black/5 px-4 py-2 rounded-full transition-all uppercase tracking-wider">Tools</a>
-                <a href="#education" class="text-xs font-mono font-medium text-ink/70 hover:text-ink hover:bg-black/5 px-4 py-2 rounded-full transition-all uppercase tracking-wider">Education</a>
+                <a href="#about" class="text-xs font-mono font-medium text-ink/70 hover:text-ink hover:bg-black/5 px-4 py-2 rounded-full transition-colors uppercase tracking-wider magnetic inline-block">Profile</a>
+                <a href="#projects" class="text-xs font-mono font-medium text-ink/70 hover:text-ink hover:bg-black/5 px-4 py-2 rounded-full transition-colors uppercase tracking-wider magnetic inline-block">Work</a>
+                <a href="#tools" class="text-xs font-mono font-medium text-ink/70 hover:text-ink hover:bg-black/5 px-4 py-2 rounded-full transition-colors uppercase tracking-wider magnetic inline-block">Tools</a>
+                <a href="#education" class="text-xs font-mono font-medium text-ink/70 hover:text-ink hover:bg-black/5 px-4 py-2 rounded-full transition-colors uppercase tracking-wider magnetic inline-block">Education</a>
             </div>
 
-            <a href="mailto:aanshg2007@gmail.com" class="bg-ink text-base px-6 py-2.5 rounded-full text-xs font-mono font-medium hover:scale-105 transition-transform uppercase tracking-wider ml-2">
+            <a href="mailto:aanshg2007@gmail.com" class="bg-ink text-base px-6 py-2.5 rounded-full text-xs font-mono font-medium transition-colors uppercase tracking-wider ml-2 magnetic inline-block">
                 Contact
             </a>
         </nav>
@@ -202,10 +217,10 @@
                 </p>
 
                 <div class="flex gap-4">
-                    <a href="#projects" class="bg-ink text-base px-8 py-4 rounded-full text-xs font-mono font-bold hover:scale-105 transition-transform uppercase tracking-widest">
+                    <a href="#projects" class="bg-ink text-base px-8 py-4 rounded-full text-xs font-mono font-bold transition-colors uppercase tracking-widest magnetic inline-block">
                         Explore Work
                     </a>
-                    <a href="mailto:aanshg2007@gmail.com" class="border border-ink/10 text-ink px-8 py-4 rounded-full text-xs font-mono font-bold hover:bg-black/5 transition-colors uppercase tracking-widest">
+                    <a href="mailto:aanshg2007@gmail.com" class="border border-ink/10 text-ink px-8 py-4 rounded-full text-xs font-mono font-bold hover:bg-black/5 transition-colors uppercase tracking-widest magnetic inline-block">
                         Get in Touch
                     </a>
                 </div>
@@ -240,60 +255,60 @@
                 <!-- Project 1: Swiggy Audit -->
                 <div class="bento-card interactive cursor-pointer group flex flex-col min-h-[400px]" onclick="toggleSwiggyProject()">
                     <div class="flex justify-between items-start mb-16">
-                        <span class="tag bg-surfaceAlt border-none group-hover:bg-ink group-hover:text-base transition-colors">Pricing Audit</span>
-                        <div class="w-12 h-12 rounded-full border border-ink/10 flex items-center justify-center group-hover:bg-ink group-hover:text-base transition-all group-hover:-rotate-45">
+                        <span class="tag bg-surfaceAlt border-none group-hover:bg-ink group-hover:text-base transition-colors duration-300">Pricing Audit</span>
+                        <div class="w-12 h-12 rounded-full border border-ink/10 flex items-center justify-center group-hover:bg-ink group-hover:text-base transition-all duration-500 group-hover:-rotate-45 group-hover:scale-110 shadow-sm group-hover:shadow-md">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                         </div>
                     </div>
-                    <div class="mt-auto">
-                        <p class="font-mono text-xs text-ink/50 uppercase tracking-widest mb-4">01</p>
-                        <h3 class="text-4xl font-serif mb-4 group-hover:text-accent transition-colors">Swiggy vs Zomato Audit.</h3>
-                        <p class="text-inkMuted text-base leading-relaxed">Exposing undisclosed charges and pricing transparency differences through a documented checkout flow audit across 13 breakpoints.</p>
+                    <div class="mt-auto transition-transform duration-500 ease-out group-hover:translate-x-2">
+                        <p class="font-mono text-xs text-ink/50 uppercase tracking-widest mb-4 transition-colors group-hover:text-ink/80">01</p>
+                        <h3 class="text-4xl font-serif mb-4 group-hover:text-accent transition-colors duration-300">Swiggy vs Zomato Audit.</h3>
+                        <p class="text-inkMuted text-base leading-relaxed transition-colors duration-300 group-hover:text-ink">Exposing undisclosed charges and pricing transparency differences through a documented checkout flow audit across 13 breakpoints.</p>
                     </div>
                 </div>
 
                 <!-- Project 2: N8N -->
                 <a href="https://aansh-n8n.lovable.app" target="_blank" class="bento-card interactive group flex flex-col bg-surfaceAlt border-none min-h-[400px]">
                     <div class="flex justify-between items-start mb-16">
-                        <span class="tag bg-surface border-none group-hover:bg-ink group-hover:text-base transition-colors">Automation Demo</span>
-                        <div class="w-12 h-12 rounded-full border border-ink/10 bg-surface flex items-center justify-center group-hover:bg-ink group-hover:text-base transition-all group-hover:-rotate-45">
+                        <span class="tag bg-surface border-none group-hover:bg-ink group-hover:text-base transition-colors duration-300">Automation Demo</span>
+                        <div class="w-12 h-12 rounded-full border border-ink/10 bg-surface flex items-center justify-center group-hover:bg-ink group-hover:text-base transition-all duration-500 group-hover:-rotate-45 group-hover:scale-110 shadow-sm group-hover:shadow-md">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
                         </div>
                     </div>
-                    <div class="mt-auto">
-                        <p class="font-mono text-xs text-ink/50 uppercase tracking-widest mb-4">02</p>
-                        <h3 class="text-4xl font-serif mb-4 group-hover:text-accent transition-colors">Workflow Demo — n8n</h3>
-                        <p class="text-inkMuted text-base leading-relaxed">Built a sample automation workflow using n8n to demonstrate how repetitive business tasks can be structured without code. Hosted as a live demo.</p>
+                    <div class="mt-auto transition-transform duration-500 ease-out group-hover:translate-x-2">
+                        <p class="font-mono text-xs text-ink/50 uppercase tracking-widest mb-4 transition-colors group-hover:text-ink/80">02</p>
+                        <h3 class="text-4xl font-serif mb-4 group-hover:text-ink transition-colors duration-300">Workflow Demo — n8n</h3>
+                        <p class="text-inkMuted text-base leading-relaxed transition-colors duration-300 group-hover:text-ink">Built a sample automation workflow using n8n to demonstrate how repetitive business tasks can be structured without code. Hosted as a live demo.</p>
                     </div>
                 </a>
 
                 <!-- Project 3: Fintech -->
                 <div class="bento-card interactive cursor-pointer group flex flex-col view-btn min-h-[400px]" data-img="https://i.ibb.co/VWgWLr8C/Screenshot-2025-08-23-202723.png">
                      <div class="flex justify-between items-start mb-16">
-                        <span class="tag bg-surfaceAlt border-none group-hover:bg-ink group-hover:text-base transition-colors">UI Prototype</span>
-                        <div class="w-12 h-12 rounded-full border border-ink/10 flex items-center justify-center group-hover:bg-ink group-hover:text-base transition-all">
+                        <span class="tag bg-surfaceAlt border-none group-hover:bg-ink group-hover:text-base transition-colors duration-300">UI Prototype</span>
+                        <div class="w-12 h-12 rounded-full border border-ink/10 flex items-center justify-center group-hover:bg-ink group-hover:text-base transition-all duration-500 group-hover:scale-110 shadow-sm group-hover:shadow-md">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
                         </div>
                     </div>
-                    <div class="mt-auto">
-                        <p class="font-mono text-xs text-ink/50 uppercase tracking-widest mb-4">03</p>
-                        <h3 class="text-4xl font-serif mb-4 group-hover:text-accent transition-colors">Fintech App Design.</h3>
-                        <p class="text-inkMuted text-base leading-relaxed">Created a high-fidelity mobile banking concept in Figma, exploring simplified user flows for onboarding and transactions.</p>
+                    <div class="mt-auto transition-transform duration-500 ease-out group-hover:translate-x-2">
+                        <p class="font-mono text-xs text-ink/50 uppercase tracking-widest mb-4 transition-colors group-hover:text-ink/80">03</p>
+                        <h3 class="text-4xl font-serif mb-4 group-hover:text-ink transition-colors duration-300">Fintech App Design.</h3>
+                        <p class="text-inkMuted text-base leading-relaxed transition-colors duration-300 group-hover:text-ink">Created a high-fidelity mobile banking concept in Figma, exploring simplified user flows for onboarding and transactions.</p>
                     </div>
                 </div>
 
                 <!-- Project 4: Vibe Coded -->
                 <div class="bento-card interactive cursor-pointer group flex flex-col bg-ink text-base min-h-[400px]" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
                     <div class="flex justify-between items-start mb-16">
-                        <span class="tag bg-transparent text-base border-base/20">Prompt Engineering</span>
-                        <div class="w-12 h-12 rounded-full border border-base/20 flex items-center justify-center group-hover:bg-base group-hover:text-ink transition-all">
+                        <span class="tag bg-transparent text-base border-base/20 transition-colors duration-300 group-hover:bg-base group-hover:text-ink">Prompt Engineering</span>
+                        <div class="w-12 h-12 rounded-full border border-base/20 flex items-center justify-center group-hover:bg-base group-hover:text-ink transition-all duration-500 group-hover:-translate-y-1 group-hover:scale-110 shadow-sm group-hover:shadow-md">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
                         </div>
                     </div>
-                    <div class="mt-auto">
-                        <p class="font-mono text-xs text-base/50 uppercase tracking-widest mb-4">04</p>
-                        <h3 class="text-4xl font-serif mb-4">Interactive Portfolio.</h3>
-                        <p class="text-base/70 text-base leading-relaxed">This site was vibe-coded entirely through prompt engineering, converting high-level design constraints into an optimized deployment.</p>
+                    <div class="mt-auto transition-transform duration-500 ease-out group-hover:translate-x-2">
+                        <p class="font-mono text-xs text-base/50 uppercase tracking-widest mb-4 transition-colors group-hover:text-base/80">04</p>
+                        <h3 class="text-4xl font-serif mb-4 transition-colors duration-300 group-hover:text-white">Interactive Portfolio.</h3>
+                        <p class="text-base/70 text-base leading-relaxed transition-colors duration-300 group-hover:text-base/90">This site was vibe-coded entirely through prompt engineering, converting high-level design constraints into an optimized deployment.</p>
                     </div>
                 </div>
 
@@ -430,10 +445,10 @@
             <div class="bento-card p-12 md:p-24 text-center bg-surfaceAlt border-none flex flex-col items-center">
                 <h2 class="fluid-h2 font-serif mb-12 text-balance">Let's build something.</h2>
                 <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a href="mailto:aanshg2007@gmail.com" class="bg-ink text-base px-10 py-5 rounded-full font-mono text-xs font-bold uppercase tracking-widest hover:scale-105 transition-transform">
+                    <a href="mailto:aanshg2007@gmail.com" class="bg-ink text-base px-10 py-5 rounded-full font-mono text-xs font-bold uppercase tracking-widest transition-colors magnetic inline-block">
                         Send an Email
                     </a>
-                    <a href="https://www.linkedin.com/in/aansh1" target="_blank" class="px-10 py-5 rounded-full font-mono text-xs font-bold uppercase tracking-widest bg-white hover:bg-black/5 transition-colors">
+                    <a href="https://www.linkedin.com/in/aansh1" target="_blank" class="px-10 py-5 rounded-full font-mono text-xs font-bold uppercase tracking-widest bg-white hover:bg-black/5 transition-colors magnetic inline-block">
                         LinkedIn Profile
                     </a>
                 </div>
@@ -466,6 +481,29 @@
                         <img src="https://i.ibb.co/23zw19qh/Screenshot-2026-04-01-12-39-55-473-com-application-zomato-edit.jpg" class="rounded-[2rem] border border-black/5 shadow-soft cursor-pointer hover:scale-[1.02] transition-transform" onclick="openModal(this.src)">
                     </div>
                 </div>
+                
+                <div class="bg-surfaceAlt p-10 rounded-[2rem] mt-8">
+                    <h4 class="text-xl font-serif italic border-b border-black/10 pb-6 mb-8 text-ink">How would I improve it?</h4>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-x-16 gap-y-8 text-ink font-medium text-base md:text-lg">
+                        <li class="flex gap-6">
+                            <span class="text-inkMuted font-mono text-sm pt-1">01 /</span> 
+                            <span><strong class="font-bold text-ink">Real Final Price Earlier:</strong> Show estimated final payable amount directly on the restaurant page.</span>
+                        </li>
+                        <li class="flex gap-6">
+                            <span class="text-inkMuted font-mono text-sm pt-1">02 /</span> 
+                            <span><strong class="font-bold text-ink">Coupon Eligibility Indicator:</strong> Clearly indicate whether a coupon is applicable before adding items.</span>
+                        </li>
+                        <li class="flex gap-6">
+                            <span class="text-inkMuted font-mono text-sm pt-1">03 /</span> 
+                            <span><strong class="font-bold text-ink">Charge Breakdown Preview:</strong> Display platform fees and packaging charges before checkout.</span>
+                        </li>
+                        <li class="flex gap-6">
+                            <span class="text-inkMuted font-mono text-sm pt-1">04 /</span> 
+                            <span><strong class="font-bold text-ink">Savings Dashboard:</strong> Show users: Total saved this month, Discount history, and Membership benefits.</span>
+                        </li>
+                    </ul>
+                </div>
+
             </div>
         </div>
     </div>
@@ -482,7 +520,7 @@
 
             // Custom Cursor Logic
             const cursor = document.getElementById('cursor');
-            const interactiveElements = document.querySelectorAll('a, button, .interactive, .view-btn');
+            const interactiveElements = document.querySelectorAll('a, button, .interactive, .view-btn, .magnetic');
 
             window.addEventListener('mousemove', (e) => {
                 gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.1 });
@@ -493,23 +531,51 @@
                 el.addEventListener('mouseleave', () => cursor.classList.remove('hover-state'));
             });
 
-            // Scroll Reveal Logic
-            gsap.utils.toArray('.reveal').forEach((el) => {
-                gsap.fromTo(el, 
-                    { opacity: 0, y: 40 },
-                    {
-                        scrollTrigger: { 
-                            trigger: el, 
-                            start: "top 85%", 
-                            toggleActions: "play none none none" 
-                        },
-                        opacity: 1, y: 0, duration: 1, ease: "power3.out"
-                    }
-                );
+            // Magnetic Button Logic
+            const magnets = document.querySelectorAll('.magnetic');
+            magnets.forEach((magnet) => {
+                magnet.addEventListener('mousemove', (e) => {
+                    const rect = magnet.getBoundingClientRect();
+                    const x = (e.clientX - rect.left - rect.width / 2) * 0.3; // Magnet strength
+                    const y = (e.clientY - rect.top - rect.height / 2) * 0.3;
+                    
+                    gsap.to(magnet, { x: x, y: y, duration: 0.4, ease: "power2.out" });
+                });
+                
+                magnet.addEventListener('mouseleave', () => {
+                    gsap.to(magnet, { x: 0, y: 0, duration: 0.8, ease: "elastic.out(1, 0.3)" }); // Snap back
+                });
             });
 
-            // Hero Animation
-            gsap.from('.fluid-hero', { opacity: 0, y: 30, duration: 1.2, ease: "power3.out", delay: 0.2 });
+            // Enhanced Scroll Animations Setup
+            gsap.set('.reveal', { opacity: 1, y: 0 }); // Reset base CSS reveal state to let GSAP timeline control it natively
+
+            // 1. Hero Setup
+            const heroTl = gsap.timeline();
+            heroTl.from('.fluid-hero', { opacity: 0, y: 40, duration: 1.2, ease: "power3.out", delay: 0.1 })
+                  .from('#hero p', { opacity: 0, y: 20, duration: 0.8, ease: "power2.out" }, "-=0.8")
+                  .from('#hero .flex > a', { opacity: 0, y: 20, duration: 0.6, stagger: 0.1, ease: "back.out(1.5)" }, "-=0.6");
+
+            // 2. Section Staggered Animations
+            gsap.utils.toArray('section:not(#hero)').forEach((section) => {
+                const tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: section,
+                        start: "top 85%", 
+                        toggleActions: "play none none none"
+                    }
+                });
+
+                const headers = section.querySelectorAll('.tag, .fluid-h2, p.font-serif, p.leading-relaxed:not(.text-base)');
+                if(headers.length) {
+                    tl.from(headers, { opacity: 0, y: 30, duration: 0.8, stagger: 0.1, ease: "power2.out" });
+                }
+
+                const cards = section.querySelectorAll('.bento-card');
+                if(cards.length) {
+                    tl.from(cards, { opacity: 0, y: 50, scale: 0.96, duration: 0.8, stagger: 0.15, ease: "power3.out" }, "-=0.4");
+                }
+            });
 
             // Modal Logic
             const modal = document.getElementById('modal');
