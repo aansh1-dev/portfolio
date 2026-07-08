@@ -196,9 +196,9 @@
                 <a href="#education" class="text-xs font-mono font-medium text-ink/70 hover:text-ink hover:bg-black/5 px-4 py-2 rounded-full transition-colors uppercase tracking-wider magnetic inline-block">Education</a>
             </div>
 
-            <a href="mailto:aanshg2007@gmail.com" class="bg-ink text-base px-6 py-2.5 rounded-full text-xs font-mono font-medium transition-colors uppercase tracking-wider ml-2 magnetic inline-block">
+            <button onclick="copyEmail(this)" class="bg-ink text-base px-6 py-2.5 rounded-full text-xs font-mono font-medium transition-colors uppercase tracking-wider ml-2 magnetic inline-block">
                 Contact
-            </a>
+            </button>
         </nav>
     </div>
 
@@ -220,9 +220,9 @@
                     <a href="#projects" class="bg-ink text-base px-8 py-4 rounded-full text-xs font-mono font-bold transition-colors uppercase tracking-widest magnetic inline-block">
                         Explore Work
                     </a>
-                    <a href="mailto:aanshg2007@gmail.com" class="border border-ink/10 text-ink px-8 py-4 rounded-full text-xs font-mono font-bold hover:bg-black/5 transition-colors uppercase tracking-widest magnetic inline-block">
+                    <button onclick="copyEmail(this)" class="border border-ink/10 text-ink px-8 py-4 rounded-full text-xs font-mono font-bold hover:bg-black/5 transition-colors uppercase tracking-widest magnetic inline-block">
                         Get in Touch
-                    </a>
+                    </button>
                 </div>
             </div>
         </section>
@@ -247,12 +247,34 @@
         <section id="projects" class="pt-32 reveal">
             <div class="flex justify-between items-end mb-12 px-2">
                 <h2 class="fluid-h2 font-serif tracking-tight">Selected Work.</h2>
-                <span class="tag filled hidden md:inline-flex">04 Projects</span>
+                <span class="tag filled hidden md:inline-flex">05 Projects</span>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 
-                <!-- Project 1: Swiggy Audit -->
+                <!-- Project 1: Power BI (New Rank 01) -->
+                <div class="bento-card interactive group flex flex-col bg-surfaceAlt border-none min-h-[400px]">
+                    <div class="flex justify-between items-start mb-16 relative z-20">
+                        <span class="tag bg-surface border-none group-hover:bg-ink group-hover:text-base transition-colors duration-300">Data Analytics</span>
+                        
+                        <!-- Dual Icon Actions -->
+                        <div class="flex gap-2 md:gap-3">
+                            <a href="https://aansh-powerbi.tiiny.site/" target="_blank" class="w-12 h-12 rounded-full border border-ink/10 bg-surface flex items-center justify-center hover:bg-ink hover:text-base transition-all duration-300 hover:scale-110 shadow-sm hover:shadow-md cursor-pointer group/btn" title="View PDF Report">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover/btn:rotate-45 transition-transform"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                            </a>
+                            <a href="https://www.mediafire.com/file/uhayemkw6xrch2c/Aansh_Power_BI.pbix/file" target="_blank" class="w-12 h-12 rounded-full border border-ink/10 bg-surface flex items-center justify-center hover:bg-ink hover:text-base transition-all duration-300 hover:scale-110 shadow-sm hover:shadow-md cursor-pointer group/btn" title="Download .pbix">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover/btn:-translate-y-1 transition-transform"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mt-auto transition-transform duration-500 ease-out group-hover:translate-x-2">
+                        <p class="font-mono text-xs text-ink/50 uppercase tracking-widest mb-4 transition-colors group-hover:text-ink/80">01</p>
+                        <h3 class="text-4xl font-serif mb-4 group-hover:text-ink transition-colors duration-300">Business Dashboard.</h3>
+                        <p class="text-inkMuted text-base leading-relaxed transition-colors duration-300 group-hover:text-ink">Transformed raw datasets into an interactive Power BI dashboard tracking key performance metrics.</p>
+                    </div>
+                </div>
+
+                <!-- Project 2: Swiggy Audit -->
                 <div class="bento-card interactive cursor-pointer group flex flex-col min-h-[400px]" onclick="toggleSwiggyProject()">
                     <div class="flex justify-between items-start mb-16">
                         <span class="tag bg-surfaceAlt border-none group-hover:bg-ink group-hover:text-base transition-colors duration-300">Pricing Audit</span>
@@ -261,28 +283,28 @@
                         </div>
                     </div>
                     <div class="mt-auto transition-transform duration-500 ease-out group-hover:translate-x-2">
-                        <p class="font-mono text-xs text-ink/50 uppercase tracking-widest mb-4 transition-colors group-hover:text-ink/80">01</p>
+                        <p class="font-mono text-xs text-ink/50 uppercase tracking-widest mb-4 transition-colors group-hover:text-ink/80">02</p>
                         <h3 class="text-4xl font-serif mb-4 group-hover:text-accent transition-colors duration-300">Swiggy vs Zomato Audit.</h3>
                         <p class="text-inkMuted text-base leading-relaxed transition-colors duration-300 group-hover:text-ink">Exposing undisclosed charges and pricing transparency differences through a documented checkout flow audit across 13 breakpoints.</p>
                     </div>
                 </div>
 
-                <!-- Project 2: N8N -->
+                <!-- Project 3: N8N -->
                 <a href="https://aansh-n8n.lovable.app" target="_blank" class="bento-card interactive group flex flex-col bg-surfaceAlt border-none min-h-[400px]">
-                    <div class="flex justify-between items-start mb-16">
+                    <div class="flex justify-between items-start mb-16 relative z-20">
                         <span class="tag bg-surface border-none group-hover:bg-ink group-hover:text-base transition-colors duration-300">Automation Demo</span>
                         <div class="w-12 h-12 rounded-full border border-ink/10 bg-surface flex items-center justify-center group-hover:bg-ink group-hover:text-base transition-all duration-500 group-hover:-rotate-45 group-hover:scale-110 shadow-sm group-hover:shadow-md">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
                         </div>
                     </div>
                     <div class="mt-auto transition-transform duration-500 ease-out group-hover:translate-x-2">
-                        <p class="font-mono text-xs text-ink/50 uppercase tracking-widest mb-4 transition-colors group-hover:text-ink/80">02</p>
+                        <p class="font-mono text-xs text-ink/50 uppercase tracking-widest mb-4 transition-colors group-hover:text-ink/80">03</p>
                         <h3 class="text-4xl font-serif mb-4 group-hover:text-ink transition-colors duration-300">Workflow Demo — n8n</h3>
                         <p class="text-inkMuted text-base leading-relaxed transition-colors duration-300 group-hover:text-ink">Built a sample automation workflow using n8n to demonstrate how repetitive business tasks can be structured without code. Hosted as a live demo.</p>
                     </div>
                 </a>
 
-                <!-- Project 3: Fintech -->
+                <!-- Project 4: Fintech -->
                 <div class="bento-card interactive cursor-pointer group flex flex-col view-btn min-h-[400px]" data-img="https://i.ibb.co/VWgWLr8C/Screenshot-2025-08-23-202723.png">
                      <div class="flex justify-between items-start mb-16">
                         <span class="tag bg-surfaceAlt border-none group-hover:bg-ink group-hover:text-base transition-colors duration-300">UI Prototype</span>
@@ -291,117 +313,24 @@
                         </div>
                     </div>
                     <div class="mt-auto transition-transform duration-500 ease-out group-hover:translate-x-2">
-                        <p class="font-mono text-xs text-ink/50 uppercase tracking-widest mb-4 transition-colors group-hover:text-ink/80">03</p>
+                        <p class="font-mono text-xs text-ink/50 uppercase tracking-widest mb-4 transition-colors group-hover:text-ink/80">04</p>
                         <h3 class="text-4xl font-serif mb-4 group-hover:text-ink transition-colors duration-300">Fintech App Design.</h3>
                         <p class="text-inkMuted text-base leading-relaxed transition-colors duration-300 group-hover:text-ink">Created a high-fidelity mobile banking concept in Figma, exploring simplified user flows for onboarding and transactions.</p>
                     </div>
                 </div>
 
-                <!-- Project 4: Vibe Coded -->
+                <!-- Project 5: Vibe Coded -->
                 <div class="bento-card interactive cursor-pointer group flex flex-col bg-ink text-base min-h-[400px]" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-                    <div class="flex justify-between items-start mb-16">
+                    <div class="flex justify-between items-start mb-16 relative z-20">
                         <span class="tag bg-transparent text-base border-base/20 transition-colors duration-300 group-hover:bg-base group-hover:text-ink">Prompt Engineering</span>
                         <div class="w-12 h-12 rounded-full border border-base/20 flex items-center justify-center group-hover:bg-base group-hover:text-ink transition-all duration-500 group-hover:-translate-y-1 group-hover:scale-110 shadow-sm group-hover:shadow-md">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
                         </div>
                     </div>
                     <div class="mt-auto transition-transform duration-500 ease-out group-hover:translate-x-2">
-                        <p class="font-mono text-xs text-base/50 uppercase tracking-widest mb-4 transition-colors group-hover:text-base/80">04</p>
+                        <p class="font-mono text-xs text-base/50 uppercase tracking-widest mb-4 transition-colors group-hover:text-base/80">05</p>
                         <h3 class="text-4xl font-serif mb-4 transition-colors duration-300 group-hover:text-white">Interactive Portfolio.</h3>
                         <p class="text-base/70 text-base leading-relaxed transition-colors duration-300 group-hover:text-base/90">This site was vibe-coded entirely through prompt engineering, converting high-level design constraints into an optimized deployment.</p>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- SECTION 4: TOOLS & AI -->
-        <section id="tools" class="pt-32 reveal">
-            <div class="mb-12 px-2">
-                <span class="tag mb-6">03 / Toolkit</span>
-                <h2 class="fluid-h2 font-serif">Tools & AI I Use Personally.</h2>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                
-                <!-- AI -->
-                <div class="bento-card p-8 flex flex-col bg-surfaceAlt border-none group hover:bg-surface transition-colors">
-                    <div class="mb-12">
-                        <div class="w-12 h-12 rounded-full bg-ink text-base flex items-center justify-center mb-6">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10H12V2z"></path><path d="M12 12 2.1 7.1"></path><path d="M12 12l9.9 4.9"></path></svg>
-                        </div>
-                        <h4 class="text-2xl font-serif">AI-Assisted Workflows</h4>
-                    </div>
-                    <div class="mt-auto space-y-6">
-                        <div>
-                            <p class="font-bold text-sm uppercase tracking-wider mb-1">Gemini / Claude</p>
-                            <p class="text-sm text-inkMuted">Research synthesis, content structuring, and logic mapping.</p>
-                        </div>
-                        <div>
-                            <p class="font-bold text-sm uppercase tracking-wider mb-1">ChatGPT</p>
-                            <p class="text-sm text-inkMuted">Ideation support, copy drafting, and rapid prototyping.</p>
-                        </div>
-                        <p class="text-[10px] italic text-ink/40 font-serif pt-4 border-t border-black/5">"Used as tools, not shortcuts."</p>
-                    </div>
-                </div>
-
-                <!-- Design -->
-                <div class="bento-card p-8 flex flex-col group hover:bg-surfaceAlt border-none transition-colors">
-                    <div class="mb-12">
-                        <div class="w-12 h-12 rounded-full bg-black/5 text-ink flex items-center justify-center mb-6 group-hover:bg-surface transition-colors">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
-                        </div>
-                        <h4 class="text-2xl font-serif">Design & Content</h4>
-                    </div>
-                    <div class="mt-auto space-y-6">
-                        <div>
-                            <p class="font-bold text-sm uppercase tracking-wider mb-1">Canva / Figma</p>
-                            <p class="text-sm text-inkMuted">Visual assets, wireframes, and presentation layouts.</p>
-                        </div>
-                        <div>
-                            <p class="font-bold text-sm uppercase tracking-wider mb-1">CapCut</p>
-                            <p class="text-sm text-inkMuted">Video editing for high-engagement reels and motion concepts.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Build -->
-                <div class="bento-card p-8 flex flex-col group hover:bg-surfaceAlt border-none transition-colors">
-                    <div class="mb-12">
-                        <div class="w-12 h-12 rounded-full bg-black/5 text-ink flex items-center justify-center mb-6 group-hover:bg-surface transition-colors">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-                        </div>
-                        <h4 class="text-2xl font-serif">Web & Build</h4>
-                    </div>
-                    <div class="mt-auto space-y-6">
-                        <div>
-                            <p class="font-bold text-sm uppercase tracking-wider mb-1">HTML/CSS Vibe Coding</p>
-                            <p class="text-sm text-inkMuted">Refining layouts and code composition via prompts.</p>
-                        </div>
-                        <div>
-                            <p class="font-bold text-sm uppercase tracking-wider mb-1">GitHub</p>
-                            <p class="text-sm text-inkMuted">Project hosting and basic version control management.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Data -->
-                <div class="bento-card p-8 flex flex-col bg-surfaceAlt border-none group hover:bg-surface transition-colors">
-                    <div class="mb-12">
-                        <div class="w-12 h-12 rounded-full bg-black/5 text-ink flex items-center justify-center mb-6">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
-                        </div>
-                        <h4 class="text-2xl font-serif">Productivity & Data</h4>
-                    </div>
-                    <div class="mt-auto space-y-6">
-                        <div>
-                            <p class="font-bold text-sm uppercase tracking-wider mb-1">Power BI / Excel</p>
-                            <p class="text-sm text-inkMuted">Data organization, metrics modeling, and dashboards.</p>
-                        </div>
-                        <div>
-                            <p class="font-bold text-sm uppercase tracking-wider mb-1">Notion</p>
-                            <p class="text-sm text-inkMuted">Task planning, system documentation, and tracking.</p>
-                        </div>
                     </div>
                 </div>
 
@@ -428,12 +357,13 @@
                         <div>
                             <p class="font-mono text-xs uppercase tracking-widest text-base/40 mb-4">University Path</p>
                             <h5 class="text-3xl md:text-5xl font-serif mb-2">K.P.B. Hinduja College</h5>
-                            <p class="text-base/70 text-lg">Year 1 · Bachelor of Management Studies</p>
+                            <p class="text-base/70 text-lg">Year 2 · Bachelor of Management Studies</p>
+                            <p class="text-base/50 text-sm mt-2 font-serif italic tracking-wide">Specializing in Marketing</p>
                         </div>
                         
                         <div class="pt-12 border-t border-white/10">
                             <p class="font-mono text-xs uppercase tracking-widest text-base/40 mb-2">ICSE Board Score</p>
-                            <p class="text-4xl font-serif">85%</p>
+                            <p class="text-4xl font-serif">90%</p>
                         </div>
                     </div>
                 </div>
@@ -443,11 +373,11 @@
         <!-- FOOTER CTA -->
         <section id="contact" class="pt-32 pb-20 reveal">
             <div class="bento-card p-12 md:p-24 text-center bg-surfaceAlt border-none flex flex-col items-center">
-                <h2 class="fluid-h2 font-serif mb-12 text-balance">Let's build something.</h2>
+                <h2 class="fluid-h2 font-serif mb-12 text-balance">Let's connect.</h2>
                 <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a href="mailto:aanshg2007@gmail.com" class="bg-ink text-base px-10 py-5 rounded-full font-mono text-xs font-bold uppercase tracking-widest transition-colors magnetic inline-block">
-                        Send an Email
-                    </a>
+                    <button onclick="copyEmail(this)" class="bg-ink text-base px-10 py-5 rounded-full font-mono text-xs font-bold uppercase tracking-widest transition-colors magnetic inline-block">
+                        Copy Email
+                    </button>
                     <a href="https://www.linkedin.com/in/aansh1" target="_blank" class="px-10 py-5 rounded-full font-mono text-xs font-bold uppercase tracking-widest bg-white hover:bg-black/5 transition-colors magnetic inline-block">
                         LinkedIn Profile
                     </a>
@@ -613,6 +543,37 @@
                 const view = document.getElementById('swiggy-project-view');
                 view.classList.toggle('active');
                 document.body.style.overflow = view.classList.contains('active') ? 'hidden' : 'auto';
+            };
+
+            // Email Copy Logic
+            window.copyEmail = function(btn) {
+                const email = 'aanshg2007@gmail.com';
+                
+                // Create a temporary input to select and copy the text
+                const tempInput = document.createElement('input');
+                tempInput.value = email;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempInput);
+
+                // Button visual feedback
+                const originalText = btn.innerText;
+                const prevBg = btn.style.backgroundColor;
+                const prevColor = btn.style.color;
+                const prevBorder = btn.style.borderColor;
+                
+                btn.innerText = 'Email Copied!';
+                btn.style.backgroundColor = '#10B981'; // Green success color
+                btn.style.color = '#FFFFFF';
+                btn.style.borderColor = '#10B981';
+                
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.style.backgroundColor = prevBg;
+                    btn.style.color = prevColor;
+                    btn.style.borderColor = prevBorder;
+                }, 2000);
             };
         });
     </script>
